@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useLocation } from 'react-router-dom'; // Added useLocation
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Hammer, ArrowRight, ShieldCheck } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import { toast, Toaster } from 'react-hot-toast';
@@ -10,10 +10,9 @@ const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
-  const location = useLocation(); // Used to check the URL parameters
+  const location = useLocation();
 
   // --- SMART SECURITY CHECK ---
-  // Checks if the URL has "?mode=admin"
   const queryParams = new URLSearchParams(location.search);
   const isAdminMode = queryParams.get('mode') === 'admin';
 
@@ -36,13 +35,17 @@ const AuthPage = () => {
         toast.success(isLogin ? `Access Granted: ${result.name}` : "Account Created!", { id: loadingToast });
         
         if (isLogin) {
+          // Store user data and token for authenticated requests [cite: 87, 136]
           localStorage.setItem("user", JSON.stringify(result));
           
+          // --- ROLE-BASED REDIRECT LOGIC [cite: 95, 139] ---
           setTimeout(() => {
             if (result.role === 'ADMIN') {
-              navigate("/admin-dashboard");
+              navigate("/admin-dashboard"); // Full system access [cite: 100]
+            } else if (result.role === 'STAFF') {
+              navigate("/staff-dashboard"); // Operational access [cite: 102]
             } else {
-              navigate("/");
+              navigate("/customer-dashboard"); // Limited client access [cite: 103]
             }
           }, 1500);
         } else {
@@ -134,7 +137,7 @@ const AuthPage = () => {
 
         <div className="mt-12 flex items-center justify-between text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600 border-t border-white/5 pt-8">
            
-           {/* --- SECURITY GUARD LOGIC --- */}
+           {/* --- SECURITY GUARD LOGIC [cite: 78] --- */}
            {!isAdminMode ? (
              <button onClick={() => setIsLogin(!isLogin)} className="hover:text-[#D4AF37] transition-colors">
                {isLogin ? "New Entry / Sign Up" : "Existing Member / Login"}

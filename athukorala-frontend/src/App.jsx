@@ -4,7 +4,9 @@ import { Toaster } from 'react-hot-toast';
 import LandingPage from './pages/LandingPage';
 import AuthPage from './pages/AuthPage';
 import PortalPage from './pages/PortalPage';
-import AdminDashboard from './pages/AdminDashboard'; // 1. MAKE SURE TO IMPORT THIS
+import AdminDashboard from './pages/AdminDashboard';
+import StaffDashboard from './pages/StaffDashboard'; // IMPORTED
+import CustomerDashboard from './pages/CustomerDashboard'; // IMPORTED
 
 function App() {
   return (
@@ -21,20 +23,24 @@ function App() {
       />
       
       <Routes>
-        {/* Public: Landing Page */}
+        {/* --- PUBLIC ROUTES --- */}
         <Route path="/" element={<LandingPage />} />
-        
-        {/* Public: Auth (Login/Signup) */}
         <Route path="/login" element={<AuthPage />} />
-
         <Route path="/auth" element={<AuthPage />} />
-
-        {/* Internal: Staff Portal */}
         <Route path="/portal" element={<PortalPage />} />
 
-        {/* --- ADDED THIS ROUTE TO FIX THE WHITE SCREEN --- */}
+        {/* --- ROLE-BASED DASHBOARDS --- */}
+        
+        {/* 1. ADMIN: Full system access [cite: 100, 165] */}
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
+        {/* 2. STAFF: Operational & Inventory access [cite: 102, 167] */}
+        <Route path="/staff-dashboard" element={<StaffDashboard />} />
+
+        {/* 3. CUSTOMER: Catalog & Order access [cite: 103, 168] */}
+        <Route path="/customer-dashboard" element={<CustomerDashboard />} />
+
+        {/* --- ERROR HANDLING --- */}
         {/* Auto-redirect any typos back to Home */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

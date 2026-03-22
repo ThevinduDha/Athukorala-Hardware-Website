@@ -6,11 +6,12 @@ import {
   TrendingUp, ArrowUpRight, Globe
 } from 'lucide-react';
 import AddProductModal from './AddProductModal';
-import InventoryList from './InventoryList'; // IMPORTED INVENTORY LIST
+import InventoryList from './InventoryList';
+import LowStockWidget from '../components/LowStockWidget'; // IMPORTED WIDGET
 
 const AdminDashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('command'); // TRACKS THE ACTIVE VIEW
+  const [activeTab, setActiveTab] = useState('command'); 
   
   const user = JSON.parse(localStorage.getItem("user") || '{"name":"Administrator"}');
 
@@ -40,7 +41,6 @@ const AdminDashboard = () => {
         </div>
 
         <nav className="flex flex-col gap-2">
-          {/* UPDATED NAV ITEMS WITH ONCLICK */}
           <NavItem 
             icon={<LayoutDashboard size={18}/>} 
             label="Command Center" 
@@ -94,7 +94,6 @@ const AdminDashboard = () => {
           </div>
         </header>
 
-        {/* --- CONDITIONAL RENDERING LOGIC --- */}
         <AnimatePresence mode="wait">
           {activeTab === 'command' ? (
             <motion.div 
@@ -110,6 +109,7 @@ const AdminDashboard = () => {
               </motion.div>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* LEFT: ACTIVITY FEED */}
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="lg:col-span-2 p-10 border border-white/5 bg-white/[0.02] backdrop-blur-md relative overflow-hidden group">
                   <div className="absolute top-0 left-0 w-1 h-full bg-[#D4AF37] opacity-30 group-hover:opacity-100 transition-opacity"></div>
                   <div className="flex justify-between items-center mb-10">
@@ -124,25 +124,42 @@ const AdminDashboard = () => {
                   </div>
                 </motion.div>
 
-                <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }} className="p-10 border border-white/5 bg-[#D4AF37]/5 backdrop-blur-md flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xs font-black tracking-[0.4em] uppercase text-[#D4AF37] mb-8">Quick Operations</h3>
-                    <div className="space-y-4">
-                      <ActionButton label="Add New Product" onClick={() => setIsModalOpen(true)} />
-                      <ActionButton label="Generate Report" />
-                      <ActionButton label="System Backup" />
-                    </div>
-                  </div>
-                  <div className="mt-12 p-6 border border-[#D4AF37]/10 bg-black/40">
-                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-2">Network Latency</p>
-                    <div className="flex items-center gap-3">
-                      <div className="h-1 flex-1 bg-white/5 overflow-hidden">
-                        <motion.div animate={{ x: [-100, 200] }} transition={{ repeat: Infinity, duration: 2 }} className="h-full w-20 bg-[#D4AF37]" />
+                {/* RIGHT: ALERTS & ACTIONS */}
+                <div className="flex flex-col gap-8">
+                  {/* LOW STOCK WIDGET PLACED HERE */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: 30 }} 
+                    animate={{ opacity: 1, x: 0 }} 
+                    transition={{ delay: 0.7 }}
+                  >
+                    <LowStockWidget />
+                  </motion.div>
+
+                  <motion.div 
+                    initial={{ opacity: 0, x: 30 }} 
+                    animate={{ opacity: 1, x: 0 }} 
+                    transition={{ delay: 0.8 }} 
+                    className="p-10 border border-white/5 bg-[#D4AF37]/5 backdrop-blur-md flex flex-col justify-between"
+                  >
+                    <div>
+                      <h3 className="text-xs font-black tracking-[0.4em] uppercase text-[#D4AF37] mb-8">Quick Operations</h3>
+                      <div className="space-y-4">
+                        <ActionButton label="Add New Product" onClick={() => setIsModalOpen(true)} />
+                        <ActionButton label="Generate Report" />
+                        <ActionButton label="System Backup" />
                       </div>
-                      <span className="text-[10px] font-mono text-[#D4AF37]">12MS</span>
                     </div>
-                  </div>
-                </motion.div>
+                    <div className="mt-12 p-6 border border-[#D4AF37]/10 bg-black/40">
+                      <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mb-2">Network Latency</p>
+                      <div className="flex items-center gap-3">
+                        <div className="h-1 flex-1 bg-white/5 overflow-hidden">
+                          <motion.div animate={{ x: [-100, 200] }} transition={{ repeat: Infinity, duration: 2 }} className="h-full w-20 bg-[#D4AF37]" />
+                        </div>
+                        <span className="text-[10px] font-mono text-[#D4AF37]">12MS</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           ) : (

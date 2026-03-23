@@ -31,7 +31,7 @@ public class User {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private Role role; // Ensure your Role enum has ADMIN, STAFF, CUSTOMER
 
     private LocalDateTime createdAt = LocalDateTime.now();
 }

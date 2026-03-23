@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'; // IMPORTED NAVIGATE
 import { Search, Filter, ShoppingCart, Eye, Box, Zap, Droplets, Hammer } from 'lucide-react';
 
 const CustomerDashboard = () => {
@@ -7,6 +8,7 @@ const CustomerDashboard = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [category, setCategory] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate(); // INITIALIZED NAVIGATE
 
   useEffect(() => {
     fetch("http://localhost:8080/api/products/all")
@@ -41,6 +43,17 @@ const CustomerDashboard = () => {
         </motion.div>
 
         <div className="flex flex-col gap-6 w-full md:w-auto">
+          {/* CART INDICATOR - NEW PREVIEW COMPONENT */}
+          <div className="flex justify-end mb-2">
+             <button className="flex items-center gap-3 group text-gray-500 hover:text-[#D4AF37] transition-colors">
+                <span className="text-[10px] font-black uppercase tracking-widest">Active Cart</span>
+                <div className="relative p-2 border border-white/10 group-hover:border-[#D4AF37]/50 transition-colors">
+                   <ShoppingCart size={18} />
+                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#D4AF37] text-black text-[8px] font-bold flex items-center justify-center">0</div>
+                </div>
+             </button>
+          </div>
+
           <div className="relative group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#D4AF37] transition-colors" size={18} />
             <input 
@@ -72,7 +85,7 @@ const CustomerDashboard = () => {
       >
         <AnimatePresence>
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} navigate={navigate} />
           ))}
         </AnimatePresence>
       </motion.div>
@@ -82,7 +95,7 @@ const CustomerDashboard = () => {
   );
 };
 
-const ProductCard = ({ product }) => (
+const ProductCard = ({ product, navigate }) => (
   <motion.div 
     layout
     initial={{ opacity: 0, scale: 0.9 }}
@@ -119,7 +132,12 @@ const ProductCard = ({ product }) => (
       <button className="flex-1 bg-[#D4AF37] text-black py-3 text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#E5C158]">
         <ShoppingCart size={14} /> Add to Cart
       </button>
-      <button className="p-3 border border-white/10 hover:border-[#D4AF37] transition-colors">
+      
+      {/* UPDATED EYE BUTTON TO REDIRECT TO PRODUCT DETAIL */}
+      <button 
+        onClick={() => navigate(`/product/${product.id}`)}
+        className="p-3 border border-white/10 hover:border-[#D4AF37] transition-colors"
+      >
         <Eye size={16} />
       </button>
     </div>

@@ -7,6 +7,7 @@ import PortalPage from './pages/PortalPage';
 import AdminDashboard from './pages/AdminDashboard';
 import StaffDashboard from './pages/StaffDashboard'; // IMPORTED
 import CustomerDashboard from './pages/CustomerDashboard'; // IMPORTED
+import ProductDetail from './pages/ProductDetail';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<AuthPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/portal" element={<PortalPage />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
 
         {/* --- ROLE-BASED DASHBOARDS --- */}
         

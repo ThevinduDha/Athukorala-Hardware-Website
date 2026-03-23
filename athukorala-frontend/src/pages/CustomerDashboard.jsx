@@ -103,7 +103,7 @@ const CustomerDashboard = () => {
     }
   };
 
-  // NEW: HANDLERS FOR QUANTITY AND REMOVAL
+  // --- HANDLERS FOR QUANTITY AND REMOVAL ---
   const updateCartQuantity = async (itemId, newQty) => {
     if (newQty < 1) return;
     try {
@@ -127,7 +127,11 @@ const CustomerDashboard = () => {
   };
 
   const calculateTotal = () => {
-    return cartItems.reduce((acc, item) => acc + (item.product?.price * item.quantity), 0);
+    if (!cartItems) return 0;
+    return cartItems.reduce((acc, item) => {
+      const price = item?.product?.price || 0;
+      return acc + (price * (item?.quantity || 0));
+    }, 0);
   };
 
   const handleLogout = () => {
@@ -154,7 +158,7 @@ const CustomerDashboard = () => {
         </div>
         <nav className="flex flex-col gap-2">
           <NavItem icon={<Home size={18}/>} label="Home Catalog" active={true} />
-          <NavItem icon={<Package size={18}/>} label="My Orders" onClick={() => navigate('/orders')} />
+          <NavItem icon={<Package size={18}/>} label="My Orders" onClick={() => navigate('/order-history')} />
           <NavItem icon={<Heart size={18}/>} label="Wishlist" />
           <NavItem icon={<User size={18}/>} label="Profile Settings" />
         </nav>
@@ -174,7 +178,7 @@ const CustomerDashboard = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-3 mb-4">
                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-               <p className="text-[#D4AF37] text-[10px] font-bold tracking-[0.6em] uppercase">Identity Verified: {user.name}</p>
+               <p className="text-[#D4AF37] text-[10px] font-bold tracking-[0.6em] uppercase">Identity Verified: {user?.name || "Guest"}</p>
             </div>
             <h1 className="text-7xl font-black uppercase tracking-tighter leading-[0.85]">
               Premium <br /> <span className="text-transparent stroke-text">Hardware</span>
@@ -190,7 +194,7 @@ const CustomerDashboard = () => {
                 <div className="relative p-3 border border-white/10 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/5 transition-all">
                     <ShoppingCart size={20} />
                     <AnimatePresence>
-                        {cartItems.length > 0 && (
+                        {cartItems && cartItems.length > 0 && (
                         <motion.div 
                             initial={{ scale: 0 }} animate={{ scale: 1 }}
                             className="absolute -top-1 -right-1 w-4 h-4 bg-[#D4AF37] text-black text-[8px] font-black flex items-center justify-center shadow-lg"
@@ -228,7 +232,7 @@ const CustomerDashboard = () => {
         <motion.div variants={containerVars} initial="initial" animate="animate" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
           <AnimatePresence>
             {filteredProducts?.map((product, idx) => (
-              <ProductCard key={product.id} product={product} navigate={navigate} onAddToCart={() => handleAddToCart(product)} delay={idx * 0.05} />
+              <ProductCard key={product?.id} product={product} navigate={navigate} onAddToCart={() => handleAddToCart(product)} delay={idx * 0.05} />
             ))}
           </AnimatePresence>
         </motion.div>
@@ -259,30 +263,30 @@ const CustomerDashboard = () => {
               </div>
 
               <div className="flex-1 overflow-y-auto p-8 space-y-8">
-                {cartItems.length === 0 ? (
+                {(!cartItems || cartItems.length === 0) ? (
                   <div className="h-full flex flex-col items-center justify-center text-gray-600 space-y-4">
                     <ShoppingCart size={48} className="opacity-10" />
                     <p className="text-[10px] font-bold tracking-[0.3em] uppercase">No Assets Recorded</p>
                   </div>
                 ) : (
                   cartItems.map((item) => (
-                    <motion.div layout key={item.id} className="flex gap-4 group border-b border-white/5 pb-6">
+                    <motion.div layout key={item?.id} className="flex gap-4 group border-b border-white/5 pb-6">
                       <div className="w-20 h-20 bg-black border border-white/5 p-2 shrink-0">
-                         <img src={item.product?.imageUrl} alt="" className="w-full h-full object-contain" />
+                         <img src={item?.product?.imageUrl || ""} alt="" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1 min-w-0 text-left">
                         <div className="flex justify-between items-start mb-1">
-                            <h4 className="text-sm font-bold uppercase truncate pr-4">{item.product?.name}</h4>
-                            <button onClick={() => removeFromCart(item.id)} className="text-gray-600 hover:text-red-500 transition-colors"><Trash2 size={14}/></button>
+                            <h4 className="text-sm font-bold uppercase truncate pr-4">{item?.product?.name || "Loading..."}</h4>
+                            <button onClick={() => removeFromCart(item?.id)} className="text-gray-600 hover:text-red-500 transition-colors"><Trash2 size={14}/></button>
                         </div>
-                        <p className="text-[9px] font-black uppercase text-[#D4AF37] mb-3">{item.product?.category}</p>
+                        <p className="text-[9px] font-black uppercase text-[#D4AF37] mb-3">{item?.product?.category || "Hardware"}</p>
                         <div className="flex justify-between items-center">
                            <div className="flex items-center gap-3 bg-white/5 px-3 py-1 border border-white/10">
-                              <Minus size={12} className="cursor-pointer hover:text-[#D4AF37]" onClick={() => updateCartQuantity(item.id, item.quantity - 1)} />
-                              <span className="text-[10px] font-mono">{item.quantity}</span>
-                              <Plus size={12} className="cursor-pointer hover:text-[#D4AF37]" onClick={() => updateCartQuantity(item.id, item.quantity + 1)} />
+                              <Minus size={12} className="cursor-pointer hover:text-[#D4AF37]" onClick={() => updateCartQuantity(item?.id, item?.quantity - 1)} />
+                              <span className="text-[10px] font-mono">{item?.quantity || 0}</span>
+                              <Plus size={12} className="cursor-pointer hover:text-[#D4AF37]" onClick={() => updateCartQuantity(item?.id, item?.quantity + 1)} />
                            </div>
-                           <p className="font-mono text-xs text-white">LKR {(item.product?.price * item.quantity).toLocaleString()}</p>
+                           <p className="font-mono text-xs text-white">LKR {((item?.product?.price || 0) * (item?.quantity || 0)).toLocaleString()}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -302,6 +306,7 @@ const CustomerDashboard = () => {
                 </div>
                 <button 
                   onClick={() => {
+                    localStorage.setItem("lastCartTotal", calculateTotal());
                     setIsCartOpen(false);
                     navigate('/checkout');
                   }}
@@ -330,10 +335,10 @@ const ProductCard = ({ product, navigate, onAddToCart, delay }) => (
     <motion.div 
       layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0, transition: { delay } }}
       whileHover={{ y: -10 }}
-      className="group relative bg-white/[0.02] border border-white/5 p-6 transition-all hover:bg-white/[0.04] hover:border-[#D4AF37]/30"
+      className="group relative bg-white/[0.02] border border-white/5 p-6 transition-all hover:bg-white/[0.04] hover:border-[#D4AF37]/30 shadow-xl"
     >
       <div className="aspect-square bg-[#0a0a0a] border border-white/5 mb-6 overflow-hidden relative">
-        <img src={product?.imageUrl} className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700" />
+        <img src={product?.imageUrl} className="w-full h-full object-contain group-hover:scale-105 transition-all duration-700" alt={product?.name} />
       </div>
       <div className="space-y-2 text-left">
         <div className="flex justify-between">

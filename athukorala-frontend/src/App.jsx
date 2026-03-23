@@ -17,6 +17,7 @@ import StockAdjustment from './pages/StockAdjustment';
 import InventoryReport from './pages/InventoryReport'; 
 import AuditLogView from './pages/AuditLogView'; // NEW IMPORT
 import ProtectedRoute from './components/ProtectedRoute'; 
+import OrderSuccess from './pages/OrderSuccess';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/shopping-cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-history" element={<OrderHistory />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
         <Route 
           path="/customer-dashboard" 
           element={

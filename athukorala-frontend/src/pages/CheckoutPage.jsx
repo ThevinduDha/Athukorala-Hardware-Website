@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ShieldCheck, Lock, CreditCard, ArrowLeft, CheckCircle2, AlertCircle } from 'lucide-react';
+import { 
+  ShieldCheck, Lock, CreditCard, ArrowLeft, 
+  CheckCircle2, AlertCircle, Home, Download, Share2, Package 
+} from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false); // NEW: Success state
   const [totalAmount, setTotalAmount] = useState(0);
+  const [orderId, setOrderId] = useState(""); // NEW: To store generated order ID
 
   const [formData, setFormData] = useState({
     address: '',
@@ -68,7 +73,7 @@ const CheckoutPage = () => {
     );
   };
 
-    const processOrder = async (e) => {
+  const processOrder = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
     const loadingToast = toast.loading("ENCRYPTING TRANSACTION PAYLOAD...");
@@ -76,28 +81,89 @@ const CheckoutPage = () => {
 
     try {
         const response = await fetch("http://localhost:8080/api/orders/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            userId: user.id,
-            address: formData.address,
-            phone: formData.phone,
-            total: totalAmount
-        }),
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+              userId: user.id,
+              address: formData.address,
+              phone: formData.phone,
+              total: totalAmount
+          }),
         });
 
         if (response.ok) {
-        toast.success("TRANSACTION VERIFIED: ORDER PLACED", { id: loadingToast });
-        navigate('/customer-dashboard');
+          const data = await response.json();
+          setOrderId(data.id || `ATH-${Math.floor(Math.random()*9000)}`);
+          toast.success("TRANSACTION VERIFIED", { id: loadingToast });
+          
+          // Trigger Success View instead of immediate navigation
+          setIsSuccess(true); 
         } else {
-        toast.error("INVENTORY SYNC FAILURE: STOCK DEPLETED", { id: loadingToast });
+          toast.error("INVENTORY SYNC FAILURE: STOCK DEPLETED", { id: loadingToast });
         }
     } catch (err) {
         toast.error("GATEWAY TIMEOUT: CHECK BACKEND", { id: loadingToast });
     } finally {
         setIsProcessing(false);
     }
-    };
+  };
+
+  // --- NEW: ORDER CONFIRMATION VIEW ---
+  if (isSuccess) {
+    return (
+      <div className="min-h-screen bg-[#050505] text-white flex items-center justify-center p-8 font-sans overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[120px] rounded-full -z-10" />
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
+          className="max-w-xl w-full bg-white/[0.02] border border-white/5 p-12 backdrop-blur-3xl relative overflow-hidden"
+        >
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+          <div className="text-center space-y-8">
+            <div className="relative inline-block">
+              <motion.div 
+                initial={{ scale: 0, rotate: -20 }} animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: 'spring', damping: 12, delay: 0.2 }}
+                className="w-24 h-24 bg-[#D4AF37] rounded-full flex items-center justify-center mx-auto shadow-[0_0_50px_rgba(212,175,55,0.3)]"
+              >
+                <CheckCircle2 size={48} className="text-black" />
+              </motion.div>
+            </div>
+            <div className="space-y-3">
+              <p className="text-[#D4AF37] text-[10px] font-black tracking-[0.6em] uppercase">Transaction Authenticated</p>
+              <h1 className="text-5xl font-black uppercase tracking-tighter leading-none">Order Confirmed</h1>
+            </div>
+            <div className="bg-black/40 border border-white/5 p-6 space-y-4 text-left">
+              <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Protocol ID</span>
+                <span className="text-xs font-mono font-black text-white">#{orderId}</span>
+              </div>
+              <div className="flex justify-between items-center border-b border-white/5 pb-4">
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Settlement Amount</span>
+                <span className="text-sm font-mono font-black text-[#D4AF37]">LKR {totalAmount.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Logistics Status</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-[10px] font-black text-green-500 uppercase tracking-widest">Awaiting Dispatch</span>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4 pt-6">
+              <button className="flex items-center justify-center gap-2 py-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-[10px] font-black uppercase tracking-widest"><Download size={14} /> Invoice</button>
+              <button className="flex items-center justify-center gap-2 py-4 bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-[10px] font-black uppercase tracking-widest"><Share2 size={14} /> Receipt</button>
+            </div>
+            <button 
+              onClick={() => navigate('/customer-dashboard')}
+              className="w-full bg-[#D4AF37] text-black py-5 text-[11px] font-black uppercase tracking-[0.4em] hover:bg-white transition-all shadow-[0_10px_40px_rgba(212,175,55,0.1)] flex items-center justify-center gap-3"
+            >
+              <Home size={16} /> Return to Catalog
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#050505] text-white p-8 md:p-20 font-sans selection:bg-[#D4AF37] selection:text-black">
@@ -123,7 +189,7 @@ const CheckoutPage = () => {
                 01. Shipping Logistics <div className="h-[1px] flex-1 bg-white/5"></div>
               </h3>
               <div className="grid grid-cols-1 gap-8">
-                <div className="relative">
+                <div className="relative text-left">
                   <label className="text-[9px] uppercase tracking-[0.2em] text-gray-600 font-black block mb-4">Final Destination (Full Address)</label>
                   <textarea 
                     required name="address" onChange={handleInputChange}
@@ -131,10 +197,10 @@ const CheckoutPage = () => {
                     placeholder="ENTER WAREHOUSE OR SITE ADDRESS..."
                   />
                   {formData.address.length > 0 && formData.address.length <= 10 && (
-                    <p className="text-red-500 text-[8px] mt-2 font-bold tracking-widest uppercase">Error: Address too short for logistics</p>
+                    <p className="text-red-500 text-[8px] mt-2 font-bold tracking-widest uppercase text-left">Error: Address too short for logistics</p>
                   )}
                 </div>
-                <div className="relative">
+                <div className="relative text-left">
                   <label className="text-[9px] uppercase tracking-[0.2em] text-gray-600 font-black block mb-4">Contact Payload (Phone)</label>
                   <input 
                     required type="tel" name="phone" onChange={handleInputChange}
@@ -142,7 +208,7 @@ const CheckoutPage = () => {
                     placeholder="07XXXXXXXX OR +94XXXXXXXXX"
                   />
                   {formData.phone && !isPhoneValid(formData.phone) && (
-                    <p className="text-red-500 text-[8px] mt-2 font-bold tracking-widest uppercase italic">Invalid Sri Lankan Format detected</p>
+                    <p className="text-red-500 text-[8px] mt-2 font-bold tracking-widest uppercase italic text-left">Invalid Sri Lankan Format detected</p>
                   )}
                 </div>
               </div>
@@ -153,7 +219,7 @@ const CheckoutPage = () => {
                 02. Payment Encryption <div className="h-[1px] flex-1 bg-white/5"></div>
               </h3>
               <div className="space-y-8 bg-white/[0.01] border border-white/5 p-10">
-                <div className="relative">
+                <div className="relative text-left">
                   <CreditCard className="absolute right-6 top-[54px] text-gray-700" size={20} />
                   <label className="text-[9px] uppercase tracking-[0.2em] text-gray-600 font-black block mb-4">Card Identifier</label>
                   <input 
@@ -162,7 +228,7 @@ const CheckoutPage = () => {
                     placeholder="0000 0000 0000 0000"
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-8 text-left">
                   <div>
                     <label className="text-[9px] uppercase tracking-[0.2em] text-gray-600 font-black block mb-4">Expiry Date</label>
                     <input required name="expiry" value={formData.expiry} onChange={handleInputChange} placeholder="MM/YY" className="w-full bg-black border border-white/10 p-6 focus:border-[#D4AF37]/50 outline-none text-xs font-mono" />
@@ -179,7 +245,7 @@ const CheckoutPage = () => {
 
         {/* RIGHT: FLOATING SUMMARY (5 COLS) */}
         <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="lg:col-span-5">
-          <div className="sticky top-20 bg-[#D4AF37]/5 border border-[#D4AF37]/20 p-12 backdrop-blur-xl relative overflow-hidden">
+          <div className="sticky top-20 bg-[#D4AF37]/5 border border-[#D4AF37]/20 p-12 backdrop-blur-xl relative overflow-hidden text-left">
             <div className="absolute top-0 left-0 w-1 h-full bg-[#D4AF37]"></div>
             
             <h3 className="text-xs font-black tracking-[0.4em] uppercase text-[#D4AF37] mb-12">Authorization Summary</h3>

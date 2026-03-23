@@ -41,6 +41,16 @@ public class ProductController {
                 })
                 .collect(Collectors.toList());
     }
+    @PatchMapping("/{id}/adjust-stock")
+    public Product adjustStock(@PathVariable Long id, @RequestBody java.util.Map<String, Integer> adjustment) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Asset not found"));
+
+        int amount = adjustment.get("amount");
+        product.setStockQuantity(product.getStockQuantity() + amount);
+
+        return productRepository.save(product);
+    }
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {

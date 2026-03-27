@@ -15,9 +15,10 @@ import OrderHistoryAdmin from './pages/AdminOrders';
 import SupplierRegistry from './pages/SupplierRegistry'; 
 import StockAdjustment from './pages/StockAdjustment'; 
 import InventoryReport from './pages/InventoryReport'; 
-import AuditLogView from './pages/AuditLogView'; // NEW IMPORT
+import AuditLogView from './pages/AuditLogView'; 
 import ProtectedRoute from './components/ProtectedRoute'; 
 import OrderSuccess from './pages/OrderSuccess';
+import CuratedList from './pages/CuratedList'; // IMPORTED NEW PAGE
 
 function App() {
   return (
@@ -46,6 +47,17 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/order-success" element={<OrderSuccess />} />
+        
+        {/* --- ADDED: CURATED LIST PROTOCOL ROUTE --- */}
+        <Route 
+          path="/curated-list" 
+          element={
+            <ProtectedRoute allowedRoles={['CUSTOMER', 'ADMIN', 'STAFF']}>
+              <CuratedList />
+            </ProtectedRoute>
+          } 
+        />
+
         <Route 
           path="/customer-dashboard" 
           element={
@@ -106,7 +118,6 @@ function App() {
             </ProtectedRoute>
           } 
         />
-        {/* --- NEW AUDIT LOG ROUTE --- */}
         <Route 
           path="/admin/audit-logs" 
           element={

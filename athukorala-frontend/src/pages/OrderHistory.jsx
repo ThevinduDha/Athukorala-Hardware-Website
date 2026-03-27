@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { 
   Home, Package, User, Heart, LogOut, Activity, 
   Clock, MapPin, ChevronRight, X, LayoutGrid, ShieldCheck
@@ -12,7 +12,8 @@ const OrderHistory = () => {
   const [loading, setLoading] = useState(true);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation();
+  
+  // Retrieve User Identity
   const user = JSON.parse(localStorage.getItem("user") || '{"name":"Authorized Guest"}');
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const OrderHistory = () => {
   return (
     <div className="flex min-h-screen bg-[#050505] text-white font-sans selection:bg-[#D4AF37] selection:text-black">
       
-      {/* PREMIUM UNIFIED SIDEBAR */}
+      {/* PREMIUM SLIDE BAR (MANUAL INTEGRATION) */}
       <motion.aside 
         initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }}
         className="w-72 border-r border-white/5 bg-black/40 backdrop-blur-3xl p-8 flex flex-col gap-12 relative z-50 hidden xl:flex h-screen sticky top-0"
@@ -49,14 +50,32 @@ const OrderHistory = () => {
           <div className="p-2.5 bg-[#D4AF37] rounded-sm shadow-[0_0_30px_rgba(212,175,55,0.3)]">
             <Activity className="text-black" size={22} />
           </div>
-          <span className="font-black tracking-[0.3em] uppercase text-sm">Athukorala</span>
+          <div className="flex flex-col">
+            <span className="font-black tracking-[0.3em] uppercase text-sm">Athukorala</span>
+            <span className="text-[8px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase opacity-60">Industrial Registry</span>
+          </div>
         </div>
 
-        <nav className="flex flex-col gap-3">
-          <NavItem icon={<LayoutGrid size={18}/>} label="Market Registry" onClick={() => navigate('/customer-dashboard')} />
-          <NavItem icon={<Package size={18}/>} label="Order History" active={true} />
-          <NavItem icon={<Heart size={18}/>} label="Curated List" />
-          <NavItem icon={<User size={18}/>} label="Account Config" />
+        <nav className="flex flex-col gap-3 text-left">
+          <NavItem 
+            icon={<LayoutGrid size={18}/>} 
+            label="Market Registry" 
+            onClick={() => navigate('/customer-dashboard')} 
+          />
+          <NavItem 
+            icon={<Package size={18}/>} 
+            label="Order History" 
+            active={true} 
+          />
+          <NavItem 
+            icon={<Heart size={18}/>} 
+            label="Curated List" 
+            onClick={() => navigate('/curated-list')} // FIXED: Now navigates correctly
+          />
+          <NavItem 
+            icon={<User size={18}/>} 
+            label="Account Config" 
+          />
         </nav>
 
         <div className="mt-auto p-6 bg-white/[0.02] border border-white/5 rounded-sm mb-4">
@@ -64,8 +83,12 @@ const OrderHistory = () => {
           <p className="text-xs font-bold uppercase truncate text-[#D4AF37]">{user.name}</p>
         </div>
 
-        <button onClick={handleLogout} className="flex items-center gap-4 px-4 py-3 text-gray-500 hover:text-red-500 transition-all text-[10px] font-black uppercase tracking-[0.3em] group">
-          <LogOut size={16} className="group-hover:-translate-x-1 transition-transform" /> Terminate Session
+        <button 
+          onClick={handleLogout} 
+          className="flex items-center gap-4 px-4 py-3 text-gray-500 hover:text-red-500 transition-all text-[10px] font-black uppercase tracking-[0.3em] group"
+        >
+          <LogOut size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+          Terminate Session
         </button>
       </motion.aside>
 
@@ -90,7 +113,12 @@ const OrderHistory = () => {
             variants={{ animate: { transition: { staggerChildren: 0.1 } } }}
             className="space-y-6 max-w-6xl"
           >
-            {orders.map((order) => (
+            {orders.length === 0 ? (
+              <div className="py-40 text-center border border-dashed border-white/5 opacity-20">
+                <Package size={48} className="mx-auto mb-4" />
+                <p className="font-black uppercase tracking-widest text-xs">No Records Found</p>
+              </div>
+            ) : orders.map((order) => (
               <OrderCard key={order.id} order={order} onOpenDetails={() => setSelectedOrder(order)} />
             ))}
           </motion.div>
@@ -113,7 +141,7 @@ const OrderHistory = () => {
                 
                 <div className="flex justify-between items-start mb-16">
                   <div>
-                    <p className="text-[#D4AF37] text-[10px] font-black tracking-[0.5em] mb-3">Detailed Manifest</p>
+                    <p className="text-[#D4AF37] text-[10px] font-black uppercase tracking-[0.5em] mb-3">Detailed Manifest</p>
                     <h2 className="text-6xl font-black uppercase tracking-tighter leading-none">ATH-{selectedOrder.id}</h2>
                   </div>
                   <button onClick={() => setSelectedOrder(null)} className="p-4 hover:bg-white/5 transition-all border border-white/10">
@@ -140,7 +168,7 @@ const OrderHistory = () => {
                     </p>
                     <div className="max-h-60 overflow-y-auto pr-6 space-y-4 custom-scrollbar">
                       {selectedOrder.orderItems?.map((item) => (
-                        <div key={item.id} className="flex justify-between items-center bg-white/[0.02] p-5 border border-white/5">
+                        <div key={item.id} className="flex justify-between items-center bg-white/[0.02] p-5 border border-white/5 hover:border-[#D4AF37]/30 transition-all">
                             <p className="text-xs font-black uppercase tracking-widest">{item.productName} <span className="text-[#D4AF37] ml-2">x{item.quantity}</span></p>
                             <p className="text-sm font-mono font-black">LKR {item.price?.toLocaleString()}</p>
                         </div>
@@ -168,6 +196,7 @@ const OrderHistory = () => {
   );
 };
 
+// NavItem Component fixed with onClick
 const NavItem = ({ icon, label, active = false, onClick }) => (
   <button onClick={onClick} className={`w-full flex items-center gap-5 px-8 py-5 transition-all text-[11px] font-black tracking-[0.3em] uppercase group ${active ? 'bg-[#D4AF37] text-black shadow-2xl' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}>
     <span className={active ? 'text-black' : 'group-hover:text-[#D4AF37] transition-colors'}>{icon}</span> {label}
@@ -199,7 +228,7 @@ const OrderCard = ({ order, onOpenDetails }) => (
     </div>
     <div className="text-right w-full md:w-auto border-l border-white/5 pl-12">
       <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest mb-2">Net Valuation</p>
-      <p className="text-4xl font-black text-[#D4AF37] tracking-tighter mb-6">LKR {order.total?.toLocaleString()}</p>
+      <p className="text-4xl font-black text-[#D4AF37] tracking-tighter mb-6 font-mono">LKR {order.total?.toLocaleString()}</p>
       <button onClick={onOpenDetails} className="flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.3em] text-white hover:text-[#D4AF37] transition-all ml-auto">
         View Details <ChevronRight size={18} />
       </button>

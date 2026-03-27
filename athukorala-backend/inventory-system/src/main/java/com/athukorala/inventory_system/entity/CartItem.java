@@ -13,10 +13,12 @@ public class CartItem {
     @ManyToOne
     private User user;
 
-    // --- UPDATED: Changed to EAGER to ensure product details are sent to React ---
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
 
     private int quantity;
+
+    // --- NEW: STORES THE ACTUAL PRICE AT TIME OF ADDING ---
+    private Double appliedPrice;
 }

@@ -7,6 +7,7 @@ import com.athukorala.inventory_system.entity.Product;
 import com.athukorala.inventory_system.repository.CartItemRepository;
 import com.athukorala.inventory_system.repository.UserRepository;
 import com.athukorala.inventory_system.repository.ProductRepository;
+import com.athukorala.inventory_system.service.PromotionService; // Added
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +22,17 @@ public class CartController {
     private final CartItemRepository cartRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final PromotionService promotionService; // Added
 
     @Autowired
     public CartController(CartItemRepository cartRepository,
                           UserRepository userRepository,
-                          ProductRepository productRepository) {
+                          ProductRepository productRepository,
+                          PromotionService promotionService) {
         this.cartRepository = cartRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
+        this.promotionService = promotionService;
     }
 
     @PostMapping("/add")
@@ -42,16 +46,19 @@ public class CartController {
             return ResponseEntity.badRequest().body("Inadequate stock for this asset.");
         }
 
+        // --- PROTOCOL SYNC: CALCULATE PRICE AT TIME OF ENTRY ---
+        Double protocolPrice = promotionService.calculateDiscountedPrice(product);
+
         CartItem cartItem = new CartItem();
         cartItem.setUser(user);
         cartItem.setProduct(product);
         cartItem.setQuantity(request.getQuantity());
+        cartItem.setAppliedPrice(protocolPrice); // Sync with Promotion Engine
 
         cartRepository.save(cartItem);
-        return ResponseEntity.ok("Asset successfully registered in cart.");
+        return ResponseEntity.ok("Asset successfully registered in cart at protocol price: " + protocolPrice);
     }
 
-    // --- UPDATED: Added a secondary mapping to handle the frontend call ---
     @GetMapping("/{userId}")
     public List<CartItem> getCartByUserIdDirect(@PathVariable Long userId) {
         return cartRepository.findByUserId(userId);
@@ -60,8 +67,12 @@ public class CartController {
     @GetMapping("/user/{userId}")
     public List<CartItem> getCartByUserId(@PathVariable Long userId) {
         List<CartItem> items = cartRepository.findByUserId(userId);
-        // Debugging line for IntelliJ Console
-        System.out.println("Cart Sync Requested for User: " + userId + " | Items found: " + items.size());
+        // Sync discountedPrice field for the UI before sending
+        items.forEach(item -> {
+            if(item.getProduct() != null) {
+                item.getProduct().setDiscountedPrice(promotionService.calculateDiscountedPrice(item.getProduct()));
+            }
+        });
         return items;
     }
 

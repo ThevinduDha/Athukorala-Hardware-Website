@@ -137,14 +137,32 @@ const CustomerDashboard = () => {
     window.location.href = "/login";
   };
 
+  // Sidebar Motion Variants
+  const containerVariants = {
+    hidden: { x: -100, opacity: 0 },
+    visible: { 
+      x: 0, 
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2, duration: 0.8, ease: "circOut" }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { x: -20, opacity: 0 },
+    visible: { x: 0, opacity: 1 }
+  };
+
   return (
     <div className="flex min-h-screen bg-[#050505] text-white font-sans selection:bg-[#D4AF37] selection:text-black">
       
+      {/* ELITE ANIMATED SIDEBAR */}
       <motion.aside 
-        initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
         className="w-72 border-r border-white/5 bg-black/40 backdrop-blur-3xl p-8 flex flex-col gap-12 relative z-50 hidden xl:flex h-screen sticky top-0"
       >
-        <div className="flex items-center gap-4 px-2 text-left">
+        <motion.div variants={itemVariants} className="flex items-center gap-4 px-2 text-left">
           <div className="p-2.5 bg-[#D4AF37] rounded-sm shadow-[0_0_30px_rgba(212,175,55,0.3)]">
             <Activity className="text-black" size={22} />
           </div>
@@ -152,23 +170,28 @@ const CustomerDashboard = () => {
             <span className="font-black tracking-[0.3em] uppercase text-sm">Athukorala</span>
             <span className="text-[8px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase opacity-60">Industrial Registry</span>
           </div>
-        </div>
+        </motion.div>
 
         <nav className="flex flex-col gap-3 text-left">
-          <NavItem icon={<LayoutGrid size={18}/>} label="Market Registry" active={true} onClick={() => navigate('/customer-dashboard')} />
-          <NavItem icon={<Package size={18}/>} label="Order History" onClick={() => navigate('/order-history')} />
-          <NavItem icon={<Heart size={18}/>} label="Curated List" onClick={() => navigate('/curated-list')} />
-          <NavItem icon={<User size={18}/>} label="Account Config" />
+          <NavItem icon={<LayoutGrid size={18}/>} label="Market Registry" active={true} variants={itemVariants} onClick={() => navigate('/customer-dashboard')} />
+          <NavItem icon={<Package size={18}/>} label="Order History" variants={itemVariants} onClick={() => navigate('/order-history')} />
+          <NavItem icon={<Heart size={18}/>} label="Curated List" variants={itemVariants} onClick={() => navigate('/curated-list')} />
+          <NavItem icon={<User size={18}/>} label="Account Config" variants={itemVariants} />
         </nav>
 
-        <div className="mt-auto p-6 bg-white/[0.02] border border-white/5 rounded-sm mb-4 text-left">
+        <motion.div variants={itemVariants} className="mt-auto p-6 bg-white/[0.02] border border-white/5 rounded-sm mb-4 text-left group/id hover:border-[#D4AF37]/30 transition-colors">
           <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Authenticated Identity</p>
-          <p className="text-xs font-bold uppercase truncate text-[#D4AF37]">{user.name}</p>
-        </div>
+          <p className="text-xs font-bold uppercase truncate text-[#D4AF37] group-hover/id:text-white transition-colors">{user.name}</p>
+        </motion.div>
 
-        <button onClick={handleLogout} className="flex items-center gap-4 px-4 py-3 text-gray-500 hover:text-red-500 transition-all text-[10px] font-black uppercase tracking-[0.3em] group text-left">
+        <motion.button 
+          variants={itemVariants}
+          whileHover={{ x: 5 }}
+          onClick={handleLogout} 
+          className="flex items-center gap-4 px-4 py-3 text-gray-500 hover:text-red-500 transition-all text-[10px] font-black uppercase tracking-[0.3em] group text-left"
+        >
           <LogOut size={16} className="group-hover:-translate-x-1 transition-transform" /> Terminate Session
-        </button>
+        </motion.button>
       </motion.aside>
 
       <main className="flex-1 p-8 lg:p-16 overflow-y-auto relative text-left">
@@ -176,7 +199,7 @@ const CustomerDashboard = () => {
 
         <CustomerAnnouncement />
 
-        <header className="flex flex-col 2xl:flex-row justify-between items-start mb-24 gap-12">
+        <header className="flex flex-col 2xl:flex-row justify-between items-start mb-24 gap-12 text-left">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex items-center gap-3 mb-4">
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
@@ -240,7 +263,6 @@ const CustomerDashboard = () => {
         </motion.div>
       </main>
 
-      {/* CART OVERLAY */}
       <AnimatePresence>
         {isCartOpen && (
           <>
@@ -312,10 +334,24 @@ const CustomerDashboard = () => {
   );
 };
 
-const NavItem = ({ icon, label, active = false, onClick }) => (
-    <button onClick={onClick} className={`w-full flex items-center gap-5 px-8 py-5 transition-all text-[11px] font-black tracking-[0.3em] uppercase group ${active ? 'bg-[#D4AF37] text-black shadow-2xl' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}>
-      <span className={active ? 'text-black' : 'group-hover:text-[#D4AF37] transition-colors'}>{icon}</span> {label}
-    </button>
+// ENHANCED NAV ITEM WITH SLIDE INDICATOR
+const NavItem = ({ icon, label, active = false, onClick, variants }) => (
+    <motion.button 
+      variants={variants}
+      whileHover={{ x: 8 }}
+      onClick={onClick} 
+      className={`w-full flex items-center gap-5 px-8 py-5 transition-all text-[11px] font-black tracking-[0.3em] uppercase group relative ${active ? 'bg-[#D4AF37] text-black shadow-2xl' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
+    >
+      {/* Magnetic Active/Hover Bar */}
+      <motion.div 
+        initial={{ height: 0 }}
+        whileHover={{ height: '100%' }}
+        className={`absolute left-0 top-0 w-[2px] bg-[#D4AF37] transition-all ${active ? 'h-full' : ''}`}
+      />
+      
+      <span className={active ? 'text-black' : 'group-hover:text-[#D4AF37] transition-colors'}>{icon}</span> 
+      {label}
+    </motion.button>
 );
 
 const ProductCard = ({ product, navigate, onAddToCart, isInitiallyCurated }) => {
@@ -327,10 +363,8 @@ const ProductCard = ({ product, navigate, onAddToCart, isInitiallyCurated }) => 
   const hasDiscount = product?.discountedPrice && product.discountedPrice < product.price;
   const discountPercent = hasDiscount ? Math.round(((product.price - product.discountedPrice) / product.price) * 100) : 0;
 
-  // FIX: DIRECT TO CHECKOUT BYPASSING CART (CLEAN HANDSHAKE)
   const handleQuickPurchase = async () => {
     const activePrice = hasDiscount ? product.discountedPrice : product.price;
-    // Set immediate valuation for checkout
     localStorage.setItem("lastCartTotal", activePrice);
     navigate('/checkout');
   };
@@ -364,7 +398,6 @@ const ProductCard = ({ product, navigate, onAddToCart, isInitiallyCurated }) => 
           <Heart size={18} strokeWidth={1} className={`transition-all duration-500 ${isCurated ? 'fill-[#D4AF37] text-[#D4AF37]' : 'text-white/40 hover:text-white'}`} />
         </button>
 
-        {/* BLINKING DISCOUNT PROTOCOL TAG */}
         {hasDiscount && (
           <motion.div 
             initial={{ opacity: 0.5 }} 
@@ -401,9 +434,8 @@ const ProductCard = ({ product, navigate, onAddToCart, isInitiallyCurated }) => 
               <span className="text-2xl font-mono font-medium text-white group-hover:text-[#D4AF37] transition-colors tracking-tighter">
                 LKR {hasDiscount ? product.discountedPrice.toLocaleString() : product.price.toLocaleString()}
               </span>
-              {/* CLEAR SECONDARY PRICE PROTOCOL */}
               {hasDiscount && (
-                <span className="text-sm text-gray-500 line-through font-mono italic opacity-80 decoration-[#D4AF37]/50 decoration-2">
+                <span className="text-sm text-gray-700 line-through font-mono italic opacity-80 decoration-[#D4AF37]/50 decoration-2">
                   {product.price.toLocaleString()}
                 </span>
               )}

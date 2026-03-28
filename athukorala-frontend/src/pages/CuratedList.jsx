@@ -31,7 +31,7 @@ const CuratedList = () => {
 
   useEffect(() => { if (user.id) fetchCurated(); }, [user.id]);
 
-  // --- 2. ADD TO CART PROTOCOL (NEW) ---
+  // --- 2. ADD TO CART PROTOCOL ---
   const handleAddToCartFromCurated = async (product) => {
     if (!user.id) {
       toast.error("Authentication Required");
@@ -94,8 +94,8 @@ const CuratedList = () => {
             <Activity className="text-black" size={22} />
           </div>
           <div className="flex flex-col text-left">
-            <span className="font-black tracking-[0.3em] uppercase text-sm">Athukorala</span>
-            <span className="text-[8px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase opacity-60">Industrial Registry</span>
+            <span className="font-black tracking-[0.3em] uppercase text-sm text-left">Athukorala</span>
+            <span className="text-[8px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase opacity-60 text-left">Industrial Registry</span>
           </div>
         </div>
 
@@ -103,27 +103,28 @@ const CuratedList = () => {
           <NavItem icon={<LayoutGrid size={18}/>} label="Market Registry" onClick={() => navigate('/customer-dashboard')} />
           <NavItem icon={<Package size={18}/>} label="Order History" onClick={() => navigate('/order-history')} />
           <NavItem icon={<Heart size={18}/>} label="Curated List" active={true} />
-          <NavItem icon={<User size={18}/>} label="Account Config" />
+          {/* UPDATED: Added leading slash for absolute routing */}
+          <NavItem icon={<User size={18}/>} label="Account Config" onClick={() => navigate('/profile')} />
         </nav>
 
-        <div className="mt-auto p-6 bg-white/[0.02] border border-white/5 rounded-sm mb-4 text-left">
-          <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Registry Identity</p>
-          <p className="text-xs font-bold uppercase truncate text-[#D4AF37]">{user.name}</p>
+        <div className="mt-auto p-6 bg-white/[0.02] border border-white/5 rounded-sm mb-4 text-left text-left">
+          <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 text-left">Registry Identity</p>
+          <p className="text-xs font-bold uppercase truncate text-[#D4AF37] text-left">{user.name}</p>
         </div>
 
-        <button onClick={handleLogout} className="flex items-center gap-4 px-4 py-3 text-gray-500 hover:text-red-500 transition-all text-[10px] font-black uppercase tracking-[0.3em] group">
+        <button onClick={handleLogout} className="flex items-center gap-4 px-4 py-3 text-gray-500 hover:text-red-500 transition-all text-[10px] font-black uppercase tracking-[0.3em] group text-left">
           <LogOut size={16} className="group-hover:-translate-x-1 transition-transform" /> Terminate Session
         </button>
       </motion.aside>
 
       {/* MAIN INTERFACE */}
-      <main className="flex-1 p-8 lg:p-16 overflow-y-auto relative text-left">
+      <main className="flex-1 p-8 lg:p-16 overflow-y-auto relative text-left text-left">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[150px] rounded-full -z-10 pointer-events-none" />
 
-        <header className="mb-20">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <p className="text-[#D4AF37] text-[10px] font-black tracking-[0.6em] uppercase mb-4">Personal Archives</p>
-            <h1 className="text-8xl font-black uppercase tracking-tighter leading-[0.8]">
+        <header className="mb-20 text-left">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-left">
+            <p className="text-[#D4AF37] text-[10px] font-black tracking-[0.6em] uppercase mb-4 text-left">Personal Archives</p>
+            <h1 className="text-8xl font-black uppercase tracking-tighter leading-[0.8] text-left">
               Curated <br /> <span className="text-transparent stroke-text">List</span>
             </h1>
           </motion.div>
@@ -135,13 +136,13 @@ const CuratedList = () => {
           <motion.div 
             initial="initial" animate="animate"
             variants={{ animate: { transition: { staggerChildren: 0.1 } } }}
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10"
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 text-left"
           >
             <AnimatePresence mode="popLayout">
               {items.length === 0 ? (
-                <div className="col-span-full py-40 text-center border border-dashed border-white/5 opacity-20">
+                <div className="col-span-full py-40 text-center border border-dashed border-white/5 opacity-20 text-left">
                   <Heart size={48} className="mx-auto mb-4" />
-                  <p className="font-black uppercase tracking-widest text-xs">Archives Empty</p>
+                  <p className="font-black uppercase tracking-widest text-xs text-left">Archives Empty</p>
                 </div>
               ) : items.map((item) => (
                 <motion.div 
@@ -149,18 +150,18 @@ const CuratedList = () => {
                   variants={{ initial: { opacity: 0, scale: 0.95 }, animate: { opacity: 1, scale: 1 } }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   whileHover={{ y: -10, borderColor: 'rgba(212, 175, 55, 0.3)' }}
-                  className="bg-[#080808] border border-white/5 p-8 flex gap-8 group transition-all shadow-2xl relative overflow-hidden"
+                  className="bg-[#080808] border border-white/5 p-8 flex gap-8 group transition-all shadow-2xl relative overflow-hidden text-left"
                 >
-                  <div className="w-28 h-28 bg-black border border-white/5 p-4 flex-shrink-0 group-hover:border-[#D4AF37]/50 transition-colors">
+                  <div className="w-28 h-28 bg-black border border-white/5 p-4 flex-shrink-0 group-hover:border-[#D4AF37]/50 transition-colors text-left">
                     <img src={item.product.imageUrl} className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110" alt="" />
                   </div>
 
-                  <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-xl font-black uppercase tracking-tight mb-1 group-hover:text-[#D4AF37] transition-colors">{item.product.name}</h3>
-                    <p className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-4 opacity-60 italic">{item.product.category} Registry</p>
-                    <p className="font-mono text-xl font-black text-white">LKR {item.product.price.toLocaleString()}</p>
+                  <div className="flex-1 flex flex-col justify-center text-left">
+                    <h3 className="text-xl font-black uppercase tracking-tight mb-1 group-hover:text-[#D4AF37] transition-colors text-left">{item.product.name}</h3>
+                    <p className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-4 opacity-60 italic text-left">{item.product.category} Registry</p>
+                    <p className="font-mono text-xl font-black text-white text-left">LKR {item.product.price.toLocaleString()}</p>
                     
-                    <div className="flex gap-4 mt-6">
+                    <div className="flex gap-4 mt-6 text-left">
                       <button 
                         onClick={() => handleAddToCartFromCurated(item.product)}
                         className="flex-1 bg-white/5 hover:bg-[#D4AF37] hover:text-black py-4 text-[9px] font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 group/btn"

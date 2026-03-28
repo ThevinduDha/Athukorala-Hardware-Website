@@ -18,7 +18,8 @@ import InventoryReport from './pages/InventoryReport';
 import AuditLogView from './pages/AuditLogView'; 
 import ProtectedRoute from './components/ProtectedRoute'; 
 import OrderSuccess from './pages/OrderSuccess';
-import CuratedList from './pages/CuratedList'; // IMPORTED NEW PAGE
+import CuratedList from './pages/CuratedList'; 
+import CustomerProfile from './pages/CustomerProfile'; // NEW: Personal Registry Page
 
 function App() {
   return (
@@ -48,7 +49,17 @@ function App() {
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/order-success" element={<OrderSuccess />} />
         
-        {/* --- ADDED: CURATED LIST PROTOCOL ROUTE --- */}
+        {/* --- NEW: CUSTOMER PROFILE & REGISTRY ROUTE --- */}
+        <Route 
+          path="/profile" 
+          element={
+            <ProtectedRoute allowedRoles={['CUSTOMER', 'ADMIN', 'STAFF']}>
+              <CustomerProfile />
+            </ProtectedRoute>
+          } 
+        />
+
+        {/* --- CURATED LIST PROTOCOL ROUTE --- */}
         <Route 
           path="/curated-list" 
           element={

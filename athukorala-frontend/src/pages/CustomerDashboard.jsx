@@ -15,6 +15,7 @@ const CustomerDashboard = () => {
   const [category, setCategory] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
   const [curatedIds, setCuratedIds] = useState([]); 
+  const [filterMode, setFilterMode] = useState('all'); // NEW: Filter mode
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -65,14 +66,24 @@ const CustomerDashboard = () => {
 
   useEffect(() => {
     let result = Array.isArray(products) ? products : [];
+    
+    // Apply Category Filter
     if (category !== "ALL") {
       result = result.filter(p => p.category?.toUpperCase() === category);
     }
+    
+    // Apply Search Filter
     if (searchTerm) {
       result = result.filter(p => p.name?.toLowerCase().includes(searchTerm.toLowerCase()));
     }
+
+    // Apply Secure Offer Filter
+    if (filterMode === 'offers') {
+      result = result.filter(p => p.discountedPrice && p.discountedPrice < p.price);
+    }
+    
     setFilteredProducts(result);
-  }, [category, searchTerm, products]);
+  }, [category, searchTerm, products, filterMode]);
 
   const handleAddToCart = async (product) => {
     if (user.name.includes("Guest")) {
@@ -137,7 +148,6 @@ const CustomerDashboard = () => {
     window.location.href = "/login";
   };
 
-  // Sidebar Motion Variants
   const containerVariants = {
     hidden: { x: -100, opacity: 0 },
     visible: { 
@@ -152,23 +162,32 @@ const CustomerDashboard = () => {
     visible: { x: 0, opacity: 1 }
   };
 
+  // Function to trigger Secure Offer Filter
+  const triggerSecureOffer = () => {
+    setFilterMode('offers');
+    document.getElementById('market-registry-section').scrollIntoView({ behavior: 'smooth' });
+    toast.success("PROMOTIONAL ASSETS FILTERED", {
+      icon: '🔥',
+      style: { borderRadius: '0px', background: '#050505', color: '#D4AF37', border: '1px solid #D4AF37', fontSize: '10px', fontWeight: '900' }
+    });
+  };
+
   return (
     <div className="flex min-h-screen bg-[#050505] text-white font-sans selection:bg-[#D4AF37] selection:text-black">
       
-      {/* ELITE ANIMATED SIDEBAR */}
       <motion.aside 
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="w-72 border-r border-white/5 bg-black/40 backdrop-blur-3xl p-8 flex flex-col gap-12 relative z-50 hidden xl:flex h-screen sticky top-0"
+        className="w-72 border-r border-white/5 bg-black/40 backdrop-blur-3xl p-8 flex flex-col gap-12 relative z-50 hidden xl:flex h-screen sticky top-0 text-left"
       >
         <motion.div variants={itemVariants} className="flex items-center gap-4 px-2 text-left">
-          <div className="p-2.5 bg-[#D4AF37] rounded-sm shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+          <div className="p-2.5 bg-[#D4AF37] rounded-sm shadow-[0_0_30px_rgba(212,175,55,0.3)] text-left">
             <Activity className="text-black" size={22} />
           </div>
-          <div className="flex flex-col">
-            <span className="font-black tracking-[0.3em] uppercase text-sm">Athukorala</span>
-            <span className="text-[8px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase opacity-60">Industrial Registry</span>
+          <div className="flex flex-col text-left">
+            <span className="font-black tracking-[0.3em] uppercase text-sm text-left">Athukorala</span>
+            <span className="text-[8px] font-bold text-[#D4AF37] tracking-[0.2em] uppercase opacity-60 text-left">Industrial Registry</span>
           </div>
         </motion.div>
 
@@ -176,12 +195,12 @@ const CustomerDashboard = () => {
           <NavItem icon={<LayoutGrid size={18}/>} label="Market Registry" active={true} variants={itemVariants} onClick={() => navigate('/customer-dashboard')} />
           <NavItem icon={<Package size={18}/>} label="Order History" variants={itemVariants} onClick={() => navigate('/order-history')} />
           <NavItem icon={<Heart size={18}/>} label="Curated List" variants={itemVariants} onClick={() => navigate('/curated-list')} />
-          <NavItem icon={<User size={18}/>} label="Account Config" variants={itemVariants} />
+          <NavItem icon={<User size={18}/>} label="Account Config" variants={itemVariants} onClick={() => navigate('/profile')} />
         </nav>
 
         <motion.div variants={itemVariants} className="mt-auto p-6 bg-white/[0.02] border border-white/5 rounded-sm mb-4 text-left group/id hover:border-[#D4AF37]/30 transition-colors">
-          <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2">Authenticated Identity</p>
-          <p className="text-xs font-bold uppercase truncate text-[#D4AF37] group-hover/id:text-white transition-colors">{user.name}</p>
+          <p className="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 text-left">Authenticated Identity</p>
+          <p className="text-xs font-bold uppercase truncate text-[#D4AF37] group-hover/id:text-white transition-colors text-left">{user.name}</p>
         </motion.div>
 
         <motion.button 
@@ -195,37 +214,39 @@ const CustomerDashboard = () => {
       </motion.aside>
 
       <main className="flex-1 p-8 lg:p-16 overflow-y-auto relative text-left">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[180px] rounded-full -z-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[180px] rounded-full -z-10 pointer-events-none text-left" />
 
-        <CustomerAnnouncement />
+        <div className="mb-20 text-left">
+            <CustomerAnnouncement onSecureOffer={triggerSecureOffer} />
+        </div>
 
-        <header className="flex flex-col 2xl:flex-row justify-between items-start mb-24 gap-12 text-left">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="flex items-center gap-3 mb-4">
+        <header id="market-registry-section" className="flex flex-col 2xl:flex-row justify-between items-start mb-24 gap-12 text-left">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-left">
+            <div className="flex items-center gap-3 mb-4 text-left">
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-                <p className="text-[#D4AF37] text-[10px] font-black tracking-[0.6em] uppercase">Auth Status: Secure Session</p>
+                <p className="text-[#D4AF37] text-[10px] font-black tracking-[0.6em] uppercase text-left">Auth Status: Secure Session</p>
             </div>
-            <h1 className="text-8xl font-black uppercase tracking-tighter leading-[0.8] mb-4">
+            <h1 className="text-8xl font-black uppercase tracking-tighter leading-[0.8] mb-4 text-left">
               Premium <br /> <span className="text-transparent stroke-text">Industrial</span> Assets
             </h1>
-            <p className="text-gray-500 max-w-lg text-sm tracking-wide uppercase font-medium italic">Standard and Promotional Hardware Frameworks.</p>
+            <p className="text-gray-500 max-w-lg text-sm tracking-wide uppercase font-medium italic text-left">Standard and Promotional Hardware Frameworks.</p>
           </motion.div>
 
-          <div className="flex flex-col gap-8 w-full 2xl:w-auto items-end">
-            <div className="flex items-center gap-6">
-              <div className="relative group">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#D4AF37] transition-colors" size={18} />
+          <div className="flex flex-col gap-8 w-full 2xl:w-auto items-end text-left">
+            <div className="flex items-center gap-6 text-left">
+              <div className="relative group text-left">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-[#D4AF37] transition-colors text-left" size={18} />
                   <input 
                       type="text" placeholder="QUERY REGISTRY..." 
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="bg-white/5 border border-white/10 py-5 pl-12 pr-8 text-[11px] tracking-[0.2em] outline-none focus:border-[#D4AF37] w-full lg:w-[450px] uppercase font-bold transition-all shadow-2xl"
+                      className="bg-white/5 border border-white/10 py-5 pl-12 pr-8 text-[11px] tracking-[0.2em] outline-none focus:border-[#D4AF37] w-full lg:w-[450px] uppercase font-bold transition-all shadow-2xl text-left"
                   />
               </div>
-              <button onClick={() => setIsCartOpen(true)} className="relative p-5 bg-[#D4AF37]/5 border border-[#D4AF37]/20 hover:bg-[#D4AF37] hover:text-black transition-all group">
+              <button onClick={() => setIsCartOpen(true)} className="relative p-5 bg-[#D4AF37]/5 border border-[#D4AF37]/20 hover:bg-[#D4AF37] hover:text-black transition-all group text-left">
                   <ShoppingCart size={20} />
                   <AnimatePresence>
                       {cartItems.length > 0 && (
-                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute -top-2 -right-2 w-5 h-5 bg-white text-black text-[9px] font-black flex items-center justify-center shadow-2xl border border-black">
+                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className="absolute -top-2 -right-2 w-5 h-5 bg-white text-black text-[9px] font-black flex items-center justify-center shadow-2xl border border-black text-left">
                             {cartItems.length}
                         </motion.div>
                       )}
@@ -233,15 +254,20 @@ const CustomerDashboard = () => {
               </button>
             </div>
             
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-3 text-left">
               {["ALL", "ELECTRICAL", "PLUMBING", "TOOLS", "PAINTS"].map((cat) => (
                 <button 
-                  key={cat} onClick={() => setCategory(cat)}
-                  className={`px-8 py-3 text-[10px] font-black tracking-[0.2em] uppercase border transition-all ${category === cat ? 'bg-[#D4AF37] border-[#D4AF37] text-black shadow-lg' : 'border-white/10 text-gray-500 hover:border-white/30'}`}
+                  key={cat} onClick={() => { setCategory(cat); setFilterMode('all'); }}
+                  className={`px-8 py-3 text-[10px] font-black tracking-[0.2em] uppercase border transition-all ${category === cat && filterMode === 'all' ? 'bg-[#D4AF37] border-[#D4AF37] text-black shadow-lg' : 'border-white/10 text-gray-500 hover:border-white/30'}`}
                 >
                   {cat}
                 </button>
               ))}
+              {filterMode === 'offers' && (
+                <button onClick={() => setFilterMode('all')} className="px-8 py-3 text-[10px] font-black tracking-[0.2em] uppercase border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black transition-all">
+                  CLEAR FILTERS
+                </button>
+              )}
             </div>
           </div>
         </header>
@@ -249,7 +275,7 @@ const CustomerDashboard = () => {
         <motion.div 
           initial="initial" animate="animate"
           variants={{ animate: { transition: { staggerChildren: 0.05 } } }}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12 text-left"
         >
           {filteredProducts.map((product) => (
             <ProductCard 
@@ -263,6 +289,7 @@ const CustomerDashboard = () => {
         </motion.div>
       </main>
 
+      {/* CART MODAL (UNCHANGED) */}
       <AnimatePresence>
         {isCartOpen && (
           <>
@@ -273,35 +300,35 @@ const CustomerDashboard = () => {
               className="fixed right-0 top-0 h-full w-full max-w-xl bg-[#080808] border-l border-white/10 z-[101] flex flex-col shadow-2xl"
             >
               <div className="p-10 border-b border-white/5 flex justify-between items-center text-left">
-                <div>
-                  <h2 className="text-2xl font-black uppercase tracking-[0.2em]">Cart Registry</h2>
-                  <p className="text-[9px] font-bold text-gray-600 uppercase tracking-[0.4em] mt-1">Industrial Purchase Framework</p>
+                <div className="text-left text-left">
+                  <h2 className="text-2xl font-black uppercase tracking-[0.2em] text-left">Cart Registry</h2>
+                  <p className="text-[9px] font-bold text-gray-600 uppercase tracking-[0.4em] mt-1 text-left">Industrial Purchase Framework</p>
                 </div>
                 <button onClick={() => setIsCartOpen(false)} className="p-3 hover:bg-white/5 text-gray-400 border border-white/10"><X size={20} /></button>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-10 space-y-10 custom-scrollbar text-left">
+              <div className="flex-1 overflow-y-auto p-10 space-y-10 custom-scrollbar text-left text-left">
                 {cartItems.length === 0 ? (
-                  <div className="h-full flex flex-col items-center justify-center text-gray-700 opacity-20"><ShoppingCart size={120} strokeWidth={1}/><p className="font-black uppercase tracking-[0.5em] mt-8">Empty Registry</p></div>
+                  <div className="h-full flex flex-col items-center justify-center text-gray-700 opacity-20"><ShoppingCart size={120} strokeWidth={1}/><p className="font-black uppercase tracking-[0.5em] mt-8 text-left">Empty Registry</p></div>
                 ) : (
                   cartItems.map((item) => (
-                    <div key={item.id} className="flex gap-8 group border-b border-white/5 pb-10">
+                    <div key={item.id} className="flex gap-8 group border-b border-white/5 pb-10 text-left text-left">
                       <div className="w-24 h-24 bg-black border border-white/5 p-4 shrink-0 shadow-inner group-hover:border-[#D4AF37]/30 transition-all">
                          <img src={item.product?.imageUrl} alt="" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1 min-w-0 text-left">
                         <div className="flex justify-between items-start mb-2 text-left">
-                            <h4 className="text-sm font-black uppercase tracking-widest truncate pr-6">{item.product?.name}</h4>
+                            <h4 className="text-sm font-black uppercase tracking-widest truncate pr-6 text-left">{item.product?.name}</h4>
                             <button onClick={() => removeFromCart(item.id)} className="text-gray-700 hover:text-red-500 transition-colors"><Trash2 size={16}/></button>
                         </div>
-                        <p className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em] mb-4">{item.product?.category}</p>
-                        <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-4 bg-white/5 px-4 py-2 border border-white/10 shadow-lg">
+                        <p className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em] mb-4 text-left">{item.product?.category}</p>
+                        <div className="flex justify-between items-center text-left">
+                            <div className="flex items-center gap-4 bg-white/5 px-4 py-2 border border-white/10 shadow-lg text-left">
                               <Minus size={12} className="cursor-pointer hover:text-[#D4AF37]" onClick={() => updateCartQuantity(item.id, item.quantity - 1)} />
                               <span className="text-xs font-mono font-bold w-4 text-center">{item.quantity}</span>
                               <Plus size={12} className="cursor-pointer hover:text-[#D4AF37]" onClick={() => updateCartQuantity(item.id, item.quantity + 1)} />
                             </div>
-                            <p className="font-mono text-base font-black">LKR {((item.product?.discountedPrice || item.product?.price) * item.quantity).toLocaleString()}</p>
+                            <p className="font-mono text-base font-black text-left">LKR {((item.product?.discountedPrice || item.product?.price) * item.quantity).toLocaleString()}</p>
                         </div>
                       </div>
                     </div>
@@ -309,18 +336,18 @@ const CustomerDashboard = () => {
                 )}
               </div>
 
-              <div className="p-10 bg-white/[0.02] border-t border-white/10 text-left">
+              <div className="p-10 bg-white/[0.02] border-t border-white/10 text-left text-left">
                 <div className="flex justify-between items-end mb-10 text-left">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-500 mb-3">Grand Total Valuation</p>
-                    <p className="text-5xl font-black text-[#D4AF37] tracking-tighter">LKR {calculateTotal().toLocaleString()}</p>
+                  <div className="text-left">
+                    <p className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-500 mb-3 text-left">Grand Total Valuation</p>
+                    <p className="text-5xl font-black text-[#D4AF37] tracking-tighter text-left text-left">LKR {calculateTotal().toLocaleString()}</p>
                   </div>
                   <div className="text-right flex flex-col items-end">
-                    <ShieldCheck size={24} className="text-green-500 mb-2" />
-                    <p className="text-[9px] font-black text-green-500 uppercase tracking-widest">Authorized Secure</p>
+                    <ShieldCheck size={24} className="text-green-500 mb-2 text-left" />
+                    <p className="text-[9px] font-black text-green-500 uppercase tracking-widest text-left">Authorized Secure</p>
                   </div>
                 </div>
-                <button onClick={() => { localStorage.setItem("lastCartTotal", calculateTotal()); navigate('/checkout'); }} className="w-full bg-[#D4AF37] text-black py-6 text-xs font-black uppercase tracking-[0.5em] hover:bg-white transition-all shadow-xl flex items-center justify-center gap-4">
+                <button onClick={() => { localStorage.setItem("lastCartTotal", calculateTotal()); navigate('/checkout'); }} className="w-full bg-[#D4AF37] text-black py-6 text-xs font-black uppercase tracking-[0.5em] hover:bg-white transition-all shadow-xl flex items-center justify-center gap-4 text-left">
                   <CreditCard size={18} /> Initialize Order
                 </button>
               </div>
@@ -334,7 +361,7 @@ const CustomerDashboard = () => {
   );
 };
 
-// ENHANCED NAV ITEM WITH SLIDE INDICATOR
+// NavItem, ProductCard (Unchanged but ensuring onClick paths are correct)
 const NavItem = ({ icon, label, active = false, onClick, variants }) => (
     <motion.button 
       variants={variants}
@@ -342,7 +369,6 @@ const NavItem = ({ icon, label, active = false, onClick, variants }) => (
       onClick={onClick} 
       className={`w-full flex items-center gap-5 px-8 py-5 transition-all text-[11px] font-black tracking-[0.3em] uppercase group relative ${active ? 'bg-[#D4AF37] text-black shadow-2xl' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
     >
-      {/* Magnetic Active/Hover Bar */}
       <motion.div 
         initial={{ height: 0 }}
         whileHover={{ height: '100%' }}
@@ -388,9 +414,9 @@ const ProductCard = ({ product, navigate, onAddToCart, isInitiallyCurated }) => 
   return (
     <motion.div 
       variants={{ initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } }}
-      className="group relative flex flex-col h-full bg-[#050505] border border-white/[0.03] transition-all duration-[0.8s] cubic-bezier(0.2, 1, 0.2, 1) hover:border-[#D4AF37]/40 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.9)]"
+      className="group relative flex flex-col h-full bg-[#050505] border border-white/[0.03] transition-all duration-[0.8s] cubic-bezier(0.2, 1, 0.2, 1) hover:border-[#D4AF37]/40 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.9)] text-left"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#080808]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#080808] text-left text-left">
         <button 
           onClick={handleToggleCurated} 
           className="absolute top-6 right-6 z-30 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-[-10px] group-hover:translate-y-0"
@@ -409,33 +435,33 @@ const ProductCard = ({ product, navigate, onAddToCart, isInitiallyCurated }) => 
           </motion.div>
         )}
 
-        <img src={product.imageUrl} className="w-full h-full object-contain p-8 transition-transform duration-[3s] group-hover:scale-105 opacity-60 group-hover:opacity-100 filter grayscale group-hover:grayscale-0" alt={product.name} />
+        <img src={product.imageUrl} className="w-full h-full object-contain p-8 transition-transform duration-[3s] group-hover:scale-105 opacity-60 group-hover:opacity-100 filter grayscale group-hover:grayscale-0 text-left" alt={product.name} />
         
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4 translate-y-4 group-hover:translate-y-0">
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/90 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4 translate-y-4 group-hover:translate-y-0 text-left">
            <button onClick={() => navigate(`/product/${product.id}`)} className="w-12 h-12 flex items-center justify-center bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 transition-all rounded-full backdrop-blur-sm shadow-2xl"><Eye size={18} strokeWidth={1.5}/></button>
            <button onClick={onAddToCart} className="w-12 h-12 flex items-center justify-center bg-[#D4AF37] hover:bg-white text-black border border-[#D4AF37] transition-all rounded-full shadow-[0_0_50px_rgba(212,175,55,0.4)]"><ShoppingCart size={18} strokeWidth={1.5}/></button>
         </div>
       </div>
 
-      <div className="p-8 flex flex-col flex-1 text-left relative">
+      <div className="p-8 flex flex-col flex-1 text-left relative text-left text-left">
         <div className="mb-10 text-left">
-            <p className="text-[#D4AF37] text-[7px] font-bold tracking-[0.5em] uppercase mb-4 opacity-40 group-hover:opacity-100 transition-opacity">
+            <p className="text-[#D4AF37] text-[7px] font-bold tracking-[0.5em] uppercase mb-4 opacity-40 group-hover:opacity-100 transition-opacity text-left">
               {product.category} REGISTRY
             </p>
-            <h3 className="text-xl font-medium text-white/90 tracking-tight leading-snug group-hover:text-white transition-colors line-clamp-2">
+            <h3 className="text-xl font-medium text-white/90 tracking-tight leading-snug group-hover:text-white transition-colors line-clamp-2 text-left">
               {product.name}
             </h3>
         </div>
 
-        <div className="mt-auto space-y-8">
-          <div className="flex flex-col border-l border-white/10 pl-5">
-            <span className="text-[7px] font-black text-gray-600 uppercase tracking-[0.4em] mb-2">Net Valuation</span>
-            <div className="flex items-baseline gap-4">
-              <span className="text-2xl font-mono font-medium text-white group-hover:text-[#D4AF37] transition-colors tracking-tighter">
+        <div className="mt-auto space-y-8 text-left text-left">
+          <div className="flex flex-col border-l border-white/10 pl-5 text-left">
+            <span className="text-[7px] font-black text-gray-600 uppercase tracking-[0.4em] mb-2 text-left">Net Valuation</span>
+            <div className="flex items-baseline gap-4 text-left">
+              <span className="text-2xl font-mono font-medium text-white group-hover:text-[#D4AF37] transition-colors tracking-tighter text-left">
                 LKR {hasDiscount ? product.discountedPrice.toLocaleString() : product.price.toLocaleString()}
               </span>
               {hasDiscount && (
-                <span className="text-sm text-gray-700 line-through font-mono italic opacity-80 decoration-[#D4AF37]/50 decoration-2">
+                <span className="text-sm text-gray-700 line-through font-mono italic opacity-80 decoration-[#D4AF37]/50 decoration-2 text-left">
                   {product.price.toLocaleString()}
                 </span>
               )}
@@ -447,14 +473,14 @@ const ProductCard = ({ product, navigate, onAddToCart, isInitiallyCurated }) => 
             className="w-full relative group/btn overflow-hidden border border-white/10 py-5 transition-all duration-500 hover:border-[#D4AF37]"
           >
             <div className="absolute inset-0 bg-[#D4AF37] translate-y-[101%] group-hover/btn:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10 text-[9px] font-black uppercase tracking-[0.5em] text-white group-hover/btn:text-black transition-colors flex items-center justify-center gap-3">
+            <span className="relative z-10 text-[9px] font-black uppercase tracking-[0.5em] text-white group-hover/btn:text-black transition-colors flex items-center justify-center gap-3 text-left">
               Initialize Purchase <ChevronRight size={12} />
             </span>
           </button>
         </div>
       </div>
 
-      <div className="absolute top-0 right-0 w-[1px] h-0 bg-[#D4AF37] group-hover:h-full transition-all duration-1000 opacity-20" />
+      <div className="absolute top-0 right-0 w-[1px] h-0 bg-[#D4AF37] group-hover:h-full transition-all duration-1000 opacity-20 text-left" />
     </motion.div>
   );
 };

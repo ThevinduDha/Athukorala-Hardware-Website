@@ -4,6 +4,7 @@ import com.athukorala.inventory_system.entity.Order;
 import com.athukorala.inventory_system.repository.OrderRepository;
 import com.athukorala.inventory_system.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,13 +26,11 @@ public class OrderController {
 
     @PostMapping("/checkout")
     public Order processCheckout(@RequestBody Map<String, Object> payload) {
-        // Extracting data from the React frontend payload
         Long userId = Long.valueOf(payload.get("userId").toString());
         String address = payload.get("address").toString();
         String phone = payload.get("phone").toString();
         Double total = Double.valueOf(payload.get("total").toString());
 
-        // This call will: 1. Reduce Stock, 2. Clear Cart, 3. Create Order
         return orderService.finalizeOrder(userId, address, phone, total);
     }
 
@@ -47,11 +46,19 @@ public class OrderController {
         return orderRepository.findAll();
     }
 
+    @GetMapping("/history/{userId}")
+    public List<Order> getOrderHistory(@PathVariable Long userId) {
+        return orderRepository.findByUserId(userId);
+    }
+
+    // UPDATED: Standardized to use 'status' to match React frontend state
     @PatchMapping("/update-status/{id}")
-    public Order updateOrderStatus(@PathVariable Long id, @RequestParam String status) {
-        Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Order Protocol Not Found"));
-        order.setStatus(status);
-        return orderRepository.save(order);
+    public ResponseEntity<Order> updateOrderStatus(@PathVariable Long id, @RequestParam String status) {
+        return orderRepository.findById(id).map(order -> {
+            // Logic: Set the status provided by the Admin Dashboard
+            order.setStatus(status.toUpperCase());
+            Order updatedOrder = orderRepository.save(order);
+            return ResponseEntity.ok(updatedOrder);
+        }).orElse(ResponseEntity.notFound().build());
     }
 }

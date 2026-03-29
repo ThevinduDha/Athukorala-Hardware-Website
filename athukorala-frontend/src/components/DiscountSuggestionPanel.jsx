@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { BrainCircuit, TrendingDown, ArrowRight, AlertCircle, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const DiscountSuggestionPanel = () => {
+const DiscountSuggestionPanel = ({ onApplyClick }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -15,8 +15,8 @@ const DiscountSuggestionPanel = () => {
       .then(res => res.json())
       .then(data => {
         const topOverstocked = data
-          .sort((a, b) => b.stockQuantity - a.stockQuantity) // Sort Highest to Lowest [cite: 527]
-          .slice(0, 3); // Pick Top 3 [cite: 528]
+          .sort((a, b) => b.stockQuantity - a.stockQuantity) // Sort Highest to Lowest
+          .slice(0, 3); // Pick Top 3
         setSuggestions(topOverstocked);
         setLoading(false);
       });
@@ -61,7 +61,7 @@ const DiscountSuggestionPanel = () => {
             <p className="text-[10px] font-mono text-[#D4AF37] mb-6">UNITS: {item.stockQuantity}</p>
 
             <button 
-              onClick={() => navigate('/admin/promotions')}
+              onClick={() => onApplyClick(item)} // UPDATED: Calls the bridge function
               className="w-full py-3 bg-white/5 border border-white/10 text-[9px] font-black uppercase tracking-widest flex items-center justify-center gap-2 group-hover:bg-[#D4AF37] group-hover:text-black transition-all"
             >
               Apply Discount <ArrowRight size={12} />
@@ -73,7 +73,7 @@ const DiscountSuggestionPanel = () => {
       <div className="mt-8 flex items-center gap-3 text-gray-500 italic">
         <AlertCircle size={14} />
         <p className="text-[9px] font-medium uppercase tracking-widest">
-          Suggestion: High stock detected. Consider applying discounts to clear slow-moving assets[cite: 677].
+          Suggestion: High stock detected. Consider applying discounts to clear slow-moving assets.
         </p>
       </div>
     </div>

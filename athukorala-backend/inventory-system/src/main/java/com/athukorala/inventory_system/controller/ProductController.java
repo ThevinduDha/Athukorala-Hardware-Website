@@ -34,14 +34,14 @@ public class ProductController {
         this.promotionService = promotionService;
     }
 
-    // --- NEW: UPDATE PROTOCOL (The missing link) ---
-    @PutMapping("/{id}")
+    // --- UPDATED: FULL UPDATE PROTOCOL ---
+    @PutMapping("/update/{id}") // Standardized endpoint for your React Frontend
     @Transactional
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product productDetails) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Asset not found for update"));
+                .orElseThrow(() -> new RuntimeException("Asset not found for update: ID " + id));
 
-        // Sync fresh data
+        // Registry Data Synchronization
         product.setName(productDetails.getName());
         product.setCategory(productDetails.getCategory());
         product.setPrice(productDetails.getPrice());
@@ -49,13 +49,18 @@ public class ProductController {
         product.setDescription(productDetails.getDescription());
         product.setImageUrl(productDetails.getImageUrl());
 
+        // Ensure reorder level is maintained or updated
+        if(productDetails.getReorderLevel() > 0) {
+            product.setReorderLevel(productDetails.getReorderLevel());
+        }
+
         Product updatedProduct = productRepository.save(product);
 
-        // Security Logging
+        // Security Protocol Logging
         AuditLog log = new AuditLog();
         log.setAction("INVENTORY_MODIFICATION");
         log.setPerformedBy("ADMIN");
-        log.setDetails("UPDATED ASSET: " + product.getName() + " (ID: " + id + ")");
+        log.setDetails("MODIFIED ASSET: " + product.getName() + " [ID: " + id + "]");
         log.setTimestamp(LocalDateTime.now());
         auditLogRepository.save(log);
 
@@ -69,12 +74,14 @@ public class ProductController {
             product.setReorderLevel(5);
         }
         Product savedProduct = productRepository.save(product);
+
         AuditLog log = new AuditLog();
         log.setAction("PRODUCT_CREATION");
         log.setPerformedBy("ADMIN");
         log.setDetails("AUTHORIZED NEW ASSET: " + product.getName() + " [CAT: " + product.getCategory() + "]");
         log.setTimestamp(LocalDateTime.now());
         auditLogRepository.save(log);
+
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
@@ -82,9 +89,8 @@ public class ProductController {
     @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productRepository.findAll();
-        for (Product product : products) {
-            product.setDiscountedPrice(promotionService.calculateDiscountedPrice(product));
-        }
+        // Sync Real-time Discount Valuations
+        products.forEach(p -> p.setDiscountedPrice(promotionService.calculateDiscountedPrice(p)));
         return ResponseEntity.ok(products);
     }
 
@@ -108,16 +114,20 @@ public class ProductController {
     @Transactional
     public ResponseEntity<Product> adjustStock(@PathVariable Long id, @RequestBody Map<String, Object> payload) {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Asset not found"));
+
         int amount = Integer.parseInt(payload.get("amount").toString());
         String adminName = payload.getOrDefault("adminName", "System Admin").toString();
+
         product.setStockQuantity(product.getStockQuantity() + amount);
         Product savedProduct = productRepository.save(product);
+
         AuditLog log = new AuditLog();
         log.setAction("STOCK_ADJUSTMENT");
         log.setPerformedBy(adminName);
-        log.setDetails("STOCK MODIFIED: " + product.getName() + " | ADJUSTMENT: " + amount + " | CURRENT: " + product.getStockQuantity());
+        log.setDetails("STOCK MODIFIED: " + product.getName() + " | ADJUST: " + amount + " | TOTAL: " + product.getStockQuantity());
         log.setTimestamp(LocalDateTime.now());
         auditLogRepository.save(log);
+
         return ResponseEntity.ok(savedProduct);
     }
 
@@ -125,12 +135,14 @@ public class ProductController {
     @Transactional
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Asset not found"));
+
         AuditLog log = new AuditLog();
         log.setAction("PRODUCT_DELETION");
         log.setPerformedBy("ADMIN");
         log.setDetails("PERMANENT PURGE: " + product.getName() + " [ID: " + id + "]");
         log.setTimestamp(LocalDateTime.now());
         auditLogRepository.save(log);
+
         productRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

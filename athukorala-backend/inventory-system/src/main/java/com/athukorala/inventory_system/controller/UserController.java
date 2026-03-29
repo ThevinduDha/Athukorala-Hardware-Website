@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -22,6 +23,13 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
+    // --- NEW: PERSONNEL REGISTRY PROTOCOL ---
+    // Pulls every user regardless of role for the Management Command Center
+    @GetMapping("/all")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
     @GetMapping("/customers")
     public List<User> getAllCustomers() {
         return userRepository.findAll().stream()
@@ -29,15 +37,18 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @PatchMapping("/{id}/role")
-    public User updateRole(@PathVariable Long id, @RequestBody String newRole) {
+    // --- UPDATED: ACCESS TIER MODIFICATION ---
+    // Optimized to handle JSON objects from the PersonnelRegistry React component
+    @PatchMapping("/{id}/change-role")
+    public ResponseEntity<User> updateRole(@PathVariable Long id, @RequestBody Map<String, String> payload) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("Target Personnel not found in Registry"));
 
-        String cleanedRole = newRole.replace("\"", "").toUpperCase();
-        user.setRole(Role.valueOf(cleanedRole));
+        String newRoleStr = payload.get("role").toUpperCase();
+        user.setRole(Role.valueOf(newRoleStr));
 
-        return userRepository.save(user);
+        User updatedUser = userRepository.save(user);
+        return ResponseEntity.ok(updatedUser);
     }
 
     // --- PROFILE UPDATE PROTOCOL ---

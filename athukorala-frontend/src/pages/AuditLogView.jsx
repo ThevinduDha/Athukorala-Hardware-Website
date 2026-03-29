@@ -67,13 +67,17 @@ const AuditLogView = () => {
         </div>
 
         <nav className="flex flex-col gap-2">
-          <NavItem icon={<LayoutDashboard size={18}/>} label="Command Center" onClick={() => navigate('/admin-dashboard')} />
-          <NavItem icon={<Megaphone size={18}/>} label="Broadcast Hub" onClick={() => navigate('/admin-dashboard')} />
-          <NavItem icon={<Package size={18}/>} label="Inventory Stock" onClick={() => navigate('/admin-dashboard')} />
-          <NavItem icon={<Tag size={18}/>} label="Promotions & Deals" onClick={() => navigate('/admin-dashboard')} />
-          <NavItem icon={<Users size={18}/>} label="Client Registry" onClick={() => navigate('/admin-dashboard')} />
+          {/* UPDATED: Buttons now navigate to Dashboard with instructions on which tab to open */}
+          <NavItem icon={<LayoutDashboard size={18}/>} label="Command Center" onClick={() => navigate('/admin-dashboard', { state: { targetTab: 'command' } })} />
+          <NavItem icon={<Megaphone size={18}/>} label="Broadcast Hub" onClick={() => navigate('/admin-dashboard', { state: { targetTab: 'broadcast' } })} />
+          <NavItem icon={<Package size={18}/>} label="Inventory Stock" onClick={() => navigate('/admin-dashboard', { state: { targetTab: 'inventory' } })} />
+          <NavItem icon={<Tag size={18}/>} label="Promotions & Deals" onClick={() => navigate('/admin-dashboard', { state: { targetTab: 'promotions' } })} />
+          <NavItem icon={<Users size={18}/>} label="Personnel Registry" onClick={() => navigate('/admin-dashboard', { state: { targetTab: 'clients' } })} />
+          
           <NavItem icon={<ShieldAlert size={18}/>} label="Security Audit" active={true} />
-          <NavItem icon={<BarChart3 size={18}/>} label="Financials" />
+          
+          <NavItem icon={<BarChart3 size={18}/>} label="Financials" onClick={() => navigate('/admin-dashboard', { state: { targetTab: 'financials' } })} />
+          
           <NavItem icon={<Settings size={18}/>} label="System Config" />
         </nav>
 

@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { X, Save, Box, DollarSign, ListTree, Truck } from 'lucide-react';
+import { X, Save, Box, DollarSign, ListTree, Truck, AlertCircle, Info } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import ImageUpload from '../components/ImageUpload';
 
 const AddProductModal = ({ isOpen, onClose }) => {
-  // Added formState to detect validation errors
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+  // Destructuring errors from formState for inline validation display
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [suppliers, setSuppliers] = useState([]);
 
-  // --- HARDWARE CATEGORIES FOR CONSISTENCY ---
   const HARDWARE_CATEGORIES = [
-    "Electrical",
-    "Plumbing",
-    "Painting & Adhesives",
-    "Power Tools",
-    "Hand Tools",
-    "Building Materials",
-    "Fasteners & Screws",
-    "Safety Gear"
+    "Electrical", "Plumbing", "Painting & Adhesives", "Power Tools",
+    "Hand Tools", "Building Materials", "Fasteners & Screws", "Safety Gear"
   ];
 
   useEffect(() => {
@@ -41,29 +34,44 @@ const AddProductModal = ({ isOpen, onClose }) => {
     return "https://res.cloudinary.com/demo/image/upload/v1631530000/industrial-box.png";
   };
 
-  const onSubmit = async (data) => {
-    // --- MANUAL VALIDATION OVERRIDE ---
-    if (!data.name || !data.category || !data.supplierId || !data.price || !data.stockQuantity) {
-      toast.error("PROTOCOL REJECTED: ALL FIELDS MANDATORY");
-      return;
-    }
+  const onInvalid = (errors) => {
+    const firstError = Object.values(errors)[0]?.message || "CHECK MANDATORY FIELDS";
+    
+    toast.error(`PROTOCOL REJECTED: ${firstError.toUpperCase()}`, {
+      icon: <AlertCircle size={20} className="text-red-500" />,
+      style: { 
+        borderRadius: '0px', 
+        background: '#000', 
+        color: '#ff4444', 
+        border: '1px solid #ff4444', 
+        fontSize: '10px', 
+        fontWeight: 'bold',
+        letterSpacing: '0.1em'
+      }
+    });
+  };
 
+  const onSubmit = async (data) => {
     const finalData = {
       ...data,
       price: parseFloat(data.price),
       stockQuantity: parseInt(data.stockQuantity),
       reorderLevel: 5, 
       imageUrl: uploadedImageUrl || getDefaultIcon(data.category),
+      // Handle optional supplier: only send object if a value was selected
       supplier: data.supplierId ? { id: parseInt(data.supplierId) } : null
     };
 
-    // Double check for logic errors
     if (finalData.price <= 0 || finalData.stockQuantity < 0) {
-        toast.error("VALUATION ERROR: INVALID NUMERIC DATA");
+        toast.error("VALUATION ERROR: INVALID NUMERIC DATA", {
+          style: { borderRadius: '0px', background: '#000', color: '#ff4444', border: '1px solid #ff4444', fontSize: '10px', fontWeight: 'bold' }
+        });
         return;
     }
 
-    const loadingToast = toast.loading("Recording Asset...");
+    const loadingToast = toast.loading("AUTHORIZING NEW ASSET...", {
+      style: { borderRadius: '0px', background: '#050505', color: '#D4AF37', border: '1px solid #D4AF37', fontSize: '10px', fontWeight: 'bold' }
+    });
 
     try {
       const response = await fetch("http://localhost:8080/api/products/add", {
@@ -73,16 +81,19 @@ const AddProductModal = ({ isOpen, onClose }) => {
       });
 
       if (response.ok) {
-        toast.success("Product Inventory Updated!", { id: loadingToast });
+        toast.success("INVENTORY REGISTRY UPDATED", { 
+          id: loadingToast,
+          style: { borderRadius: '0px', background: '#D4AF37', color: '#000', fontSize: '10px', fontWeight: '900' }
+        });
         reset();
         setUploadedImageUrl("");
         onClose();
-        window.location.reload(); 
+        setTimeout(() => window.location.reload(), 1000);
       } else {
-        toast.error("Server rejected data format", { id: loadingToast });
+        toast.error("SERVER REJECTED DATA FORMAT", { id: loadingToast });
       }
     } catch (error) {
-      toast.error("Database connection failed.", { id: loadingToast });
+      toast.error("SYSTEM LINK OFFLINE", { id: loadingToast });
     }
   };
 
@@ -101,13 +112,13 @@ const AddProductModal = ({ isOpen, onClose }) => {
           <X size={24} />
         </button>
 
-        <header className="mb-12">
+        <header className="mb-12 text-left">
           <p className="text-[#D4AF37] text-[10px] font-bold tracking-[0.5em] uppercase mb-2">New Entry</p>
           <h2 className="text-4xl font-black uppercase tracking-tighter">Inventory Item</h2>
         </header>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <div className="group">
+        <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="space-y-8">
+          <div className="group text-left">
              <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">Product Visual</label>
              <ImageUpload onUploadSuccess={(url) => setUploadedImageUrl(url)} />
           </div>
@@ -115,20 +126,20 @@ const AddProductModal = ({ isOpen, onClose }) => {
           <InputGroup 
             label="Product Name" 
             icon={<Box size={16}/>} 
-            register={register("name", { required: true })} 
+            register={register("name", { required: "Asset Name is required" })} 
             placeholder="e.g. Nippon Paint Gold" 
             error={errors.name}
           />
           
-          <div className="group">
-            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">Primary Supplier</label>
+          <div className="group text-left">
+            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">Primary Supplier (Optional)</label>
             <div className="relative">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4AF37]/50 group-focus-within:text-[#D4AF37] transition-colors">
                 <Truck size={16} />
               </div>
               <select 
-                {...register("supplierId", { required: true })}
-                className={`w-full bg-transparent border-b pl-8 py-3 outline-none text-sm uppercase tracking-widest transition-all appearance-none text-white ${errors.supplierId ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'}`}
+                {...register("supplierId")} // REMOVED REQUIRED VALIDATION
+                className="w-full bg-transparent border-b border-white/10 focus:border-[#D4AF37] pl-8 py-3 outline-none text-sm uppercase tracking-widest transition-all appearance-none text-white"
               >
                 <option value="" className="bg-[#080808]">Select Supplier...</option>
                 {suppliers.map(s => (
@@ -139,13 +150,13 @@ const AddProductModal = ({ isOpen, onClose }) => {
           </div>
 
           <div className="group text-left">
-            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">Category</label>
+            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">Category</label>
             <div className="relative">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4AF37]/50 group-focus-within:text-[#D4AF37] transition-colors">
                 <ListTree size={16} />
               </div>
               <select 
-                {...register("category", { required: true })}
+                {...register("category", { required: "Category assignment required" })}
                 className={`w-full bg-transparent border-b pl-8 py-3 outline-none text-sm uppercase tracking-widest transition-all appearance-none text-white cursor-pointer ${errors.category ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'}`}
               >
                 <option value="" className="bg-[#080808]">Select Category...</option>
@@ -154,13 +165,21 @@ const AddProductModal = ({ isOpen, onClose }) => {
                 ))}
               </select>
             </div>
+            {errors.category && (
+              <p className="text-[9px] text-red-500 font-black mt-2 uppercase tracking-widest flex items-center gap-1">
+                <Info size={10}/> {errors.category.message}
+              </p>
+            )}
           </div>
           
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-6 text-left">
             <InputGroup 
                 label="Unit Price" 
                 icon={<DollarSign size={16}/>} 
-                register={register("price", { required: true, min: 0.01 })} 
+                register={register("price", { 
+                  required: "Price required", 
+                  min: { value: 0.01, message: "Value > 0" } 
+                })} 
                 placeholder="0.00" 
                 type="number" 
                 error={errors.price}
@@ -168,22 +187,25 @@ const AddProductModal = ({ isOpen, onClose }) => {
             <InputGroup 
                 label="Quantity" 
                 icon={<Box size={16}/>} 
-                register={register("stockQuantity", { required: true, min: 0 })} 
+                register={register("stockQuantity", { 
+                  required: "Qty required", 
+                  min: { value: 0, message: "Min 0" } 
+                })} 
                 placeholder="0" 
                 type="number" 
                 error={errors.stockQuantity}
             />
           </div>
 
-          <div className="group">
+          <div className="group text-left">
             <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">Specifications</label>
             <textarea 
               {...register("description")}
-              className="w-full bg-white/5 border border-white/10 p-4 focus:border-[#D4AF37] outline-none transition-all text-sm h-32"
+              className="w-full bg-white/5 border border-white/10 p-4 focus:border-[#D4AF37] outline-none transition-all text-sm h-32 text-white"
             />
           </div>
 
-          <button type="submit" className="w-full bg-[#D4AF37] text-black font-black py-5 tracking-[0.4em] uppercase flex items-center justify-center gap-3 hover:bg-[#E5C158] transition-all mt-10 shadow-[0_10px_40px_rgba(212,175,55,0.2)]">
+          <button type="submit" className="w-full bg-[#D4AF37] text-black font-black py-5 tracking-[0.4em] uppercase flex items-center justify-center gap-3 hover:bg-[#E5C158] transition-all mt-10 shadow-2xl">
             <Save size={20} /> Record Asset
           </button>
         </form>
@@ -193,15 +215,20 @@ const AddProductModal = ({ isOpen, onClose }) => {
 };
 
 const InputGroup = ({ label, icon, register, placeholder, type = "text", error }) => (
-  <div className="group">
-    <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">{label}</label>
+  <div className="group text-left">
+    <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">{label}</label>
     <div className="relative text-left">
       <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4AF37]/50 group-focus-within:text-[#D4AF37] transition-colors">{icon}</div>
       <input 
         {...register} type={type} placeholder={placeholder} step="any"
-        className={`w-full bg-transparent border-b pl-8 py-3 outline-none transition-all text-sm uppercase tracking-widest placeholder:text-gray-800 ${error ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'}`}
+        className={`w-full bg-transparent border-b pl-8 py-3 outline-none transition-all text-sm uppercase tracking-widest text-white placeholder:text-gray-800 ${error ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'}`}
       />
     </div>
+    {error && (
+      <p className="text-[9px] text-red-500 font-black mt-2 uppercase tracking-widest flex items-center gap-1">
+        <Info size={10}/> {error.message}
+      </p>
+    )}
   </div>
 );
 

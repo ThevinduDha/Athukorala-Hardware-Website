@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
-  PieChart, Pie, Cell, Legend, AreaChart, Area 
+  PieChart, Pie, Cell, Legend 
 } from 'recharts';
 import { TrendingUp, DollarSign, Package, PieChart as PieIcon, Activity, ArrowUpRight } from 'lucide-react';
 
@@ -34,32 +34,24 @@ const Financials = () => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-      className="space-y-10 text-left"
+      className="space-y-10 text-left pt-6"
     >
-      <header className="mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          <TrendingUp size={14} className="text-[#D4AF37]" />
-          <p className="text-[#D4AF37] text-[10px] font-bold tracking-[0.6em] uppercase">Fiscal Intelligence</p>
-        </div>
-        <h1 className="text-6xl font-black uppercase tracking-tighter leading-none">
-          Financial <span className="text-transparent stroke-text">Registry</span>
-        </h1>
-      </header>
+      {/* HEADER REMOVED: Title is now handled by AdminDashboard.jsx parent */}
 
       {/* --- TOP STATS --- */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md relative overflow-hidden group">
+        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md relative overflow-hidden group shadow-2xl">
           <div className="absolute top-0 left-0 w-1 h-full bg-[#D4AF37]" />
-          <p className="text-gray-500 text-[10px] uppercase tracking-[0.3em] font-bold mb-4">Total Stock Valuation</p>
-          <h3 className="text-5xl font-black tracking-tighter text-[#D4AF37]">
+          <p className="text-gray-500 text-[10px] uppercase tracking-[0.3em] font-bold mb-4 text-left">Total Stock Valuation</p>
+          <h3 className="text-5xl font-black tracking-tighter text-[#D4AF37] text-left">
             LKR {reportData.totalStockValue.toLocaleString()}
           </h3>
-          <div className="mt-6 flex items-center gap-2 text-[10px] font-black text-green-500">
+          <div className="mt-6 flex items-center gap-2 text-[10px] font-black text-green-500 text-left">
             <ArrowUpRight size={14}/> SYSTEM STABLE
           </div>
         </div>
 
-        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md relative overflow-hidden group text-right">
+        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md relative overflow-hidden group text-right shadow-2xl">
           <div className="absolute top-0 right-0 w-1 h-full bg-white/20" />
           <p className="text-gray-500 text-[10px] uppercase tracking-[0.3em] font-bold mb-4">Gross Asset Volume</p>
           <h3 className="text-5xl font-black tracking-tighter text-white">
@@ -73,8 +65,8 @@ const Financials = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         {/* Category Valuation (Donut) */}
-        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md h-[500px]">
-          <h3 className="text-xs font-black tracking-[0.4em] uppercase text-gray-400 mb-10 flex items-center gap-3">
+        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md h-[500px] shadow-xl">
+          <h3 className="text-xs font-black tracking-[0.4em] uppercase text-gray-400 mb-10 flex items-center gap-3 text-left">
             <PieIcon size={16} /> Valuation Distribution
           </h3>
           <ResponsiveContainer width="100%" height="80%">
@@ -100,8 +92,8 @@ const Financials = () => {
         </div>
 
         {/* Unit Count (Bar Chart) */}
-        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md h-[500px]">
-          <h3 className="text-xs font-black tracking-[0.4em] uppercase text-gray-400 mb-10 flex items-center gap-3">
+        <div className="p-10 border border-white/5 bg-white/[0.01] backdrop-blur-md h-[500px] shadow-xl">
+          <h3 className="text-xs font-black tracking-[0.4em] uppercase text-gray-400 mb-10 flex items-center gap-3 text-left">
             <Activity size={16} /> Asset Inventory Density
           </h3>
           <ResponsiveContainer width="100%" height="80%">
@@ -110,9 +102,9 @@ const Financials = () => {
               <XAxis dataKey="name" stroke="#666" fontSize={10} tickLine={false} axisLine={false} />
               <YAxis stroke="#666" fontSize={10} tickLine={false} axisLine={false} />
               <Tooltip 
-                 cursor={{ fill: 'rgba(212,175,55,0.05)' }}
-                 contentStyle={{ backgroundColor: '#000', border: '1px solid rgba(212,175,55,0.2)' }}
-                 itemStyle={{ color: '#D4AF37', fontSize: '10px' }}
+                  cursor={{ fill: 'rgba(212,175,55,0.05)' }}
+                  contentStyle={{ backgroundColor: '#000', border: '1px solid rgba(212,175,55,0.2)' }}
+                  itemStyle={{ color: '#D4AF37', fontSize: '10px' }}
               />
               <Bar dataKey="units" fill="#D4AF37" radius={[4, 4, 0, 0]} barSize={40} />
             </BarChart>

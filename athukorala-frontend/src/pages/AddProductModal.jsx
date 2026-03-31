@@ -6,7 +6,6 @@ import { toast } from 'react-hot-toast';
 import ImageUpload from '../components/ImageUpload';
 
 const AddProductModal = ({ isOpen, onClose }) => {
-  // Destructuring errors from formState for inline validation display
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [suppliers, setSuppliers] = useState([]);
@@ -58,7 +57,6 @@ const AddProductModal = ({ isOpen, onClose }) => {
       stockQuantity: parseInt(data.stockQuantity),
       reorderLevel: 5, 
       imageUrl: uploadedImageUrl || getDefaultIcon(data.category),
-      // Handle optional supplier: only send object if a value was selected
       supplier: data.supplierId ? { id: parseInt(data.supplierId) } : null
     };
 
@@ -101,14 +99,22 @@ const AddProductModal = ({ isOpen, onClose }) => {
 
   return (
     <motion.div 
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-end bg-black/80 backdrop-blur-sm"
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      exit={{ opacity: 0 }}
+      /* BUG FIX 1: Add onClick to the backdrop to close the modal */
+      onClick={onClose}
+      className="fixed inset-0 z-[100] flex items-center justify-end bg-black/80 backdrop-blur-sm cursor-pointer"
     >
       <motion.div 
-        initial={{ x: 500 }} animate={{ x: 0 }} exit={{ x: 500 }}
-        className="w-full max-w-lg h-full bg-[#080808] border-l border-[#D4AF37]/20 p-12 relative shadow-[-20px_0_50px_rgba(0,0,0,0.5)] overflow-y-auto"
+        initial={{ x: 500 }} 
+        animate={{ x: 0 }} 
+        exit={{ x: 500 }}
+        /* BUG FIX 2: Stop propagation so clicking inside the form DOES NOT close it */
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-lg h-full bg-[#080808] border-l border-[#D4AF37]/20 p-12 relative shadow-[-20px_0_50px_rgba(0,0,0,0.5)] overflow-y-auto cursor-default"
       >
-        <button onClick={onClose} className="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors">
+        <button onClick={onClose} className="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors z-10">
           <X size={24} />
         </button>
 
@@ -138,7 +144,7 @@ const AddProductModal = ({ isOpen, onClose }) => {
                 <Truck size={16} />
               </div>
               <select 
-                {...register("supplierId")} // REMOVED REQUIRED VALIDATION
+                {...register("supplierId")} 
                 className="w-full bg-transparent border-b border-white/10 focus:border-[#D4AF37] pl-8 py-3 outline-none text-sm uppercase tracking-widest transition-all appearance-none text-white"
               >
                 <option value="" className="bg-[#080808]">Select Supplier...</option>

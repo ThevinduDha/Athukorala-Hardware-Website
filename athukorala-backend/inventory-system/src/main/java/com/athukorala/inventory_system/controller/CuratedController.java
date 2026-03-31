@@ -6,6 +6,7 @@ import com.athukorala.inventory_system.entity.User;
 import com.athukorala.inventory_system.repository.CuratedItemRepository;
 import com.athukorala.inventory_system.repository.ProductRepository;
 import com.athukorala.inventory_system.repository.UserRepository;
+import com.athukorala.inventory_system.service.PromotionService; // IMPORTED
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,20 +21,21 @@ public class CuratedController {
     private final CuratedItemRepository curatedRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final PromotionService promotionService; // ADDED SERVICE
 
     @Autowired
     public CuratedController(CuratedItemRepository curatedRepository,
                              UserRepository userRepository,
-                             ProductRepository productRepository) {
+                             ProductRepository productRepository,
+                             PromotionService promotionService) { // INJECTED SERVICE
         this.curatedRepository = curatedRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
+        this.promotionService = promotionService;
     }
 
     @PostMapping("/add")
     public ResponseEntity<?> addToCurated(@RequestParam Long userId, @RequestParam Long productId) {
-        // --- NEW: DUPLICATE PREVENTION PROTOCOL ---
-        // Checks if this specific user has already curated this specific product
         boolean alreadyCurated = curatedRepository.existsByUserIdAndProductId(userId, productId);
 
         if (alreadyCurated) {
@@ -55,7 +57,18 @@ public class CuratedController {
 
     @GetMapping("/user/{userId}")
     public List<CuratedItem> getCuratedList(@PathVariable Long userId) {
-        return curatedRepository.findByUserId(userId);
+        List<CuratedItem> items = curatedRepository.findByUserId(userId);
+
+        // --- BUG FIX: DYNAMIC PROMOTION SYNC ---
+        // We loop through each curated item and calculate the real-time discount for the attached product
+        items.forEach(item -> {
+            if (item.getProduct() != null) {
+                double discountedPrice = promotionService.calculateDiscountedPrice(item.getProduct());
+                item.getProduct().setDiscountedPrice(discountedPrice);
+            }
+        });
+
+        return items;
     }
 
     @DeleteMapping("/remove/{id}")
@@ -67,8 +80,6 @@ public class CuratedController {
         return ResponseEntity.status(404).body("Asset not found in registry");
     }
 
-    // --- NEW: REMOVE BY USER AND PRODUCT ID ---
-    // Useful for untoggling the heart icon directly from the dashboard
     @DeleteMapping("/remove-link")
     public ResponseEntity<?> removeLink(@RequestParam Long userId, @RequestParam Long productId) {
         List<CuratedItem> items = curatedRepository.findByUserId(userId);

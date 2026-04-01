@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   User, Shield, ShieldCheck, ShieldAlert, 
-  ArrowUp, ArrowDown, MoreHorizontal, Activity 
+  ArrowUp, ArrowDown, Trash2, Activity 
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
@@ -18,6 +18,27 @@ const PersonnelRegistry = () => {
   };
 
   useEffect(() => fetchUsers(), []);
+
+  // --- DELETE PROTOCOL ---
+  const handleDelete = async (userId, name) => {
+    if (!window.confirm(`CRITICAL COMMAND: Permanently purge ${name.toUpperCase()} from Master Registry?`)) return;
+
+    const loading = toast.loading(`Executing Purge Protocol for ${name}...`);
+    try {
+      const res = await fetch(`http://localhost:8080/api/users/${userId}`, {
+        method: 'DELETE'
+      });
+
+      if (res.ok) {
+        toast.success("Personnel Record Successfully Purged", { id: loading });
+        fetchUsers(); // Refresh the registry
+      } else {
+        toast.error("Purge Denied: Unauthorized or System Error", { id: loading });
+      }
+    } catch (err) {
+      toast.error("Protocol Override: Network Link Offline", { id: loading });
+    }
+  };
 
   const handleRoleChange = async (userId, currentRole, direction) => {
     const roles = ['CUSTOMER', 'STAFF', 'ADMIN'];
@@ -52,8 +73,6 @@ const PersonnelRegistry = () => {
 
   return (
     <div className="space-y-8 text-left pt-10">
-      {/* REDUNDANT SEARCH BAR REMOVED: Managed by Dashboard Global Search */}
-
       <div className="grid grid-cols-1 gap-4">
         <AnimatePresence mode='popLayout'>
           {filteredUsers.map((person) => (
@@ -77,14 +96,14 @@ const PersonnelRegistry = () => {
                 </div>
 
                 <div className="text-left">
-                  <h3 className="text-lg font-black uppercase tracking-tight text-white text-left">{person.name}</h3>
-                  <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest text-left">{person.email}</p>
-                  <div className="flex items-center gap-3 mt-2 text-left">
+                  <h3 className="text-lg font-black uppercase tracking-tight text-white">{person.name}</h3>
+                  <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">{person.email}</p>
+                  <div className="flex items-center gap-3 mt-2">
                     <span className={`text-[8px] font-black px-2 py-0.5 border ${
                       person.role === 'ADMIN' ? 'border-[#D4AF37] text-[#D4AF37]' : 
                       person.role === 'STAFF' ? 'border-blue-500 text-blue-500' : 
                       'border-gray-600 text-gray-600'
-                    } uppercase tracking-[0.2em] text-left`}>
+                    } uppercase tracking-[0.2em]`}>
                       Tier: {person.role}
                     </span>
                   </div>
@@ -92,12 +111,20 @@ const PersonnelRegistry = () => {
               </div>
 
               <div className="flex gap-2">
+                {/* PURGE BUTTON (DELETE) */}
+                <ActionButton 
+                  icon={<Trash2 size={14} />} 
+                  label="Purge" 
+                  color="hover:text-red-500 hover:border-red-500/40" 
+                  onClick={() => handleDelete(person.id, person.name)} 
+                />
+
                 {/* DEMOTE BUTTON */}
                 {person.role !== 'CUSTOMER' && (
                   <ActionButton 
                     icon={<ArrowDown size={14} />} 
                     label="Demote" 
-                    color="hover:text-red-500" 
+                    color="hover:text-orange-500" 
                     onClick={() => handleRoleChange(person.id, person.role, 'DOWN')} 
                   />
                 )}

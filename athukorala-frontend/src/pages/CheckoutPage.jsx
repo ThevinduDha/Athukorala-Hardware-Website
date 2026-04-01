@@ -105,6 +105,8 @@ const CheckoutPage = () => {
 
   const processOrder = async (e) => {
     e.preventDefault();
+    if (isProcessing) return; // Prevent double submission
+
     setIsProcessing(true);
     const loadingToast = toast.loading("ENCRYPTING TRANSACTION PAYLOAD...");
     const user = JSON.parse(localStorage.getItem("user"));
@@ -121,16 +123,25 @@ const CheckoutPage = () => {
           }),
         });
 
+        // Parse response body
+        const result = await response.json();
+
         if (response.ok) {
-          const data = await response.json();
-          setOrderId(data.id || `ATH-${Math.floor(Math.random()*9000)}`);
+          // Success Path
+          setOrderId(result.id || `ATH-${Math.floor(Math.random()*9000)}`);
           toast.success("TRANSACTION VERIFIED", { id: loadingToast });
+          
+          // Clear Cart Registry after successful settlement
+          localStorage.removeItem("cart");
+          localStorage.removeItem("lastCartTotal");
+          
           setIsSuccess(true); 
         } else {
-          toast.error("INVENTORY SYNC FAILURE", { id: loadingToast });
+          // Failure Path - Display specific backend error message
+          toast.error(result.message || "INVENTORY SYNC FAILURE", { id: loadingToast });
         }
     } catch (err) {
-        toast.error("GATEWAY TIMEOUT", { id: loadingToast });
+        toast.error("GATEWAY TIMEOUT: CHECK SYSTEM STATUS", { id: loadingToast });
     } finally {
         setIsProcessing(false);
     }

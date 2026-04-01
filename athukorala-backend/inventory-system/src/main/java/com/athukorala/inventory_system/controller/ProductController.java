@@ -119,10 +119,8 @@ public class ProductController {
             @RequestParam int delta,
             @RequestParam(defaultValue = "OPERATOR") String staffName) {
         try {
-            // 1. Business Logic through Service
             Product updatedProduct = productService.adjustStock(id, delta);
 
-            // 2. Industrial Security Logging
             AuditLog log = new AuditLog();
             log.setAction("STOCK_SYNC");
             log.setPerformedBy(staffName);
@@ -134,7 +132,6 @@ public class ProductController {
             log.setTimestamp(LocalDateTime.now());
             auditLogRepository.save(log);
 
-            // 3. Structured Response
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("newQuantity", updatedProduct.getStockQuantity());
@@ -146,20 +143,34 @@ public class ProductController {
         }
     }
 
-    // --- ADMINISTRATIVE PROTOCOLS: DELETE ---
+    // --- ADMINISTRATIVE PROTOCOLS: DELETE (HANDLING CONSTRAINTS) ---
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Asset not found"));
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        try {
+            Product product = productRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Asset not found"));
 
-        AuditLog log = new AuditLog();
-        log.setAction("PRODUCT_DELETION");
-        log.setPerformedBy("ADMIN");
-        log.setDetails("PERMANENT PURGE: " + product.getName() + " [ID: " + id + "]");
-        log.setTimestamp(LocalDateTime.now());
-        auditLogRepository.save(log);
+            // Log the attempt before deletion
+            AuditLog log = new AuditLog();
+            log.setAction("PRODUCT_DELETION");
+            log.setPerformedBy("ADMIN");
+            log.setDetails("PERMANENT PURGE ATTEMPTED: " + product.getName() + " [ID: " + id + "]");
+            log.setTimestamp(LocalDateTime.now());
+            auditLogRepository.save(log);
 
-        productRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
+            productRepository.deleteById(id);
+
+            return ResponseEntity.ok().body(Map.of("message", "ASSET PURGED FROM REGISTRY"));
+
+        } catch (org.springframework.dao.DataIntegrityViolationException e) {
+            // This catches the foreign key error if the product is in an order
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body(Map.of("message", "INTEGRITY ERROR: Product is linked to existing transactions/orders and cannot be purged."));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "SYSTEM ERROR: Deletion protocol failed."));
+        }
     }
+
 }

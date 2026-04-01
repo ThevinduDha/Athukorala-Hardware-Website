@@ -1,5 +1,6 @@
 package com.athukorala.inventory_system.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -14,13 +15,14 @@ public class Order {
     private Long id;
 
     private Long userId;
-    private Double totalAmount;
+    private Double totalAmount; // Field name must match Frontend
     private String shippingAddress;
     private String contactNumber;
-    private String status; // e.g., "PENDING", "CONFIRMED", "COMPLETED" [cite: 758-760]
+    private String status;
+
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") // Ensures JS can parse this
     private LocalDateTime orderDate;
 
-    // --- NEW: Link to specific items purchased in this order ---
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
     private List<OrderItem> orderItems;

@@ -39,8 +39,6 @@ public class OrderController {
         return orderService.getOrdersByUserId(userId);
     }
 
-    // --- ADMIN LOGISTICS METHODS ---
-
     @GetMapping("/all")
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
@@ -51,11 +49,9 @@ public class OrderController {
         return orderRepository.findByUserId(userId);
     }
 
-    // UPDATED: Standardized to use 'status' to match React frontend state
     @PatchMapping("/update-status/{id}")
     public ResponseEntity<Order> updateOrderStatus(@PathVariable Long id, @RequestParam String status) {
         return orderRepository.findById(id).map(order -> {
-            // Logic: Set the status provided by the Admin Dashboard
             order.setStatus(status.toUpperCase());
             Order updatedOrder = orderRepository.save(order);
             return ResponseEntity.ok(updatedOrder);

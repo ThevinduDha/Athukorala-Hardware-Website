@@ -26,7 +26,7 @@ const InventoryList = () => {
     fetchProducts();
   }, []);
 
-  // 2. High-Security Delete Protocol
+  // 2. High-Security Delete Protocol (UPDATED FOR INTEGRITY HANDLING)
   const executeDelete = async () => {
     if (!selectedProduct) return;
 
@@ -37,12 +37,19 @@ const InventoryList = () => {
         method: "DELETE",
       });
 
+      const result = await response.json(); // Parse the structured response from backend
+
       if (response.ok) {
-        toast.success("Asset Successfully Purged", { id: loadingToast });
+        toast.success(result.message || "Asset Successfully Purged", { id: loadingToast });
         setProducts(products.filter(p => p.id !== selectedProduct.id));
         setIsDeleteModalOpen(false);
       } else {
-        toast.error("Authorization Denied or System Error", { id: loadingToast });
+        // If status is 403 (FORBIDDEN), it will show the Integrity Error message
+        toast.error(result.message || "Authorization Denied or System Error", { 
+          id: loadingToast,
+          duration: 4000 
+        });
+        setIsDeleteModalOpen(false);
       }
     } catch (error) {
       toast.error("Connection Failed: Ensure Backend is Online", { id: loadingToast });
@@ -86,7 +93,6 @@ const InventoryList = () => {
           </thead>
           <tbody className="text-sm">
             {filteredProducts.map((product) => {
-              // --- PROMOTION SYNC LOGIC ---
               const hasDiscount = product.discountedPrice && product.discountedPrice < product.price;
               const discountPercent = hasDiscount 
                 ? Math.round(((product.price - product.discountedPrice) / product.price) * 100) 
@@ -139,7 +145,6 @@ const InventoryList = () => {
                        <span className={`px-3 py-1 text-[10px] font-black uppercase tracking-widest w-fit ${product.stockQuantity > 5 ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
                          {product.stockQuantity} UNITS
                        </span>
-                       {/* Stock Progress Bar */}
                        <div className="w-20 h-1 bg-white/5 overflow-hidden rounded-full">
                           <motion.div 
                             initial={{ width: 0 }} 
@@ -181,7 +186,6 @@ const InventoryList = () => {
         </table>
       </div>
 
-      {/* Registry Footer Stats */}
       <div className="mt-8 flex gap-8">
         <div className="p-5 bg-white/[0.02] border border-white/5 flex items-center gap-4 min-w-[200px]">
            <Box size={20} className="text-gray-500" />
@@ -199,7 +203,6 @@ const InventoryList = () => {
         </div>
       </div>
 
-      {/* UPDATE MODAL */}
       <AnimatePresence>
         {isUpdateModalOpen && (
           <UpdateProductModal 
@@ -211,7 +214,6 @@ const InventoryList = () => {
         )}
       </AnimatePresence>
 
-      {/* DELETE CONFIRMATION MODAL */}
       <AnimatePresence>
         {isDeleteModalOpen && (
           <DeleteConfirmModal 

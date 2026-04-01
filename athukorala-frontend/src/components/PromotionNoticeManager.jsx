@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Megaphone, Send, Sparkles, AlertTriangle, Eye, Clock, Calendar } from 'lucide-react';
+import { Megaphone, Send, Sparkles, AlertTriangle, Eye, Clock, Calendar, Loader2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 const PromotionNoticeManager = () => {
   const today = new Date().toISOString().split('T')[0];
+  const [isDeploying, setIsDeploying] = useState(false);
   
   const [formData, setFormData] = useState({
     title: "",
@@ -36,10 +37,12 @@ const PromotionNoticeManager = () => {
   };
 
   const handleBroadcast = async (e) => {
-    e.preventDefault(); // Safety protocol
-    if (!validateProtocol()) return;
+    e.preventDefault(); 
+    if (!validateProtocol() || isDeploying) return;
     
-    const loading = toast.loading("Deploying Strategic Promotion...");
+    setIsDeploying(true);
+    const loading = toast.loading("Deploying Strategic Promotion to Registry...");
+
     try {
       const res = await fetch("http://localhost:8080/api/notices/publish", {
         method: "POST",
@@ -49,21 +52,39 @@ const PromotionNoticeManager = () => {
           message: formData.message,
           startDate: formData.startDate,
           expiryDate: formData.expiryDate,
-          urgent: formData.isUrgent, // Synced with Backend Entity boolean name
+          urgent: formData.isUrgent, 
           targetRole: "CUSTOMER",
           active: true 
         })
       });
 
       if (res.ok) {
-        toast.success("PROMOTION BROADCAST LIVE", { id: loading });
+        // SUCCESS ALERT PROTOCOL
+        toast.success("PROMOTION BROADCAST LIVE", { 
+            id: loading,
+            style: {
+                border: '1px solid #D4AF37',
+                padding: '16px',
+                color: '#D4AF37',
+                background: '#000',
+                fontSize: '10px',
+                fontWeight: '900',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase'
+            },
+            iconTheme: { primary: '#D4AF37', secondary: '#000' }
+        });
+
+        // RESET FORM DATA
         setFormData({ title: "", message: "", startDate: today, expiryDate: "", isUrgent: false });
         setShowPreview(false);
       } else {
         toast.error("Handshake Refused by Backend", { id: loading });
       }
     } catch (err) { 
-      toast.error("System Link Offline", { id: loading }); 
+      toast.error("System Link Offline: Check Proxy", { id: loading }); 
+    } finally {
+      setIsDeploying(false);
     }
   };
 
@@ -167,9 +188,13 @@ const PromotionNoticeManager = () => {
 
         <button 
           onClick={handleBroadcast}
-          className="w-full bg-[#D4AF37] text-black py-5 text-[10px] font-black uppercase tracking-[0.5em] hover:bg-white transition-all flex items-center justify-center gap-3 active:scale-95 shadow-xl"
+          disabled={isDeploying}
+          className={`w-full py-5 text-[10px] font-black uppercase tracking-[0.5em] transition-all flex items-center justify-center gap-3 shadow-xl active:scale-95 ${
+            isDeploying ? 'bg-gray-800 text-gray-500 cursor-not-allowed' : 'bg-[#D4AF37] text-black hover:bg-white'
+          }`}
         >
-          <Send size={14} /> Deploy to Registry
+          {isDeploying ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+          {isDeploying ? "Uploading to Registry..." : "Deploy to Registry"}
         </button>
       </div>
 

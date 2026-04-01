@@ -11,7 +11,7 @@ const CustomerProfile = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
   const [orders, setOrders] = useState([]);
-  const [errors, setErrors] = useState({}); // Track validation errors
+  const [errors, setErrors] = useState({}); 
   
   const [formData, setFormData] = useState({
     firstName: '',
@@ -25,7 +25,6 @@ const CustomerProfile = () => {
 
   useEffect(() => {
     if (user.id) {
-      // safely split name even if it's single word
       const nameParts = (user.name || '').split(' ');
       setFormData({
         firstName: nameParts[0] || '',
@@ -35,17 +34,20 @@ const CustomerProfile = () => {
         profilePic: user.profilePic || null
       });
 
-      // Fetch History from Registry
-      fetch(`http://localhost:8080/api/orders/history/${user.id}`)
+      // SYNC: Fetch using the standardized User ID endpoint
+      fetch(`http://localhost:8080/api/orders/user/${user.id}`)
         .then(res => res.json())
-        .then(data => setOrders(Array.isArray(data) ? data : []))
+        .then(data => {
+            // Log data to console for debugging if needed
+            console.log("Registry Data Received:", data);
+            setOrders(Array.isArray(data) ? data : []);
+        })
         .catch(() => setOrders([]));
     }
   }, [user.id]);
 
   const validateForm = () => {
     let newErrors = {};
-    // Industry Standard LK Phone Regex (Handles +94, 07x, etc.)
     const phoneRegex = /^(?:0|94|\+94)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\d)\d{6}$/;
 
     if (!formData.firstName.trim()) newErrors.firstName = "Mandatory Field";
@@ -105,7 +107,6 @@ const CustomerProfile = () => {
       const updatedUserFromServer = await res.json();
 
       if (res.ok) {
-        // Critical: Update Local Storage with the data returned from DB
         localStorage.setItem("user", JSON.stringify(updatedUserFromServer));
         
         toast.success("REGISTRY MODIFICATION SUCCESSFUL", { 
@@ -213,7 +214,6 @@ const CustomerProfile = () => {
               </motion.div>
             ) : (
               <motion.div key="orders" className="space-y-4">
-                {/* Order logs remain the same logic */}
                 {orders.length === 0 ? (
                     <div className="py-40 border border-white/5 border-dashed text-center">
                          <p className="text-[10px] font-black text-gray-700 uppercase tracking-[0.5em]">Registry Logs Empty</p>
@@ -227,7 +227,9 @@ const CustomerProfile = () => {
                                 </div>
                                 <div className="text-left">
                                     <p className="text-[9px] font-black text-gray-600 uppercase tracking-widest">TXID: #{order.id}</p>
-                                    <h4 className="text-xl font-black text-white mt-1">LKR {Number(order.finalAmount || 0).toLocaleString()}</h4>
+                                    {/* FIX: Changed order.finalAmount to order.totalAmount to match Java Entity */}
+                                    <h4 className="text-xl font-black text-white mt-1">LKR {(order.totalAmount || 0).toLocaleString()}</h4>
+                                    <p className="text-[8px] font-bold text-gray-500 uppercase tracking-[0.2em] mt-1">{order.status || 'AUTHENTICATED'}</p>
                                 </div>
                              </div>
                              <ChevronRight className="text-gray-800 group-hover:text-[#D4AF37]" />

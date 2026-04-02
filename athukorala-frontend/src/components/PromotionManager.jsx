@@ -57,6 +57,7 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
   const handleProcessProtocol = async (e) => {
     e.preventDefault();
 
+    // --- LOGIC VALIDATION ---
     if (formData.type === 'PERCENTAGE' && parseFloat(formData.value) > 100) {
       return toast.error("VALIDATION ERROR: REDUCTION CANNOT EXCEED 100%");
     }
@@ -64,6 +65,15 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
     if (new Date(formData.endDate) < new Date(formData.startDate)) {
       return toast.error("DATE ERROR: TERMINATION MUST BE AFTER ACTIVATION");
     }
+
+    // --- DATA CLEANING FOR BACKEND HANDSHAKE ---
+    // Converts targetId to Long and value to Double to match Java Entity
+    const payload = {
+      ...formData,
+      targetId: formData.targetId ? parseInt(formData.targetId) : null,
+      value: parseFloat(formData.value),
+      enabled: true // Default protocol status
+    };
 
     const isUpdate = !!editingItem;
     const url = isUpdate 
@@ -77,12 +87,13 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
       const res = await fetch(url, {
         method: method,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload), // Send cleaned payload
       });
 
       if (res.ok) {
         toast.success(isUpdate ? "Protocol Modifications Committed" : "Promotion Authorized Successfully", { id: loading });
         
+        // Reset form to baseline state
         setFormData({
           title: '', type: 'PERCENTAGE', value: '',
           targetType: 'PRODUCT', targetId: '', targetCategory: '',
@@ -91,10 +102,13 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
         
         if (onSuccess) onSuccess();
       } else {
-        toast.error("Protocol Refused", { id: loading });
+        // Detailed error logging for protocol refusal
+        const errorText = await res.text();
+        console.error("Registry Rejection Details:", errorText);
+        toast.error("Protocol Refused: Data Mismatch", { id: loading });
       }
     } catch (err) {
-      toast.error("System Link Offline", { id: loading });
+      toast.error("System Link Offline: Gateway Timeout", { id: loading });
     }
   };
 
@@ -105,8 +119,8 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
     >
       <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent ${editingItem ? 'via-blue-500' : 'via-[#D4AF37]/40'} to-transparent`} />
       
-      <header className="mb-12 flex justify-between items-start">
-        <div>
+      <header className="mb-12 flex justify-between items-start text-left">
+        <div className="text-left">
           <div className="flex items-center gap-3 mb-4">
             <div className={`p-2 ${editingItem ? 'bg-blue-500/10' : 'bg-[#D4AF37]/10'} rounded-full`}>
               {editingItem ? <RefreshCcw className="text-blue-500 animate-spin-slow" size={18} /> : <Percent className="text-[#D4AF37]" size={18} />}
@@ -115,7 +129,7 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
               {editingItem ? 'Modification Mode' : 'Management CRUD'}
             </h3>
           </div>
-          <h2 className="text-5xl font-black uppercase tracking-tighter leading-none">
+          <h2 className="text-5xl font-black uppercase tracking-tighter leading-none text-left">
             {editingItem ? 'Update' : 'Create'} <span className="text-transparent stroke-text">Discount Protocol</span>
           </h2>
         </div>
@@ -126,7 +140,7 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
         )}
       </header>
 
-      <form onSubmit={handleProcessProtocol} className="space-y-10">
+      <form onSubmit={handleProcessProtocol} className="space-y-10 text-left">
         <div className="grid grid-cols-2 gap-6">
           <TargetButton 
             active={formData.targetType === 'PRODUCT'} 
@@ -140,7 +154,7 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
           />
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4 text-left">
           <label className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-black block">Deployment Target</label>
           <div className="relative group">
             <select 
@@ -161,7 +175,7 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-           <div className="space-y-4">
+           <div className="space-y-4 text-left">
               <label className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-black block">Protocol Title</label>
               <input 
                 type="text" required value={formData.title} placeholder="E.G. SEASONAL CLEARANCE" 
@@ -169,7 +183,7 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
                 onChange={(e) => setFormData({...formData, title: e.target.value})} 
               />
            </div>
-           <div className="grid grid-cols-2 gap-6">
+           <div className="grid grid-cols-2 gap-6 text-left">
               <div className="space-y-4">
                 <label className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-black block">Price Model</label>
                 <select value={formData.type} className="w-full bg-transparent border-b border-white/10 py-4 text-xs font-bold outline-none focus:border-[#D4AF37]" onChange={(e) => setFormData({...formData, type: e.target.value})}>
@@ -188,7 +202,7 @@ const PromotionManager = ({ onSuccess, preSelected, editingItem, onCancelEdit })
            </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-2 gap-10 text-left">
            <div className="space-y-4">
               <label className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-black block flex items-center gap-2"><Calendar size={12}/> Activate On</label>
               <input 

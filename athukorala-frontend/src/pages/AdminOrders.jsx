@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Package, Truck, CheckCircle, Clock, Search, Filter, ArrowUpRight, BarChart3 } from 'lucide-react';
+import { Package, Truck, CheckCircle } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import LowStockPanel from '../components/LowStockPanel';
 
@@ -13,151 +13,183 @@ const AdminOrders = () => {
       const res = await fetch("http://localhost:8080/api/orders/all");
       if (res.ok) {
         const data = await res.json();
-        // Sorting by Date: Most recent hardware protocols first
-        setOrders(data.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate)));
+        setOrders(
+          data.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate))
+        );
       }
-    } catch (err) {
-      toast.error("SYSTEM SYNC FAILURE");
+    } catch {
+      toast.error("Failed to load orders");
     }
   };
 
   useEffect(() => { fetchAllOrders(); }, []);
 
   const updateStatus = async (id, newStatus) => {
-    const loading = toast.loading(`Authorizing Logistics: ${newStatus}...`);
+    const loading = toast.loading(`Updating: ${newStatus}...`);
+
     try {
-      // Endpoint matched to OrderController @PatchMapping
-      const res = await fetch(`http://localhost:8080/api/orders/update-status/${id}?status=${newStatus}`, {
-        method: 'PATCH'
-      });
-      
+      const res = await fetch(
+        `http://localhost:8080/api/orders/update-status/${id}?status=${newStatus}`,
+        { method: 'PATCH' }
+      );
+
       if (res.ok) {
         const updatedOrder = await res.json();
-        // Synchronizing local state with the Master Registry
-        setOrders(orders.map(o => o.id === id ? { ...o, status: updatedOrder.status } : o));
-        toast.success(`LOGISTICS UPDATED: ${newStatus}`, { id: loading });
+        setOrders(prev =>
+          prev.map(o =>
+            o.id === id ? { ...o, status: updatedOrder.status } : o
+          )
+        );
+        toast.success(`Updated to ${newStatus}`, { id: loading });
       } else {
-        toast.error("PROTOCOL DENIED", { id: loading });
+        toast.error("Update failed", { id: loading });
       }
-    } catch (err) {
-      toast.error("GATEWAY ERROR", { id: loading });
+    } catch {
+      toast.error("Server error", { id: loading });
     }
   };
 
-  // FINANCIAL AGGREGATE LOGIC
-  const stats = {
-    totalValue: Array.isArray(orders) ? orders.reduce((acc, o) => acc + (o.totalAmount || 0), 0) : 0,
-    pendingCount: orders.filter(o => o.status === 'PENDING').length,
-    completedCount: orders.filter(o => o.status === 'COMPLETED').length
+  const stats = useMemo(() => ({
+    totalValue: orders.reduce((acc, o) => acc + (o.totalAmount || 0), 0),
+    pending: orders.filter(o => o.status === 'PENDING').length,
+    completed: orders.filter(o => o.status === 'COMPLETED').length
+  }), [orders]);
+
+  const filteredOrders = orders.filter(
+    o => filter === 'ALL' || o.status === filter
+  );
+
+  const statusColor = (status) => {
+    if (status === 'PENDING') return 'bg-amber-400';
+    if (status === 'DISPATCHED') return 'bg-blue-400';
+    return 'bg-green-400';
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#D4AF37]">
-      
-      {/* --- INDUSTRIAL STOCK WATCHDOG --- */}
+    <div className="space-y-8">
+
+      {/* LOW STOCK PANEL */}
       <LowStockPanel />
 
-      <div className="p-8 md:p-20">
-        <header className="mb-16 flex justify-between items-end">
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-            <p className="text-[#D4AF37] text-[10px] font-bold tracking-[0.6em] uppercase mb-4 text-left">Command Center</p>
-            <h1 className="text-6xl font-black uppercase tracking-tighter leading-none text-left">
-              Global <span className="text-transparent stroke-text">Orders</span>
-            </h1>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }} 
-            animate={{ opacity: 1, x: 0 }}
-            className="hidden lg:flex gap-12 bg-white/[0.02] border border-white/5 p-8 backdrop-blur-md"
-          >
-            <div className="text-right">
-              <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest mb-1">Total Assets Value</p>
-              <p className="text-2xl font-black text-[#D4AF37]">LKR {stats.totalValue.toLocaleString()}</p>
-            </div>
-            <div className="w-[1px] bg-white/10"></div>
-            <div className="text-right">
-              <p className="text-[9px] font-black text-gray-500 uppercase tracking-widest mb-1">Active Protocols</p>
-              <p className="text-2xl font-black text-white">{stats.pendingCount}</p>
-            </div>
-          </motion.div>
-        </header>
+      {/* HEADER */}
+      <div className="rounded-[28px] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-6 shadow-xl">
+        <div className="flex flex-col md:flex-row justify-between gap-6">
 
-        {/* FILTER CONTROLS */}
-        <div className="flex gap-4 mb-10 overflow-x-auto pb-4 border-b border-white/5">
-          {['ALL', 'PENDING', 'DISPATCHED', 'COMPLETED'].map((s) => (
-            <button 
-              key={s} onClick={() => setFilter(s)}
-              className={`px-6 py-2 text-[10px] font-black tracking-widest uppercase transition-all border ${filter === s ? 'bg-[#D4AF37] text-black border-[#D4AF37]' : 'border-white/10 text-gray-500 hover:border-white/30'}`}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-[#D4AF37] mb-2">
+              Logistics Control
+            </p>
+            <h2 className="text-3xl font-black text-white">
+              Global Orders
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-1 gap-4">
-          <AnimatePresence mode="popLayout">
-            {orders.filter(o => filter === 'ALL' || o.status === filter).map((order) => (
-              <motion.div 
-                key={order.id} 
-                layout 
-                initial={{ opacity: 0, y: 10 }} 
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-white/[0.01] border border-white/5 p-6 flex flex-wrap lg:flex-nowrap items-center justify-between gap-8 hover:bg-white/[0.02] transition-colors relative overflow-hidden group"
-              >
-                {/* Visual indicator for current status */}
-                <div className={`absolute left-0 top-0 w-1 h-full transition-all ${order.status === 'PENDING' ? 'bg-amber-500' : order.status === 'DISPATCHED' ? 'bg-blue-500' : 'bg-green-500'}`}></div>
-
-                <div className="flex items-center gap-6">
-                  <div className="p-4 bg-white/[0.03] text-[#D4AF37] rounded-full group-hover:bg-[#D4AF37]/10 transition-colors">
-                    <Package size={20} />
-                  </div>
-                  <div className="text-left">
-                    <h3 className="font-mono font-bold text-lg tracking-widest uppercase text-left">ATH-{order.id + 1000}</h3>
-                    <p className="text-[10px] text-gray-500 uppercase font-black tracking-widest mt-1 text-left">
-                      {new Date(order.orderDate).toLocaleString()}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex-1 px-10 text-left">
-                   <p className="text-[9px] text-gray-600 font-bold uppercase mb-1 tracking-widest text-left">Logistics Destination</p>
-                   <p className="text-xs uppercase text-gray-300 truncate max-w-sm font-medium text-left">{order.shippingAddress}</p>
-                </div>
-
-                <div className="text-right mr-10">
-                   <p className="text-[9px] text-[#D4AF37] font-bold uppercase mb-1 tracking-widest">Authorized Total</p>
-                   <p className="text-xl font-black tracking-tight text-white">LKR {order.totalAmount.toLocaleString()}</p>
-                </div>
-
-                {/* LOGISTICS ACTIONS */}
-                <div className="flex gap-2">
-                  <button 
-                    onClick={() => updateStatus(order.id, 'DISPATCHED')}
-                    disabled={order.status === 'DISPATCHED' || order.status === 'COMPLETED'}
-                    className="p-3 bg-blue-500/10 text-blue-500 border border-blue-500/20 hover:bg-blue-500 hover:text-white transition-all rounded-sm disabled:opacity-20 disabled:grayscale"
-                    title="Mark as Dispatched"
-                  >
-                    <Truck size={16} />
-                  </button>
-                  <button 
-                    onClick={() => updateStatus(order.id, 'COMPLETED')}
-                    disabled={order.status === 'COMPLETED'}
-                    className="p-3 bg-green-500/10 text-green-500 border border-green-500/20 hover:bg-green-500 hover:text-white transition-all rounded-sm disabled:opacity-20 disabled:grayscale"
-                    title="Mark as Completed"
-                  >
-                    <CheckCircle size={16} />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+          <div className="flex gap-6">
+            <StatCard title="Total Value" value={`LKR ${stats.totalValue.toLocaleString()}`} />
+            <StatCard title="Pending" value={stats.pending} />
+            <StatCard title="Completed" value={stats.completed} />
+          </div>
         </div>
       </div>
-      <style>{`.stroke-text { -webkit-text-stroke: 1px rgba(212, 175, 55, 0.4); color: transparent; }`}</style>
+
+      {/* FILTER */}
+      <div className="flex gap-3 flex-wrap">
+        {['ALL', 'PENDING', 'DISPATCHED', 'COMPLETED'].map((s) => (
+          <button
+            key={s}
+            onClick={() => setFilter(s)}
+            className={`px-5 py-2 rounded-full text-xs font-semibold transition 
+              ${filter === s 
+                ? 'bg-[#D4AF37] text-black' 
+                : 'bg-white/5 text-gray-400 hover:bg-white/10'}`}
+          >
+            {s}
+          </button>
+        ))}
+      </div>
+
+      {/* ORDERS */}
+      <div className="space-y-4">
+        <AnimatePresence>
+          {filteredOrders.map((order) => (
+            <motion.div
+              key={order.id}
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-6 flex flex-col lg:flex-row justify-between gap-6 hover:bg-white/[0.06] transition"
+            >
+
+              {/* LEFT */}
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
+                  <Package className="text-[#D4AF37]" />
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-white">
+                    ORDER #{order.id}
+                  </h3>
+                  <p className="text-xs text-gray-400">
+                    {new Date(order.orderDate).toLocaleString()}
+                  </p>
+                </div>
+              </div>
+
+              {/* ADDRESS */}
+              <div className="flex-1">
+                <p className="text-xs text-gray-400">Destination</p>
+                <p className="text-sm text-white truncate">
+                  {order.shippingAddress}
+                </p>
+              </div>
+
+              {/* PRICE */}
+              <div>
+                <p className="text-xs text-gray-400">Total</p>
+                <p className="text-lg font-bold text-white">
+                  LKR {order.totalAmount.toLocaleString()}
+                </p>
+              </div>
+
+              {/* STATUS */}
+              <div className="flex items-center gap-2">
+                <span className={`w-3 h-3 rounded-full ${statusColor(order.status)}`}></span>
+                <span className="text-sm text-white">{order.status}</span>
+              </div>
+
+              {/* ACTIONS */}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => updateStatus(order.id, 'DISPATCHED')}
+                  disabled={order.status !== 'PENDING'}
+                  className="p-3 rounded-xl bg-blue-500/10 hover:bg-blue-500 text-blue-400 hover:text-white transition disabled:opacity-20"
+                >
+                  <Truck size={16} />
+                </button>
+
+                <button
+                  onClick={() => updateStatus(order.id, 'COMPLETED')}
+                  disabled={order.status === 'COMPLETED'}
+                  className="p-3 rounded-xl bg-green-500/10 hover:bg-green-500 text-green-400 hover:text-white transition disabled:opacity-20"
+                >
+                  <CheckCircle size={16} />
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
+
+const StatCard = ({ title, value }) => (
+  <div className="bg-white/5 px-6 py-3 rounded-2xl border border-white/10">
+    <p className="text-xs text-gray-400">{title}</p>
+    <p className="text-lg font-bold text-white">{value}</p>
+  </div>
+);
 
 export default AdminOrders;

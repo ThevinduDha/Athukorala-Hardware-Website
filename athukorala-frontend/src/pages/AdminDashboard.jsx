@@ -395,59 +395,65 @@ const AdminDashboard = () => {
         />
 
         <div className="px-6 lg:px-10 py-8 lg:py-10">
-          {activeTab !== 'suppliers' && (
-            <header className="mb-10 lg:mb-12">
-              <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
-                <motion.div
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.55 }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-                    <p className="text-sm font-semibold text-[#D4AF37] uppercase tracking-[0.22em]">
-                      {header.eyebrow}
-                    </p>
-                  </div>
-
-                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-none">
-                    {header.title}
-                  </h1>
-
-                  <p className="mt-4 text-base text-gray-400 max-w-2xl leading-relaxed">
-                    {header.sub}
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.55 }}
-                  className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
-                >
-                  <div className="relative group">
-                    <Search
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#D4AF37]"
-                      size={18}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Search registry..."
-                      className="w-full sm:w-72 rounded-2xl border border-white/10 bg-white/5 py-3.5 pl-11 pr-4 text-sm outline-none focus:border-[#D4AF37] transition-all placeholder:text-gray-500"
-                    />
-                  </div>
-
-                  <motion.button
-                    whileHover={{ rotate: 10 }}
-                    className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center relative hover:bg-[#D4AF37]/15 transition-all"
+          {/* SHOW TOP HEADER ONLY FOR PAGES THAT STILL NEED IT */}
+          {activeTab !== 'suppliers' &&
+            activeTab !== 'inventory' &&
+            activeTab !== 'clients' &&
+            activeTab !== 'financials' &&
+            activeTab !== 'config' &&
+            activeTab !== 'promotions' && (
+              <header className="mb-10 lg:mb-12">
+                <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-6">
+                  <motion.div
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.55 }}
                   >
-                    <Bell size={20} className="text-[#D4AF37]" />
-                    <div className="absolute top-0.5 right-0.5 w-3 h-3 bg-red-500 border-2 border-[#050505] rounded-full" />
-                  </motion.button>
-                </motion.div>
-              </div>
-            </header>
-          )}
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+                      <p className="text-sm font-semibold text-[#D4AF37] uppercase tracking-[0.22em]">
+                        {header.eyebrow}
+                      </p>
+                    </div>
+
+                    <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-none">
+                      {header.title}
+                    </h1>
+
+                    <p className="mt-4 text-base text-gray-400 max-w-2xl leading-relaxed">
+                      {header.sub}
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.55 }}
+                    className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
+                  >
+                    <div className="relative group">
+                      <Search
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#D4AF37]"
+                        size={18}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Search registry..."
+                        className="w-full sm:w-72 rounded-2xl border border-white/10 bg-white/5 py-3.5 pl-11 pr-4 text-sm outline-none focus:border-[#D4AF37] transition-all placeholder:text-gray-500"
+                      />
+                    </div>
+
+                    <motion.button
+                      whileHover={{ rotate: 10 }}
+                      className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center relative hover:bg-[#D4AF37]/15 transition-all"
+                    >
+                      <Bell size={20} className="text-[#D4AF37]" />
+                      <div className="absolute top-0.5 right-0.5 w-3 h-3 bg-red-500 border-2 border-[#050505] rounded-full" />
+                    </motion.button>
+                  </motion.div>
+                </div>
+              </header>
+            )}
 
           <AnimatePresence mode="wait">
             {activeTab === 'command' && (
@@ -543,7 +549,6 @@ const AdminDashboard = () => {
                 exit="exit"
                 className="space-y-10"
               >
-                {/* INTERNAL STAFF FIRST */}
                 <section className="space-y-5">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
@@ -554,7 +559,6 @@ const AdminDashboard = () => {
                   <StaffNoticeManager onSuccess={() => setArchiveRefresh((prev) => prev + 1)} />
                 </section>
 
-                {/* CUSTOMER PROMOTION BELOW STAFF */}
                 <section className="space-y-5">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-[#D4AF37] rounded-full animate-pulse" />
@@ -573,7 +577,6 @@ const AdminDashboard = () => {
                   />
                 </section>
 
-                {/* ARCHIVE LAST */}
                 <motion.div variants={fadeUp} initial="hidden" animate="show">
                   <NoticeArchive
                     refreshTrigger={archiveRefresh}

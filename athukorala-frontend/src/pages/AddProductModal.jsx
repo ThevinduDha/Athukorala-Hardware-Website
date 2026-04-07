@@ -11,8 +11,14 @@ const AddProductModal = ({ isOpen, onClose }) => {
   const [suppliers, setSuppliers] = useState([]);
 
   const HARDWARE_CATEGORIES = [
-    "Electrical", "Plumbing", "Painting & Adhesives", "Power Tools",
-    "Hand Tools", "Building Materials", "Fasteners & Screws", "Safety Gear"
+    "ELECTRICAL",
+    "PLUMBING",
+    "PAINTING & ADHESIVES",
+    "POWER TOOLS",
+    "HAND TOOLS",
+    "BUILDING MATERIALS",
+    "FASTENERS & SCREWS",
+    "SAFETY GEAR"
   ];
 
   useEffect(() => {
@@ -35,15 +41,15 @@ const AddProductModal = ({ isOpen, onClose }) => {
 
   const onInvalid = (errors) => {
     const firstError = Object.values(errors)[0]?.message || "CHECK MANDATORY FIELDS";
-    
+
     toast.error(`PROTOCOL REJECTED: ${firstError.toUpperCase()}`, {
       icon: <AlertCircle size={20} className="text-red-500" />,
-      style: { 
-        borderRadius: '0px', 
-        background: '#000', 
-        color: '#ff4444', 
-        border: '1px solid #ff4444', 
-        fontSize: '10px', 
+      style: {
+        borderRadius: '0px',
+        background: '#000',
+        color: '#ff4444',
+        border: '1px solid #ff4444',
+        fontSize: '10px',
         fontWeight: 'bold',
         letterSpacing: '0.1em'
       }
@@ -55,20 +61,34 @@ const AddProductModal = ({ isOpen, onClose }) => {
       ...data,
       price: parseFloat(data.price),
       stockQuantity: parseInt(data.stockQuantity),
-      reorderLevel: 5, 
+      reorderLevel: 5,
       imageUrl: uploadedImageUrl || getDefaultIcon(data.category),
       supplier: data.supplierId ? { id: parseInt(data.supplierId) } : null
     };
 
     if (finalData.price <= 0 || finalData.stockQuantity < 0) {
-        toast.error("VALUATION ERROR: INVALID NUMERIC DATA", {
-          style: { borderRadius: '0px', background: '#000', color: '#ff4444', border: '1px solid #ff4444', fontSize: '10px', fontWeight: 'bold' }
-        });
-        return;
+      toast.error("VALUATION ERROR: INVALID NUMERIC DATA", {
+        style: {
+          borderRadius: '0px',
+          background: '#000',
+          color: '#ff4444',
+          border: '1px solid #ff4444',
+          fontSize: '10px',
+          fontWeight: 'bold'
+        }
+      });
+      return;
     }
 
     const loadingToast = toast.loading("AUTHORIZING NEW ASSET...", {
-      style: { borderRadius: '0px', background: '#050505', color: '#D4AF37', border: '1px solid #D4AF37', fontSize: '10px', fontWeight: 'bold' }
+      style: {
+        borderRadius: '0px',
+        background: '#050505',
+        color: '#D4AF37',
+        border: '1px solid #D4AF37',
+        fontSize: '10px',
+        fontWeight: 'bold'
+      }
     });
 
     try {
@@ -79,9 +99,15 @@ const AddProductModal = ({ isOpen, onClose }) => {
       });
 
       if (response.ok) {
-        toast.success("INVENTORY REGISTRY UPDATED", { 
+        toast.success("INVENTORY REGISTRY UPDATED", {
           id: loadingToast,
-          style: { borderRadius: '0px', background: '#D4AF37', color: '#000', fontSize: '10px', fontWeight: '900' }
+          style: {
+            borderRadius: '0px',
+            background: '#D4AF37',
+            color: '#000',
+            fontSize: '10px',
+            fontWeight: '900'
+          }
         });
         reset();
         setUploadedImageUrl("");
@@ -98,19 +124,17 @@ const AddProductModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      /* BUG FIX 1: Add onClick to the backdrop to close the modal */
       onClick={onClose}
       className="fixed inset-0 z-[100] flex items-center justify-end bg-black/80 backdrop-blur-sm cursor-pointer"
     >
-      <motion.div 
-        initial={{ x: 500 }} 
-        animate={{ x: 0 }} 
+      <motion.div
+        initial={{ x: 500 }}
+        animate={{ x: 0 }}
         exit={{ x: 500 }}
-        /* BUG FIX 2: Stop propagation so clicking inside the form DOES NOT close it */
         onClick={(e) => e.stopPropagation()}
         className="w-full max-w-lg h-full bg-[#080808] border-l border-[#D4AF37]/20 p-12 relative shadow-[-20px_0_50px_rgba(0,0,0,0.5)] overflow-y-auto cursor-default"
       >
@@ -125,93 +149,110 @@ const AddProductModal = ({ isOpen, onClose }) => {
 
         <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="space-y-8">
           <div className="group text-left">
-             <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">Product Visual</label>
-             <ImageUpload onUploadSuccess={(url) => setUploadedImageUrl(url)} />
+            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">
+              Product Visual
+            </label>
+            <ImageUpload onUploadSuccess={(url) => setUploadedImageUrl(url)} />
           </div>
 
-          <InputGroup 
-            label="Product Name" 
-            icon={<Box size={16}/>} 
-            register={register("name", { required: "Asset Name is required" })} 
-            placeholder="e.g. Nippon Paint Gold" 
+          <InputGroup
+            label="Product Name"
+            icon={<Box size={16} />}
+            register={register("name", { required: "Asset Name is required" })}
+            placeholder="e.g. Nippon Paint Gold"
             error={errors.name}
           />
-          
+
           <div className="group text-left">
-            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">Primary Supplier (Optional)</label>
+            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">
+              Primary Supplier (Optional)
+            </label>
             <div className="relative">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4AF37]/50 group-focus-within:text-[#D4AF37] transition-colors">
                 <Truck size={16} />
               </div>
-              <select 
-                {...register("supplierId")} 
+              <select
+                {...register("supplierId")}
                 className="w-full bg-transparent border-b border-white/10 focus:border-[#D4AF37] pl-8 py-3 outline-none text-sm uppercase tracking-widest transition-all appearance-none text-white"
               >
                 <option value="" className="bg-[#080808]">Select Supplier...</option>
-                {suppliers.map(s => (
-                  <option key={s.id} value={s.id} className="bg-[#080808]">{s.name}</option>
+                {suppliers.map((s) => (
+                  <option key={s.id} value={s.id} className="bg-[#080808]">
+                    {s.name}
+                  </option>
                 ))}
               </select>
             </div>
           </div>
 
           <div className="group text-left">
-            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">Category</label>
+            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3 text-left">
+              Category
+            </label>
             <div className="relative">
               <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4AF37]/50 group-focus-within:text-[#D4AF37] transition-colors">
                 <ListTree size={16} />
               </div>
-              <select 
+              <select
                 {...register("category", { required: "Category assignment required" })}
-                className={`w-full bg-transparent border-b pl-8 py-3 outline-none text-sm uppercase tracking-widest transition-all appearance-none text-white cursor-pointer ${errors.category ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'}`}
+                className={`w-full bg-transparent border-b pl-8 py-3 outline-none text-sm uppercase tracking-widest transition-all appearance-none text-white cursor-pointer ${
+                  errors.category ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'
+                }`}
               >
-                <option value="" className="bg-[#080808]">Select Category...</option>
-                {HARDWARE_CATEGORIES.map(cat => (
-                  <option key={cat} value={cat} className="bg-[#080808]">{cat}</option>
+                <option value="" className="bg-[#080808]">SELECT CATEGORY...</option>
+                {HARDWARE_CATEGORIES.map((cat) => (
+                  <option key={cat} value={cat} className="bg-[#080808]">
+                    {cat}
+                  </option>
                 ))}
               </select>
             </div>
             {errors.category && (
               <p className="text-[9px] text-red-500 font-black mt-2 uppercase tracking-widest flex items-center gap-1">
-                <Info size={10}/> {errors.category.message}
+                <Info size={10} /> {errors.category.message}
               </p>
             )}
           </div>
-          
+
           <div className="grid grid-cols-2 gap-6 text-left">
-            <InputGroup 
-                label="Unit Price" 
-                icon={<DollarSign size={16}/>} 
-                register={register("price", { 
-                  required: "Price required", 
-                  min: { value: 0.01, message: "Value > 0" } 
-                })} 
-                placeholder="0.00" 
-                type="number" 
-                error={errors.price}
+            <InputGroup
+              label="Unit Price"
+              icon={<DollarSign size={16} />}
+              register={register("price", {
+                required: "Price required",
+                min: { value: 0.01, message: "Value > 0" }
+              })}
+              placeholder="0.00"
+              type="number"
+              error={errors.price}
             />
-            <InputGroup 
-                label="Quantity" 
-                icon={<Box size={16}/>} 
-                register={register("stockQuantity", { 
-                  required: "Qty required", 
-                  min: { value: 0, message: "Min 0" } 
-                })} 
-                placeholder="0" 
-                type="number" 
-                error={errors.stockQuantity}
+            <InputGroup
+              label="Quantity"
+              icon={<Box size={16} />}
+              register={register("stockQuantity", {
+                required: "Qty required",
+                min: { value: 0, message: "Min 0" }
+              })}
+              placeholder="0"
+              type="number"
+              error={errors.stockQuantity}
             />
           </div>
 
           <div className="group text-left">
-            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">Specifications</label>
-            <textarea 
+            <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">
+              Specifications
+            </label>
+            <textarea
               {...register("description")}
               className="w-full bg-white/5 border border-white/10 p-4 focus:border-[#D4AF37] outline-none transition-all text-sm h-32 text-white"
             />
           </div>
 
-          <button type="submit" className="w-full bg-[#D4AF37] text-black font-black py-5 tracking-[0.4em] uppercase flex items-center justify-center gap-3 hover:bg-[#E5C158] transition-all mt-10 shadow-2xl">
+          <button
+            type="submit"
+            className="w-full bg-[#D4AF37] text-black font-black py-5 tracking-[0.4em] uppercase flex items-center justify-center gap-3 hover:bg-[#E5C158] transition-all mt-10 shadow-2xl"
+          >
             <Save size={20} /> Record Asset
           </button>
         </form>
@@ -222,17 +263,26 @@ const AddProductModal = ({ isOpen, onClose }) => {
 
 const InputGroup = ({ label, icon, register, placeholder, type = "text", error }) => (
   <div className="group text-left">
-    <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">{label}</label>
+    <label className="text-[10px] uppercase tracking-widest text-gray-500 font-bold block mb-3">
+      {label}
+    </label>
     <div className="relative text-left">
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4AF37]/50 group-focus-within:text-[#D4AF37] transition-colors">{icon}</div>
-      <input 
-        {...register} type={type} placeholder={placeholder} step="any"
-        className={`w-full bg-transparent border-b pl-8 py-3 outline-none transition-all text-sm uppercase tracking-widest text-white placeholder:text-gray-800 ${error ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'}`}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 text-[#D4AF37]/50 group-focus-within:text-[#D4AF37] transition-colors">
+        {icon}
+      </div>
+      <input
+        {...register}
+        type={type}
+        placeholder={placeholder}
+        step="any"
+        className={`w-full bg-transparent border-b pl-8 py-3 outline-none transition-all text-sm uppercase tracking-widest text-white placeholder:text-gray-800 ${
+          error ? 'border-red-500' : 'border-white/10 focus:border-[#D4AF37]'
+        }`}
       />
     </div>
     {error && (
       <p className="text-[9px] text-red-500 font-black mt-2 uppercase tracking-widest flex items-center gap-1">
-        <Info size={10}/> {error.message}
+        <Info size={10} /> {error.message}
       </p>
     )}
   </div>

@@ -12,28 +12,118 @@ import {
   Cpu,
   Boxes,
   ArrowUpRight,
-  BadgeCheck
+  BadgeCheck,
+  Minus,
+  Plus
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
   const [product, setProduct] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const user = JSON.parse(localStorage.getItem('user') || '{"name":"Guest"}');
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/products/${id}`)
       .then((res) => res.json())
-      .then((data) => setProduct(data))
+      .then((data) => {
+        setProduct(data);
+        setSelectedQuantity(1);
+      })
       .catch(() => toast.error('Hardware registry sync failed'));
   }, [id]);
+
+  const hasDiscount =
+    product?.discountedPrice && product.discountedPrice < product.price;
+
+  const activePrice = hasDiscount ? product?.discountedPrice || 0 : product?.price || 0;
+
+  const availableStock = Number(product?.stockQuantity || 0);
+
+  const increaseQuantity = () => {
+    if (!product) return;
+
+    if (selectedQuantity >= availableStock) {
+      toast.error(`Maximum available quantity is ${availableStock}`);
+      return;
+    }
+
+    setSelectedQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (selectedQuantity <= 1) return;
+    setSelectedQuantity((prev) => prev - 1);
+  };
+
+  const handleQuantityInput = (e) => {
+    const value = e.target.value;
+
+    if (value === '') {
+      setSelectedQuantity('');
+      return;
+    }
+
+    const numericValue = Number(value);
+
+    if (Number.isNaN(numericValue)) return;
+
+    if (numericValue < 1) {
+      setSelectedQuantity(1);
+      return;
+    }
+
+    if (numericValue > availableStock) {
+      setSelectedQuantity(availableStock);
+      return;
+    }
+
+    setSelectedQuantity(numericValue);
+  };
+
+  const normalizeQuantity = () => {
+    if (selectedQuantity === '' || Number.isNaN(Number(selectedQuantity))) {
+      setSelectedQuantity(1);
+      return;
+    }
+
+    if (selectedQuantity < 1) {
+      setSelectedQuantity(1);
+      return;
+    }
+
+    if (selectedQuantity > availableStock) {
+      setSelectedQuantity(availableStock);
+    }
+  };
 
   const handleInitializePurchase = async () => {
     if (user.name === 'Guest') {
       toast.error('AUTHENTICATION REQUIRED');
+      return;
+    }
+
+    if (!product) return;
+
+    if (availableStock <= 0) {
+      toast.error('PRODUCT OUT OF STOCK');
+      return;
+    }
+
+    const qty = Number(selectedQuantity);
+
+    if (!qty || qty < 1) {
+      toast.error('Quantity must be at least 1');
+      return;
+    }
+
+    if (qty > availableStock) {
+      toast.error(`Quantity cannot exceed ${availableStock}`);
       return;
     }
 
@@ -42,10 +132,15 @@ const ProductDetail = () => {
       const response = await fetch('http://localhost:8080/api/cart/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: user.id, productId: product.id, quantity: 1 })
+        body: JSON.stringify({
+          userId: user.id,
+          productId: product.id,
+          quantity: qty
+        })
       });
 
       if (response.ok) {
+        localStorage.setItem('lastCartTotal', activePrice * qty);
         toast.success('Redirecting to Payment...', { id: loadingToast });
         setTimeout(() => navigate('/checkout'), 1000);
       } else {
@@ -70,16 +165,12 @@ const ProductDetail = () => {
     );
   }
 
-  const hasDiscount =
-    product?.discountedPrice && product.discountedPrice < product.price;
-
   const discountPercent = hasDiscount
     ? Math.round(((product.price - product.discountedPrice) / product.price) * 100)
     : 0;
 
   return (
     <div className="min-h-screen bg-[#050505] text-white px-5 sm:px-8 lg:px-12 2xl:px-20 py-8 lg:py-10 font-sans relative overflow-hidden selection:bg-[#D4AF37] selection:text-black">
-      {/* Background glow */}
       <motion.div
         animate={{
           scale: [1, 1.12, 1],
@@ -98,7 +189,6 @@ const ProductDetail = () => {
         className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-white blur-[180px] rounded-full -z-10 pointer-events-none"
       />
 
-      {/* Back */}
       <motion.button
         initial={{ opacity: 0, x: -16 }}
         animate={{ opacity: 1, x: 0 }}
@@ -110,7 +200,6 @@ const ProductDetail = () => {
         <span className="font-medium">Back to Catalog</span>
       </motion.button>
 
-      {/* Top heading block */}
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -147,7 +236,6 @@ const ProductDetail = () => {
       </motion.div>
 
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-10 xl:gap-12 items-start">
-        {/* LEFT */}
         <div className="xl:col-span-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -183,9 +271,7 @@ const ProductDetail = () => {
           </motion.div>
         </div>
 
-        {/* RIGHT */}
         <div className="xl:col-span-6 space-y-8">
-          {/* Price Card */}
           <motion.div
             initial={{ opacity: 0, x: 22 }}
             animate={{ opacity: 1, x: 0 }}
@@ -198,8 +284,7 @@ const ProductDetail = () => {
 
             <div className="flex items-end gap-4 flex-wrap mt-5">
               <span className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-none">
-                LKR{' '}
-                {(hasDiscount ? product.discountedPrice : product.price)?.toLocaleString()}
+                LKR {activePrice?.toLocaleString()}
               </span>
 
               {hasDiscount && (
@@ -217,7 +302,64 @@ const ProductDetail = () => {
             )}
           </motion.div>
 
-          {/* Specs */}
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.12 }}
+            className="rounded-[30px] border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 lg:p-7"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+              <div>
+                <p className="text-xs uppercase tracking-[0.14em] text-[#D4AF37] font-medium mb-2">
+                  Purchase Quantity
+                </p>
+                <p className="text-sm text-gray-400">
+                  Select between 1 and {availableStock} unit{availableStock === 1 ? '' : 's'}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 rounded-[22px] border border-white/10 bg-white/[0.03] px-4 py-3 w-fit">
+                <button
+                  type="button"
+                  onClick={decreaseQuantity}
+                  disabled={selectedQuantity <= 1}
+                  className="w-10 h-10 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white hover:border-[#D4AF37] hover:text-[#D4AF37] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                >
+                  <Minus size={16} />
+                </button>
+
+                <input
+                  type="number"
+                  min="1"
+                  max={availableStock}
+                  value={selectedQuantity}
+                  onChange={handleQuantityInput}
+                  onBlur={normalizeQuantity}
+                  className="w-20 text-center bg-transparent outline-none text-xl font-semibold text-white [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />
+
+                <button
+                  type="button"
+                  onClick={increaseQuantity}
+                  disabled={selectedQuantity >= availableStock}
+                  className="w-10 h-10 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white hover:border-[#D4AF37] hover:text-[#D4AF37] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                >
+                  <Plus size={16} />
+                </button>
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-sm text-gray-300">
+                Selected: <span className="text-white font-semibold">{selectedQuantity}</span>
+              </div>
+
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/20 bg-[#D4AF37]/10 px-4 py-2 text-sm text-[#D4AF37]">
+                Total: LKR {(activePrice * Number(selectedQuantity || 1)).toLocaleString()}
+              </div>
+            </div>
+          </motion.div>
+
           <motion.div
             initial="hidden"
             animate="show"
@@ -254,7 +396,6 @@ const ProductDetail = () => {
             />
           </motion.div>
 
-          {/* CTA Row */}
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
@@ -270,14 +411,14 @@ const ProductDetail = () => {
 
             <button
               onClick={handleInitializePurchase}
-              className="sm:col-span-2 relative overflow-hidden rounded-2xl bg-[#D4AF37] text-black py-4 font-semibold text-sm flex items-center justify-center gap-3 hover:bg-white transition-all shadow-[0_0_40px_rgba(212,175,55,0.18)]"
+              disabled={availableStock <= 0}
+              className="sm:col-span-2 relative overflow-hidden rounded-2xl bg-[#D4AF37] text-black py-4 font-semibold text-sm flex items-center justify-center gap-3 hover:bg-white transition-all shadow-[0_0_40px_rgba(212,175,55,0.18)] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ShoppingCart size={18} />
               Initialize Purchase
             </button>
           </motion.div>
 
-          {/* Trust note */}
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}

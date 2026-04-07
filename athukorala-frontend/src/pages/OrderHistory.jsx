@@ -211,14 +211,30 @@ const OrderHistory = () => {
         <div className="px-4 pb-4 space-y-4">
           <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-5">
             {!sidebarCollapsed ? (
-              <>
-                <p className="text-xs text-gray-500 uppercase tracking-[0.14em]">
-                  Authenticated Identity
-                </p>
-                <p className="text-lg font-medium text-[#D4AF37] mt-3 truncate">
-                  {user.name}
-                </p>
-              </>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37]/30 bg-black flex items-center justify-center shrink-0">
+                  {user?.profilePic ? (
+                    <img
+                      src={user.profilePic}
+                      alt={user?.name || 'Profile'}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-sm font-semibold text-[#D4AF37]">
+                      {getInitials(user?.name)}
+                    </span>
+                  )}
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-xs text-gray-500 uppercase tracking-[0.14em]">
+                    Authenticated Identity
+                  </p>
+                  <p className="text-lg font-medium text-[#D4AF37] mt-1 truncate">
+                    {user?.name || 'Authorized Guest'}
+                  </p>
+                </div>
+              </div>
             ) : (
               <div className="flex justify-center">
                 <BadgeCheck className="text-[#D4AF37]" size={18} />
@@ -257,6 +273,22 @@ const OrderHistory = () => {
         <div className="absolute top-0 left-0 w-[520px] h-[520px] bg-white/[0.02] blur-[150px] rounded-full -z-10 pointer-events-none" />
 
         <div className="px-5 sm:px-8 lg:px-10 2xl:px-14 py-8 lg:py-10">
+          {/* TOP BAR */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-8"
+          >
+            <div>
+              <p className="text-sm text-gray-400">Customer Portal</p>
+              <h2 className="text-2xl sm:text-3xl font-semibold text-white">
+                Order History
+              </h2>
+            </div>
+
+            <TopUserChip user={user} />
+          </motion.div>
+
           {/* MOBILE TOP BAR */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -428,6 +460,42 @@ const OrderHistory = () => {
           )}
         </div>
       </main>
+    </div>
+  );
+};
+
+const getInitials = (name) => {
+  const parts = (name || 'User').trim().split(' ');
+  const first = parts[0]?.charAt(0) || '';
+  const second = parts[1]?.charAt(0) || '';
+  return `${first}${second}`.toUpperCase() || 'U';
+};
+
+const TopUserChip = ({ user }) => {
+  return (
+    <div className="flex items-center gap-4 self-start lg:self-auto rounded-[24px] border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur-xl">
+      <div className="w-12 h-12 rounded-full overflow-hidden border border-[#D4AF37]/30 bg-black flex items-center justify-center shrink-0">
+        {user?.profilePic ? (
+          <img
+            src={user.profilePic}
+            alt={user?.name || 'Profile'}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-sm font-semibold text-[#D4AF37]">
+            {getInitials(user?.name)}
+          </span>
+        )}
+      </div>
+
+      <div>
+        <p className="text-xs uppercase tracking-[0.16em] text-gray-500">
+          Logged in as
+        </p>
+        <p className="text-sm font-medium text-white">
+          {user?.name || 'Authorized Guest'}
+        </p>
+      </div>
     </div>
   );
 };

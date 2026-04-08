@@ -35,6 +35,9 @@ public class Product {
     @Min(value = 0, message = "Reorder level cannot be negative")
     private int reorderLevel;
 
+    @Min(value = 0, message = "Reorder quantity cannot be negative")
+    private Integer reorderQty;
+
     // --- CRITICAL SYNC FIELD ---
     @Transient
     private Double discountedPrice;

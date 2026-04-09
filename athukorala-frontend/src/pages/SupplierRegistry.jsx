@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, X, ShieldAlert } from 'lucide-react';
+import { Plus, X } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import SupplierContactCard from '../components/SupplierContactCard';
+import ProductSupplierLinkPanel from '../components/ProductSupplierLinkPanel';
 
 const SupplierRegistry = () => {
   const [suppliers, setSuppliers] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
-  const user = JSON.parse(localStorage.getItem("user") || '{}');
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
   const isAdmin = user.role === 'ADMIN';
 
   const [formData, setFormData] = useState({
@@ -22,23 +23,26 @@ const SupplierRegistry = () => {
 
   const fetchSuppliers = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/suppliers/all");
+      const res = await fetch('http://localhost:8080/api/suppliers');
       const data = await res.json();
-      setSuppliers(data);
+      setSuppliers(Array.isArray(data) ? data : []);
     } catch {
-      toast.error("SUPPLIER DATABASE OFFLINE");
+      toast.error('SUPPLIER DATABASE OFFLINE');
+      setSuppliers([]);
     }
   };
 
-  useEffect(() => { fetchSuppliers(); }, []);
+  useEffect(() => {
+    fetchSuppliers();
+  }, []);
 
   const validate = () => {
     const phoneRegex = /^(?:0|94|\+94)?7(0|1|2|4|5|6|7|8)\d{7}$/;
     const emailRegex = /^\S+@\S+\.\S+$/;
 
-    if (formData.name.length < 3) return "COMPANY NAME TOO SHORT";
-    if (!emailRegex.test(formData.email)) return "INVALID EMAIL";
-    if (!phoneRegex.test(formData.phoneNumber)) return "INVALID PHONE NUMBER";
+    if (formData.name.trim().length < 3) return 'COMPANY NAME TOO SHORT';
+    if (!emailRegex.test(formData.email)) return 'INVALID EMAIL';
+    if (!phoneRegex.test(formData.phoneNumber)) return 'INVALID PHONE NUMBER';
 
     return null;
   };
@@ -48,33 +52,35 @@ const SupplierRegistry = () => {
     const error = validate();
     if (error) return toast.error(error);
 
-    const loading = toast.loading(editingId ? "Updating..." : "Registering...");
+    const loading = toast.loading(editingId ? 'Updating...' : 'Registering...');
 
     const url = editingId
       ? `http://localhost:8080/api/suppliers/${editingId}`
-      : "http://localhost:8080/api/suppliers/add";
+      : 'http://localhost:8080/api/suppliers';
 
     try {
       const res = await fetch(url, {
-        method: editingId ? "PUT" : "POST",
-        headers: { "Content-Type": "application/json" },
+        method: editingId ? 'PUT' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
       if (res.ok) {
-        toast.success(editingId ? "Updated" : "Registered", { id: loading });
+        toast.success(editingId ? 'Updated' : 'Registered', { id: loading });
         closeForm();
         fetchSuppliers();
+      } else {
+        toast.error('Action Failed', { id: loading });
       }
     } catch {
-      toast.error("Action Failed", { id: loading });
+      toast.error('Action Failed', { id: loading });
     }
   };
 
   const handleDelete = async (id, name) => {
     if (!window.confirm(`Delete ${name}?`)) return;
 
-    const loading = toast.loading("Deleting...");
+    const loading = toast.loading('Deleting...');
 
     try {
       const res = await fetch(`http://localhost:8080/api/suppliers/${id}`, {
@@ -82,16 +88,24 @@ const SupplierRegistry = () => {
       });
 
       if (res.ok) {
-        toast.success("Deleted", { id: loading });
+        toast.success('Deleted', { id: loading });
         fetchSuppliers();
+      } else {
+        toast.error('Delete Failed', { id: loading });
       }
     } catch {
-      toast.error("Delete Failed", { id: loading });
+      toast.error('Delete Failed', { id: loading });
     }
   };
 
   const openEdit = (supplier) => {
-    setFormData(supplier);
+    setFormData({
+      name: supplier.name || '',
+      contactPerson: supplier.contactPerson || '',
+      email: supplier.email || '',
+      phoneNumber: supplier.phoneNumber || '',
+      category: supplier.category || 'GENERAL'
+    });
     setEditingId(supplier.id);
     setShowAdd(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -111,11 +125,9 @@ const SupplierRegistry = () => {
 
   return (
     <div className="space-y-8">
-
       {/* HEADER */}
       <div className="rounded-[28px] border border-white/10 bg-white/[0.04] backdrop-blur-2xl p-6 shadow-xl">
         <div className="flex flex-col md:flex-row justify-between gap-6">
-
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-[#D4AF37] mb-2">
               Vendor Control
@@ -131,7 +143,7 @@ const SupplierRegistry = () => {
               className="flex items-center gap-2 px-6 py-3 rounded-2xl border border-[#D4AF37]/40 bg-[#D4AF37]/10 text-[#D4AF37] font-semibold hover:bg-[#D4AF37]/20 transition"
             >
               {showAdd ? <X size={16} /> : <Plus size={16} />}
-              {showAdd ? "Close Form" : "Add Supplier"}
+              {showAdd ? 'Close Form' : 'Add Supplier'}
             </button>
           )}
         </div>
@@ -147,15 +159,32 @@ const SupplierRegistry = () => {
             onSubmit={handleAction}
             className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl"
           >
-            <InputBox label="Company Name" value={formData.name} onChange={v => setFormData({...formData, name: v})} />
-            <InputBox label="Contact Person" value={formData.contactPerson} onChange={v => setFormData({...formData, contactPerson: v})} />
-            <InputBox label="Email" type="email" value={formData.email} onChange={v => setFormData({...formData, email: v})} />
-            <InputBox label="Phone" value={formData.phoneNumber} onChange={v => setFormData({...formData, phoneNumber: v})} />
+            <InputBox
+              label="Company Name"
+              value={formData.name}
+              onChange={(v) => setFormData({ ...formData, name: v })}
+            />
+            <InputBox
+              label="Contact Person"
+              value={formData.contactPerson}
+              onChange={(v) => setFormData({ ...formData, contactPerson: v })}
+            />
+            <InputBox
+              label="Email"
+              type="email"
+              value={formData.email}
+              onChange={(v) => setFormData({ ...formData, email: v })}
+            />
+            <InputBox
+              label="Phone"
+              value={formData.phoneNumber}
+              onChange={(v) => setFormData({ ...formData, phoneNumber: v })}
+            />
 
             <select
               className="bg-black/40 border border-white/10 rounded-xl p-4 text-sm text-white"
               value={formData.category}
-              onChange={(e) => setFormData({...formData, category: e.target.value})}
+              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
             >
               <option>GENERAL</option>
               <option>PAINTS</option>
@@ -167,15 +196,15 @@ const SupplierRegistry = () => {
               type="submit"
               className="bg-[#D4AF37] text-black rounded-xl font-bold py-4 hover:bg-white transition"
             >
-              {editingId ? "Update Supplier" : "Add Supplier"}
+              {editingId ? 'Update Supplier' : 'Add Supplier'}
             </button>
           </motion.form>
         )}
       </AnimatePresence>
 
-      {/* SUPPLIER CARDS */}
+      {/* SUPPLIERS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {suppliers.map((s) => (
+        {(Array.isArray(suppliers) ? suppliers : []).map((s) => (
           <SupplierContactCard
             key={s.id}
             supplier={s}
@@ -185,18 +214,21 @@ const SupplierRegistry = () => {
           />
         ))}
       </div>
+
+      {/* PRODUCT ↔ SUPPLIER LINK PANEL */}
+      <ProductSupplierLinkPanel />
     </div>
   );
 };
 
-const InputBox = ({ label, value, onChange, type = "text" }) => (
+const InputBox = ({ label, value, onChange, type = 'text' }) => (
   <div className="flex flex-col gap-2">
     <label className="text-xs text-gray-400">{label}</label>
     <input
       required
       type={type}
       value={value}
-      onChange={e => onChange(e.target.value)}
+      onChange={(e) => onChange(e.target.value)}
       className="bg-black/40 border border-white/10 rounded-xl p-4 text-sm text-white focus:border-[#D4AF37]"
     />
   </div>

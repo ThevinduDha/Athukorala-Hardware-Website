@@ -20,6 +20,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import OrderSuccess from './pages/OrderSuccess';
 import CuratedList from './pages/CuratedList'; 
 import CustomerProfile from './pages/CustomerProfile'; // NEW: Personal Registry Page
+import Inventory from "./pages/Inventory";
+import Suppliers from "./pages/Suppliers";
 
 function App() {
   return (
@@ -42,12 +44,15 @@ function App() {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/portal" element={<PortalPage />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/inventory" element={<Inventory />} />
+        <Route path="/suppliers" element={<Suppliers />} />
         
         {/* --- CUSTOMER ROUTES --- */}
         <Route path="/shopping-cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/order-history" element={<OrderHistory />} />
         <Route path="/order-success" element={<OrderSuccess />} />
+        
         
         {/* --- NEW: CUSTOMER PROFILE & REGISTRY ROUTE --- */}
         <Route 

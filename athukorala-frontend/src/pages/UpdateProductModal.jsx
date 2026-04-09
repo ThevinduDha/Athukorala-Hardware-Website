@@ -1,6 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Save, Box, DollarSign, ListTree, Activity, Truck, FileText } from 'lucide-react';
+import {
+  X,
+  Save,
+  Box,
+  DollarSign,
+  ListTree,
+  Activity,
+  Truck,
+  FileText,
+  Layers3
+} from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import ImageUpload from '../components/ImageUpload';
@@ -17,12 +27,12 @@ const CATEGORY_OPTIONS = [
 ];
 
 const UpdateProductModal = ({ isOpen, onClose, product, onUpdateSuccess }) => {
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
   const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/suppliers/all')
+    fetch('http://localhost:8080/api/suppliers')
       .then((res) => res.json())
       .then((data) => setSuppliers(Array.isArray(data) ? data : []))
       .catch(() => console.error('Supplier Registry Offline'));
@@ -35,6 +45,7 @@ const UpdateProductModal = ({ isOpen, onClose, product, onUpdateSuccess }) => {
         category: product.category || '',
         price: product.price || '',
         stockQuantity: product.stockQuantity || '',
+        reorderLevel: product.reorderLevel || '',
         description: product.description || '',
         supplierId: product.supplier?.id || ''
       });
@@ -44,14 +55,17 @@ const UpdateProductModal = ({ isOpen, onClose, product, onUpdateSuccess }) => {
   }, [product, reset]);
 
   const onSubmit = async (data) => {
+    if (!product?.id) return;
+
     const loadingToast = toast.loading('Syncing modifications with registry...');
 
     const updatedData = {
       ...data,
       price: Number(data.price),
       stockQuantity: Number(data.stockQuantity),
+      reorderLevel: Number(data.reorderLevel || 0),
       imageUrl: uploadedImageUrl,
-      supplier: data.supplierId ? { id: parseInt(data.supplierId) } : null
+      supplier: data.supplierId ? { id: parseInt(data.supplierId, 10) } : null
     };
 
     try {
@@ -61,15 +75,28 @@ const UpdateProductModal = ({ isOpen, onClose, product, onUpdateSuccess }) => {
         body: JSON.stringify(updatedData)
       });
 
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = {};
+      }
+
       if (response.ok) {
-        toast.success('Asset Update Authorized', { id: loadingToast });
-        onUpdateSuccess();
+        toast.success(result.message || 'Asset Update Authorized', {
+          id: loadingToast
+        });
+        onUpdateSuccess?.();
         onClose();
       } else {
-        toast.error('Registry Refused Data: Protocol Violation', { id: loadingToast });
+        toast.error(result.message || 'Registry Refused Data: Protocol Violation', {
+          id: loadingToast
+        });
       }
     } catch (error) {
-      toast.error('Link Offline: Backend Unreachable', { id: loadingToast });
+      toast.error('Link Offline: Backend Unreachable', {
+        id: loadingToast
+      });
     }
   };
 
@@ -153,7 +180,7 @@ const UpdateProductModal = ({ isOpen, onClose, product, onUpdateSuccess }) => {
               register={register('supplierId')}
               options={suppliers.map((sup) => ({
                 value: sup.id,
-                label: sup.name.toUpperCase()
+                label: (sup.name || '').toUpperCase()
               }))}
               placeholder="UNASSIGNED / INTERNAL"
             />
@@ -173,6 +200,13 @@ const UpdateProductModal = ({ isOpen, onClose, product, onUpdateSuccess }) => {
               />
             </div>
 
+            <InputGroup
+              label="Reorder Level"
+              icon={<Layers3 size={16} />}
+              register={register('reorderLevel')}
+              type="number"
+            />
+
             <TextAreaGroup
               label="Technical Specifications"
               icon={<FileText size={16} />}
@@ -184,6 +218,7 @@ const UpdateProductModal = ({ isOpen, onClose, product, onUpdateSuccess }) => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            type="submit"
             className="w-full bg-[#D4AF37] text-black font-black py-6 tracking-[0.5em] uppercase text-[11px] flex items-center justify-center gap-4 hover:bg-white transition-all shadow-[0_20px_50px_rgba(212,175,55,0.25)] group"
           >
             <Save size={18} className="group-hover:rotate-12 transition-transform" />

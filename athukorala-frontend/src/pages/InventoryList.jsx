@@ -9,11 +9,14 @@ import {
   Layers3,
   ShieldCheck,
   Package2,
-  AlertTriangle
+  AlertTriangle,
+  Plus,
+  Minus
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import UpdateProductModal from './UpdateProductModal';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
+import StockMovementPanel from '../components/StockMovementPanel';
 
 const containerVariants = {
   hidden: { opacity: 0, y: 18 },
@@ -45,14 +48,38 @@ const InventoryList = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const fetchProducts = () => {
-    fetch('http://localhost:8080/api/products/all')
-      .then((res) => res.json())
-      .then((data) => setProducts(Array.isArray(data) ? data : []))
-      .catch(() => {
-        toast.error('Unable to load inventory');
-        setProducts([]);
+  const fetchProducts = async () => {
+    try {
+      const [productRes, inventoryRes] = await Promise.all([
+        fetch('http://localhost:8080/api/products/all'),
+        fetch('http://localhost:8080/api/inventory')
+      ]);
+
+      if (!productRes.ok || !inventoryRes.ok) {
+        throw new Error('Failed to fetch');
+      }
+
+      const productsData = await productRes.json();
+      const inventoryData = await inventoryRes.json();
+
+      const safeProducts = Array.isArray(productsData) ? productsData : [];
+      const safeInventory = Array.isArray(inventoryData) ? inventoryData : [];
+
+      const merged = safeProducts.map((product) => {
+        const inventoryItem = safeInventory.find((item) => item.productId === product.id);
+
+        return {
+          ...product,
+          stockQuantity: Number(inventoryItem?.quantity ?? product.stockQuantity ?? 0),
+          reorderLevel: Number(inventoryItem?.reorderLevel ?? 5)
+        };
       });
+
+      setProducts(merged);
+    } catch (error) {
+      toast.error('Unable to load inventory');
+      setProducts([]);
+    }
   };
 
   useEffect(() => {
@@ -72,7 +99,12 @@ const InventoryList = () => {
         }
       );
 
-      const result = await response.json();
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = {};
+      }
 
       if (response.ok) {
         toast.success(result.message || 'Asset Successfully Purged', {
@@ -90,6 +122,85 @@ const InventoryList = () => {
       }
     } catch (error) {
       toast.error('Connection Failed: Ensure Backend is Online', {
+        id: loadingToast
+      });
+    }
+  };
+
+  const stockIn = async (productId) => {
+    const loadingToast = toast.loading('Processing Stock-In...');
+
+    try {
+      const response = await fetch('http://localhost:8080/api/inventory/stock-in', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productId,
+          quantity: 10,
+          note: 'Manual stock in',
+          referenceCode: `MANUAL-IN-${productId}`
+        })
+      });
+
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = {};
+      }
+
+      if (response.ok) {
+        toast.success(result.message || 'Stock Added Successfully', {
+          id: loadingToast
+        });
+        fetchProducts();
+      } else {
+        toast.error(result.message || 'Stock-In Failed', {
+          id: loadingToast
+        });
+      }
+    } catch (error) {
+      toast.error('Connection Failed: Backend Unreachable', {
+        id: loadingToast
+      });
+    }
+  };
+
+  const stockOut = async (productId) => {
+    const loadingToast = toast.loading('Processing Stock-Out...');
+
+    try {
+      const response = await fetch('http://localhost:8080/api/inventory/stock-out', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          productId,
+          quantity: 5,
+          reason: 'SALE',
+          note: 'Manual stock out',
+          referenceCode: `MANUAL-OUT-${productId}`
+        })
+      });
+
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        result = {};
+      }
+
+      if (response.ok) {
+        toast.success(result.message || 'Stock Removed Successfully', {
+          id: loadingToast
+        });
+        fetchProducts();
+      } else {
+        toast.error(result.message || 'Stock-Out Failed', {
+          id: loadingToast
+        });
+      }
+    } catch (error) {
+      toast.error('Connection Failed: Backend Unreachable', {
         id: loadingToast
       });
     }
@@ -116,18 +227,21 @@ const InventoryList = () => {
 
   const totalProducts = products.length;
   const discountedProducts = products.filter(
-    (p) => p.discountedPrice && p.discountedPrice < p.price
+    (p) => p.discountedPrice && Number(p.discountedPrice) < Number(p.price)
   ).length;
   const lowStockProducts = products.filter(
-    (p) => Number(p.stockQuantity || 0) <= 5
+    (p) => Number(p.stockQuantity || 0) <= Number(p.reorderLevel || 5)
   ).length;
   const totalUnits = products.reduce(
     (sum, p) => sum + Number(p.stockQuantity || 0),
     0
   );
 
-  const getStockStatus = (qty) => {
-    if (qty <= 0) {
+  const getStockStatus = (qty, reorderLevel = 5) => {
+    const numericQty = Number(qty || 0);
+    const numericReorder = Number(reorderLevel || 5);
+
+    if (numericQty <= 0) {
       return {
         label: 'OUT OF STOCK',
         badge: 'bg-red-500/15 text-red-400 border-red-500/20',
@@ -135,7 +249,7 @@ const InventoryList = () => {
       };
     }
 
-    if (qty <= 5) {
+    if (numericQty <= numericReorder) {
       return {
         label: 'LOW STOCK',
         badge: 'bg-amber-500/15 text-amber-300 border-amber-500/20',
@@ -173,8 +287,8 @@ const InventoryList = () => {
               Inventory List
             </h2>
             <p className="text-sm text-gray-400 mt-3 max-w-2xl">
-              View, search, update, and secure every registered product from one
-              premium control panel.
+              View, search, update, and control every registered product with
+              real-time inventory visibility.
             </p>
           </div>
 
@@ -285,7 +399,7 @@ const InventoryList = () => {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[980px] text-left">
+          <table className="w-full min-w-[1180px] text-left">
             <thead className="bg-white/[0.02]">
               <tr className="text-[11px] uppercase tracking-[0.22em] text-gray-400">
                 <th className="px-6 py-4 font-semibold">Asset</th>
@@ -293,6 +407,7 @@ const InventoryList = () => {
                 <th className="px-6 py-4 font-semibold">Category</th>
                 <th className="px-6 py-4 font-semibold">Price</th>
                 <th className="px-6 py-4 font-semibold">Stock</th>
+                <th className="px-6 py-4 font-semibold">Reorder</th>
                 <th className="px-6 py-4 font-semibold text-right">Actions</th>
               </tr>
             </thead>
@@ -306,12 +421,15 @@ const InventoryList = () => {
 
                   const discountPercent = hasDiscount
                     ? Math.round(
-                        ((product.price - product.discountedPrice) / product.price) * 100
+                        ((Number(product.price) - Number(product.discountedPrice)) /
+                          Number(product.price)) *
+                          100
                       )
                     : 0;
 
                   const stockQty = Number(product.stockQuantity || 0);
-                  const stockStatus = getStockStatus(stockQty);
+                  const reorderLevel = Number(product.reorderLevel || 5);
+                  const stockStatus = getStockStatus(stockQty, reorderLevel);
 
                   return (
                     <motion.tr
@@ -395,7 +513,7 @@ const InventoryList = () => {
                             <motion.div
                               initial={{ width: 0 }}
                               animate={{
-                                width: `${Math.min((stockQty / 50) * 100, 100)}%`
+                                width: `${Math.min((stockQty / Math.max(reorderLevel * 2, 10)) * 100, 100)}%`
                               }}
                               transition={{ duration: 0.6, ease: 'easeOut' }}
                               className={`h-full ${stockStatus.bar}`}
@@ -405,7 +523,36 @@ const InventoryList = () => {
                       </td>
 
                       <td className="px-6 py-5">
-                        <div className="flex items-center justify-end gap-3">
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[11px] uppercase tracking-[0.18em] text-gray-500">
+                            Reorder Level
+                          </span>
+                          <span className="text-base font-bold text-white">
+                            {reorderLevel}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td className="px-6 py-5">
+                        <div className="flex items-center justify-end gap-3 flex-wrap">
+                          <button
+                            onClick={() => stockIn(product.id)}
+                            className="inline-flex items-center gap-2 rounded-2xl border border-green-500/15 bg-green-500/8 px-4 py-2.5 text-sm font-semibold text-green-300 transition-all hover:border-green-500/40 hover:bg-green-500/12 hover:text-green-200"
+                            title="Stock In"
+                          >
+                            <Plus size={16} />
+                            Stock In
+                          </button>
+
+                          <button
+                            onClick={() => stockOut(product.id)}
+                            className="inline-flex items-center gap-2 rounded-2xl border border-amber-500/15 bg-amber-500/8 px-4 py-2.5 text-sm font-semibold text-amber-300 transition-all hover:border-amber-500/40 hover:bg-amber-500/12 hover:text-amber-200"
+                            title="Stock Out"
+                          >
+                            <Minus size={16} />
+                            Stock Out
+                          </button>
+
                           <button
                             onClick={() => {
                               setSelectedProduct(product);
@@ -436,7 +583,7 @@ const InventoryList = () => {
                 })
               ) : (
                 <tr>
-                  <td colSpan="6" className="px-6 py-20 text-center">
+                  <td colSpan="7" className="px-6 py-20 text-center">
                     <div className="flex flex-col items-center justify-center">
                       <div className="w-16 h-16 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center mb-4">
                         <Box className="text-gray-500" size={26} />
@@ -485,6 +632,11 @@ const InventoryList = () => {
           />
         )}
       </AnimatePresence>
+
+      {/* STOCK MOVEMENT PANEL */}
+      <motion.div variants={itemVariants}>
+        <StockMovementPanel />
+      </motion.div>
     </motion.div>
   );
 };

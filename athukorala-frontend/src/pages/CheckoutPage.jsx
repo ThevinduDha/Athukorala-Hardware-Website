@@ -3,19 +3,17 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
+  ShieldCheck,
+  Lock,
   CheckCircle2,
+  Home,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
-
-const DELIVERY_FEE = 300;
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
 
-  const [cartItems, setCartItems] = useState([]);
-  const [subtotal, setSubtotal] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [orderId, setOrderId] = useState("");
@@ -27,38 +25,18 @@ const CheckoutPage = () => {
 
   const [errors, setErrors] = useState({});
 
-  // 🔥 LOAD CART
   useEffect(() => {
-    const fetchCart = async () => {
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (!user) return;
-
-      try {
-        const res = await fetch(`http://localhost:8080/api/cart/user/${user.id}`);
-        const data = await res.json();
-        setCartItems(data);
-
-        const sub = data.reduce(
-          (sum, item) => sum + item.product.price * item.quantity,
-          0
-        );
-
-        setSubtotal(sub);
-        setTotalAmount(sub + DELIVERY_FEE);
-
-      } catch (err) {
-        toast.error("Failed to load cart");
-      }
-    };
-
-    fetchCart();
+    const savedTotal = localStorage.getItem("lastCartTotal") || "0";
+    setTotalAmount(parseFloat(savedTotal));
   }, []);
 
   // 🔥 FORMAT PHONE
   const formatPhoneNumber = (phone) => {
     let cleaned = phone.replace(/\D/g, "");
+
     if (cleaned.startsWith("0")) return "94" + cleaned.substring(1);
     if (cleaned.startsWith("94")) return cleaned;
+
     return cleaned;
   };
 
@@ -84,37 +62,47 @@ const CheckoutPage = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  // 🔥 PAYMENT
+  // 🔥 PAYMENT FUNCTION (FULLY FIXED)
   const handlePayment = async () => {
     if (!validate()) {
-      toast.error("Fix form errors");
+      toast.error("Please fix errors");
       return;
     }
 
     setIsProcessing(true);
+    const loadingToast = toast.loading("Creating Order...");
 
     const user = JSON.parse(localStorage.getItem("user"));
 
     try {
-      const res = await fetch("http://localhost:8080/api/orders/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId: user.id,
-          address: formData.address,
-          phone: formatPhoneNumber(formData.phone),
-          total: totalAmount,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:8080/api/orders/checkout",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userId: user.id,
+            address: formData.address,
+            phone: formatPhoneNumber(formData.phone),
+            total: totalAmount,
+          }),
+        }
+      );
 
-      const result = await res.json();
+      const result = await response.json();
 
-      if (!res.ok) {
-        toast.error("Order failed");
+      if (!response.ok) {
+        toast.error(result.message || "Order failed", { id: loadingToast });
         setIsProcessing(false);
         return;
       }
 
+      // ✅ FIXED
+      setOrderId(result.orderId);
+
+      toast.success("Order Created", { id: loadingToast });
+
+      // 🔥 PAYHERE OBJECT (FINAL FIX)
       const payment = {
         sandbox: true,
         merchant_id: "1235088",
@@ -127,22 +115,24 @@ const CheckoutPage = () => {
         order_id: result.orderId,
         items: "Hardware Items",
 
-        amount: result.amount,
+        amount: result.amount, // 🔥 IMPORTANT FIX
         currency: "LKR",
 
-        first_name: "Customer",
-        email: "test@gmail.com",
+        first_name: user?.name || "Customer",
+        last_name: "User",
+        email: user?.email || "test@gmail.com",
         phone: formatPhoneNumber(formData.phone),
         address: formData.address,
         city: "Colombo",
         country: "Sri Lanka",
       };
 
+      // 🔥 EVENTS
       window.payhere.onCompleted = function () {
-        setOrderId(result.orderId);
-        setIsSuccess(true);
+        toast.success("Payment Successful!");
         localStorage.removeItem("cart");
         localStorage.removeItem("lastCartTotal");
+        setIsSuccess(true);
       };
 
       window.payhere.onDismissed = function () {
@@ -166,100 +156,104 @@ const CheckoutPage = () => {
   // ✅ SUCCESS PAGE
   if (isSuccess) {
     return (
-      <div className="h-screen flex items-center justify-center bg-black text-white">
-        <div className="text-center space-y-4">
+      <div className="min-h-screen flex items-center justify-center bg-[#050505] text-white">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          className="bg-[#111] p-10 rounded-2xl text-center space-y-6 border border-gray-800"
+        >
           <CheckCircle2 size={70} className="text-green-500 mx-auto" />
           <h1 className="text-3xl font-bold">Payment Successful</h1>
           <p>Order ID: {orderId}</p>
-          <button onClick={() => navigate("/")}>
-            Go Home
+          <p className="text-yellow-400">LKR {totalAmount}</p>
+
+          <button
+            onClick={() => navigate("/customer-dashboard")}
+            className="bg-yellow-400 text-black px-6 py-3 rounded-lg flex items-center gap-2 justify-center"
+          >
+            <Home size={18} /> Go Home
           </button>
-        </div>
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-10">
+    <div className="min-h-screen bg-[#050505] text-white px-6 py-12">
 
-      <button onClick={() => navigate(-1)} className="mb-8 text-gray-400">
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 mb-10"
+      >
         <ArrowLeft /> Back
       </button>
 
-      <div className="grid lg:grid-cols-12 gap-10 max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
 
         {/* LEFT */}
         <motion.div
-          initial={{ x: -40, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          className="lg:col-span-7 bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 space-y-6"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="lg:col-span-7 space-y-8"
         >
-          <h1 className="text-4xl font-bold">Shipping Details</h1>
+          <div>
+            <p className="text-yellow-400 text-xs flex items-center gap-2">
+              <Lock size={14} /> Secure Checkout
+            </p>
+            <h1 className="text-5xl font-bold">Shipping Details</h1>
+          </div>
 
           <textarea
             name="address"
             placeholder="Full Address"
             onChange={handleInputChange}
-            className="w-full p-4 bg-black/50 border border-gray-700 rounded-xl"
+            className="w-full p-5 bg-[#111] border border-gray-800 rounded-xl focus:border-yellow-400 outline-none"
           />
-          {errors.address && <p className="text-red-400">{errors.address}</p>}
+          {errors.address && (
+            <p className="text-red-400 text-sm">{errors.address}</p>
+          )}
 
           <input
             name="phone"
             placeholder="07XXXXXXXX"
             onChange={handleInputChange}
-            className="w-full p-4 bg-black/50 border border-gray-700 rounded-xl"
+            className="w-full p-5 bg-[#111] border border-gray-800 rounded-xl focus:border-yellow-400 outline-none"
           />
-          {errors.phone && <p className="text-red-400">{errors.phone}</p>}
+          {errors.phone && (
+            <p className="text-red-400 text-sm">{errors.phone}</p>
+          )}
         </motion.div>
 
         {/* RIGHT */}
         <motion.div
-          initial={{ x: 40, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          className="lg:col-span-5 bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="lg:col-span-5 bg-gradient-to-br from-[#111] to-[#0a0a0a] p-8 rounded-2xl border border-gray-800 shadow-2xl"
         >
-          <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
+          <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
 
-          {cartItems.map((item) => (
-            <div key={item.id} className="flex justify-between mb-3">
-              <div>
-                <p>{item.product.name}</p>
-                <p className="text-sm text-gray-400">
-                  {item.quantity} × LKR {item.product.price}
-                </p>
-              </div>
-              <p className="text-yellow-400 font-bold">
-                LKR {(item.product.price * item.quantity)}
-              </p>
-            </div>
-          ))}
+          <div className="flex justify-between mb-4 text-gray-400">
+            <span>Subtotal</span>
+            <span>LKR {totalAmount}</span>
+          </div>
 
-          <div className="border-t border-gray-700 mt-4 pt-4">
-            <div className="flex justify-between text-gray-400">
-              <span>Subtotal</span>
-              <span>LKR {subtotal}</span>
-            </div>
-
-            <div className="flex justify-between text-gray-400">
-              <span>Delivery</span>
-              <span>LKR {DELIVERY_FEE}</span>
-            </div>
-
-            <div className="flex justify-between text-xl font-bold mt-2">
-              <span>Total</span>
-              <span className="text-yellow-400">LKR {totalAmount}</span>
-            </div>
+          <div className="flex justify-between text-lg font-bold mb-6">
+            <span>Total</span>
+            <span className="text-yellow-400">LKR {totalAmount}</span>
           </div>
 
           <button
             onClick={handlePayment}
             disabled={isProcessing}
-            className="w-full mt-6 py-4 rounded-xl bg-yellow-400 text-black font-semibold"
+            className="w-full py-4 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition"
           >
             {isProcessing ? "Processing..." : "Pay Securely"}
           </button>
 
+          <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-500">
+            <ShieldCheck size={14} />
+            Secured by PayHere
+          </div>
         </motion.div>
 
       </div>

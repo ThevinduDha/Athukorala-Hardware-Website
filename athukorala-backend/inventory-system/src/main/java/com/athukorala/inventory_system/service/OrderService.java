@@ -5,6 +5,7 @@ import com.athukorala.inventory_system.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,74 +15,70 @@ public class OrderService {
 
     @Autowired private OrderRepository orderRepository;
     @Autowired private CartItemRepository cartRepository;
-    @Autowired private ProductRepository productRepository;
-    @Autowired private AuditLogRepository auditLogRepository; // Added for tracking [cite: 631, 665]
 
     @Transactional
     public Order finalizeOrder(Long userId, String address, String phone, Double total) {
-        // 1. Fetch current cart items
+
+        // 🔥 GET CART ITEMS
         List<CartItem> cartItems = cartRepository.findByUserId(userId);
-        if (cartItems.isEmpty()) {
-            throw new RuntimeException("Purchase Protocol Failed: Cart Registry is empty");
+
+        if (cartItems == null || cartItems.isEmpty()) {
+            throw new RuntimeException("Cart is empty. Please add items before checkout.");
         }
 
-        // 2. Map CartItems to OrderItems and Sync Inventory
+        // 🔥 CREATE ORDER ITEMS (NO STOCK CHANGE HERE)
         List<OrderItem> orderItems = cartItems.stream().map(cartItem -> {
+
             Product product = cartItem.getProduct();
 
-            // Deduct stock and prevent negative inventory [cite: 739, 768, 1085]
-            if (product.getStockQuantity() < cartItem.getQuantity()) {
-                throw new RuntimeException("Inventory Shortage: Insufficient stock for " + product.getName());
+            if (product == null) {
+                throw new RuntimeException("Product missing in cart");
             }
 
-            int newQuantity = product.getStockQuantity() - cartItem.getQuantity();
-            product.setStockQuantity(newQuantity);
-            productRepository.save(product);
+            // CHECK STOCK ONLY (DO NOT REDUCE)
+            if (product.getStockQuantity() < cartItem.getQuantity()) {
+                throw new RuntimeException("Insufficient stock for " + product.getName());
+            }
 
-            // Create immutable record of the purchased item [cite: 815]
             OrderItem orderItem = new OrderItem();
             orderItem.setProductName(product.getName());
             orderItem.setQuantity(cartItem.getQuantity());
-            orderItem.setPrice(product.getPrice());
+
+            // 🔥 USE DISCOUNTED PRICE
+            orderItem.setPrice(cartItem.getAppliedPrice());
+
             return orderItem;
+
         }).collect(Collectors.toList());
 
-        // 3. Create the Master Order record [cite: 812-821]
+        // 🔥 CALCULATE TOTAL FROM CART (NOT FROM FRONTEND)
+        double calculatedTotal = cartItems.stream()
+                .mapToDouble(item -> item.getAppliedPrice() * item.getQuantity())
+                .sum();
+
+        // 🔥 CREATE ORDER (PENDING)
         Order order = new Order();
         order.setUserId(userId);
         order.setShippingAddress(address);
         order.setContactNumber(phone);
-        order.setTotalAmount(total);
-        order.setStatus("PENDING"); // Initial status upon creation [cite: 761]
+        order.setTotalAmount(calculatedTotal);
+        order.setStatus("PENDING");
         order.setOrderDate(LocalDateTime.now());
         order.setOrderItems(orderItems);
 
-        // 4. Record the transaction in the Audit Log [cite: 563, 631]
-        AuditLog log = new AuditLog();
-        log.setAction("ORDER_CREATION");
-        log.setPerformedBy("USER_ID_" + userId);
-        log.setDetails("Transaction initialized for total valuation: LKR " + total);
-        log.setTimestamp(LocalDateTime.now());
-        auditLogRepository.save(log);
-
-        // 5. Clear the cart registry [cite: 744, 839]
-        cartRepository.deleteAll(cartItems);
-
         return orderRepository.save(order);
     }
 
-    // New: Admin capability to manage order lifecycle [cite: 803-806]
+    public List<Order> getOrdersByUserId(Long userId) {
+        return orderRepository.findByUserId(userId);
+    }
+
     @Transactional
     public Order updateOrderStatus(Long orderId, String newStatus) {
         Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new RuntimeException("Order Protocol Not Found"));
+                .orElseThrow(() -> new RuntimeException("Order not found"));
 
         order.setStatus(newStatus.toUpperCase());
         return orderRepository.save(order);
-    }
-
-    // Support for Customer Order History [cite: 786-788]
-    public List<Order> getOrdersByUserId(Long userId) {
-        return orderRepository.findByUserId(userId);
     }
 }

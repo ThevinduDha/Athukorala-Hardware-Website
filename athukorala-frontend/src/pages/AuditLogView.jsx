@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,14 +42,22 @@ const itemVariants = {
 const AuditLogView = () => {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [typeFilter, setTypeFilter] = useState("ALL");
+  const [dateFilter, setDateFilter] = useState("ALL");
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user') || '{"name":"Administrator"}');
 
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:8080/api/audit/logs');
+      let url = "http://localhost:8080/api/audit/logs?";
+
+      if (typeFilter !== "ALL") url += `type=${typeFilter}&`;
+      if (dateFilter !== "ALL") url += `range=${dateFilter}`;
+
+      const res = await fetch(url);
       const data = await res.json();
+
       setLogs(Array.isArray(data) ? data : []);
     } catch (err) {
       toast.error('SECURITY ARCHIVE OFFLINE');
@@ -57,14 +67,93 @@ const AuditLogView = () => {
     }
   };
 
-  useEffect(() => {
+    useEffect(() => {
     fetchLogs();
-  }, []);
+    }, [typeFilter, dateFilter]);
 
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = '/login';
   };
+
+    // 🔥 PREMIUM PDF GENERATOR
+    const generatePDF = () => {
+      const doc = new jsPDF();
+
+      // 🔥 HEADER DESIGN
+      doc.setFillColor(0, 0, 0);
+      doc.rect(0, 0, 210, 30, "F");
+
+      doc.setTextColor(212, 175, 55);
+      doc.setFontSize(18);
+      doc.text("ATHUKORALA TRADERS", 105, 15, { align: "center" });
+
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(10);
+      doc.text("Security Audit Report", 105, 22, { align: "center" });
+
+      // 🔥 FILTER INFO
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(11);
+      doc.text(`Filter: ${typeFilter} | ${dateFilter}`, 14, 40);
+
+      const now = new Date();
+      doc.text(`Generated: ${now.toLocaleString()}`, 14, 48);
+
+      // 🔥 TABLE DATA
+      const tableColumn = ["Action", "Operator", "Details", "Time"];
+
+      const tableRows = logs.map((log) => [
+        log.action,
+        log.performedBy || "SYSTEM",
+        log.details,
+        new Date(log.timestamp).toLocaleString(),
+      ]);
+
+      // 🔥 AUTO TABLE
+      autoTable(doc, {
+        startY: 55,
+        head: [tableColumn],
+        body: tableRows,
+
+        styles: {
+          fontSize: 9,
+          cellPadding: 4,
+        },
+
+        headStyles: {
+          fillColor: [212, 175, 55],
+          textColor: [0, 0, 0],
+          fontStyle: "bold",
+        },
+
+        bodyStyles: {
+          textColor: [0, 0, 0],
+        },
+
+        alternateRowStyles: {
+          fillColor: [245, 245, 245],
+        },
+
+        margin: { top: 55 },
+
+        didDrawPage: (data) => {
+          // Footer
+          doc.setFontSize(8);
+          doc.setTextColor(150);
+          doc.text(
+            "Athukorala Traders - Secure Audit System",
+            105,
+            290,
+            { align: "center" }
+          );
+        },
+      });
+
+      doc.save("audit_report.pdf");
+    };
+      
+
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white font-sans overflow-hidden">
@@ -249,6 +338,7 @@ const AuditLogView = () => {
             className="rounded-[28px] border border-white/10 bg-white/[0.04] backdrop-blur-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.28)]"
           >
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10 bg-black/20">
+            
               <div className="flex items-center gap-3">
                 <div className="w-11 h-11 rounded-2xl border border-white/10 bg-white/[0.04] flex items-center justify-center">
                   <ShieldAlert className="text-[#D4AF37]" size={20} />
@@ -262,6 +352,46 @@ const AuditLogView = () => {
               </div>
             </div>
 
+                            {/* 🔥 FILTER BAR (MOVE HERE) */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex flex-wrap gap-4 px-6 py-4 border-b border-white/10 bg-black/20 items-center justify-between"
+                  >
+                  <div className="flex gap-4">
+                  <select
+                    value={dateFilter}
+                    onChange={(e) => setDateFilter(e.target.value)}
+                    className="bg-[#111] border border-white/10 px-4 py-2 rounded-xl text-xs uppercase tracking-widest text-gray-300 hover:border-[#D4AF37]/50 transition"
+                  >
+                    <option value="ALL">All Time</option>
+                    <option value="THIS_MONTH">This Month</option>
+                    <option value="LAST_MONTH">Last Month</option>
+                    <option value="LAST_7_DAYS">Last 7 Days</option>
+                  </select>
+
+                  <select
+                    value={typeFilter}
+                    onChange={(e) => setTypeFilter(e.target.value)}
+                    className="bg-[#111] border border-white/10 px-4 py-2 rounded-xl text-xs uppercase tracking-widest text-gray-300 hover:border-[#D4AF37]/50 transition"
+                  >
+                    <option value="ALL">All Types</option>
+                    <option value="STOCK">Inventory</option>
+                    <option value="ORDER">Orders</option>
+                    <option value="PROMOTION">Promotions</option>
+                    <option value="USER">System</option>
+                  </select>
+                  </div>
+
+                  <motion.button
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={generatePDF}
+                  className="bg-[#D4AF37] text-black px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg"
+                >
+                  Download Report
+                </motion.button>
+                </motion.div>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[980px] text-left">
                 <thead className="bg-white/[0.02]">

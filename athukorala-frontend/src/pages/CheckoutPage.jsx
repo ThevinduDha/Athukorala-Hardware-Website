@@ -5,8 +5,6 @@ import {
   ArrowLeft,
   ShieldCheck,
   Lock,
-  CheckCircle2,
-  Home,
 } from "lucide-react";
 import { toast } from "react-hot-toast";
 
@@ -15,8 +13,6 @@ const CheckoutPage = () => {
 
   const [totalAmount, setTotalAmount] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [orderId, setOrderId] = useState("");
 
   const [formData, setFormData] = useState({
     address: "",
@@ -62,7 +58,7 @@ const CheckoutPage = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  // 🔥 PAYMENT FUNCTION (FULLY FIXED)
+  // 🔥 PAYMENT FUNCTION (FINAL FIXED)
   const handlePayment = async () => {
     if (!validate()) {
       toast.error("Please fix errors");
@@ -97,25 +93,31 @@ const CheckoutPage = () => {
         return;
       }
 
-      // ✅ FIXED
-      setOrderId(result.orderId);
-
       toast.success("Order Created", { id: loadingToast });
 
-      // 🔥 PAYHERE OBJECT (FINAL FIX)
+      // ✅ SAVE DATA FOR SUCCESS PAGE
+      localStorage.setItem("orderData", JSON.stringify({
+        id: result.orderId,
+        total: result.amount,
+        phone: formatPhoneNumber(formData.phone),
+        address: formData.address,
+      }));
+
+      // 🔥 PAYHERE OBJECT
       const payment = {
         sandbox: true,
         merchant_id: "1235088",
         hash: result.hash,
 
-        return_url: "http://localhost:5173/payment-success",
-        cancel_url: "http://localhost:5173/payment-cancel",
+        // (popup mode → these are ignored but safe to keep)
+        return_url: "http://localhost:5173/order-success",
+        cancel_url: "http://localhost:5173/order-success",
         notify_url: "http://localhost:8080/api/payment/notify",
 
         order_id: result.orderId,
         items: "Hardware Items",
 
-        amount: result.amount, // 🔥 IMPORTANT FIX
+        amount: result.amount,
         currency: "LKR",
 
         first_name: user?.name || "Customer",
@@ -127,36 +129,23 @@ const CheckoutPage = () => {
         country: "Sri Lanka",
       };
 
-      // 🔥 EVENTS
+      // 🔥 IMPORTANT FIX (POPUP MODE)
       window.payhere.onCompleted = function () {
-        toast.success("Payment Successful!");
+        console.log("Payment completed");
 
-        localStorage.removeItem("cart");
-        localStorage.removeItem("lastCartTotal");
-
-        // 🚀 Navigate to premium success page with data
-        navigate("/payment-success", {
-          state: {
-            order: {
-              id: result.orderId,
-              total: result.amount,
-              phone: formatPhoneNumber(formData.phone),
-              address: formData.address,
-            },
-          },
-        });
+        // ✅ Navigate to success page
+        navigate("/order-success");
       };
 
       window.payhere.onDismissed = function () {
-        toast.error("Payment Cancelled");
-        setIsProcessing(false);
+        console.log("Payment popup closed");
       };
 
-      window.payhere.onError = function () {
-        toast.error("Payment Error");
-        setIsProcessing(false);
+      window.payhere.onError = function (error) {
+        console.log("Payment error:", error);
       };
 
+      // 🚀 START PAYMENT
       window.payhere.startPayment(payment);
 
     } catch (err) {
@@ -164,31 +153,6 @@ const CheckoutPage = () => {
       setIsProcessing(false);
     }
   };
-
-  // ✅ SUCCESS PAGE
-  if (isSuccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#050505] text-white">
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          className="bg-[#111] p-10 rounded-2xl text-center space-y-6 border border-gray-800"
-        >
-          <CheckCircle2 size={70} className="text-green-500 mx-auto" />
-          <h1 className="text-3xl font-bold">Payment Successful</h1>
-          <p>Order ID: {orderId}</p>
-          <p className="text-yellow-400">LKR {totalAmount}</p>
-
-          <button
-            onClick={() => navigate("/customer-dashboard")}
-            className="bg-yellow-400 text-black px-6 py-3 rounded-lg flex items-center gap-2 justify-center"
-          >
-            <Home size={18} /> Go Home
-          </button>
-        </motion.div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-[#050505] text-white px-6 py-12">

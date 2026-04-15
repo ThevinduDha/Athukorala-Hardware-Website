@@ -17,6 +17,8 @@ import { toast } from 'react-hot-toast';
 import UpdateProductModal from './UpdateProductModal';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
 import StockMovementPanel from '../components/StockMovementPanel';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 18 },
@@ -43,6 +45,7 @@ const itemVariants = {
 const InventoryList = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState("ALL");
 
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -85,6 +88,21 @@ const InventoryList = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  // 🔥 FIX 1: DYNAMIC CATEGORIES (AUTO FROM PRODUCTS)
+  const categories = useMemo(() => {
+    const unique = new Set(products.map(p => p.category?.toUpperCase()).filter(Boolean));
+    return ["ALL", ...unique];
+  }, [products]);
+
+  const filteredProducts = useMemo(() => {
+    return products.filter((product) => {
+      const term = searchTerm.toLowerCase();
+      const matchesSearch = product.name?.toLowerCase().includes(term);
+      const matchesCategory = categoryFilter === "ALL" || product.category?.toUpperCase() === categoryFilter;
+      return matchesSearch && matchesCategory;
+    });
+  }, [products, searchTerm, categoryFilter]);
 
   const executeDelete = async () => {
     if (!selectedProduct) return;
@@ -206,25 +224,6 @@ const InventoryList = () => {
     }
   };
 
-  const filteredProducts = useMemo(() => {
-    if (!Array.isArray(products)) return [];
-
-    return products.filter((product) => {
-      const term = searchTerm.toLowerCase().trim();
-      if (!term) return true;
-
-      const name = product.name?.toLowerCase() || '';
-      const category = product.category?.toLowerCase() || '';
-      const description = product.description?.toLowerCase() || '';
-
-      return (
-        name.includes(term) ||
-        category.includes(term) ||
-        description.includes(term)
-      );
-    });
-  }, [products, searchTerm]);
-
   const totalProducts = products.length;
   const discountedProducts = products.filter(
     (p) => p.discountedPrice && Number(p.discountedPrice) < Number(p.price)
@@ -264,6 +263,47 @@ const InventoryList = () => {
     };
   };
 
+  const generateInventoryPDF = () => {
+    const doc = new jsPDF();
+
+    // HEADER
+    doc.setFillColor(0, 0, 0);
+    doc.rect(0, 0, 210, 30, "F");
+
+    doc.setTextColor(212, 175, 55);
+    doc.setFontSize(18);
+    doc.text("ATHUKORALA TRADERS", 105, 15, { align: "center" });
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(10);
+    doc.text("Inventory Report", 105, 22, { align: "center" });
+
+    doc.setTextColor(0, 0, 0);
+    doc.text(`Category: ${categoryFilter}`, 14, 40);
+
+    const tableColumn = ["Product", "Category", "Stock", "Status"];
+
+    const tableRows = filteredProducts.map((p) => {
+      const status = p.stockQuantity < 10 ? "LOW STOCK" : "IN STOCK";
+      return [p.name, p.category, p.stockQuantity, status];
+    });
+
+    autoTable(doc, {
+      startY: 50,
+      head: [tableColumn],
+      body: tableRows,
+      headStyles: {
+        fillColor: [212, 175, 55],
+        textColor: [0, 0, 0],
+      },
+      alternateRowStyles: {
+        fillColor: [245, 245, 245],
+      },
+    });
+
+    doc.save("inventory_report.pdf");
+  };
+
   return (
     <motion.div
       variants={containerVariants}
@@ -292,18 +332,53 @@ const InventoryList = () => {
             </p>
           </div>
 
-          <div className="relative w-full xl:w-[360px]">
-            <Search
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
-              size={18}
-            />
-            <input
-              type="text"
-              placeholder="Search inventory by name, category, or description..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full rounded-2xl border border-white/10 bg-black/30 pl-12 pr-4 py-3.5 text-sm text-white placeholder:text-gray-500 outline-none transition-all focus:border-[#D4AF37]/60 focus:bg-black/40"
-            />
+          <div className="flex flex-col xl:flex-row gap-4 w-full xl:w-[500px]">
+            {/* 🔥 FIX 2: SEARCH WITH BUTTON (PREMIUM UI) */}
+            <div className="flex gap-2 w-full">
+              <div className="relative flex-1">
+                <Search
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                  size={18}
+                />
+                <input
+                  type="text"
+                  placeholder="Search by name..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full rounded-2xl border border-white/10 bg-black/30 pl-12 pr-4 py-3.5 text-sm text-white placeholder:text-gray-500 outline-none focus:border-[#D4AF37]/60"
+                />
+              </div>
+
+              {/* SEARCH BUTTON - Optional but stylish */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  // Search is already live, but this gives a visual feedback
+                  if (searchTerm.trim() === "") {
+                    toast("Showing all products", { icon: "🔍" });
+                  } else {
+                    toast(`Searching for "${searchTerm}"`, { icon: "✨" });
+                  }
+                }}
+                className="bg-[#D4AF37] text-black px-5 py-3 rounded-xl font-bold text-sm shadow-lg"
+              >
+                Search
+              </motion.button>
+            </div>
+
+            {/* 🔥 FIX 1: DYNAMIC CATEGORY FILTER */}
+            <select
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              className="rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none focus:border-[#D4AF37]/60"
+            >
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat === "ALL" ? "ALL CATEGORIES" : cat}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </motion.div>
@@ -396,6 +471,15 @@ const InventoryList = () => {
               </p>
             </div>
           </div>
+
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={generateInventoryPDF}
+            className="bg-[#D4AF37] text-black px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg"
+          >
+            Download Report
+          </motion.button>
         </div>
 
         <div className="overflow-x-auto">

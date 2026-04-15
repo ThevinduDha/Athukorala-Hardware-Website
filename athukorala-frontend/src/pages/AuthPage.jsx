@@ -324,6 +324,7 @@ const AuthPage = () => {
                         />
                       </InputWrap>
                       {errors.name && <p className="auth-error">{errors.name.message}</p>}
+                      
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -374,8 +375,22 @@ const AuthPage = () => {
                     >
                       {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
+
+                    
                   </InputWrap>
                   {errors.password && <p className="auth-error">{errors.password.message}</p>}
+
+                  {isLogin && (
+                    <div className="text-right">
+                      <button
+                        type="button"
+                        onClick={() => navigate("/forgot-password")}
+                        className="text-[10px] tracking-[0.12em] uppercase font-bold text-gray-400 hover:text-[#D4AF37] transition-colors"
+                      >
+                        Forgot Password?
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 <AnimatePresence>

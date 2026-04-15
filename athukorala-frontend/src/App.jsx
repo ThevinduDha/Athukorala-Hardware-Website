@@ -22,6 +22,8 @@ import CuratedList from './pages/CuratedList';
 import CustomerProfile from './pages/CustomerProfile'; // NEW: Personal Registry Page
 import Inventory from "./pages/Inventory";
 import Suppliers from "./pages/Suppliers";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/suppliers" element={<Suppliers />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         
         {/* --- CUSTOMER ROUTES --- */}
         <Route path="/shopping-cart" element={<CartPage />} />

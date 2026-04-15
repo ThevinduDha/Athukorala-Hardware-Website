@@ -29,9 +29,8 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @JsonIgnore
     @NotBlank(message = "Password is required")
-    @Size(min = 6, message = "Password must be at least 6 characters")
+    @Size(min = 8, message = "Password must be at least 6 characters")
     @Column(nullable = false)
     private String password;
 
@@ -49,11 +48,19 @@ public class User {
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+    private String resetToken;
+    private LocalDateTime tokenExpiry;
 
     @PrePersist
     public void prePersist() {
+        // Set created time
         if (createdAt == null) {
             createdAt = LocalDateTime.now();
+        }
+
+        // 🔥 FIX: Set default role if not provided
+        if (role == null) {
+            role = Role.CUSTOMER;
         }
     }
 }

@@ -28,6 +28,7 @@ import {
   ListFilter
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import { Range, getTrackBackground } from "react-range";
 import CustomerAnnouncement from '../components/CustomerAnnouncement';
 
 const CATEGORY_OPTIONS = [
@@ -51,11 +52,14 @@ const SORT_OPTIONS = [
 
 const CustomerDashboard = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProductsState, setFilteredProducts] = useState([]);
   const [category, setCategory] = useState('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   const [curatedIds, setCuratedIds] = useState([]);
   const [filterMode, setFilterMode] = useState('all');
   const [sortType, setSortType] = useState('LATEST');
+  const [values, setValues] = useState([0, 100000]);
+
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -107,7 +111,8 @@ const CustomerDashboard = () => {
     }
   };
 
-  const filteredProducts = useMemo(() => {
+  // Auto filter logic with useEffect
+  useEffect(() => {
     let result = Array.isArray(products) ? [...products] : [];
 
     if (category !== 'ALL') {
@@ -129,6 +134,16 @@ const CustomerDashboard = () => {
         );
       });
     }
+
+    // PRICE FILTER with slider values
+    result = result.filter((p) => {
+      const price =
+        p.discountedPrice && p.discountedPrice < p.price
+          ? p.discountedPrice
+          : p.price || 0;
+
+      return price >= values[0] && price <= values[1];
+    });
 
     if (filterMode === 'offers') {
       result = result.filter((p) => p.discountedPrice && p.discountedPrice < p.price);
@@ -152,8 +167,8 @@ const CustomerDashboard = () => {
       result.sort((a, b) => Number(b.id || 0) - Number(a.id || 0));
     }
 
-    return result;
-  }, [products, category, searchTerm, filterMode, sortType]);
+    setFilteredProducts(result);
+  }, [products, category, searchTerm, filterMode, sortType, values]);
 
   const handleAddToCart = async (product) => {
     if (user.name.includes('Guest')) {
@@ -507,6 +522,48 @@ const CustomerDashboard = () => {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                {/* NEW SLIDER UI - REPLACED OLD FILTER */}
+                <div className="mb-6 p-6 border border-white/10 rounded-xl bg-white/[0.02] max-w-md">
+                  <h3 className="text-[#D4AF37] font-bold mb-4 flex items-center gap-2">
+                    <SlidersHorizontal size={16} /> Filter by Price
+                  </h3>
+
+                  <div className="flex justify-between text-sm mb-4">
+                    <span className="text-gray-300">LKR {values[0].toLocaleString()}</span>
+                    <span className="text-gray-300">LKR {values[1].toLocaleString()}</span>
+                  </div>
+
+                  <Range
+                    values={values}
+                    step={100}
+                    min={0}
+                    max={100000}
+                    onChange={(vals) => setValues(vals)}
+                    renderTrack={({ props, children }) => (
+                      <div
+                        {...props}
+                        className="h-2 w-full rounded"
+                        style={{
+                          background: getTrackBackground({
+                            values,
+                            colors: ["#444", "#D4AF37", "#444"],
+                            min: 0,
+                            max: 100000
+                          })
+                        }}
+                      >
+                        {children}
+                      </div>
+                    )}
+                    renderThumb={({ props }) => (
+                      <div
+                        {...props}
+                        className="h-5 w-5 bg-[#D4AF37] rounded-full shadow-lg cursor-pointer hover:scale-110 transition-transform"
+                      />
+                    )}
+                  />
+                </div>
+
                 <div className="relative">
                   <ListFilter
                     size={18}
@@ -597,8 +654,8 @@ const CustomerDashboard = () => {
             </motion.div>
           </header>
 
-          {/* PRODUCT GRID */}
-          {filteredProducts.length === 0 ? (
+          {/* PRODUCT GRID - USING filteredProductsState */}
+          {filteredProductsState.length === 0 ? (
             <div className="rounded-[32px] border border-dashed border-white/10 bg-white/[0.02] py-20 px-6 text-center">
               <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-5">
                 <Package className="text-[#D4AF37]" size={28} />
@@ -622,7 +679,7 @@ const CustomerDashboard = () => {
               }}
               className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-7"
             >
-              {filteredProducts.map((product) => (
+              {filteredProductsState.map((product) => (
                 <LuxuryProductCard
                   key={product.id}
                   product={product}

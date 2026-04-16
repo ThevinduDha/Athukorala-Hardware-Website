@@ -18,7 +18,6 @@ import {
   ArrowUpRight,
   CheckCircle2,
   TimerReset,
-  Truck,
   ShieldCheck,
   Boxes
 } from 'lucide-react';
@@ -47,36 +46,36 @@ const OrderHistory = () => {
   };
 
   const getStatusConfig = (status) => {
-    const normalized = (status || '').toUpperCase();
+    const s = (status || '').toUpperCase();
 
-    if (normalized === 'COMPLETED' || normalized === 'DELIVERED') {
+    if (s === 'COMPLETED') {
       return {
-        label: status || 'Completed',
+        label: 'Completed',
         icon: <CheckCircle2 size={14} />,
         className: 'border-emerald-500/20 bg-emerald-500/10 text-emerald-300'
       };
     }
 
-    if (normalized === 'SHIPPED' || normalized === 'DISPATCHED') {
+    if (s === 'APPROVED') {
       return {
-        label: status || 'Shipped',
-        icon: <Truck size={14} />,
-        className: 'border-sky-500/20 bg-sky-500/10 text-sky-300'
+        label: 'Approved',
+        icon: <ShieldCheck size={14} />,
+        className: 'border-blue-500/20 bg-blue-500/10 text-blue-300'
       };
     }
 
-    if (normalized === 'PENDING' || normalized === 'PROCESSING') {
+    if (s === 'REJECTED') {
       return {
-        label: status || 'Processing',
-        icon: <TimerReset size={14} />,
-        className: 'border-amber-500/20 bg-amber-500/10 text-amber-300'
+        label: 'Rejected',
+        icon: <Clock3 size={14} />,
+        className: 'border-red-500/20 bg-red-500/10 text-red-300'
       };
     }
 
     return {
-      label: status || 'Authorized',
-      icon: <Clock3 size={14} />,
-      className: 'border-[#D4AF37]/20 bg-[#D4AF37]/10 text-[#D4AF37]'
+      label: 'Pending',
+      icon: <TimerReset size={14} />,
+      className: 'border-amber-500/20 bg-amber-500/10 text-amber-300'
     };
   };
 
@@ -132,10 +131,10 @@ const OrderHistory = () => {
 
   const totalOrders = orders.length;
   const completedOrders = orders.filter((o) =>
-    ['COMPLETED', 'DELIVERED'].includes((o?.status || '').toUpperCase())
+    (o?.status || '').toUpperCase() === 'COMPLETED'
   ).length;
   const pendingOrders = orders.filter((o) =>
-    ['PENDING', 'PROCESSING'].includes((o?.status || '').toUpperCase())
+    (o?.status || '').toUpperCase() === 'PENDING'
   ).length;
   const totalSpent = orders.reduce((sum, order) => sum + (order?.totalAmount || 0), 0);
 
@@ -392,7 +391,7 @@ const OrderHistory = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  {['ALL', 'PENDING', 'PROCESSING', 'SHIPPED', 'COMPLETED', 'DELIVERED'].map(
+                  {['ALL', 'PENDING', 'APPROVED', 'REJECTED'].map(
                     (status) => (
                       <button
                         key={status}
@@ -583,6 +582,15 @@ const OrderCard = ({ order, formatDate, getStatusConfig }) => {
           value="Verified transaction registry"
         />
       </div>
+
+      {/* Rejection Reason Display */}
+      {order?.rejectionReason && (
+        <div className="mt-4 pt-3 border-t border-red-500/20">
+          <p className="text-red-400 text-sm">
+            <span className="font-semibold">Rejection Reason:</span> {order.rejectionReason}
+          </p>
+        </div>
+      )}
     </motion.div>
   );
 };

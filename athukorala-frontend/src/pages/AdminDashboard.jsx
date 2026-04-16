@@ -39,6 +39,7 @@ import NoticeArchive from '../components/NoticeArchive';
 import Financials from './Financials';
 import SystemConfig from './SystemConfig';
 import SupplierRegistry from './SupplierRegistry';
+import OrderHistoryAdmin from './AdminOrders';
 
 const pageTransition = {
   initial: { opacity: 0, y: 20 },
@@ -343,6 +344,14 @@ const AdminDashboard = () => {
             active={activeTab === 'promotions'}
             collapsed={sidebarCollapsed}
             onClick={() => setActiveTab('promotions')}
+          />
+
+          <NavItem
+            icon={<Package size={18} />}
+            label="Orders"
+            active={activeTab === 'orders'}
+            collapsed={sidebarCollapsed}
+            onClick={() => setActiveTab('orders')}
           />
           <NavItem
             icon={<Users size={18} />}
@@ -707,6 +716,17 @@ const AdminDashboard = () => {
                 exit="exit"
               >
                 <PersonnelRegistry />
+              </motion.div>
+            )}
+            {activeTab === 'orders' && (
+              <motion.div
+                key="orders"
+                variants={pageTransition}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <OrderHistoryAdmin />
               </motion.div>
             )}
           </AnimatePresence>

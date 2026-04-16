@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Package, Truck, CheckCircle } from 'lucide-react';
+import { Package, CheckCircle } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import LowStockPanel from '../components/LowStockPanel';
 
@@ -52,7 +52,9 @@ const AdminOrders = () => {
   const stats = useMemo(() => ({
     totalValue: orders.reduce((acc, o) => acc + (o.totalAmount || 0), 0),
     pending: orders.filter(o => o.status === 'PENDING').length,
-    completed: orders.filter(o => o.status === 'COMPLETED').length
+    approved: orders.filter(o => o.status === 'APPROVED').length,
+    completed: orders.filter(o => o.status === 'COMPLETED').length,
+    rejected: orders.filter(o => o.status === 'REJECTED').length
   }), [orders]);
 
   const filteredOrders = orders.filter(
@@ -61,8 +63,10 @@ const AdminOrders = () => {
 
   const statusColor = (status) => {
     if (status === 'PENDING') return 'bg-amber-400';
-    if (status === 'DISPATCHED') return 'bg-blue-400';
-    return 'bg-green-400';
+    if (status === 'APPROVED') return 'bg-blue-400';
+    if (status === 'COMPLETED') return 'bg-green-400';
+    if (status === 'REJECTED') return 'bg-red-400';
+    return 'bg-gray-400';
   };
 
   return (
@@ -87,14 +91,16 @@ const AdminOrders = () => {
           <div className="flex gap-6">
             <StatCard title="Total Value" value={`LKR ${stats.totalValue.toLocaleString()}`} />
             <StatCard title="Pending" value={stats.pending} />
-            <StatCard title="Completed" value={stats.completed} />
+            <StatCard title="Approved" value={stats.approved} />
+            
+            <StatCard title="Rejected" value={stats.rejected} />
           </div>
         </div>
       </div>
 
       {/* FILTER */}
       <div className="flex gap-3 flex-wrap">
-        {['ALL', 'PENDING', 'DISPATCHED', 'COMPLETED'].map((s) => (
+        {['ALL', 'PENDING', 'APPROVED', 'REJECTED'].map((s) => (
           <button
             key={s}
             onClick={() => setFilter(s)}
@@ -161,21 +167,25 @@ const AdminOrders = () => {
 
               {/* ACTIONS */}
               <div className="flex gap-2">
+                {/* APPROVE */}
                 <button
-                  onClick={() => updateStatus(order.id, 'DISPATCHED')}
+                  onClick={() => updateStatus(order.id, 'APPROVED')}
                   disabled={order.status !== 'PENDING'}
                   className="p-3 rounded-xl bg-blue-500/10 hover:bg-blue-500 text-blue-400 hover:text-white transition disabled:opacity-20"
                 >
-                  <Truck size={16} />
+                  ✔
                 </button>
 
+                {/* REJECT */}
                 <button
-                  onClick={() => updateStatus(order.id, 'COMPLETED')}
-                  disabled={order.status === 'COMPLETED'}
-                  className="p-3 rounded-xl bg-green-500/10 hover:bg-green-500 text-green-400 hover:text-white transition disabled:opacity-20"
+                  onClick={() => updateStatus(order.id, 'REJECTED')}
+                  disabled={order.status !== 'PENDING'}
+                  className="p-3 rounded-xl bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white transition disabled:opacity-20"
                 >
-                  <CheckCircle size={16} />
+                  ✖
                 </button>
+
+
               </div>
             </motion.div>
           ))}

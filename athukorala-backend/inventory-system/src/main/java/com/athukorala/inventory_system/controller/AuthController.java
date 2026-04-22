@@ -9,6 +9,7 @@ import com.athukorala.inventory_system.service.AuthService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -26,6 +27,9 @@ public class AuthController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     // ================= LOGIN =================
     @PostMapping("/login")
@@ -123,7 +127,8 @@ public class AuthController {
                 throw new RuntimeException("Token expired");
             }
 
-            user.setPassword(newPassword);
+            // FIXED: Encrypt the password before saving
+            user.setPassword(passwordEncoder.encode(newPassword));
             user.setResetToken(null);
             user.setTokenExpiry(null);
 

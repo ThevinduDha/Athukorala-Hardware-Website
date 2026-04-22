@@ -25,6 +25,7 @@ import {
   Truck
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+import ThemeToggle from '../components/ThemeToggle';
 
 import AddProductModal from './AddProductModal';
 import InventoryList from './InventoryList';
@@ -92,7 +93,7 @@ const AuditPreviewWidget = () => {
   return (
     <motion.div
       variants={fadeUp}
-      className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-7 lg:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
+      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/[0.04] backdrop-blur-xl p-7 lg:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
     >
       <motion.div
         animate={{ height: ['18%', '100%', '18%'] }}
@@ -105,7 +106,7 @@ const AuditPreviewWidget = () => {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#D4AF37]">
             System Integrity
           </p>
-          <h3 className="text-2xl font-bold text-white mt-2">Live Audit Feed</h3>
+          <h3 className="text-2xl font-bold text-black dark:text-white mt-2">Live Audit Feed</h3>
         </div>
 
         <div className="flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1.5">
@@ -123,20 +124,20 @@ const AuditPreviewWidget = () => {
                 initial={{ opacity: 0, x: -14 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className="rounded-2xl border border-white/6 bg-black/20 px-4 py-4 hover:border-[#D4AF37]/25 transition-all"
+                className="rounded-2xl border border-gray-200 dark:border-white/6 bg-gray-50 dark:bg-black/20 px-4 py-4 hover:border-[#D4AF37]/25 transition-all"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-3">
                     <div className="mt-2 w-2 h-2 rounded-full bg-[#D4AF37]" />
                     <div>
-                      <p className="text-sm font-semibold text-white">{log.action}</p>
-                      <p className="text-xs text-gray-400 mt-1 break-words">
+                      <p className="text-sm font-semibold text-black dark:text-white">{log.action}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 break-words">
                         {log.performedBy} — {log.details}
                       </p>
                     </div>
                   </div>
 
-                  <span className="text-xs font-medium text-gray-500 whitespace-nowrap">
+                  <span className="text-xs font-medium text-gray-400 dark:text-gray-500 whitespace-nowrap">
                     {new Date(log.timestamp).toLocaleTimeString([], {
                       hour: '2-digit',
                       minute: '2-digit'
@@ -146,7 +147,7 @@ const AuditPreviewWidget = () => {
               </motion.div>
             ))
           ) : (
-            <p className="text-sm text-gray-500 italic py-16 text-center">
+            <p className="text-sm text-gray-400 dark:text-gray-500 italic py-16 text-center">
               Monitoring encrypted streams...
             </p>
           )}
@@ -255,14 +256,14 @@ const AdminDashboard = () => {
   const header = renderHeaderText();
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white flex overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white flex overflow-hidden">
       {/* SIDEBAR */}
       <motion.aside
         animate={{ width: sidebarCollapsed ? 96 : 288 }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        className="h-screen sticky top-0 border-r border-white/10 bg-black/45 backdrop-blur-2xl z-40 flex flex-col"
+        className="h-screen sticky top-0 border-r border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-black/45 backdrop-blur-2xl z-40 flex flex-col"
       >
-        <div className="px-4 py-5 border-b border-white/6">
+        <div className="px-4 py-5 border-b border-gray-200 dark:border-white/6">
           <div className="flex items-center justify-between gap-3">
             <div className={`flex items-center gap-3 ${sidebarCollapsed ? 'justify-center w-full' : ''}`}>
               <motion.div
@@ -281,7 +282,7 @@ const AdminDashboard = () => {
 
               {!sidebarCollapsed && (
                 <div>
-                  <p className="text-base font-bold tracking-tight">Athukorala</p>
+                  <p className="text-base font-bold tracking-tight text-black dark:text-white">Athukorala</p>
                   <p className="text-xs text-[#D4AF37] font-medium mt-0.5">Industrial OS</p>
                 </div>
               )}
@@ -290,7 +291,7 @@ const AdminDashboard = () => {
             {!sidebarCollapsed && (
               <button
                 onClick={() => setSidebarCollapsed(true)}
-                className="w-9 h-9 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-300"
+                className="w-9 h-9 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300"
               >
                 <PanelLeftClose size={16} />
               </button>
@@ -301,7 +302,7 @@ const AdminDashboard = () => {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={() => setSidebarCollapsed(false)}
-                className="w-9 h-9 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-300"
+                className="w-9 h-9 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300"
               >
                 <PanelLeftOpen size={16} />
               </button>
@@ -382,12 +383,13 @@ const AdminDashboard = () => {
           />
         </nav>
 
-        <div className="p-3 border-t border-white/6">
+        <div className="p-3 border-t border-gray-200 dark:border-white/6">
+          <ThemeToggle />
           <motion.button
             whileHover={{ x: 4 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleLogout}
-            className={`w-full flex items-center gap-3 rounded-2xl px-4 py-3 text-red-300 bg-red-500/8 border border-red-500/15 hover:bg-red-500/12 transition-all ${
+            className={`w-full mt-3 flex items-center gap-3 rounded-2xl px-4 py-3 text-red-600 dark:text-red-300 bg-red-500/8 border border-red-500/15 hover:bg-red-500/12 transition-all ${
               sidebarCollapsed ? 'justify-center' : ''
             }`}
           >
@@ -425,11 +427,11 @@ const AdminDashboard = () => {
                       </p>
                     </div>
 
-                    <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-none">
+                    <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-none text-black dark:text-white">
                       {header.title}
                     </h1>
 
-                    <p className="mt-4 text-base text-gray-400 max-w-2xl leading-relaxed">
+                    <p className="mt-4 text-base text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
                       {header.sub}
                     </p>
                   </motion.div>
@@ -448,7 +450,7 @@ const AdminDashboard = () => {
                       <input
                         type="text"
                         placeholder="Search registry..."
-                        className="w-full sm:w-72 rounded-2xl border border-white/10 bg-white/5 py-3.5 pl-11 pr-4 text-sm outline-none focus:border-[#D4AF37] transition-all placeholder:text-gray-500"
+                        className="w-full sm:w-72 rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 py-3.5 pl-11 pr-4 text-sm outline-none focus:border-[#D4AF37] transition-all placeholder:text-gray-500 text-black dark:text-white"
                       />
                     </div>
 
@@ -457,7 +459,7 @@ const AdminDashboard = () => {
                       className="w-12 h-12 rounded-2xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center relative hover:bg-[#D4AF37]/15 transition-all"
                     >
                       <Bell size={20} className="text-[#D4AF37]" />
-                      <div className="absolute top-0.5 right-0.5 w-3 h-3 bg-red-500 border-2 border-[#050505] rounded-full" />
+                      <div className="absolute top-0.5 right-0.5 w-3 h-3 bg-red-500 border-2 border-white dark:border-[#050505] rounded-full" />
                     </motion.button>
                   </motion.div>
                 </div>
@@ -546,7 +548,7 @@ const AdminDashboard = () => {
 
                     <motion.div
                       variants={fadeUp}
-                      className="rounded-3xl border border-white/10 bg-[#D4AF37]/6 backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
+                      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-[#D4AF37]/6 backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
                     >
                       <div className="absolute top-5 right-5 opacity-10">
                         <Activity size={72} />
@@ -555,7 +557,7 @@ const AdminDashboard = () => {
                       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#D4AF37] mb-3">
                         Quick Operations
                       </p>
-                      <h3 className="text-2xl font-bold mb-6">Admin Shortcuts</h3>
+                      <h3 className="text-2xl font-bold mb-6 text-black dark:text-white">Admin Shortcuts</h3>
 
                       <div className="space-y-4">
                         <ActionButton label="Add New Product" onClick={() => setIsModalOpen(true)} />
@@ -645,11 +647,11 @@ const AdminDashboard = () => {
                     />
                   </div>
 
-                  <div className="xl:col-span-5 rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)]">
+                  <div className="xl:col-span-5 rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/[0.04] backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)]">
                     <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#D4AF37] mb-3">
                       Active Protocols
                     </p>
-                    <h3 className="text-2xl font-bold mb-6">Running Promotions</h3>
+                    <h3 className="text-2xl font-bold mb-6 text-black dark:text-white">Running Promotions</h3>
                     <ActivePromotionList
                       refreshTrigger={promoRefreshTrigger}
                       onEdit={(promo) => setEditingPromo(promo)}
@@ -771,7 +773,7 @@ const NavItem = ({ icon, label, active = false, onClick, collapsed = false }) =>
     } rounded-2xl px-4 py-3.5 transition-all duration-300 group relative ${
       active
         ? 'bg-[#D4AF37] text-black shadow-[0_10px_24px_rgba(212,175,55,0.18)]'
-        : 'text-gray-400 hover:text-white hover:bg-white/6'
+        : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/6'
     }`}
     title={collapsed ? label : undefined}
   >
@@ -792,17 +794,17 @@ const StatCard = ({ icon, label, value, sub, trend }) => (
   <motion.div
     variants={fadeUp}
     whileHover={{ y: -6, borderColor: 'rgba(212,175,55,0.35)' }}
-    className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.24)] relative overflow-hidden"
+    className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/[0.04] backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.24)] relative overflow-hidden"
   >
     <div className="absolute top-5 right-5 text-[#D4AF37]/12">
       {React.cloneElement(icon, { size: 54 })}
     </div>
 
-    <p className="text-sm font-semibold text-gray-400">{label}</p>
-    <h3 className="text-4xl lg:text-5xl font-black tracking-tight mt-4 text-white">
+    <p className="text-sm font-semibold text-gray-500 dark:text-gray-400">{label}</p>
+    <h3 className="text-4xl lg:text-5xl font-black tracking-tight mt-4 text-black dark:text-white">
       {value}
     </h3>
-    <p className="text-sm text-gray-500 mt-3">{sub}</p>
+    <p className="text-sm text-gray-500 dark:text-gray-500 mt-3">{sub}</p>
 
     <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/15 bg-[#D4AF37]/8 px-3.5 py-2 text-sm font-semibold text-[#D4AF37]">
       <ArrowUpRight size={14} />
@@ -815,14 +817,14 @@ const QuickAccessCard = ({ icon, title, desc, actionLabel, onClick }) => (
   <motion.div
     variants={fadeUp}
     whileHover={{ y: -6, borderColor: 'rgba(212,175,55,0.28)' }}
-    className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.24)]"
+    className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/[0.04] backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.24)]"
   >
     <div className="w-12 h-12 rounded-2xl bg-[#D4AF37]/12 border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] mb-5">
       {icon}
     </div>
 
-    <h3 className="text-2xl font-bold text-white">{title}</h3>
-    <p className="mt-3 text-sm text-gray-400 leading-relaxed">{desc}</p>
+    <h3 className="text-2xl font-bold text-black dark:text-white">{title}</h3>
+    <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{desc}</p>
 
     <motion.button
       whileHover={{ x: 4 }}
@@ -841,9 +843,9 @@ const ActionButton = ({ label, onClick }) => (
     whileHover={{ x: 4, scale: 1.01 }}
     whileTap={{ scale: 0.985 }}
     onClick={onClick}
-    className="w-full rounded-2xl border border-white/10 bg-white/4 hover:border-[#D4AF37]/35 hover:bg-white/6 transition-all px-5 py-4 text-left flex items-center justify-between"
+    className="w-full rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/4 hover:border-[#D4AF37]/35 hover:bg-gray-200 dark:hover:bg-white/6 transition-all px-5 py-4 text-left flex items-center justify-between"
   >
-    <span className="text-sm font-semibold text-white">{label}</span>
+    <span className="text-sm font-semibold text-black dark:text-white">{label}</span>
     <ArrowUpRight size={16} className="text-[#D4AF37]" />
   </motion.button>
 );

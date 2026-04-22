@@ -1,5 +1,5 @@
 # ⚡ ATHUKORALA INDUSTRIAL OS (v2.0)
-> **An Advanced, ML-Enhanced Enterprise Resource Planning (ERP) System for Modern Hardware Commerce.**
+> **An Advanced, ML Enhanced Enterprise Resource Planning (ERP) System for Modern Hardware Commerce.**
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/render?type=soft&color=D4AF37&height=200&section=header&text=ATHUKORALA%20OS&fontSize=70&fontColor=000000&animation=fadeIn" />

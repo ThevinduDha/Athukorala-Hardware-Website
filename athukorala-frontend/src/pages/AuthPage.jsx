@@ -13,7 +13,9 @@ import {
   Lock,
   User2,
   ChevronLeft,
-  BadgeCheck
+  BadgeCheck,
+  Sun,
+  Moon
 } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import { toast, Toaster } from 'react-hot-toast';
@@ -22,6 +24,7 @@ const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [authError, setAuthError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const {
     register,
@@ -117,16 +120,20 @@ const AuthPage = () => {
     }
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#050505] text-white font-sans">
+    <div className={`relative min-h-screen overflow-hidden font-sans ${isDarkMode ? 'bg-[#050505] text-white' : 'bg-white text-black'}`}>
       <Toaster
         position="top-right"
         reverseOrder={false}
         toastOptions={{
           style: {
-            background: '#111',
-            color: '#fff',
-            border: '1px solid #D4AF37',
+            background: isDarkMode ? '#111' : '#f5f5f5',
+            color: isDarkMode ? '#fff' : '#000',
+            border: `1px solid ${isDarkMode ? '#D4AF37' : '#D4AF37'}`,
             borderRadius: '14px',
             fontSize: '12px',
             letterSpacing: '0.08em',
@@ -137,49 +144,57 @@ const AuthPage = () => {
 
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{ x: [0, 45, 0], y: [0, -28, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-[-10%] left-[-10%] w-[380px] h-[380px] bg-[#D4AF37]/10 rounded-full blur-[120px]"
-        />
+        {isDarkMode && (
+          <>
+            <motion.div
+              animate={{ x: [0, 45, 0], y: [0, -28, 0] }}
+              transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute top-[-10%] left-[-10%] w-[380px] h-[380px] bg-[#D4AF37]/10 rounded-full blur-[120px]"
+            />
 
-        <motion.div
-          animate={{ x: [0, -35, 0], y: [0, 30, 0] }}
-          transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-[-10%] right-[-10%] w-[430px] h-[430px] bg-yellow-400/10 rounded-full blur-[135px]"
-        />
+            <motion.div
+              animate={{ x: [0, -35, 0], y: [0, 30, 0] }}
+              transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute bottom-[-10%] right-[-10%] w-[430px] h-[430px] bg-yellow-400/10 rounded-full blur-[135px]"
+            />
 
-        <motion.div
-          animate={{ opacity: [0.12, 0.28, 0.12] }}
-          transition={{ duration: 5, repeat: Infinity }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.08),transparent_45%)]"
-        />
+            <motion.div
+              animate={{ opacity: [0.12, 0.28, 0.12] }}
+              transition={{ duration: 5, repeat: Infinity }}
+              className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.08),transparent_45%)]"
+            />
 
-        {particles.map((particle) => (
-          <motion.span
-            key={particle.id}
-            className="absolute rounded-full bg-[#D4AF37]/25"
-            style={{
-              width: particle.size,
-              height: particle.size,
-              top: particle.top,
-              left: particle.left
-            }}
-            animate={{
-              y: [0, -24, 0],
-              opacity: [0.12, 0.7, 0.12],
-              scale: [1, 1.25, 1]
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
-              ease: 'easeInOut'
-            }}
-          />
-        ))}
+            {particles.map((particle) => (
+              <motion.span
+                key={particle.id}
+                className="absolute rounded-full bg-[#D4AF37]/25"
+                style={{
+                  width: particle.size,
+                  height: particle.size,
+                  top: particle.top,
+                  left: particle.left
+                }}
+                animate={{
+                  y: [0, -24, 0],
+                  opacity: [0.12, 0.7, 0.12],
+                  scale: [1, 1.25, 1]
+                }}
+                transition={{
+                  duration: particle.duration,
+                  repeat: Infinity,
+                  delay: particle.delay,
+                  ease: 'easeInOut'
+                }}
+              />
+            ))}
 
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:42px_42px] opacity-20" />
+          </>
+        )}
+        
+        {!isDarkMode && (
+          <div className="absolute inset-0 bg-gray-50" />
+        )}
       </div>
 
       <div className="relative z-20 flex min-h-screen">
@@ -198,11 +213,11 @@ const AuthPage = () => {
               className="mb-6"
             >
               <div className="flex flex-wrap items-center gap-3 mb-5">
-                <div className="inline-flex items-center gap-3 px-4 py-3 rounded-2xl border border-[#D4AF37]/20 bg-white/5 backdrop-blur-xl shadow-[0_0_30px_rgba(212,175,55,0.08)]">
+                <div className={`inline-flex items-center gap-3 px-4 py-3 rounded-2xl border border-[#D4AF37]/20 backdrop-blur-xl shadow-[0_0_30px_rgba(212,175,55,0.08)] ${isDarkMode ? 'bg-white/5' : 'bg-black/5'}`}>
                   <div className="p-2 bg-[#D4AF37]/10 rounded-xl border border-[#D4AF37]/20">
                     <Hammer className="text-[#D4AF37]" size={20} />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold tracking-[0.32em] uppercase text-gray-300">
+                  <span className={`text-xs sm:text-sm font-bold tracking-[0.32em] uppercase ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                     {isAdminMode ? 'Industrial Portal' : 'Client Portal'}
                   </span>
                 </div>
@@ -210,13 +225,22 @@ const AuthPage = () => {
                 <button
                   type="button"
                   onClick={() => navigate('/')}
-                  className="group inline-flex items-center gap-2 px-4 py-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/40 transition-all text-[11px] tracking-[0.2em] uppercase text-gray-300 hover:text-[#D4AF37]"
+                  className={`group inline-flex items-center gap-2 px-4 py-3 rounded-2xl border border-white/10 transition-all text-[11px] tracking-[0.2em] uppercase ${isDarkMode ? 'bg-white/5 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/40 text-gray-300 hover:text-[#D4AF37]' : 'bg-black/5 hover:bg-[#D4AF37]/20 hover:border-[#D4AF37]/60 text-gray-600 hover:text-[#D4AF37] border-black/10'}`}
                 >
                   <ChevronLeft
                     size={14}
                     className="group-hover:-translate-x-1 transition-transform"
                   />
                   Back to Home
+                </button>
+
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className={`inline-flex items-center gap-2 px-4 py-3 rounded-2xl border transition-all text-[11px] tracking-[0.2em] uppercase ${isDarkMode ? 'border-white/10 bg-white/5 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/40 text-gray-300 hover:text-[#D4AF37]' : 'border-black/10 bg-black/5 hover:bg-[#D4AF37]/20 hover:border-[#D4AF37]/60 text-gray-600 hover:text-[#D4AF37]'}`}
+                >
+                  {isDarkMode ? <Sun size={14} /> : <Moon size={14} />}
+                  {isDarkMode ? 'Light' : 'Dark'}
                 </button>
               </div>
 
@@ -236,7 +260,7 @@ const AuthPage = () => {
                     </span>
                   </h1>
 
-                  <p className="mt-4 text-sm sm:text-base text-gray-400 max-w-md leading-relaxed">
+                  <p className={`mt-4 text-sm sm:text-base max-w-md leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     {isLogin
                       ? 'Securely access your dashboard with a smoother animated login experience.'
                       : 'Join the platform with a premium sign up experience and elegant access flow.'}
@@ -251,16 +275,18 @@ const AuthPage = () => {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.08 }}
-              className="relative overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] backdrop-blur-2xl p-5 sm:p-6 md:p-7 shadow-[0_20px_70px_rgba(0,0,0,0.34)]"
+              className={`relative overflow-hidden rounded-[30px] border backdrop-blur-2xl p-5 sm:p-6 md:p-7 shadow-[0_20px_70px_rgba(0,0,0,0.34)] ${isDarkMode ? 'border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))]' : 'border-black/10 bg-white'}`}
             >
-              <motion.div
-                animate={{ x: ['-100%', '110%'] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: 'linear' }}
-                className="pointer-events-none absolute top-0 left-0 h-[1px] w-1/2 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-75"
-              />
+              {isDarkMode && (
+                <motion.div
+                  animate={{ x: ['-100%', '110%'] }}
+                  transition={{ duration: 3.2, repeat: Infinity, ease: 'linear' }}
+                  className="pointer-events-none absolute top-0 left-0 h-[1px] w-1/2 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-75"
+                />
+              )}
 
               {!isAdminMode && (
-                <div className="mb-6 flex rounded-2xl border border-white/10 bg-black/25 p-1.5">
+                <div className={`mb-6 flex rounded-2xl border p-1.5 ${isDarkMode ? 'border-white/10 bg-black/25' : 'border-black/10 bg-gray-100'}`}>
                   <button
                     type="button"
                     onClick={() => {
@@ -268,7 +294,7 @@ const AuthPage = () => {
                       setAuthError('');
                     }}
                     className={`relative w-1/2 rounded-xl py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.24em] transition-all ${
-                      isLogin ? 'text-black' : 'text-gray-400 hover:text-white'
+                      isLogin ? (isDarkMode ? 'text-black' : 'text-white') : (isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black')
                     }`}
                   >
                     {isLogin && (
@@ -288,7 +314,7 @@ const AuthPage = () => {
                       setAuthError('');
                     }}
                     className={`relative w-1/2 rounded-xl py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.24em] transition-all ${
-                      !isLogin ? 'text-black' : 'text-gray-400 hover:text-white'
+                      !isLogin ? (isDarkMode ? 'text-black' : 'text-white') : (isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-black')
                     }`}
                   >
                     {!isLogin && (
@@ -314,23 +340,23 @@ const AuthPage = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <InputWrap icon={<User2 size={18} />}>
+                      <InputWrap icon={<User2 size={18} />} isDarkMode={isDarkMode}>
                         <input
                           {...register('name', {
                             required: 'Legal Name is mandatory'
                           })}
                           placeholder="FULL NAME"
-                          className="auth-input"
+                          className={`auth-input ${isDarkMode ? 'dark' : 'light'}`}
                         />
                       </InputWrap>
-                      {errors.name && <p className="auth-error">{errors.name.message}</p>}
+                      {errors.name && <p className={`auth-error ${isDarkMode ? 'dark' : 'light'}`}>{errors.name.message}</p>}
                       
                     </motion.div>
                   )}
                 </AnimatePresence>
 
                 <div>
-                  <InputWrap icon={<Mail size={18} />}>
+                  <InputWrap icon={<Mail size={18} />} isDarkMode={isDarkMode}>
                     <input
                       {...register('email', {
                         required: 'Identifier is required',
@@ -340,14 +366,14 @@ const AuthPage = () => {
                         }
                       })}
                       placeholder="IDENTIFIER (EMAIL)"
-                      className="auth-input"
+                      className={`auth-input ${isDarkMode ? 'dark' : 'light'}`}
                     />
                   </InputWrap>
-                  {errors.email && <p className="auth-error">{errors.email.message}</p>}
+                  {errors.email && <p className={`auth-error ${isDarkMode ? 'dark' : 'light'}`}>{errors.email.message}</p>}
                 </div>
 
                 <div>
-                  <InputWrap icon={<Lock size={18} />}>
+                  <InputWrap icon={<Lock size={18} />} isDarkMode={isDarkMode}>
                     <input
                       type={showPassword ? 'text' : 'password'}
                       {...register(
@@ -365,7 +391,7 @@ const AuthPage = () => {
                             }
                       )}
                       placeholder="ACCESS KEY"
-                      className="auth-input pr-14"
+                      className={`auth-input pr-14 ${isDarkMode ? 'dark' : 'light'}`}
                     />
 
                     <button
@@ -378,14 +404,14 @@ const AuthPage = () => {
 
                     
                   </InputWrap>
-                  {errors.password && <p className="auth-error">{errors.password.message}</p>}
+                  {errors.password && <p className={`auth-error ${isDarkMode ? 'dark' : 'light'}`}>{errors.password.message}</p>}
 
                   {isLogin && (
                     <div className="text-right">
                       <button
                         type="button"
                         onClick={() => navigate("/forgot-password")}
-                        className="text-[10px] tracking-[0.12em] uppercase font-bold text-gray-400 hover:text-[#D4AF37] transition-colors"
+                        className={`text-[10px] tracking-[0.12em] uppercase font-bold transition-colors ${isDarkMode ? 'text-gray-400 hover:text-[#D4AF37]' : 'text-gray-600 hover:text-[#D4AF37]'}`}
                       >
                         Forgot Password?
                       </button>
@@ -399,7 +425,7 @@ const AuthPage = () => {
                       initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0 }}
-                      className="text-red-500 text-[10px] mt-1 tracking-[0.12em] uppercase font-bold"
+                      className={`text-red-500 text-[10px] mt-1 tracking-[0.12em] uppercase font-bold ${isDarkMode ? 'dark' : 'light'}`}
                     >
                       {authError}
                     </motion.p>
@@ -430,19 +456,19 @@ const AuthPage = () => {
                 </motion.button>
               </form>
 
-              <div className="mt-6 flex items-center justify-between gap-3 text-[10px] tracking-[0.16em] uppercase font-bold text-gray-500 border-t border-white/10 pt-5 flex-wrap">
+              <div className={`mt-6 flex items-center justify-between gap-3 text-[10px] tracking-[0.16em] uppercase font-bold border-t pt-5 flex-wrap ${isDarkMode ? 'text-gray-500 border-white/10' : 'text-gray-600 border-black/10'}`}>
                 {!isAdminMode ? (
                   <button
                     onClick={() => {
                       setIsLogin(!isLogin);
                       setAuthError('');
                     }}
-                    className="hover:text-[#D4AF37] transition-colors text-left"
+                    className={`hover:text-[#D4AF37] transition-colors text-left ${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}
                   >
                     {isLogin ? 'New Entry / Sign Up' : 'Existing Member / Login'}
                   </button>
                 ) : (
-                  <span className="text-[#D4AF37]/75 border border-[#D4AF37]/20 px-3 py-2 rounded-xl">
+                  <span className={`text-[#D4AF37]/75 border border-[#D4AF37]/20 px-3 py-2 rounded-xl ${isDarkMode ? 'text-[#D4AF37]/75' : 'text-[#D4AF37]'}`}>
                     Restricted Industrial Access
                   </span>
                 )}
@@ -466,14 +492,14 @@ const AuthPage = () => {
             style={{ backgroundImage: `url(${heroImg})` }}
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/20 to-black/12" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(5,5,5,0.84),rgba(5,5,5,0.12),rgba(212,175,55,0.05))]" />
+          <div className={`absolute inset-0 ${isDarkMode ? 'bg-gradient-to-r from-[#050505] via-[#050505]/20 to-black/12' : 'bg-gradient-to-r from-white via-white/80 to-transparent'}`} />
+          <div className={`absolute inset-0 ${isDarkMode ? 'bg-[linear-gradient(to_top,rgba(5,5,5,0.84),rgba(5,5,5,0.12),rgba(212,175,55,0.05))]' : 'bg-[linear-gradient(to_top,rgba(255,255,255,0.84),rgba(255,255,255,0.12),rgba(212,175,55,0.05))]'}`} />
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.65 }}
-            className="absolute top-10 right-8 xl:right-12 rounded-3xl border border-[#D4AF37]/20 bg-black/35 backdrop-blur-xl px-5 py-4 shadow-[0_0_25px_rgba(212,175,55,0.1)]"
+            className={`absolute top-10 right-8 xl:right-12 rounded-3xl border border-[#D4AF37]/20 backdrop-blur-xl px-5 py-4 shadow-[0_0_25px_rgba(212,175,55,0.1)] ${isDarkMode ? 'bg-black/35' : 'bg-white/80'}`}
           >
             <div className="flex items-center gap-3">
               <Sparkles className="text-[#D4AF37]" size={18} />
@@ -481,7 +507,7 @@ const AuthPage = () => {
                 <p className="text-xs tracking-[0.25em] uppercase text-[#D4AF37] font-bold">
                   Premium Access
                 </p>
-                <p className="text-[11px] text-gray-300 mt-1">
+                <p className={`text-[11px] mt-1 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                   Smart, secure and modern interface
                 </p>
               </div>
@@ -507,7 +533,7 @@ const AuthPage = () => {
               <motion.div
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}
-                className="rounded-[30px] border border-white/10 bg-[linear-gradient(135deg,rgba(0,0,0,0.62),rgba(20,20,20,0.44))] backdrop-blur-2xl p-8 xl:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.35)]"
+                className={`rounded-[30px] border backdrop-blur-2xl p-8 xl:p-10 shadow-[0_20px_70px_rgba(0,0,0,0.35)] ${isDarkMode ? 'border-white/10 bg-[linear-gradient(135deg,rgba(0,0,0,0.62),rgba(20,20,20,0.44))]' : 'border-black/10 bg-white/80'}`}
               >
                 <p className="text-[#D4AF37] text-3xl xl:text-[2.8rem] font-serif italic leading-tight mb-5">
                   "Precision in every
@@ -517,19 +543,19 @@ const AuthPage = () => {
 
                 <div className="h-[2px] w-24 bg-[#D4AF37]/60 rounded-full mb-5" />
 
-                <p className="text-sm text-gray-300 leading-relaxed max-w-md">
+                <p className={`text-sm leading-relaxed max-w-md ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                   Built for reliability, elegant access control, and a more
                   cinematic authentication experience.
                 </p>
 
-                <div className="mt-7 flex items-center gap-3 text-[10px] tracking-[0.35em] uppercase text-gray-400 font-bold">
+                <div className="mt-7 flex items-center gap-3 text-[10px] tracking-[0.35em] uppercase font-bold">
                   <span className="inline-block w-2 h-2 rounded-full bg-[#D4AF37]" />
-                  Industrial Grade Systems
+                  <span className={isDarkMode ? 'text-gray-400' : 'text-gray-600'}>Industrial Grade Systems</span>
                 </div>
 
                 <div className="mt-6 grid grid-cols-2 gap-3">
-                  <MiniStat icon={<ShieldCheck size={14} />} text="Secure Access" />
-                  <MiniStat icon={<BadgeCheck size={14} />} text="Premium UI" />
+                  <MiniStat icon={<ShieldCheck size={14} />} text="Secure Access" isDarkMode={isDarkMode} />
+                  <MiniStat icon={<BadgeCheck size={14} />} text="Premium UI" isDarkMode={isDarkMode} />
                 </div>
               </motion.div>
             </motion.div>
@@ -541,15 +567,27 @@ const AuthPage = () => {
         .auth-input {
           width: 100%;
           border-radius: 1rem;
-          border: 1px solid rgba(255,255,255,0.10);
-          background: rgba(0,0,0,0.20);
+          border: 1px solid rgba(0,0,0,0.1);
+          background: white;
           padding: 1rem 1rem 1rem 3rem;
           outline: none;
           transition: all 0.3s ease;
-          color: white;
+          color: black;
           letter-spacing: 0.16em;
           font-size: 0.92rem;
           text-transform: uppercase;
+        }
+
+        .auth-input.dark {
+          border: 1px solid rgba(255,255,255,0.10);
+          background: rgba(0,0,0,0.20);
+          color: white;
+        }
+
+        .auth-input.light {
+          border: 1px solid rgba(0,0,0,0.1);
+          background: white;
+          color: black;
         }
 
         .auth-input::placeholder {
@@ -560,6 +598,10 @@ const AuthPage = () => {
           border-color: rgba(212,175,55,1);
           background: rgba(0,0,0,0.32);
           box-shadow: 0 0 0 4px rgba(212,175,55,0.08);
+        }
+
+        .auth-input.light:focus {
+          background: rgba(255,255,255,0.95);
         }
 
         .auth-error {
@@ -575,7 +617,7 @@ const AuthPage = () => {
   );
 };
 
-const InputWrap = ({ icon, children }) => (
+const InputWrap = ({ icon, children, isDarkMode }) => (
   <motion.div whileFocus={{ scale: 1.01 }} className="relative">
     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] z-10">
       {icon}
@@ -584,8 +626,8 @@ const InputWrap = ({ icon, children }) => (
   </motion.div>
 );
 
-const MiniStat = ({ icon, text }) => (
-  <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gray-300">
+const MiniStat = ({ icon, text, isDarkMode }) => (
+  <div className={`rounded-2xl border px-4 py-3 flex items-center gap-2 text-xs uppercase tracking-[0.18em] ${isDarkMode ? 'border-white/10 bg-white/5 text-gray-300' : 'border-black/10 bg-black/5 text-gray-600'}`}>
     <span className="text-[#D4AF37]">{icon}</span>
     <span>{text}</span>
   </div>

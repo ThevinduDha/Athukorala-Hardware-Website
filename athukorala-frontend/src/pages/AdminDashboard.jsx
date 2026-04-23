@@ -773,7 +773,7 @@ const NavItem = ({ icon, label, active = false, onClick, collapsed = false }) =>
     } rounded-2xl px-4 py-3.5 transition-all duration-300 group relative ${
       active
         ? 'bg-[#D4AF37] text-black shadow-[0_10px_24px_rgba(212,175,55,0.18)]'
-        : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/6'
+        : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-[#D4AF37] hover:bg-gray-100 dark:hover:bg-gray-800/50'
     }`}
     title={collapsed ? label : undefined}
   >

@@ -93,7 +93,7 @@ const AuditPreviewWidget = () => {
   return (
     <motion.div
       variants={fadeUp}
-      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/[0.04] backdrop-blur-xl p-7 lg:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
+      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-black backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
     >
       <motion.div
         animate={{ height: ['18%', '100%', '18%'] }}
@@ -548,7 +548,7 @@ const AdminDashboard = () => {
 
                     <motion.div
                       variants={fadeUp}
-                      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-[#D4AF37]/6 backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
+                      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-gray-900/80 backdrop-blur-sm p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
                     >
                       <div className="absolute top-5 right-5 opacity-10">
                         <Activity size={72} />
@@ -843,7 +843,7 @@ const ActionButton = ({ label, onClick }) => (
     whileHover={{ x: 4, scale: 1.01 }}
     whileTap={{ scale: 0.985 }}
     onClick={onClick}
-    className="w-full rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/4 hover:border-[#D4AF37]/35 hover:bg-gray-200 dark:hover:bg-white/6 transition-all px-5 py-4 text-left flex items-center justify-between"
+    className="w-full rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-gray-800 hover:border-[#D4AF37]/35 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all px-5 py-4 text-left flex items-center justify-between"
   >
     <span className="text-sm font-semibold text-black dark:text-white">{label}</span>
     <ArrowUpRight size={16} className="text-[#D4AF37]" />

@@ -1,0 +1,2001 @@
+date,product_id,product_name,category,brand,unit_price,supplier_id,current_stock,reorder_level,units_sold,discount_percentage,is_holiday,is_weekend,month,day_of_week,needs_restock,restock_quantity
+2025-09-12,106,LED Bulb,Building Materials,Makita,1935.25,14,214,30,11,5,0,0,9,4,No,116
+2025-06-22,108,Garden Hose,Building Materials,Bosch,2350.32,20,130,41,8,10,0,1,6,6,No,110
+2025-05-08,106,LED Bulb,Safety Equipment,Makita,376.42,1,252,63,11,10,0,0,5,3,No,78
+2025-05-29,110,Nails Pack,Safety Equipment,Dulux,213.01,8,187,35,10,0,0,0,5,3,No,113
+2025-10-17,107,Cement Bag,Plumbing,Hilti,1240.58,14,54,71,5,10,0,0,10,4,Yes,96
+2025-05-13,106,LED Bulb,Gardening,Nippon,3002.83,11,88,79,6,5,0,0,5,1,No,92
+2025-07-05,110,Nails Pack,Paint,Stanley,2860.11,9,91,66,9,0,0,1,7,5,No,179
+2025-05-14,110,Nails Pack,Plumbing,Dulux,3447.99,10,34,33,11,10,0,0,5,2,No,296
+2025-12-28,107,Cement Bag,Building Materials,Bosch,2016.2,1,53,61,7,15,0,1,12,6,Yes,157
+2025-12-30,109,Safety Gloves,Building Materials,Dulux,2881.73,14,269,50,9,10,0,0,12,1,No,1
+2025-09-07,106,LED Bulb,Fasteners,Bosch,4617.18,12,189,59,5,5,0,1,9,6,No,0
+2025-08-28,108,Garden Hose,Paint,Bosch,4238.22,8,279,45,12,0,0,0,8,3,No,81
+2025-09-21,101,Hammer,Tools,Stanley,4829.75,16,156,34,11,0,0,1,9,6,No,174
+2025-09-03,101,Hammer,Fasteners,3M,909.81,17,62,30,9,10,0,0,9,2,No,208
+2025-08-25,106,LED Bulb,Fasteners,Bosch,1074.33,7,32,67,14,10,0,0,8,0,Yes,388
+2025-06-25,103,Electric Drill,Plumbing,Stanley,1917.01,6,171,59,12,15,0,0,6,2,No,189
+2025-07-30,106,LED Bulb,Building Materials,Hilti,1446.14,5,130,20,11,10,0,0,7,2,No,200
+2025-08-26,106,LED Bulb,Fasteners,Nippon,3636.47,16,282,28,7,5,0,0,8,1,No,0
+2025-03-21,108,Garden Hose,Paint,3M,3582.25,2,178,51,5,0,1,0,3,4,No,0
+2025-04-27,101,Hammer,Tools,Bosch,3218.41,16,221,56,8,10,0,1,4,6,No,19
+2025-02-15,108,Garden Hose,Gardening,3M,1321.53,9,35,32,9,15,0,1,2,5,No,235
+2025-03-18,109,Safety Gloves,Paint,Stanley,477.2,19,65,61,8,15,0,0,3,1,No,175
+2025-07-16,103,Electric Drill,Gardening,Makita,4059.79,6,285,30,13,15,0,0,7,2,No,105
+2025-09-08,105,PVC Pipe,Tools,Bosch,1689.29,10,189,52,6,5,0,0,9,0,No,0
+2025-02-13,102,Screwdriver Set,Fasteners,Ingco,1433.45,2,232,22,11,0,0,0,2,3,No,98
+2025-10-14,101,Hammer,Safety Equipment,Dulux,134.07,10,164,52,10,5,0,0,10,1,No,136
+2025-08-25,108,Garden Hose,Building Materials,Ingco,687.34,10,232,71,8,10,0,0,8,0,No,8
+2025-01-19,110,Nails Pack,Building Materials,Stanley,1881.79,20,112,56,7,5,0,1,1,6,No,98
+2025-06-07,102,Screwdriver Set,Building Materials,Makita,1495.72,12,223,52,10,10,1,1,6,5,No,77
+2025-03-18,110,Nails Pack,Building Materials,Nippon,3208.32,18,217,51,12,5,0,0,3,1,No,143
+2025-07-21,110,Nails Pack,Building Materials,Stanley,2809.18,9,183,78,11,15,0,0,7,0,No,147
+2025-01-22,110,Nails Pack,Gardening,Bosch,1286.58,10,97,25,13,10,0,0,1,2,No,293
+2025-12-29,106,LED Bulb,Building Materials,Dulux,2054.24,19,258,39,6,5,0,0,12,0,No,0
+2025-01-10,108,Garden Hose,Electrical,3M,1697.2,10,146,39,7,15,0,0,1,4,No,64
+2025-04-14,109,Safety Gloves,Building Materials,3M,3261.35,1,128,30,9,15,0,0,4,0,No,142
+2025-04-12,104,Paint Bucket 5L,Tools,Makita,1771.23,12,251,35,14,15,0,1,4,5,No,169
+2025-12-12,103,Electric Drill,Safety Equipment,Dulux,4104.39,3,1,20,10,15,0,0,12,4,Yes,299
+2025-03-11,102,Screwdriver Set,Fasteners,Hilti,556.2,3,98,38,11,5,0,0,3,1,No,232
+2025-04-09,102,Screwdriver Set,Electrical,Dulux,3657.18,16,74,68,13,0,0,0,4,2,No,316
+2025-12-18,101,Hammer,Paint,Dulux,891.98,8,226,67,15,5,0,0,12,3,No,224
+2025-04-07,109,Safety Gloves,Building Materials,Nippon,597.21,10,193,73,12,10,0,0,4,0,No,167
+2025-11-07,108,Garden Hose,Building Materials,Makita,2297.28,5,134,22,6,0,1,0,11,4,No,46
+2025-07-25,103,Electric Drill,Fasteners,Ingco,3322.3,6,21,65,11,10,0,0,7,4,Yes,309
+2025-05-08,108,Garden Hose,Gardening,Nippon,2990.37,14,276,49,15,15,0,0,5,3,No,174
+2025-09-05,104,Paint Bucket 5L,Gardening,Dulux,3261.01,20,3,54,7,10,0,0,9,4,Yes,207
+2025-12-04,104,Paint Bucket 5L,Gardening,Bosch,3865.91,20,5,54,10,10,0,0,12,3,Yes,295
+2025-10-25,109,Safety Gloves,Tools,Ingco,3763.82,10,180,50,17,0,0,1,10,5,No,330
+2025-08-25,104,Paint Bucket 5L,Plumbing,Bosch,4821.74,10,160,22,14,0,0,0,8,0,No,260
+2025-07-08,105,PVC Pipe,Safety Equipment,Nippon,930.51,8,279,69,12,15,0,0,7,1,No,81
+2025-04-23,108,Garden Hose,Building Materials,3M,3113.54,3,272,59,10,5,0,0,4,2,No,28
+2025-05-11,108,Garden Hose,Fasteners,Dulux,3515.38,16,169,74,12,0,0,1,5,6,No,191
+2025-06-03,108,Garden Hose,Fasteners,Ingco,2156.93,15,35,64,7,0,0,0,6,1,Yes,175
+2025-05-21,106,LED Bulb,Plumbing,Hilti,1051.94,3,141,31,4,15,0,0,5,2,No,0
+2025-12-06,106,LED Bulb,Plumbing,Makita,4444.42,7,50,44,9,10,0,1,12,5,No,220
+2025-08-16,109,Safety Gloves,Electrical,Bosch,859.7,19,169,25,14,5,0,1,8,5,No,251
+2025-01-22,110,Nails Pack,Paint,Nippon,1586.0,4,263,72,10,15,0,0,1,2,No,37
+2025-07-06,107,Cement Bag,Paint,Makita,1430.56,7,261,64,18,0,0,1,7,6,No,279
+2025-06-20,105,PVC Pipe,Fasteners,Makita,1052.46,6,143,32,9,10,1,0,6,4,No,127
+2025-02-04,103,Electric Drill,Electrical,Nippon,4850.73,2,119,38,12,0,0,0,2,1,No,241
+2025-01-10,106,LED Bulb,Electrical,Bosch,2250.96,6,116,42,4,10,0,0,1,4,No,4
+2025-03-13,108,Garden Hose,Fasteners,Hilti,2198.74,11,121,20,12,5,0,0,3,3,No,239
+2025-07-29,109,Safety Gloves,Paint,Stanley,2267.53,20,88,59,7,15,0,0,7,1,No,122
+2025-11-18,103,Electric Drill,Plumbing,Makita,4679.61,19,191,24,11,5,0,0,11,1,No,139
+2025-12-12,102,Screwdriver Set,Safety Equipment,3M,3097.43,19,143,70,9,5,0,0,12,4,No,127
+2025-12-27,106,LED Bulb,Fasteners,3M,3813.45,7,237,71,3,0,0,1,12,5,No,0
+2025-09-18,105,PVC Pipe,Paint,Ingco,959.12,4,253,49,13,5,0,0,9,3,No,137
+2025-11-04,103,Electric Drill,Safety Equipment,Nippon,3283.89,6,249,38,14,15,0,0,11,1,No,171
+2025-09-11,107,Cement Bag,Plumbing,Dulux,2565.37,6,3,35,14,5,0,0,9,3,Yes,417
+2025-08-02,101,Hammer,Fasteners,Dulux,445.79,11,159,46,11,10,0,1,8,5,No,171
+2025-07-25,104,Paint Bucket 5L,Tools,Hilti,4024.65,3,32,52,12,15,0,0,7,4,Yes,328
+2025-04-29,110,Nails Pack,Paint,Bosch,4074.9,8,64,52,13,10,0,0,4,1,No,326
+2025-08-25,107,Cement Bag,Building Materials,Hilti,3292.28,12,11,50,7,0,0,0,8,0,Yes,199
+2025-03-15,106,LED Bulb,Safety Equipment,Hilti,1948.57,9,92,45,8,10,0,1,3,5,No,148
+2025-11-01,108,Garden Hose,Electrical,Dulux,3439.91,7,195,77,8,15,0,1,11,5,No,45
+2025-03-16,103,Electric Drill,Plumbing,Ingco,3514.01,3,191,54,8,5,0,1,3,6,No,49
+2025-02-28,103,Electric Drill,Electrical,Nippon,4953.48,10,95,43,9,15,0,0,2,4,No,175
+2025-09-19,107,Cement Bag,Plumbing,Dulux,4348.87,9,182,32,11,15,0,0,9,4,No,148
+2025-03-13,105,PVC Pipe,Paint,3M,3725.55,5,61,39,7,10,0,0,3,3,No,149
+2025-04-10,104,Paint Bucket 5L,Gardening,Hilti,4149.64,8,232,38,9,10,0,0,4,3,No,38
+2025-07-15,103,Electric Drill,Tools,3M,547.3,13,143,72,17,10,0,0,7,1,No,367
+2025-06-08,103,Electric Drill,Paint,3M,549.35,10,52,42,11,5,0,1,6,6,No,278
+2025-05-03,107,Cement Bag,Plumbing,Dulux,3928.35,15,238,31,10,0,0,1,5,5,No,62
+2025-10-26,107,Cement Bag,Plumbing,Nippon,3471.35,12,167,61,14,0,0,1,10,6,No,253
+2025-08-15,109,Safety Gloves,Plumbing,Dulux,2043.59,13,28,56,15,15,0,0,8,4,Yes,422
+2025-09-28,106,LED Bulb,Plumbing,Nippon,1242.82,11,216,64,14,15,0,1,9,6,No,204
+2025-06-28,109,Safety Gloves,Tools,Makita,3791.55,13,181,58,9,5,0,1,6,5,No,89
+2025-11-12,102,Screwdriver Set,Electrical,Nippon,2178.69,7,172,32,15,10,0,0,11,2,No,278
+2025-12-19,101,Hammer,Fasteners,Hilti,2085.49,10,0,22,11,5,0,0,12,4,Yes,330
+2025-07-17,110,Nails Pack,Electrical,Makita,2958.51,8,116,25,18,15,0,0,7,3,No,424
+2025-11-03,101,Hammer,Fasteners,Stanley,4030.34,16,212,30,8,0,0,0,11,0,No,28
+2025-12-09,103,Electric Drill,Tools,Dulux,4603.67,7,46,60,7,15,0,0,12,1,Yes,164
+2025-08-02,107,Cement Bag,Electrical,Stanley,1162.36,3,11,29,12,5,0,1,8,5,Yes,349
+2025-09-28,108,Garden Hose,Safety Equipment,Ingco,4757.02,12,155,72,15,0,0,1,9,6,No,295
+2025-12-10,104,Paint Bucket 5L,Building Materials,Dulux,1459.17,2,185,79,7,15,0,0,12,2,No,25
+2025-04-18,104,Paint Bucket 5L,Paint,Makita,2959.91,6,211,32,10,5,0,0,4,4,No,89
+2025-11-15,103,Electric Drill,Tools,Makita,3455.18,4,9,75,12,10,0,1,11,5,Yes,351
+2025-08-24,101,Hammer,Fasteners,Bosch,4395.64,19,288,73,10,0,0,1,8,6,No,12
+2025-06-25,106,LED Bulb,Paint,Hilti,4071.71,9,282,68,11,0,0,0,6,2,No,48
+2025-05-23,107,Cement Bag,Tools,Ingco,4207.81,18,5,47,10,10,0,0,5,4,Yes,295
+2025-01-26,102,Screwdriver Set,Electrical,Stanley,4083.21,7,164,29,10,5,0,1,1,6,No,136
+2025-01-09,108,Garden Hose,Electrical,Ingco,4263.27,11,0,70,7,15,0,0,1,3,Yes,210
+2025-06-25,105,PVC Pipe,Building Materials,Dulux,1446.19,16,94,27,13,15,0,0,6,2,No,296
+2025-12-07,109,Safety Gloves,Fasteners,Makita,208.71,7,258,78,10,10,0,1,12,6,No,42
+2025-04-25,102,Screwdriver Set,Safety Equipment,Dulux,1608.11,9,111,66,5,15,0,0,4,4,No,39
+2025-04-13,104,Paint Bucket 5L,Safety Equipment,Hilti,2160.63,5,74,70,13,10,0,1,4,6,No,316
+2025-10-23,107,Cement Bag,Paint,3M,4525.44,1,248,57,11,15,0,0,10,3,No,82
+2025-07-07,106,LED Bulb,Building Materials,Hilti,2309.46,12,105,70,15,15,0,0,7,0,No,345
+2025-05-03,103,Electric Drill,Fasteners,Nippon,3518.45,15,272,79,13,10,0,1,5,5,No,118
+2025-11-25,102,Screwdriver Set,Paint,Nippon,424.56,3,42,67,8,15,0,0,11,1,Yes,198
+2025-03-11,105,PVC Pipe,Fasteners,Stanley,1773.66,11,94,30,10,0,0,0,3,1,No,206
+2025-09-15,102,Screwdriver Set,Fasteners,Ingco,780.25,10,183,44,11,5,0,0,9,0,No,147
+2025-10-23,102,Screwdriver Set,Plumbing,Bosch,4494.26,2,60,77,10,5,0,0,10,3,Yes,240
+2025-01-19,102,Screwdriver Set,Paint,Stanley,1196.86,15,169,41,13,10,0,1,1,6,No,221
+2025-06-26,102,Screwdriver Set,Gardening,Nippon,534.64,4,45,53,6,10,0,0,6,3,Yes,135
+2025-12-31,106,LED Bulb,Paint,Makita,730.87,7,281,76,8,0,0,0,12,2,No,0
+2025-05-16,108,Garden Hose,Fasteners,Dulux,2457.61,2,106,67,12,10,0,0,5,4,No,254
+2025-02-03,107,Cement Bag,Safety Equipment,Ingco,399.28,16,112,54,8,15,0,0,2,0,No,128
+2025-08-15,104,Paint Bucket 5L,Building Materials,Dulux,1004.15,19,213,33,7,0,0,0,8,4,No,0
+2025-02-01,104,Paint Bucket 5L,Safety Equipment,Makita,3129.45,15,153,33,9,15,0,1,2,5,No,117
+2025-09-10,110,Nails Pack,Electrical,Dulux,823.92,12,237,62,6,15,0,0,9,2,No,0
+2025-10-05,103,Electric Drill,Building Materials,Nippon,2707.36,9,226,70,5,5,0,1,10,6,No,0
+2025-12-30,107,Cement Bag,Paint,3M,1288.11,6,201,58,8,0,0,0,12,1,No,39
+2025-03-26,103,Electric Drill,Paint,Makita,1678.19,15,299,44,7,10,0,0,3,2,No,0
+2025-08-16,105,PVC Pipe,Fasteners,Bosch,4463.58,4,66,60,11,10,0,1,8,5,No,264
+2025-01-07,104,Paint Bucket 5L,Tools,3M,2542.37,3,33,66,5,10,0,0,1,1,Yes,117
+2025-09-16,102,Screwdriver Set,Plumbing,Hilti,3752.65,15,100,25,9,5,0,0,9,1,No,170
+2025-04-09,101,Hammer,Building Materials,3M,4508.27,17,228,76,11,0,0,0,4,2,No,102
+2025-02-07,102,Screwdriver Set,Plumbing,Nippon,1262.41,15,111,23,5,15,0,0,2,4,No,39
+2025-03-23,106,LED Bulb,Fasteners,Makita,4269.01,12,151,74,5,10,0,1,3,6,No,0
+2025-04-26,102,Screwdriver Set,Fasteners,Dulux,4227.34,2,228,55,3,0,0,1,4,5,No,0
+2025-07-27,105,PVC Pipe,Fasteners,3M,4986.55,12,74,23,15,0,0,1,7,6,No,376
+2025-10-30,103,Electric Drill,Paint,Hilti,125.97,4,25,70,12,10,0,0,10,3,Yes,335
+2025-08-31,105,PVC Pipe,Electrical,Bosch,4209.05,8,19,68,12,15,0,1,8,6,Yes,341
+2025-09-09,108,Garden Hose,Paint,Dulux,2696.22,12,37,56,12,10,0,0,9,1,Yes,323
+2025-01-19,108,Garden Hose,Building Materials,Bosch,2579.91,18,258,52,16,0,0,1,1,6,No,222
+2025-05-26,102,Screwdriver Set,Electrical,Bosch,1909.23,5,137,63,9,10,0,0,5,0,No,133
+2025-10-17,109,Safety Gloves,Tools,Nippon,1088.48,4,100,28,12,5,0,0,10,4,No,260
+2025-09-08,109,Safety Gloves,Fasteners,Nippon,3825.12,17,93,50,11,15,0,0,9,0,No,237
+2025-02-12,104,Paint Bucket 5L,Gardening,Hilti,4654.69,8,136,53,6,15,0,0,2,2,No,44
+2025-09-29,107,Cement Bag,Tools,Makita,988.04,2,269,79,6,15,0,0,9,0,No,0
+2025-03-09,107,Cement Bag,Building Materials,3M,901.91,10,131,44,12,0,0,1,3,6,No,229
+2025-11-10,102,Screwdriver Set,Plumbing,Makita,4398.28,16,294,59,9,15,0,0,11,0,No,0
+2025-02-02,108,Garden Hose,Tools,Nippon,1947.03,2,22,34,10,10,0,1,2,6,Yes,278
+2025-08-18,108,Garden Hose,Fasteners,Hilti,2929.68,6,103,59,9,10,0,0,8,0,No,167
+2025-10-02,101,Hammer,Building Materials,Hilti,3158.77,10,14,66,11,15,0,0,10,3,Yes,316
+2025-02-26,101,Hammer,Gardening,Hilti,3138.36,13,156,57,10,10,0,0,2,2,No,144
+2025-01-29,107,Cement Bag,Safety Equipment,Makita,3786.78,7,9,24,6,0,0,0,1,2,Yes,171
+2025-11-27,105,PVC Pipe,Electrical,Stanley,4396.15,11,158,66,8,15,0,0,11,3,No,82
+2025-01-05,101,Hammer,Paint,Ingco,4247.62,9,156,27,6,0,0,1,1,6,No,24
+2025-07-27,105,PVC Pipe,Gardening,Nippon,834.6,18,129,46,7,15,0,1,7,6,No,81
+2025-08-23,108,Garden Hose,Safety Equipment,Makita,3241.62,8,298,46,12,5,0,1,8,5,No,62
+2025-08-31,102,Screwdriver Set,Tools,Bosch,1793.91,5,37,25,7,5,0,1,8,6,No,173
+2025-03-07,104,Paint Bucket 5L,Tools,Bosch,2064.17,9,209,44,6,5,0,0,3,4,No,0
+2025-04-14,110,Nails Pack,Plumbing,Ingco,1354.48,16,132,75,12,10,0,0,4,0,No,228
+2025-12-11,106,LED Bulb,Tools,3M,212.81,20,286,77,11,5,0,0,12,3,No,44
+2025-07-18,110,Nails Pack,Electrical,Stanley,437.72,9,296,41,4,0,0,0,7,4,No,0
+2025-09-08,110,Nails Pack,Paint,Ingco,4562.36,14,109,55,6,0,0,0,9,0,No,71
+2025-10-19,104,Paint Bucket 5L,Tools,3M,710.85,3,54,70,15,15,0,1,10,6,Yes,396
+2025-03-12,105,PVC Pipe,Paint,Makita,2997.25,1,136,29,9,5,0,0,3,2,No,134
+2025-12-22,107,Cement Bag,Safety Equipment,Bosch,4033.98,2,74,57,9,0,0,0,12,0,No,196
+2025-07-10,107,Cement Bag,Electrical,Stanley,1797.1,7,16,62,8,5,0,0,7,3,Yes,224
+2025-10-29,110,Nails Pack,Safety Equipment,3M,260.95,16,24,26,15,5,0,0,10,2,Yes,426
+2025-01-25,103,Electric Drill,Electrical,Nippon,911.02,15,153,47,13,15,0,1,1,5,No,237
+2025-05-19,107,Cement Bag,Gardening,Stanley,1142.14,17,62,59,10,5,0,0,5,0,No,238
+2025-12-02,102,Screwdriver Set,Building Materials,Hilti,2560.76,19,214,70,11,10,0,0,12,1,No,116
+2025-10-29,104,Paint Bucket 5L,Paint,Stanley,1128.54,4,284,68,15,15,0,0,10,2,No,166
+2025-07-06,102,Screwdriver Set,Gardening,Ingco,279.09,11,17,20,10,5,0,1,7,6,Yes,283
+2025-09-15,110,Nails Pack,Building Materials,3M,3900.09,9,112,69,9,15,0,0,9,0,No,158
+2025-11-27,104,Paint Bucket 5L,Safety Equipment,3M,2535.36,19,263,48,13,5,0,0,11,3,No,127
+2025-11-19,110,Nails Pack,Paint,3M,469.97,5,161,79,13,5,0,0,11,2,No,229
+2025-09-05,104,Paint Bucket 5L,Plumbing,Stanley,4023.67,19,246,22,14,5,0,0,9,4,No,174
+2025-10-13,102,Screwdriver Set,Tools,Ingco,1232.27,20,53,76,12,0,0,0,10,0,Yes,307
+2025-10-10,101,Hammer,Plumbing,3M,4019.59,14,263,53,6,10,0,0,10,4,No,0
+2025-02-16,107,Cement Bag,Fasteners,Nippon,4046.04,12,222,74,17,10,0,1,2,6,No,288
+2025-06-04,110,Nails Pack,Gardening,Stanley,4492.05,1,35,48,7,5,0,0,6,2,Yes,175
+2025-09-22,107,Cement Bag,Gardening,Bosch,2164.98,11,194,42,8,15,0,0,9,0,No,46
+2025-01-28,107,Cement Bag,Building Materials,Stanley,267.72,8,255,49,14,10,0,0,1,1,No,165
+2025-09-14,103,Electric Drill,Safety Equipment,Dulux,1877.51,5,279,36,14,0,0,1,9,6,No,141
+2025-03-30,110,Nails Pack,Plumbing,Stanley,4355.49,18,127,51,10,5,0,1,3,6,No,173
+2025-08-03,103,Electric Drill,Fasteners,Ingco,2183.55,19,200,73,10,10,0,1,8,6,No,100
+2025-01-22,110,Nails Pack,Plumbing,Bosch,3260.77,9,28,64,9,15,0,0,1,2,Yes,242
+2025-10-08,104,Paint Bucket 5L,Building Materials,Ingco,3486.99,5,40,57,10,10,0,0,10,2,Yes,260
+2025-09-07,104,Paint Bucket 5L,Gardening,Hilti,429.16,13,75,42,9,10,0,1,9,6,No,195
+2025-06-24,104,Paint Bucket 5L,Fasteners,Hilti,622.24,7,286,25,6,5,0,0,6,1,No,0
+2025-07-20,108,Garden Hose,Gardening,Dulux,3687.7,17,172,36,7,5,0,1,7,6,No,38
+2025-07-02,103,Electric Drill,Electrical,Ingco,2151.98,14,63,21,9,10,0,0,7,2,No,207
+2025-02-12,109,Safety Gloves,Electrical,3M,914.79,5,291,70,12,0,0,0,2,2,No,69
+2025-04-25,109,Safety Gloves,Gardening,Makita,1302.21,2,163,68,9,15,0,0,4,4,No,107
+2025-08-24,105,PVC Pipe,Gardening,3M,3635.51,9,249,55,6,15,0,1,8,6,No,0
+2025-08-11,108,Garden Hose,Safety Equipment,Hilti,2745.23,7,72,28,6,0,0,0,8,0,No,108
+2025-12-20,101,Hammer,Plumbing,Dulux,1822.55,6,103,61,9,15,0,1,12,5,No,167
+2025-06-16,105,PVC Pipe,Plumbing,Bosch,2352.44,14,107,63,4,10,0,0,6,0,No,13
+2025-09-22,110,Nails Pack,Gardening,Nippon,4841.73,18,16,29,8,0,0,0,9,0,Yes,224
+2025-05-16,101,Hammer,Plumbing,Bosch,3483.75,1,79,43,10,5,0,0,5,4,No,221
+2025-09-17,108,Garden Hose,Plumbing,3M,3816.12,10,197,27,11,15,0,0,9,2,No,133
+2025-09-05,104,Paint Bucket 5L,Electrical,Hilti,1323.37,12,25,66,10,5,0,0,9,4,Yes,275
+2025-10-05,108,Garden Hose,Gardening,Nippon,316.41,16,269,34,10,15,0,1,10,6,No,31
+2025-12-06,110,Nails Pack,Tools,Makita,3517.36,15,102,36,10,5,0,1,12,5,No,198
+2025-02-02,103,Electric Drill,Fasteners,3M,3285.82,6,97,22,9,10,0,1,2,6,No,173
+2025-07-31,103,Electric Drill,Safety Equipment,3M,3511.82,8,38,34,8,0,0,0,7,3,No,202
+2025-09-18,109,Safety Gloves,Gardening,Stanley,4039.49,20,209,52,10,15,0,0,9,3,No,91
+2025-03-26,103,Electric Drill,Plumbing,Hilti,4441.29,11,226,61,11,0,0,0,3,2,No,104
+2025-01-07,109,Safety Gloves,Fasteners,Dulux,4952.67,4,38,65,9,15,0,0,1,1,Yes,232
+2025-08-11,104,Paint Bucket 5L,Building Materials,Stanley,1818.49,12,244,63,13,0,0,0,8,0,No,146
+2025-12-27,104,Paint Bucket 5L,Tools,3M,3174.78,9,64,49,13,10,0,1,12,5,No,326
+2025-06-14,101,Hammer,Fasteners,Bosch,116.4,7,145,56,10,15,1,1,6,5,No,155
+2025-02-07,109,Safety Gloves,Fasteners,Bosch,306.26,16,139,78,9,5,0,0,2,4,No,131
+2025-02-05,109,Safety Gloves,Tools,3M,4754.81,10,197,58,13,15,0,0,2,2,No,193
+2025-07-04,108,Garden Hose,Building Materials,Hilti,4407.68,14,225,44,17,10,0,0,7,4,No,285
+2025-10-31,108,Garden Hose,Gardening,Nippon,3742.43,1,62,73,4,10,0,0,10,4,Yes,58
+2025-09-09,108,Garden Hose,Tools,Stanley,3077.91,1,225,76,10,10,0,0,9,1,No,75
+2025-10-17,102,Screwdriver Set,Fasteners,Stanley,1180.38,9,261,24,7,10,0,0,10,4,No,0
+2025-05-20,101,Hammer,Electrical,Ingco,383.43,12,177,37,6,15,0,0,5,1,No,3
+2025-02-14,107,Cement Bag,Building Materials,Hilti,3510.5,19,88,28,7,0,0,0,2,4,No,122
+2025-08-05,110,Nails Pack,Paint,Ingco,4485.12,2,122,47,14,5,0,0,8,1,No,298
+2025-08-09,104,Paint Bucket 5L,Plumbing,3M,2435.72,17,37,27,8,15,0,1,8,5,No,203
+2025-04-30,101,Hammer,Tools,Stanley,3509.0,12,283,24,18,10,0,0,4,2,No,257
+2025-04-21,106,LED Bulb,Safety Equipment,Ingco,4958.23,16,39,46,11,10,0,0,4,0,Yes,291
+2025-11-15,105,PVC Pipe,Tools,3M,4336.02,12,167,47,12,0,0,1,11,5,No,193
+2025-02-16,110,Nails Pack,Plumbing,Nippon,4267.85,18,44,44,14,5,0,1,2,6,No,376
+2025-03-31,105,PVC Pipe,Paint,Ingco,4657.44,10,44,77,7,0,0,0,3,0,Yes,166
+2025-11-11,107,Cement Bag,Tools,Makita,2380.8,12,159,62,14,10,0,0,11,1,No,261
+2025-01-02,109,Safety Gloves,Gardening,Hilti,1220.26,11,257,33,15,0,0,0,1,3,No,193
+2025-11-28,108,Garden Hose,Plumbing,Makita,3807.52,20,12,65,7,10,1,0,11,4,Yes,198
+2025-09-13,110,Nails Pack,Gardening,Bosch,1699.52,5,187,43,11,10,0,1,9,5,No,143
+2025-07-02,109,Safety Gloves,Paint,Bosch,4111.53,17,73,60,6,10,0,0,7,2,No,107
+2025-01-22,103,Electric Drill,Safety Equipment,Dulux,4818.66,6,221,56,8,0,0,0,1,2,No,19
+2025-04-11,103,Electric Drill,Paint,Stanley,602.3,1,241,23,16,5,0,0,4,4,No,239
+2025-06-27,110,Nails Pack,Plumbing,Hilti,1574.72,20,192,41,12,0,0,0,6,4,No,168
+2025-03-27,110,Nails Pack,Fasteners,Bosch,3142.49,4,6,48,12,0,1,0,3,3,Yes,354
+2025-10-14,105,PVC Pipe,Gardening,Dulux,208.41,14,57,42,8,15,0,0,10,1,No,183
+2025-10-01,109,Safety Gloves,Tools,Bosch,2284.92,4,38,34,9,0,0,0,10,2,No,232
+2025-09-26,106,LED Bulb,Plumbing,Stanley,3994.57,9,129,66,12,0,0,0,9,4,No,231
+2025-06-01,106,LED Bulb,Fasteners,Ingco,3434.45,4,235,75,11,5,0,1,6,6,No,95
+2025-04-01,108,Garden Hose,Safety Equipment,3M,2218.44,4,83,25,16,10,0,0,4,1,No,397
+2025-04-30,105,PVC Pipe,Building Materials,Makita,3824.46,17,57,79,9,15,0,0,4,2,Yes,213
+2025-04-21,102,Screwdriver Set,Building Materials,Makita,3649.67,20,280,43,12,10,0,0,4,0,No,80
+2025-07-03,101,Hammer,Building Materials,Dulux,1905.78,19,71,79,14,10,0,0,7,3,Yes,349
+2025-12-19,107,Cement Bag,Tools,Nippon,1009.08,6,180,43,13,10,0,0,12,4,No,210
+2025-09-09,109,Safety Gloves,Fasteners,Nippon,4612.15,20,152,49,11,0,0,0,9,1,No,178
+2025-11-15,106,LED Bulb,Plumbing,Stanley,674.81,9,227,28,6,0,0,1,11,5,No,0
+2025-07-31,109,Safety Gloves,Fasteners,Nippon,1082.57,17,116,21,10,0,0,0,7,3,No,184
+2025-04-17,107,Cement Bag,Building Materials,Stanley,4008.04,12,71,40,8,0,0,0,4,3,No,169
+2025-11-04,105,PVC Pipe,Fasteners,Ingco,454.99,13,94,57,9,15,1,0,11,1,No,176
+2025-05-23,106,LED Bulb,Tools,3M,1529.15,19,213,70,13,15,0,0,5,4,No,177
+2025-05-08,110,Nails Pack,Electrical,Dulux,614.16,8,85,47,6,10,0,0,5,3,No,95
+2025-10-24,106,LED Bulb,Safety Equipment,Nippon,3542.08,5,1,52,11,0,0,0,10,4,Yes,329
+2025-10-16,110,Nails Pack,Gardening,Dulux,530.55,10,115,45,8,5,0,0,10,3,No,125
+2025-01-27,102,Screwdriver Set,Building Materials,Nippon,2044.92,20,173,77,6,5,0,0,1,0,No,7
+2025-04-23,108,Garden Hose,Safety Equipment,Hilti,4022.87,4,122,25,7,10,0,0,4,2,No,88
+2025-08-28,101,Hammer,Fasteners,Makita,3014.41,15,40,69,11,5,0,0,8,3,Yes,290
+2025-11-10,102,Screwdriver Set,Building Materials,Makita,4682.49,14,83,66,17,15,0,0,11,0,No,427
+2025-02-08,101,Hammer,Paint,Dulux,4092.64,10,2,60,10,10,1,1,2,5,Yes,298
+2025-10-11,106,LED Bulb,Fasteners,Stanley,903.6,6,11,42,9,15,0,1,10,5,Yes,259
+2025-08-13,101,Hammer,Fasteners,Hilti,3286.44,2,146,74,10,10,0,0,8,2,No,154
+2025-10-31,103,Electric Drill,Tools,Hilti,2403.89,16,299,37,9,15,0,0,10,4,No,0
+2025-10-08,103,Electric Drill,Paint,Stanley,202.22,7,58,22,11,15,1,0,10,2,No,272
+2025-05-27,104,Paint Bucket 5L,Electrical,Nippon,499.48,5,206,52,9,15,0,0,5,1,No,64
+2025-09-02,107,Cement Bag,Electrical,Nippon,4218.22,15,292,23,9,15,0,0,9,1,No,0
+2025-10-14,106,LED Bulb,Plumbing,Stanley,3703.22,19,49,68,13,5,0,0,10,1,Yes,341
+2025-06-24,109,Safety Gloves,Building Materials,Ingco,2618.58,2,227,21,11,5,0,0,6,1,No,103
+2025-02-10,105,PVC Pipe,Gardening,Nippon,3028.85,11,242,70,13,0,0,0,2,0,No,148
+2025-10-28,105,PVC Pipe,Paint,Nippon,1490.89,13,17,59,9,0,0,0,10,1,Yes,253
+2025-11-15,110,Nails Pack,Fasteners,3M,4196.39,15,99,67,7,5,1,1,11,5,No,111
+2025-04-04,110,Nails Pack,Paint,Hilti,3049.09,10,1,74,11,5,0,0,4,4,Yes,329
+2025-07-19,102,Screwdriver Set,Gardening,Dulux,2123.85,4,110,33,4,5,0,1,7,5,No,10
+2025-07-19,101,Hammer,Building Materials,Bosch,2622.61,2,144,78,9,0,0,1,7,5,No,126
+2025-05-19,101,Hammer,Electrical,Makita,1629.53,15,260,20,9,15,0,0,5,0,No,10
+2025-03-28,106,LED Bulb,Building Materials,Makita,3890.02,19,194,73,9,10,0,0,3,4,No,76
+2025-05-08,104,Paint Bucket 5L,Building Materials,Dulux,931.81,2,256,24,10,10,0,0,5,3,No,44
+2025-11-17,105,PVC Pipe,Electrical,Makita,1318.7,18,63,73,11,5,0,0,11,0,Yes,267
+2025-07-28,104,Paint Bucket 5L,Building Materials,Dulux,921.33,10,119,63,12,5,0,0,7,0,No,241
+2025-07-27,105,PVC Pipe,Plumbing,Dulux,2287.21,20,250,39,14,5,0,1,7,6,No,170
+2025-03-25,104,Paint Bucket 5L,Safety Equipment,3M,1421.77,18,118,54,16,0,0,0,3,1,No,362
+2025-12-11,102,Screwdriver Set,Gardening,Hilti,2315.78,8,178,33,16,15,0,0,12,3,No,302
+2025-05-08,109,Safety Gloves,Building Materials,Stanley,3472.22,19,250,62,9,15,0,0,5,3,No,20
+2025-10-22,105,PVC Pipe,Paint,Stanley,185.16,7,177,42,11,15,0,0,10,2,No,153
+2025-08-25,103,Electric Drill,Plumbing,Ingco,3367.63,7,233,79,6,15,1,0,8,0,No,0
+2025-07-31,103,Electric Drill,Building Materials,Nippon,3399.82,19,263,48,19,0,0,0,7,3,No,307
+2025-11-01,107,Cement Bag,Electrical,Bosch,2274.38,5,289,20,14,10,0,1,11,5,No,131
+2025-10-12,103,Electric Drill,Safety Equipment,3M,4206.76,10,135,66,10,0,0,1,10,6,No,165
+2025-04-03,103,Electric Drill,Building Materials,Makita,2895.99,9,146,50,12,15,0,0,4,3,No,214
+2025-11-23,105,PVC Pipe,Electrical,Bosch,3328.54,2,89,47,9,10,0,1,11,6,No,181
+2025-09-21,102,Screwdriver Set,Building Materials,3M,880.51,15,160,60,11,5,0,1,9,6,No,170
+2025-11-25,110,Nails Pack,Tools,Stanley,4967.35,7,158,60,13,15,0,0,11,1,No,232
+2025-08-03,108,Garden Hose,Gardening,Ingco,634.64,8,131,57,11,10,1,1,8,6,No,199
+2025-02-07,107,Cement Bag,Paint,3M,2247.04,18,128,43,8,0,0,0,2,4,No,112
+2025-04-09,104,Paint Bucket 5L,Paint,Bosch,1554.66,12,64,31,11,5,0,0,4,2,No,266
+2025-05-22,102,Screwdriver Set,Paint,Dulux,3088.18,15,92,44,11,10,0,0,5,3,No,238
+2025-06-03,103,Electric Drill,Gardening,Hilti,3022.78,9,101,45,10,5,0,0,6,1,No,199
+2025-10-21,101,Hammer,Paint,Ingco,2976.6,14,264,22,6,5,0,0,10,1,No,0
+2025-01-28,110,Nails Pack,Gardening,Ingco,2757.58,7,292,34,5,5,0,0,1,1,No,0
+2025-01-28,104,Paint Bucket 5L,Plumbing,Bosch,2714.65,17,20,42,11,10,0,0,1,1,Yes,310
+2025-07-12,101,Hammer,Safety Equipment,3M,2211.22,18,280,55,15,10,0,1,7,5,No,170
+2025-02-18,109,Safety Gloves,Paint,Ingco,4642.47,16,51,65,8,5,0,0,2,1,Yes,189
+2025-06-27,108,Garden Hose,Electrical,Dulux,1605.72,14,143,61,13,5,0,0,6,4,No,247
+2025-03-17,106,LED Bulb,Building Materials,Hilti,3090.64,2,131,45,12,5,0,0,3,0,No,229
+2025-01-22,102,Screwdriver Set,Electrical,Makita,697.24,3,73,58,7,0,0,0,1,2,No,137
+2025-06-08,104,Paint Bucket 5L,Gardening,Hilti,2673.3,15,297,75,12,10,0,1,6,6,No,63
+2025-05-24,106,LED Bulb,Gardening,Nippon,4818.34,19,171,75,10,5,0,1,5,5,No,129
+2025-12-18,109,Safety Gloves,Gardening,Ingco,2679.85,15,117,40,5,10,0,0,12,3,No,33
+2025-05-04,110,Nails Pack,Paint,Hilti,4432.61,2,9,43,7,5,1,1,5,6,Yes,201
+2025-03-25,104,Paint Bucket 5L,Building Materials,Bosch,2114.04,19,292,23,8,15,0,0,3,1,No,0
+2025-09-25,106,LED Bulb,Gardening,Makita,1446.55,15,201,44,13,15,0,0,9,3,No,189
+2025-04-30,101,Hammer,Paint,3M,568.12,20,241,24,11,10,0,0,4,2,No,89
+2025-11-06,106,LED Bulb,Paint,3M,923.27,13,292,34,7,0,0,0,11,3,No,0
+2025-02-06,102,Screwdriver Set,Fasteners,3M,1228.21,17,77,32,7,10,0,0,2,3,No,133
+2025-07-13,109,Safety Gloves,Fasteners,Dulux,3012.93,1,41,73,6,0,0,1,7,6,Yes,139
+2025-01-11,108,Garden Hose,Building Materials,3M,2284.38,7,279,79,12,10,0,1,1,5,No,81
+2025-06-26,104,Paint Bucket 5L,Safety Equipment,Bosch,4111.66,15,287,58,11,15,0,0,6,3,No,43
+2025-01-24,106,LED Bulb,Fasteners,Dulux,3885.85,12,163,22,8,15,0,0,1,4,No,77
+2025-06-11,108,Garden Hose,Paint,Hilti,2065.82,19,195,32,9,10,0,0,6,2,No,75
+2025-05-15,101,Hammer,Paint,3M,2643.39,12,229,27,7,5,0,0,5,3,No,0
+2025-05-30,101,Hammer,Electrical,Bosch,3289.3,20,258,41,10,10,0,0,5,4,No,42
+2025-02-05,109,Safety Gloves,Paint,Dulux,3380.49,7,285,71,10,15,0,0,2,2,No,15
+2025-07-02,103,Electric Drill,Tools,Bosch,394.7,16,157,76,7,15,0,0,7,2,No,53
+2025-02-18,107,Cement Bag,Electrical,Hilti,4126.85,10,114,59,9,0,0,0,2,1,No,156
+2025-06-29,104,Paint Bucket 5L,Electrical,Dulux,198.13,11,120,49,12,5,0,1,6,6,No,240
+2025-09-14,103,Electric Drill,Gardening,Nippon,2652.69,9,230,51,11,10,0,1,9,6,No,100
+2025-11-01,105,PVC Pipe,Paint,Dulux,725.8,2,225,33,13,15,0,1,11,5,No,165
+2025-12-02,107,Cement Bag,Fasteners,Stanley,676.48,10,257,46,7,0,0,0,12,1,No,0
+2025-10-14,107,Cement Bag,Gardening,Makita,1271.37,5,189,42,10,5,0,0,10,1,No,111
+2025-01-06,105,PVC Pipe,Gardening,Hilti,4717.7,6,142,41,14,10,0,0,1,0,No,278
+2025-01-31,110,Nails Pack,Fasteners,Dulux,2876.22,3,48,61,9,5,0,0,1,4,Yes,222
+2025-04-24,105,PVC Pipe,Plumbing,Bosch,2744.69,1,157,33,11,15,0,0,4,3,No,173
+2025-10-21,105,PVC Pipe,Building Materials,Dulux,4049.03,5,72,34,13,0,0,0,10,1,No,318
+2025-12-27,102,Screwdriver Set,Building Materials,Dulux,2074.6,6,280,73,11,0,0,1,12,5,No,50
+2025-02-17,106,LED Bulb,Fasteners,Stanley,1637.27,4,237,71,11,5,0,0,2,0,No,93
+2025-02-25,104,Paint Bucket 5L,Plumbing,Nippon,2562.57,3,116,53,9,5,0,0,2,1,No,154
+2025-09-08,110,Nails Pack,Tools,3M,434.04,12,287,51,18,15,0,0,9,0,No,253
+2025-09-11,103,Electric Drill,Gardening,Nippon,3012.02,8,159,48,8,10,0,0,9,3,No,81
+2025-01-09,101,Hammer,Tools,Makita,186.67,2,286,70,11,5,0,0,1,3,No,44
+2025-12-11,102,Screwdriver Set,Fasteners,Bosch,2865.76,2,266,69,7,0,0,0,12,3,No,0
+2025-02-11,102,Screwdriver Set,Paint,Stanley,383.12,14,155,65,7,10,0,0,2,1,No,55
+2025-08-28,104,Paint Bucket 5L,Safety Equipment,Makita,595.12,3,259,23,12,10,0,0,8,3,No,101
+2025-03-09,110,Nails Pack,Building Materials,Hilti,4983.81,8,220,71,13,10,0,1,3,6,No,170
+2025-01-05,105,PVC Pipe,Paint,Hilti,3313.05,5,255,54,13,0,0,1,1,6,No,135
+2025-10-16,104,Paint Bucket 5L,Fasteners,Ingco,1902.02,8,228,41,9,5,0,0,10,3,No,42
+2025-04-05,108,Garden Hose,Paint,Hilti,4822.73,13,245,57,7,5,0,1,4,5,No,0
+2025-08-08,109,Safety Gloves,Tools,Bosch,1373.08,1,64,32,13,15,0,0,8,4,No,326
+2025-05-01,108,Garden Hose,Building Materials,Makita,159.39,9,187,30,10,5,0,0,5,3,No,113
+2025-04-28,103,Electric Drill,Building Materials,Bosch,2326.45,20,281,23,14,10,0,0,4,0,No,139
+2025-12-28,103,Electric Drill,Tools,Stanley,4336.84,11,226,60,7,5,0,1,12,6,No,0
+2025-08-13,102,Screwdriver Set,Building Materials,Nippon,3109.0,11,41,32,14,10,0,0,8,2,No,379
+2025-06-21,101,Hammer,Paint,Ingco,752.41,9,128,21,5,10,0,1,6,5,No,22
+2025-04-23,101,Hammer,Paint,3M,2244.26,17,289,27,10,15,0,0,4,2,No,11
+2025-03-04,105,PVC Pipe,Safety Equipment,Hilti,4486.08,4,172,38,11,15,0,0,3,1,No,158
+2025-09-11,104,Paint Bucket 5L,Building Materials,Bosch,617.9,2,86,62,3,10,0,0,9,3,No,4
+2025-05-03,107,Cement Bag,Fasteners,Ingco,3329.27,1,16,24,13,5,0,1,5,5,Yes,374
+2025-12-12,103,Electric Drill,Electrical,Hilti,2592.04,15,227,30,9,0,0,0,12,4,No,43
+2025-04-11,106,LED Bulb,Fasteners,3M,4856.67,5,50,62,16,10,0,0,4,4,Yes,430
+2025-08-21,110,Nails Pack,Fasteners,Hilti,2119.44,10,7,29,10,0,0,0,8,3,Yes,293
+2025-07-28,107,Cement Bag,Electrical,Ingco,202.63,17,48,55,8,10,0,0,7,0,Yes,192
+2025-06-04,110,Nails Pack,Tools,Makita,3113.56,13,118,69,13,0,0,0,6,2,No,272
+2025-05-11,101,Hammer,Safety Equipment,Stanley,1678.86,2,257,73,6,15,0,1,5,6,No,0
+2025-08-07,106,LED Bulb,Plumbing,Hilti,2481.48,1,287,79,15,5,1,0,8,3,No,163
+2025-06-21,103,Electric Drill,Paint,Nippon,867.53,5,182,28,2,15,0,1,6,5,No,0
+2025-04-08,107,Cement Bag,Tools,Bosch,1923.62,11,113,41,9,0,0,0,4,1,No,157
+2025-09-01,108,Garden Hose,Safety Equipment,3M,1441.58,3,121,51,10,5,0,0,9,0,No,179
+2025-02-19,106,LED Bulb,Building Materials,Nippon,1652.92,1,17,40,14,10,0,0,2,2,Yes,403
+2025-06-26,110,Nails Pack,Safety Equipment,Stanley,3799.71,10,237,26,10,5,0,0,6,3,No,63
+2025-08-31,105,PVC Pipe,Safety Equipment,Makita,984.91,18,149,62,3,10,0,1,8,6,No,0
+2025-07-24,104,Paint Bucket 5L,Electrical,Ingco,1419.72,8,257,48,10,5,0,0,7,3,No,43
+2025-06-21,109,Safety Gloves,Tools,Dulux,3457.96,12,43,32,10,15,0,1,6,5,No,257
+2025-08-25,110,Nails Pack,Paint,Hilti,2125.74,12,22,48,11,15,0,0,8,0,Yes,308
+2025-01-05,103,Electric Drill,Electrical,Hilti,559.41,11,185,35,9,0,0,1,1,6,No,85
+2025-08-07,109,Safety Gloves,Paint,Stanley,4077.59,12,9,40,8,0,0,0,8,3,Yes,231
+2025-04-24,103,Electric Drill,Safety Equipment,Bosch,3692.05,6,111,32,11,10,0,0,4,3,No,219
+2025-01-06,103,Electric Drill,Building Materials,Hilti,2739.61,20,53,31,10,0,0,0,1,0,No,247
+2025-04-08,110,Nails Pack,Plumbing,Stanley,3754.1,11,242,50,9,5,0,0,4,1,No,28
+2025-01-07,107,Cement Bag,Safety Equipment,Bosch,1597.46,6,19,29,9,0,0,0,1,1,Yes,251
+2025-08-11,104,Paint Bucket 5L,Safety Equipment,Dulux,4442.36,1,201,57,11,10,0,0,8,0,No,129
+2025-01-14,102,Screwdriver Set,Electrical,Stanley,917.74,20,272,74,7,0,0,0,1,1,No,0
+2025-01-01,101,Hammer,Gardening,Dulux,4383.89,13,228,35,10,15,0,0,1,2,No,72
+2025-04-20,101,Hammer,Electrical,Bosch,1204.65,11,23,53,12,15,0,1,4,6,Yes,337
+2025-01-06,107,Cement Bag,Gardening,Dulux,3036.91,18,210,41,11,5,0,0,1,0,No,120
+2025-06-09,103,Electric Drill,Safety Equipment,Makita,3507.54,5,18,67,7,0,0,0,6,0,Yes,192
+2025-04-10,109,Safety Gloves,Fasteners,Makita,1929.97,20,145,71,6,10,0,0,4,3,No,35
+2025-03-24,104,Paint Bucket 5L,Fasteners,3M,406.46,13,160,36,12,5,0,0,3,0,No,200
+2025-12-01,102,Screwdriver Set,Safety Equipment,Dulux,3224.01,10,197,66,10,0,0,0,12,0,No,103
+2025-05-15,101,Hammer,Gardening,Ingco,4215.03,6,60,29,9,10,0,0,5,3,No,210
+2025-06-06,109,Safety Gloves,Plumbing,3M,1739.11,6,50,72,14,15,0,0,6,4,Yes,370
+2025-05-03,103,Electric Drill,Tools,Makita,375.07,7,68,48,14,5,0,1,5,5,No,352
+2025-07-19,107,Cement Bag,Building Materials,Hilti,2362.49,5,191,24,10,5,0,1,7,5,No,109
+2025-10-21,108,Garden Hose,Gardening,Ingco,3559.49,18,294,69,11,5,0,0,10,1,No,36
+2025-06-21,106,LED Bulb,Building Materials,Dulux,4556.01,4,296,73,13,0,0,1,6,5,No,94
+2025-10-31,108,Garden Hose,Electrical,Makita,1203.6,14,83,43,6,5,0,0,10,4,No,97
+2025-04-04,110,Nails Pack,Electrical,3M,2413.1,8,162,74,3,10,0,0,4,4,No,0
+2025-09-10,104,Paint Bucket 5L,Paint,Nippon,4540.65,9,181,50,7,5,0,0,9,2,No,29
+2025-02-04,105,PVC Pipe,Plumbing,Stanley,2303.73,19,227,75,13,5,0,0,2,1,No,163
+2025-06-14,101,Hammer,Paint,Nippon,327.85,6,20,23,11,10,0,1,6,5,Yes,310
+2025-03-02,101,Hammer,Fasteners,Stanley,1644.43,2,159,75,13,0,0,1,3,6,No,231
+2025-10-22,105,PVC Pipe,Gardening,Stanley,2786.77,13,153,63,6,0,0,0,10,2,No,27
+2025-09-30,103,Electric Drill,Electrical,Hilti,3959.79,1,20,37,11,15,0,0,9,1,Yes,310
+2025-04-04,107,Cement Bag,Gardening,Hilti,810.33,16,160,69,12,5,0,0,4,4,No,200
+2025-06-22,106,LED Bulb,Tools,Hilti,3628.04,20,85,74,9,0,0,1,6,6,No,185
+2025-05-11,109,Safety Gloves,Fasteners,Hilti,2771.02,9,85,68,9,5,0,1,5,6,No,185
+2025-03-30,101,Hammer,Safety Equipment,Nippon,2763.34,4,64,29,5,15,0,1,3,6,No,86
+2025-09-01,103,Electric Drill,Paint,Stanley,912.3,11,124,58,12,0,0,0,9,0,No,236
+2025-11-11,105,PVC Pipe,Tools,Ingco,2772.62,20,58,29,4,10,0,0,11,1,No,62
+2025-04-06,103,Electric Drill,Plumbing,Dulux,4892.5,7,31,26,13,5,0,1,4,6,No,359
+2025-03-15,109,Safety Gloves,Plumbing,Nippon,4373.46,14,213,34,10,15,0,1,3,5,No,87
+2025-06-30,105,PVC Pipe,Paint,Bosch,1103.92,9,167,77,14,15,0,0,6,0,No,253
+2025-08-09,101,Hammer,Building Materials,Nippon,3778.57,20,247,22,10,5,0,1,8,5,No,53
+2025-08-12,106,LED Bulb,Electrical,Bosch,4555.18,3,261,58,10,10,0,0,8,1,No,39
+2025-06-17,103,Electric Drill,Building Materials,Makita,3318.22,1,196,70,13,5,0,0,6,1,No,194
+2025-11-20,105,PVC Pipe,Tools,Ingco,1058.49,1,296,55,7,15,0,0,11,3,No,0
+2025-04-25,105,PVC Pipe,Plumbing,Dulux,1454.56,5,237,59,8,0,0,0,4,4,No,3
+2025-05-15,101,Hammer,Electrical,Dulux,2648.93,3,262,35,9,0,0,0,5,3,No,8
+2025-08-11,107,Cement Bag,Paint,Dulux,4300.18,11,39,57,15,0,0,0,8,0,Yes,411
+2025-04-05,105,PVC Pipe,Plumbing,Stanley,789.49,13,100,51,7,0,0,1,4,5,No,110
+2025-02-11,101,Hammer,Plumbing,Bosch,3306.03,16,245,38,6,0,0,0,2,1,No,0
+2025-02-12,101,Hammer,Gardening,Ingco,4423.84,16,15,20,13,5,0,0,2,2,Yes,375
+2025-11-19,105,PVC Pipe,Paint,Makita,2147.03,2,101,77,11,10,0,0,11,2,No,229
+2025-03-06,103,Electric Drill,Electrical,Makita,2194.7,10,24,22,6,5,0,0,3,3,No,156
+2025-02-09,106,LED Bulb,Paint,Bosch,2684.26,11,133,38,7,10,0,1,2,6,No,77
+2025-07-01,105,PVC Pipe,Electrical,3M,3821.95,20,215,53,11,10,0,0,7,1,No,115
+2025-09-01,110,Nails Pack,Electrical,Hilti,4114.35,15,276,47,14,5,0,0,9,0,No,144
+2025-02-10,101,Hammer,Electrical,3M,4147.29,7,179,53,5,5,0,0,2,0,No,0
+2025-01-09,101,Hammer,Paint,Makita,1804.91,18,278,67,9,5,0,0,1,3,No,0
+2025-04-25,109,Safety Gloves,Building Materials,3M,2928.52,9,270,46,12,5,0,0,4,4,No,90
+2025-06-08,107,Cement Bag,Gardening,Bosch,3207.3,17,65,54,6,10,0,1,6,6,No,115
+2025-05-12,110,Nails Pack,Plumbing,Makita,3463.0,13,200,39,4,15,0,0,5,0,No,0
+2025-10-10,104,Paint Bucket 5L,Fasteners,Nippon,1213.18,6,190,22,14,10,0,0,10,4,No,230
+2025-10-12,107,Cement Bag,Tools,Stanley,3501.34,4,190,40,10,5,0,1,10,6,No,110
+2025-10-11,110,Nails Pack,Plumbing,Bosch,262.63,12,141,55,8,5,0,1,10,5,No,99
+2025-08-02,110,Nails Pack,Safety Equipment,Hilti,4368.9,19,224,25,12,15,0,1,8,5,No,136
+2025-06-28,106,LED Bulb,Safety Equipment,Hilti,3386.59,2,45,57,11,10,0,1,6,5,Yes,285
+2025-04-01,108,Garden Hose,Paint,Nippon,1210.98,9,146,49,9,10,0,0,4,1,No,124
+2025-09-22,101,Hammer,Building Materials,Bosch,4031.54,11,269,45,10,0,0,0,9,0,No,31
+2025-05-06,103,Electric Drill,Tools,Nippon,4834.59,16,109,70,6,5,0,0,5,1,No,71
+2025-03-12,110,Nails Pack,Fasteners,Bosch,4147.59,10,120,79,11,10,0,0,3,2,No,210
+2025-05-05,105,PVC Pipe,Tools,Stanley,3211.94,3,163,59,9,0,0,0,5,0,No,107
+2025-02-25,107,Cement Bag,Gardening,3M,1390.25,4,226,60,8,10,0,0,2,1,No,14
+2025-12-29,110,Nails Pack,Safety Equipment,Ingco,1569.6,9,67,47,12,0,0,0,12,0,No,293
+2025-05-16,104,Paint Bucket 5L,Gardening,3M,4276.09,16,119,74,12,0,1,0,5,4,No,241
+2025-10-02,105,PVC Pipe,Tools,Dulux,2703.45,13,267,54,14,5,0,0,10,3,No,153
+2025-07-07,103,Electric Drill,Fasteners,Hilti,1412.11,11,148,24,13,5,0,0,7,0,No,242
+2025-03-28,110,Nails Pack,Fasteners,Makita,1336.31,15,200,28,7,5,0,0,3,4,No,10
+2025-12-22,107,Cement Bag,Gardening,3M,3379.08,20,75,65,11,5,0,0,12,0,No,255
+2025-01-01,102,Screwdriver Set,Tools,Makita,3892.01,20,37,39,9,0,0,0,1,2,Yes,233
+2025-05-08,102,Screwdriver Set,Electrical,Stanley,3965.13,1,27,23,11,0,0,0,5,3,No,303
+2025-06-07,104,Paint Bucket 5L,Safety Equipment,Makita,1984.11,17,193,43,10,15,0,1,6,5,No,107
+2025-01-30,104,Paint Bucket 5L,Electrical,Makita,3043.19,13,86,57,12,10,0,0,1,3,No,274
+2025-05-28,105,PVC Pipe,Fasteners,Stanley,447.57,12,267,25,7,5,0,0,5,2,No,0
+2025-05-21,107,Cement Bag,Plumbing,Hilti,323.68,3,92,64,6,0,0,0,5,2,No,88
+2025-11-27,108,Garden Hose,Safety Equipment,Hilti,2462.0,2,236,39,7,5,1,0,11,3,No,0
+2025-02-02,104,Paint Bucket 5L,Fasteners,Bosch,1114.26,19,189,27,10,10,0,1,2,6,No,111
+2025-10-26,109,Safety Gloves,Safety Equipment,3M,279.93,13,244,68,5,15,0,1,10,6,No,0
+2025-03-16,109,Safety Gloves,Electrical,Nippon,1170.7,19,232,28,9,5,0,1,3,6,No,38
+2025-04-29,104,Paint Bucket 5L,Safety Equipment,Hilti,4101.74,12,276,70,8,10,0,0,4,1,No,0
+2025-11-01,101,Hammer,Tools,Bosch,4411.33,18,191,30,11,10,0,1,11,5,No,139
+2025-01-18,101,Hammer,Tools,Nippon,319.78,10,18,31,6,10,0,1,1,5,Yes,162
+2025-04-06,107,Cement Bag,Paint,Stanley,4423.07,5,239,52,12,5,0,1,4,6,No,121
+2025-09-09,102,Screwdriver Set,Safety Equipment,Nippon,4136.57,11,7,44,17,0,1,0,9,1,Yes,503
+2025-12-14,110,Nails Pack,Fasteners,Stanley,3218.37,17,214,68,3,15,0,1,12,6,No,0
+2025-08-13,105,PVC Pipe,Electrical,Hilti,3058.6,12,160,55,12,10,0,0,8,2,No,200
+2025-09-26,110,Nails Pack,Building Materials,Makita,1908.36,4,83,68,6,10,0,0,9,4,No,97
+2025-02-22,110,Nails Pack,Safety Equipment,Nippon,447.94,14,257,48,4,0,0,1,2,5,No,0
+2025-10-01,103,Electric Drill,Tools,Makita,3425.48,7,265,33,9,15,0,0,10,2,No,5
+2025-11-19,102,Screwdriver Set,Fasteners,Makita,3216.87,11,27,22,15,15,0,0,11,2,No,423
+2025-04-25,106,LED Bulb,Fasteners,Nippon,3647.47,1,165,22,6,0,0,0,4,4,No,15
+2025-06-23,107,Cement Bag,Paint,Ingco,2716.44,13,267,54,6,5,0,0,6,0,No,0
+2025-06-29,103,Electric Drill,Building Materials,Ingco,2299.38,19,212,68,5,5,0,1,6,6,No,0
+2025-12-16,108,Garden Hose,Gardening,3M,1158.65,13,293,47,10,0,0,0,12,1,No,7
+2025-06-21,110,Nails Pack,Gardening,Stanley,1998.22,4,72,72,14,10,0,1,6,5,No,348
+2025-10-27,101,Hammer,Building Materials,Makita,4322.54,6,287,22,11,10,0,0,10,0,No,43
+2025-11-01,102,Screwdriver Set,Plumbing,Stanley,2305.6,3,22,59,11,0,0,1,11,5,Yes,308
+2025-06-06,109,Safety Gloves,Gardening,Stanley,4459.29,5,155,56,10,5,0,0,6,4,No,145
+2025-08-23,110,Nails Pack,Gardening,Hilti,3264.13,20,201,79,17,10,0,1,8,5,No,309
+2025-12-23,102,Screwdriver Set,Building Materials,Bosch,1956.66,3,293,24,13,15,0,0,12,1,No,97
+2025-01-22,101,Hammer,Fasteners,Bosch,2702.32,13,30,23,14,10,0,0,1,2,No,390
+2025-06-12,108,Garden Hose,Tools,Stanley,920.06,17,66,30,20,15,0,0,6,3,No,534
+2025-11-25,107,Cement Bag,Tools,Bosch,765.37,3,233,70,5,0,0,0,11,1,No,0
+2025-03-10,108,Garden Hose,Tools,Bosch,214.43,3,29,61,13,5,0,0,3,0,Yes,361
+2025-09-25,103,Electric Drill,Electrical,Bosch,4510.41,15,195,37,8,10,0,0,9,3,No,45
+2025-11-01,110,Nails Pack,Plumbing,3M,4150.87,17,108,51,18,5,0,1,11,5,No,432
+2025-10-19,107,Cement Bag,Gardening,3M,1767.9,19,161,64,10,0,0,1,10,6,No,139
+2025-09-07,107,Cement Bag,Tools,3M,3833.32,19,41,53,14,15,0,1,9,6,Yes,379
+2025-06-19,104,Paint Bucket 5L,Plumbing,Hilti,1370.74,6,20,63,7,0,0,0,6,3,Yes,190
+2025-01-20,101,Hammer,Tools,Bosch,4170.37,9,279,54,10,5,0,0,1,0,No,21
+2025-08-15,109,Safety Gloves,Building Materials,3M,837.56,3,272,54,13,10,0,0,8,4,No,118
+2025-01-04,110,Nails Pack,Tools,Nippon,4413.54,18,249,38,11,15,1,1,1,5,No,81
+2025-09-20,103,Electric Drill,Gardening,Stanley,1086.43,6,144,56,9,15,0,1,9,5,No,126
+2025-01-29,109,Safety Gloves,Gardening,Stanley,2760.82,10,172,66,15,0,0,0,1,2,No,278
+2025-12-06,103,Electric Drill,Safety Equipment,Makita,4362.85,20,4,36,6,15,0,1,12,5,Yes,176
+2025-03-07,106,LED Bulb,Paint,Stanley,3435.7,16,69,36,10,15,0,0,3,4,No,231
+2025-07-01,104,Paint Bucket 5L,Paint,Ingco,4750.65,14,69,74,10,0,0,0,7,1,Yes,231
+2025-04-05,106,LED Bulb,Paint,Hilti,1939.12,8,215,42,8,15,0,1,4,5,No,25
+2025-06-12,106,LED Bulb,Electrical,Bosch,1994.05,5,241,36,10,5,0,0,6,3,No,59
+2025-09-01,105,PVC Pipe,Safety Equipment,Hilti,4341.33,16,259,26,13,10,0,0,9,0,No,131
+2025-08-09,107,Cement Bag,Fasteners,Dulux,4784.63,12,115,64,7,10,0,1,8,5,No,95
+2025-03-25,104,Paint Bucket 5L,Gardening,Dulux,2251.83,15,188,50,9,10,0,0,3,1,No,82
+2025-03-27,103,Electric Drill,Fasteners,Bosch,3696.75,20,276,35,10,5,0,0,3,3,No,24
+2025-03-19,107,Cement Bag,Safety Equipment,Stanley,4117.01,1,285,76,8,10,0,0,3,2,No,0
+2025-07-27,101,Hammer,Paint,Ingco,3987.63,2,36,32,8,10,1,1,7,6,No,204
+2025-07-08,107,Cement Bag,Fasteners,Nippon,3791.8,9,264,53,11,15,0,0,7,1,No,66
+2025-07-11,102,Screwdriver Set,Building Materials,Bosch,480.48,5,74,54,9,15,0,0,7,4,No,196
+2025-07-04,103,Electric Drill,Safety Equipment,3M,2790.74,8,289,64,11,10,0,0,7,4,No,41
+2025-07-13,103,Electric Drill,Gardening,Hilti,4780.06,20,144,74,10,0,0,1,7,6,No,156
+2025-06-24,110,Nails Pack,Fasteners,Bosch,4226.16,12,12,75,7,15,0,0,6,1,Yes,198
+2025-07-02,103,Electric Drill,Electrical,Makita,1546.92,4,214,33,7,0,0,0,7,2,No,0
+2025-03-30,106,LED Bulb,Electrical,Nippon,846.41,14,230,72,8,0,0,1,3,6,No,10
+2025-08-04,102,Screwdriver Set,Gardening,Stanley,4226.93,2,268,40,10,15,0,0,8,0,No,32
+2025-01-29,108,Garden Hose,Tools,Hilti,1151.68,6,30,36,9,10,0,0,1,2,Yes,240
+2025-10-31,108,Garden Hose,Building Materials,Nippon,3626.98,6,53,71,14,5,0,0,10,4,Yes,367
+2025-08-02,110,Nails Pack,Electrical,Ingco,3221.75,20,52,43,10,5,0,1,8,5,No,248
+2025-02-23,109,Safety Gloves,Gardening,Bosch,1520.85,17,58,42,11,10,0,1,2,6,No,272
+2025-03-23,103,Electric Drill,Tools,Dulux,3631.21,20,289,37,9,15,0,1,3,6,No,0
+2025-06-19,105,PVC Pipe,Safety Equipment,3M,4136.51,3,48,34,12,5,0,0,6,3,No,312
+2025-04-29,109,Safety Gloves,Gardening,Makita,603.47,18,273,51,7,15,0,0,4,1,No,0
+2025-01-30,109,Safety Gloves,Gardening,Hilti,3008.08,16,263,60,15,0,0,0,1,3,No,187
+2025-07-08,106,LED Bulb,Gardening,Bosch,1767.82,2,155,30,16,10,0,0,7,1,No,325
+2025-04-15,106,LED Bulb,Plumbing,Nippon,4150.9,1,161,63,6,15,0,0,4,1,No,19
+2025-03-17,103,Electric Drill,Safety Equipment,Dulux,2901.86,10,55,31,9,5,0,0,3,0,No,215
+2025-05-17,109,Safety Gloves,Fasteners,Dulux,3408.19,7,216,75,5,0,0,1,5,5,No,0
+2025-12-21,108,Garden Hose,Paint,Nippon,3411.65,16,234,32,6,0,0,1,12,6,No,0
+2025-05-11,107,Cement Bag,Safety Equipment,Hilti,995.76,2,280,49,8,15,0,1,5,6,No,0
+2025-07-10,109,Safety Gloves,Tools,Ingco,1417.94,15,292,61,10,5,0,0,7,3,No,8
+2025-09-29,106,LED Bulb,Gardening,Bosch,613.56,16,40,54,10,10,0,0,9,0,Yes,260
+2025-04-23,110,Nails Pack,Electrical,Hilti,2342.73,18,235,60,7,15,0,0,4,2,No,0
+2025-07-28,106,LED Bulb,Safety Equipment,Ingco,356.54,15,99,50,13,0,0,0,7,0,No,291
+2025-02-27,101,Hammer,Safety Equipment,Ingco,3626.3,13,99,64,9,15,0,0,2,3,No,171
+2025-04-29,105,PVC Pipe,Gardening,Bosch,3794.71,13,2,47,16,5,0,0,4,1,Yes,478
+2025-08-31,102,Screwdriver Set,Building Materials,Makita,4875.5,15,20,79,10,5,0,1,8,6,Yes,280
+2025-06-13,101,Hammer,Gardening,Nippon,310.73,2,52,29,13,15,0,0,6,4,No,338
+2025-08-15,102,Screwdriver Set,Gardening,Ingco,172.0,4,137,54,9,5,0,0,8,4,No,133
+2025-03-07,103,Electric Drill,Fasteners,Makita,2515.04,17,181,71,9,0,0,0,3,4,No,89
+2025-11-28,104,Paint Bucket 5L,Building Materials,Ingco,148.63,11,118,47,10,15,0,0,11,4,No,182
+2025-04-28,101,Hammer,Tools,Dulux,1409.54,10,282,73,7,0,0,0,4,0,No,0
+2025-03-09,108,Garden Hose,Tools,Bosch,183.04,18,223,72,6,15,0,1,3,6,No,0
+2025-02-05,108,Garden Hose,Gardening,Ingco,1774.84,13,125,31,12,0,0,0,2,2,No,235
+2025-06-19,104,Paint Bucket 5L,Fasteners,3M,106.63,6,134,55,8,0,0,0,6,3,No,106
+2025-04-08,104,Paint Bucket 5L,Fasteners,Makita,4250.6,17,131,59,10,10,0,0,4,1,No,169
+2025-12-16,102,Screwdriver Set,Paint,Nippon,421.9,10,204,34,7,10,0,0,12,1,No,6
+2025-05-28,105,PVC Pipe,Building Materials,3M,392.61,17,103,28,12,15,0,0,5,2,No,257
+2025-01-01,102,Screwdriver Set,Paint,Bosch,1271.88,5,142,51,10,15,0,0,1,2,No,158
+2025-03-01,109,Safety Gloves,Safety Equipment,Bosch,470.46,5,198,61,9,15,0,1,3,5,No,72
+2025-02-06,105,PVC Pipe,Gardening,Dulux,4490.77,11,266,32,14,10,0,0,2,3,No,154
+2025-08-05,105,PVC Pipe,Safety Equipment,Nippon,4074.51,14,48,66,11,0,0,0,8,1,Yes,282
+2025-07-10,107,Cement Bag,Paint,Nippon,4595.68,13,46,50,8,15,0,0,7,3,Yes,194
+2025-03-07,106,LED Bulb,Electrical,Ingco,3567.83,4,4,39,4,0,0,0,3,4,Yes,116
+2025-01-28,103,Electric Drill,Paint,Bosch,3191.52,12,225,34,9,5,0,0,1,1,No,45
+2025-11-23,103,Electric Drill,Gardening,Stanley,1835.91,11,222,49,13,0,0,1,11,6,No,168
+2025-12-18,110,Nails Pack,Paint,3M,2848.28,17,234,63,14,5,0,0,12,3,No,186
+2025-05-25,101,Hammer,Building Materials,Dulux,4233.88,12,69,60,14,0,1,1,5,6,No,351
+2025-02-18,107,Cement Bag,Fasteners,Hilti,1064.94,3,88,37,11,5,0,0,2,1,No,242
+2025-10-11,105,PVC Pipe,Building Materials,Bosch,3008.45,7,244,35,16,15,0,1,10,5,No,236
+2025-05-04,103,Electric Drill,Plumbing,Nippon,4888.81,1,7,49,13,15,0,1,5,6,Yes,383
+2025-08-25,104,Paint Bucket 5L,Tools,Makita,3619.82,8,38,36,7,5,0,0,8,0,No,172
+2025-02-28,105,PVC Pipe,Safety Equipment,Nippon,897.23,18,85,63,11,15,0,0,2,4,No,245
+2025-11-21,105,PVC Pipe,Building Materials,Ingco,159.31,4,170,40,16,10,0,0,11,4,No,310
+2025-06-07,104,Paint Bucket 5L,Electrical,Bosch,1188.17,7,90,41,8,5,0,1,6,5,No,150
+2025-02-10,110,Nails Pack,Electrical,Nippon,2200.64,14,264,73,12,10,0,0,2,0,No,96
+2025-04-09,107,Cement Bag,Plumbing,Stanley,2049.4,5,116,49,9,0,0,0,4,2,No,154
+2025-07-11,106,LED Bulb,Plumbing,Dulux,4600.29,12,205,36,17,10,0,0,7,4,No,305
+2025-09-03,105,PVC Pipe,Safety Equipment,Bosch,3958.99,5,90,37,7,5,0,0,9,2,No,120
+2025-07-13,101,Hammer,Tools,Ingco,3317.49,18,115,42,7,0,0,1,7,6,No,95
+2025-05-18,104,Paint Bucket 5L,Tools,3M,2579.19,18,192,36,7,15,0,1,5,6,No,18
+2025-03-13,107,Cement Bag,Gardening,Ingco,826.07,19,67,24,12,5,0,0,3,3,No,293
+2025-05-04,104,Paint Bucket 5L,Gardening,Ingco,3623.88,1,75,45,11,5,0,1,5,6,No,255
+2025-07-10,105,PVC Pipe,Safety Equipment,Stanley,4214.33,5,153,59,6,10,1,0,7,3,No,27
+2025-05-10,102,Screwdriver Set,Paint,Bosch,2064.61,14,108,48,15,0,0,1,5,5,No,342
+2025-04-21,102,Screwdriver Set,Plumbing,Stanley,1351.01,7,45,47,8,10,0,0,4,0,Yes,195
+2025-12-26,103,Electric Drill,Building Materials,Dulux,3216.61,9,194,66,9,0,0,0,12,4,No,76
+2025-09-06,102,Screwdriver Set,Electrical,Makita,4073.31,2,23,43,14,5,0,1,9,5,Yes,397
+2025-01-17,108,Garden Hose,Electrical,Bosch,3307.79,14,278,64,10,0,1,0,1,4,No,22
+2025-05-19,110,Nails Pack,Gardening,Stanley,284.1,10,248,79,6,0,0,0,5,0,No,0
+2025-10-13,104,Paint Bucket 5L,Building Materials,Ingco,2660.3,10,211,22,7,5,0,0,10,0,No,0
+2025-04-27,102,Screwdriver Set,Paint,Hilti,4425.4,7,37,70,3,0,0,1,4,6,Yes,53
+2025-06-20,110,Nails Pack,Paint,Bosch,3348.93,9,189,56,9,15,0,0,6,4,No,81
+2025-10-21,109,Safety Gloves,Building Materials,Makita,3591.84,8,46,73,13,0,0,0,10,1,Yes,344
+2025-05-14,110,Nails Pack,Building Materials,Hilti,2088.18,4,148,27,7,15,0,0,5,2,No,62
+2025-07-24,110,Nails Pack,Building Materials,Makita,3338.97,2,254,28,12,5,0,0,7,3,No,106
+2025-08-19,103,Electric Drill,Tools,Hilti,1417.35,18,272,23,11,5,0,0,8,1,No,58
+2025-01-10,109,Safety Gloves,Fasteners,Hilti,4751.12,20,101,68,11,5,0,0,1,4,No,229
+2025-11-17,103,Electric Drill,Safety Equipment,Bosch,2617.89,15,87,21,10,5,0,0,11,0,No,213
+2025-12-18,104,Paint Bucket 5L,Plumbing,Makita,3516.33,3,0,66,12,15,0,0,12,3,Yes,360
+2025-12-23,104,Paint Bucket 5L,Building Materials,Makita,3503.52,4,72,32,8,10,0,0,12,1,No,168
+2025-02-10,106,LED Bulb,Fasteners,Makita,1145.63,7,62,68,12,0,0,0,2,0,Yes,298
+2025-07-08,105,PVC Pipe,Plumbing,Makita,3662.58,6,270,55,10,5,0,0,7,1,No,30
+2025-11-08,105,PVC Pipe,Tools,Ingco,3952.41,9,42,71,12,15,1,1,11,5,Yes,318
+2025-01-27,101,Hammer,Gardening,Nippon,709.48,8,161,74,13,0,0,0,1,0,No,229
+2025-12-10,102,Screwdriver Set,Fasteners,Dulux,1251.37,9,42,29,10,10,0,0,12,2,No,258
+2025-12-08,107,Cement Bag,Paint,Dulux,4063.07,10,1,75,12,15,0,0,12,0,Yes,359
+2025-05-29,102,Screwdriver Set,Plumbing,Makita,4100.41,11,205,75,10,15,0,0,5,3,No,95
+2025-02-16,103,Electric Drill,Paint,Dulux,4682.96,10,123,52,11,5,0,1,2,6,No,207
+2025-02-21,104,Paint Bucket 5L,Paint,3M,2789.41,17,282,31,8,5,0,0,2,4,No,0
+2025-06-06,103,Electric Drill,Fasteners,Bosch,3144.33,15,68,73,8,0,0,0,6,4,Yes,172
+2025-05-01,109,Safety Gloves,Fasteners,Makita,1310.94,14,18,41,9,0,0,0,5,3,Yes,252
+2025-07-03,106,LED Bulb,Paint,Bosch,1729.04,12,13,42,12,0,0,0,7,3,Yes,347
+2025-06-11,109,Safety Gloves,Paint,3M,2149.84,4,28,43,12,15,0,0,6,2,Yes,332
+2025-09-02,108,Garden Hose,Gardening,Bosch,1453.96,6,16,21,4,0,0,0,9,1,Yes,104
+2025-07-23,109,Safety Gloves,Building Materials,Stanley,4856.32,9,81,45,5,15,0,0,7,2,No,69
+2025-01-06,103,Electric Drill,Building Materials,Stanley,2952.7,11,70,78,7,10,0,0,1,0,Yes,140
+2025-05-16,108,Garden Hose,Electrical,3M,3066.87,13,1,79,10,10,0,0,5,4,Yes,299
+2025-08-28,101,Hammer,Fasteners,Ingco,2793.07,9,294,46,12,0,0,0,8,3,No,66
+2025-05-30,107,Cement Bag,Gardening,Dulux,470.36,7,147,63,17,15,0,0,5,4,No,363
+2025-10-22,104,Paint Bucket 5L,Safety Equipment,Hilti,2344.31,10,289,41,5,0,0,0,10,2,No,0
+2025-09-21,108,Garden Hose,Electrical,Dulux,4828.58,1,47,25,7,5,0,1,9,6,No,163
+2025-03-30,102,Screwdriver Set,Electrical,3M,1633.25,14,64,38,8,10,0,1,3,6,No,176
+2025-11-18,106,LED Bulb,Tools,Nippon,618.94,9,97,49,7,10,0,0,11,1,No,113
+2025-07-16,105,PVC Pipe,Building Materials,Hilti,3432.55,16,67,26,9,10,0,0,7,2,No,203
+2025-02-03,106,LED Bulb,Paint,Nippon,1340.2,16,105,51,9,15,0,0,2,0,No,165
+2025-02-09,105,PVC Pipe,Electrical,Bosch,3395.06,16,282,73,21,0,0,1,2,6,No,348
+2025-10-27,105,PVC Pipe,Building Materials,Dulux,1702.52,6,270,23,15,10,0,0,10,0,No,180
+2025-05-12,107,Cement Bag,Electrical,Nippon,2228.58,13,247,47,12,15,0,0,5,0,No,113
+2025-05-09,104,Paint Bucket 5L,Safety Equipment,Ingco,3105.13,14,211,64,11,15,0,0,5,4,No,119
+2025-02-23,106,LED Bulb,Gardening,Ingco,547.82,17,46,52,7,10,0,1,2,6,Yes,164
+2025-09-29,108,Garden Hose,Tools,Stanley,1150.59,11,295,30,8,10,0,0,9,0,No,0
+2025-10-01,106,LED Bulb,Electrical,Hilti,2348.81,4,15,37,12,0,0,0,10,2,Yes,345
+2025-03-14,104,Paint Bucket 5L,Electrical,Ingco,1923.78,19,76,75,9,10,0,0,3,4,No,194
+2025-02-24,109,Safety Gloves,Paint,Bosch,1081.38,2,90,65,11,5,0,0,2,0,No,240
+2025-10-28,104,Paint Bucket 5L,Fasteners,Stanley,1528.33,6,106,44,13,15,0,0,10,1,No,284
+2025-04-03,102,Screwdriver Set,Building Materials,Bosch,1734.67,20,186,40,14,10,0,0,4,3,No,234
+2025-04-26,104,Paint Bucket 5L,Tools,Makita,2115.56,13,229,77,14,15,0,1,4,5,No,191
+2025-07-09,107,Cement Bag,Gardening,Hilti,2547.22,6,91,37,10,15,0,0,7,2,No,209
+2025-05-01,105,PVC Pipe,Electrical,Stanley,4141.24,12,184,32,8,15,0,0,5,3,No,56
+2025-04-11,108,Garden Hose,Tools,Nippon,1575.13,7,87,23,10,10,0,0,4,4,No,213
+2025-10-29,105,PVC Pipe,Safety Equipment,Hilti,1129.14,6,241,76,8,0,0,0,10,2,No,0
+2025-03-05,104,Paint Bucket 5L,Building Materials,Bosch,1375.16,10,132,68,6,5,0,0,3,2,No,48
+2025-11-17,101,Hammer,Paint,Nippon,1009.67,10,290,23,13,5,0,0,11,0,No,100
+2025-12-29,110,Nails Pack,Safety Equipment,Hilti,1517.02,11,233,42,8,15,0,0,12,0,No,7
+2025-08-21,103,Electric Drill,Building Materials,Dulux,1348.92,7,152,64,12,5,0,0,8,3,No,208
+2025-10-11,101,Hammer,Gardening,Stanley,1608.2,9,294,35,8,15,0,1,10,5,No,0
+2025-05-13,107,Cement Bag,Paint,Makita,4393.97,16,108,54,5,5,0,0,5,1,No,42
+2025-01-28,103,Electric Drill,Gardening,Ingco,1809.56,1,86,36,10,0,0,0,1,1,No,214
+2025-10-17,106,LED Bulb,Tools,Makita,1789.43,18,213,28,10,10,0,0,10,4,No,87
+2025-06-12,110,Nails Pack,Plumbing,Nippon,885.79,4,45,71,12,10,0,0,6,3,Yes,315
+2025-10-07,106,LED Bulb,Safety Equipment,Dulux,1225.03,14,103,40,5,10,0,0,10,1,No,47
+2025-05-10,102,Screwdriver Set,Fasteners,Hilti,3621.82,3,149,73,12,5,0,1,5,5,No,211
+2025-09-20,108,Garden Hose,Paint,Nippon,509.42,3,137,66,15,10,0,1,9,5,No,313
+2025-09-08,105,PVC Pipe,Building Materials,Stanley,616.19,8,27,30,7,15,0,0,9,0,Yes,183
+2025-01-11,108,Garden Hose,Electrical,Dulux,1302.23,6,151,27,7,0,0,1,1,5,No,59
+2025-11-19,102,Screwdriver Set,Electrical,Makita,4932.61,17,18,22,9,0,1,0,11,2,Yes,252
+2025-02-05,109,Safety Gloves,Tools,Nippon,3512.51,20,140,73,12,5,0,0,2,2,No,220
+2025-04-05,101,Hammer,Gardening,Hilti,2919.51,20,294,43,12,15,0,1,4,5,No,66
+2025-06-03,108,Garden Hose,Fasteners,3M,3491.16,2,6,77,7,5,0,0,6,1,Yes,204
+2025-09-21,107,Cement Bag,Electrical,Bosch,2588.24,11,16,62,9,0,0,1,9,6,Yes,254
+2025-03-29,106,LED Bulb,Building Materials,Hilti,438.32,2,116,62,10,0,0,1,3,5,No,184
+2025-06-24,102,Screwdriver Set,Fasteners,Nippon,3474.29,4,155,28,7,0,0,0,6,1,No,55
+2025-06-05,101,Hammer,Tools,Ingco,2724.72,2,117,60,14,0,0,0,6,3,No,303
+2025-06-13,109,Safety Gloves,Paint,3M,2704.73,10,270,22,10,0,1,0,6,4,No,30
+2025-11-12,103,Electric Drill,Paint,Nippon,165.5,19,145,70,9,15,0,0,11,2,No,125
+2025-06-26,107,Cement Bag,Gardening,Bosch,1476.32,10,5,31,7,10,0,0,6,3,Yes,205
+2025-03-21,105,PVC Pipe,Tools,Nippon,990.44,1,19,48,9,15,0,0,3,4,Yes,251
+2025-05-28,107,Cement Bag,Tools,Nippon,2839.39,19,181,33,8,15,1,0,5,2,No,59
+2025-02-25,106,LED Bulb,Tools,Nippon,1925.41,7,59,71,4,0,0,0,2,1,Yes,61
+2025-07-25,109,Safety Gloves,Paint,Bosch,322.06,14,255,68,9,5,0,0,7,4,No,15
+2025-06-07,101,Hammer,Building Materials,Nippon,1928.88,6,206,67,11,5,0,1,6,5,No,124
+2025-07-05,106,LED Bulb,Fasteners,Ingco,425.67,17,294,51,13,15,0,1,7,5,No,96
+2025-12-17,109,Safety Gloves,Tools,Bosch,2638.24,2,191,63,6,0,0,0,12,2,No,0
+2025-11-04,102,Screwdriver Set,Safety Equipment,Dulux,3737.04,10,219,25,6,0,0,0,11,1,No,0
+2025-12-16,101,Hammer,Tools,Nippon,3774.89,8,291,61,11,15,0,0,12,1,No,39
+2025-03-21,104,Paint Bucket 5L,Gardening,Dulux,2936.15,3,169,32,11,0,0,0,3,4,No,161
+2025-08-26,110,Nails Pack,Electrical,Hilti,3592.61,1,39,64,9,15,0,0,8,1,Yes,231
+2025-06-10,101,Hammer,Tools,Nippon,1153.07,18,299,30,9,15,0,0,6,1,No,0
+2025-03-11,108,Garden Hose,Safety Equipment,Makita,1020.81,10,145,51,9,0,0,0,3,1,No,125
+2025-10-19,101,Hammer,Paint,Nippon,2212.33,14,194,57,10,15,0,1,10,6,No,106
+2025-06-07,107,Cement Bag,Gardening,3M,3766.34,9,155,40,7,10,0,1,6,5,No,55
+2025-10-18,104,Paint Bucket 5L,Safety Equipment,Stanley,3503.74,9,277,29,7,15,0,1,10,5,No,0
+2025-04-08,101,Hammer,Gardening,Makita,3343.65,6,203,52,13,15,0,0,4,1,No,187
+2025-06-11,109,Safety Gloves,Fasteners,Hilti,2218.5,10,119,65,7,15,0,0,6,2,No,91
+2025-09-05,105,PVC Pipe,Electrical,Dulux,3367.55,19,103,32,15,15,0,0,9,4,No,347
+2025-10-22,110,Nails Pack,Paint,Hilti,4144.54,6,181,57,14,15,0,0,10,2,No,239
+2025-10-15,102,Screwdriver Set,Electrical,Bosch,565.1,13,162,50,12,5,0,0,10,2,No,198
+2025-07-18,102,Screwdriver Set,Electrical,Stanley,297.72,8,186,40,9,5,0,0,7,4,No,84
+2025-10-22,104,Paint Bucket 5L,Paint,3M,3940.32,8,290,41,11,15,0,0,10,2,No,40
+2025-11-12,109,Safety Gloves,Safety Equipment,Bosch,170.47,2,182,34,13,10,0,0,11,2,No,208
+2025-11-27,107,Cement Bag,Paint,Ingco,2607.02,10,24,23,9,15,0,0,11,3,No,246
+2025-10-26,104,Paint Bucket 5L,Safety Equipment,Ingco,4954.33,17,73,62,13,15,0,1,10,6,No,317
+2025-07-10,110,Nails Pack,Tools,Makita,2936.32,6,27,24,9,10,0,0,7,3,No,243
+2025-05-14,103,Electric Drill,Tools,Ingco,3202.06,6,49,23,10,0,0,0,5,2,No,251
+2025-08-29,106,LED Bulb,Fasteners,Stanley,4319.12,12,181,37,14,10,0,0,8,4,No,239
+2025-09-17,105,PVC Pipe,Tools,Ingco,639.31,12,63,26,20,15,0,0,9,2,No,537
+2025-11-06,102,Screwdriver Set,Plumbing,Makita,3036.58,17,92,65,9,0,1,0,11,3,No,178
+2025-10-01,103,Electric Drill,Paint,Makita,931.67,14,267,59,11,5,0,0,10,2,No,63
+2025-02-01,107,Cement Bag,Safety Equipment,Hilti,4033.77,19,183,45,18,10,0,1,2,5,No,357
+2025-10-02,108,Garden Hose,Plumbing,3M,2069.25,10,229,21,6,5,0,0,10,3,No,0
+2025-05-01,101,Hammer,Paint,Makita,4614.41,1,298,41,11,10,0,0,5,3,No,32
+2025-07-02,102,Screwdriver Set,Gardening,Nippon,3542.94,14,208,39,4,10,0,0,7,2,No,0
+2025-07-12,110,Nails Pack,Fasteners,Ingco,4416.77,13,6,35,14,10,0,1,7,5,Yes,414
+2025-02-08,104,Paint Bucket 5L,Plumbing,Ingco,4328.68,9,180,42,14,0,0,1,2,5,No,240
+2025-05-28,103,Electric Drill,Plumbing,Ingco,1503.95,9,221,65,10,10,0,0,5,2,No,79
+2025-08-26,103,Electric Drill,Building Materials,Dulux,1742.87,15,10,53,16,10,0,0,8,1,Yes,470
+2025-11-14,110,Nails Pack,Electrical,Nippon,448.07,16,275,69,7,10,0,0,11,4,No,0
+2025-11-05,104,Paint Bucket 5L,Fasteners,Hilti,1415.95,17,83,22,5,0,0,0,11,2,No,67
+2025-03-28,109,Safety Gloves,Building Materials,Nippon,4927.99,6,235,75,6,15,0,0,3,4,No,0
+2025-07-23,110,Nails Pack,Fasteners,Makita,862.3,3,92,49,7,0,0,0,7,2,No,118
+2025-08-11,106,LED Bulb,Paint,Stanley,200.55,13,124,32,13,10,0,0,8,0,No,266
+2025-06-28,101,Hammer,Fasteners,Nippon,406.57,19,222,37,7,10,0,1,6,5,No,0
+2025-01-20,103,Electric Drill,Building Materials,Stanley,1778.96,4,277,21,14,15,0,0,1,0,No,143
+2025-04-05,109,Safety Gloves,Tools,3M,4163.64,4,189,24,12,15,0,1,4,5,No,171
+2025-12-25,110,Nails Pack,Tools,Makita,2444.63,14,111,79,13,15,0,0,12,3,No,279
+2025-12-07,109,Safety Gloves,Plumbing,Nippon,2490.39,5,105,72,5,5,0,1,12,6,No,45
+2025-03-29,108,Garden Hose,Building Materials,3M,2151.18,9,175,37,10,0,0,1,3,5,No,125
+2025-08-08,107,Cement Bag,Paint,Dulux,3369.34,14,166,32,8,0,0,0,8,4,No,74
+2025-05-27,105,PVC Pipe,Building Materials,Ingco,4948.31,19,218,40,15,0,0,0,5,1,No,232
+2025-09-12,110,Nails Pack,Paint,Dulux,2498.02,13,37,38,12,5,0,0,9,4,Yes,323
+2025-10-20,101,Hammer,Fasteners,Makita,3324.6,7,186,44,6,5,0,0,10,0,No,0
+2025-09-17,108,Garden Hose,Building Materials,3M,2617.87,9,76,76,13,10,0,0,9,2,No,314
+2025-02-27,103,Electric Drill,Plumbing,Stanley,2613.2,6,38,27,14,15,0,0,2,3,No,382
+2025-06-29,109,Safety Gloves,Fasteners,Dulux,1923.65,19,119,47,12,15,0,1,6,6,No,241
+2025-01-12,101,Hammer,Electrical,Dulux,909.98,13,245,53,14,0,0,1,1,6,No,175
+2025-08-14,106,LED Bulb,Building Materials,Bosch,4525.63,16,246,27,11,10,0,0,8,3,No,84
+2025-10-22,105,PVC Pipe,Safety Equipment,Dulux,1918.73,11,255,78,13,5,0,0,10,2,No,135
+2025-01-24,106,LED Bulb,Plumbing,Ingco,1753.65,6,189,71,12,10,0,0,1,4,No,171
+2025-04-20,105,PVC Pipe,Tools,Ingco,3396.55,6,249,39,7,15,0,1,4,6,No,0
+2025-10-01,101,Hammer,Building Materials,Ingco,1323.38,1,126,61,8,15,0,0,10,2,No,114
+2025-02-05,107,Cement Bag,Safety Equipment,Ingco,3983.71,9,272,43,11,10,0,0,2,2,No,58
+2025-10-31,108,Garden Hose,Electrical,Nippon,2482.04,19,173,27,15,15,0,0,10,4,No,277
+2025-02-27,103,Electric Drill,Gardening,Bosch,1116.95,6,188,35,10,0,0,0,2,3,No,112
+2025-04-02,105,PVC Pipe,Electrical,Ingco,3114.74,6,285,58,13,15,0,0,4,2,No,105
+2025-02-20,102,Screwdriver Set,Tools,Bosch,4682.34,17,268,62,9,5,0,0,2,3,No,2
+2025-02-23,101,Hammer,Gardening,3M,249.27,3,115,34,7,0,0,1,2,6,No,95
+2025-08-13,101,Hammer,Building Materials,Hilti,4561.97,7,179,49,10,10,0,0,8,2,No,121
+2025-05-21,108,Garden Hose,Electrical,3M,2800.68,15,0,63,9,15,0,0,5,2,Yes,270
+2025-07-30,106,LED Bulb,Tools,3M,222.36,9,270,31,9,5,0,0,7,2,No,0
+2025-07-27,103,Electric Drill,Fasteners,3M,3650.53,6,71,46,5,15,0,1,7,6,No,79
+2025-05-04,101,Hammer,Plumbing,Stanley,950.13,14,189,70,9,15,0,1,5,6,No,81
+2025-12-07,109,Safety Gloves,Building Materials,Bosch,3778.77,11,220,40,6,15,0,1,12,6,No,0
+2025-06-30,102,Screwdriver Set,Safety Equipment,Nippon,2872.33,13,101,56,16,10,0,0,6,0,No,379
+2025-10-11,104,Paint Bucket 5L,Paint,Dulux,3772.19,6,226,70,9,0,0,1,10,5,No,44
+2025-08-04,108,Garden Hose,Safety Equipment,3M,1790.91,13,146,75,8,10,0,0,8,0,No,94
+2025-07-18,104,Paint Bucket 5L,Paint,Ingco,1655.99,5,217,68,14,5,0,0,7,4,No,203
+2025-12-24,107,Cement Bag,Plumbing,Bosch,1479.92,3,287,36,18,10,0,0,12,2,No,253
+2025-12-26,105,PVC Pipe,Safety Equipment,Bosch,3560.61,13,183,78,8,10,0,0,12,4,No,57
+2025-01-18,103,Electric Drill,Gardening,Bosch,4262.72,16,136,66,16,0,0,1,1,5,No,344
+2025-12-05,101,Hammer,Fasteners,Hilti,897.68,20,141,64,11,10,0,0,12,4,No,189
+2025-02-15,107,Cement Bag,Electrical,Ingco,2288.9,5,117,61,10,15,0,1,2,5,No,183
+2025-09-05,105,PVC Pipe,Building Materials,Makita,4533.36,16,210,22,11,15,0,0,9,4,No,120
+2025-09-07,105,PVC Pipe,Building Materials,Nippon,1541.91,17,104,72,13,0,0,1,9,6,No,286
+2025-10-13,103,Electric Drill,Tools,Makita,1322.35,5,131,42,9,15,1,0,10,0,No,139
+2025-02-11,105,PVC Pipe,Plumbing,Ingco,1564.4,12,65,49,5,10,0,0,2,1,No,85
+2025-09-22,105,PVC Pipe,Electrical,Stanley,4707.08,6,293,34,13,15,0,0,9,0,No,97
+2025-05-05,109,Safety Gloves,Paint,Makita,4754.51,13,24,40,6,15,0,0,5,0,Yes,156
+2025-05-23,109,Safety Gloves,Tools,Bosch,2959.66,17,111,63,9,15,0,0,5,4,No,159
+2025-07-22,103,Electric Drill,Electrical,Ingco,3691.7,13,150,22,13,15,0,0,7,1,No,240
+2025-11-19,104,Paint Bucket 5L,Plumbing,Makita,2113.2,5,191,24,5,10,0,0,11,2,No,0
+2025-09-06,105,PVC Pipe,Plumbing,3M,583.81,5,236,57,4,15,0,1,9,5,No,0
+2025-12-10,107,Cement Bag,Fasteners,Makita,1152.01,17,187,70,4,0,0,0,12,2,No,0
+2025-10-25,102,Screwdriver Set,Paint,Stanley,3327.72,20,89,32,10,10,0,1,10,5,No,211
+2025-02-14,103,Electric Drill,Paint,Nippon,2883.07,15,246,50,9,10,0,0,2,4,No,24
+2025-10-18,108,Garden Hose,Safety Equipment,Hilti,358.55,18,39,56,12,0,0,1,10,5,Yes,321
+2025-12-18,104,Paint Bucket 5L,Paint,Stanley,3108.45,4,181,61,7,5,0,0,12,3,No,29
+2025-07-13,108,Garden Hose,Paint,3M,4135.41,11,207,27,13,0,0,1,7,6,No,183
+2025-11-08,106,LED Bulb,Gardening,Dulux,875.69,4,162,65,9,5,0,1,11,5,No,108
+2025-12-28,107,Cement Bag,Building Materials,3M,995.09,6,282,32,6,10,0,1,12,6,No,0
+2025-12-22,107,Cement Bag,Gardening,Stanley,2349.71,13,25,66,12,10,0,0,12,0,Yes,335
+2025-08-21,106,LED Bulb,Gardening,Dulux,2430.42,20,241,37,9,0,0,0,8,3,No,29
+2025-02-21,107,Cement Bag,Safety Equipment,Makita,1727.34,14,18,62,7,10,0,0,2,4,Yes,192
+2025-04-03,109,Safety Gloves,Safety Equipment,Bosch,315.8,4,99,54,12,15,0,0,4,3,No,261
+2025-07-05,102,Screwdriver Set,Electrical,Hilti,2075.72,13,49,20,11,0,0,1,7,5,No,281
+2025-05-28,103,Electric Drill,Paint,Bosch,2276.16,1,127,33,12,0,0,0,5,2,No,233
+2025-01-12,101,Hammer,Tools,Nippon,1462.69,8,295,78,7,5,0,1,1,6,No,0
+2025-10-06,107,Cement Bag,Safety Equipment,Bosch,242.86,14,283,51,15,5,0,0,10,0,No,167
+2025-03-17,106,LED Bulb,Plumbing,Makita,4408.72,4,279,34,10,5,0,0,3,0,No,21
+2025-04-17,103,Electric Drill,Paint,3M,3684.28,15,263,26,18,5,0,0,4,3,No,277
+2025-03-21,105,PVC Pipe,Plumbing,Hilti,4678.09,5,285,29,15,10,0,0,3,4,No,165
+2025-04-12,108,Garden Hose,Tools,Hilti,1642.65,20,172,42,9,15,0,1,4,5,No,98
+2025-06-12,103,Electric Drill,Electrical,Stanley,4181.36,18,107,23,10,10,1,0,6,3,No,193
+2025-04-14,102,Screwdriver Set,Fasteners,Nippon,3863.83,18,270,59,10,15,0,0,4,0,No,30
+2025-03-08,104,Paint Bucket 5L,Safety Equipment,Dulux,2782.61,18,5,67,8,5,0,1,3,5,Yes,235
+2025-08-24,101,Hammer,Electrical,Stanley,4433.34,1,298,36,11,0,0,1,8,6,No,32
+2025-09-22,104,Paint Bucket 5L,Building Materials,Hilti,3513.81,11,213,75,8,0,0,0,9,0,No,27
+2025-01-15,105,PVC Pipe,Tools,Dulux,4046.61,5,246,30,17,5,0,0,1,2,No,264
+2025-05-02,104,Paint Bucket 5L,Plumbing,Ingco,2326.58,9,17,68,7,0,0,0,5,4,Yes,193
+2025-07-21,110,Nails Pack,Tools,Hilti,1592.01,12,124,66,7,0,0,0,7,0,No,86
+2025-11-27,106,LED Bulb,Plumbing,Stanley,2157.26,1,247,67,13,0,1,0,11,3,No,143
+2025-07-31,110,Nails Pack,Building Materials,Hilti,2267.04,4,126,60,12,5,0,0,7,3,No,234
+2025-08-08,103,Electric Drill,Gardening,Makita,356.72,1,265,54,6,15,0,0,8,4,No,0
+2025-10-28,102,Screwdriver Set,Tools,Bosch,1251.47,20,63,21,8,5,0,0,10,1,No,177
+2025-03-24,109,Safety Gloves,Tools,Makita,4639.67,13,271,68,9,15,0,0,3,0,No,0
+2025-05-12,101,Hammer,Building Materials,Makita,147.47,20,297,31,8,0,0,0,5,0,No,0
+2025-08-07,106,LED Bulb,Electrical,Bosch,1884.15,2,282,34,11,10,0,0,8,3,No,48
+2025-05-30,103,Electric Drill,Safety Equipment,Nippon,1430.31,5,62,59,15,5,0,0,5,4,No,388
+2025-12-19,107,Cement Bag,Building Materials,Nippon,556.66,11,62,36,9,0,0,0,12,4,No,208
+2025-07-05,105,PVC Pipe,Paint,Nippon,1207.79,10,174,31,5,5,0,1,7,5,No,0
+2025-08-19,104,Paint Bucket 5L,Building Materials,Ingco,1507.9,17,70,64,8,10,0,0,8,1,No,170
+2025-02-17,101,Hammer,Safety Equipment,Makita,4366.11,16,274,32,10,5,0,0,2,0,No,26
+2025-07-07,109,Safety Gloves,Paint,Bosch,2902.78,3,163,21,6,15,0,0,7,0,No,17
+2025-11-03,106,LED Bulb,Fasteners,Hilti,2101.43,9,29,64,12,0,0,0,11,0,Yes,331
+2025-05-10,102,Screwdriver Set,Tools,Hilti,1753.91,7,220,55,13,0,0,1,5,5,No,170
+2025-08-26,104,Paint Bucket 5L,Gardening,Bosch,4441.82,15,230,70,15,10,0,0,8,1,No,220
+2025-07-20,105,PVC Pipe,Gardening,Dulux,2115.39,11,147,28,7,10,0,1,7,6,No,63
+2025-12-18,102,Screwdriver Set,Plumbing,Nippon,2773.35,8,125,30,5,15,0,0,12,3,No,25
+2025-11-23,106,LED Bulb,Safety Equipment,Ingco,1866.33,10,289,32,12,10,0,1,11,6,No,71
+2025-04-11,105,PVC Pipe,Electrical,Nippon,4963.65,5,188,50,12,5,0,0,4,4,No,172
+2025-09-24,101,Hammer,Electrical,3M,1518.25,16,137,21,10,15,0,0,9,2,No,163
+2025-04-01,110,Nails Pack,Paint,Stanley,3131.98,10,15,65,12,15,0,0,4,1,Yes,345
+2025-03-31,109,Safety Gloves,Fasteners,Stanley,215.31,15,3,26,9,15,0,0,3,0,Yes,267
+2025-06-19,105,PVC Pipe,Gardening,Dulux,179.38,20,224,30,13,10,0,0,6,3,No,166
+2025-04-02,103,Electric Drill,Gardening,Hilti,4960.62,15,105,26,8,0,0,0,4,2,No,135
+2025-09-05,105,PVC Pipe,Gardening,Nippon,1339.83,12,295,69,14,15,0,0,9,4,No,125
+2025-02-15,105,PVC Pipe,Plumbing,Stanley,3401.81,5,282,68,14,15,0,1,2,5,No,138
+2025-01-18,103,Electric Drill,Gardening,Makita,4725.25,11,181,49,13,10,0,1,1,5,No,209
+2025-08-15,110,Nails Pack,Electrical,3M,1952.69,4,265,79,6,15,0,0,8,4,No,0
+2025-08-20,109,Safety Gloves,Tools,Bosch,4721.0,14,41,66,8,0,0,0,8,2,Yes,199
+2025-10-12,108,Garden Hose,Building Materials,Makita,393.72,16,241,62,6,5,0,1,10,6,No,0
+2025-07-13,106,LED Bulb,Building Materials,Bosch,655.86,19,72,31,11,10,0,1,7,6,No,258
+2025-05-30,101,Hammer,Fasteners,Nippon,236.44,10,175,39,11,15,0,0,5,4,No,155
+2025-10-26,106,LED Bulb,Building Materials,Ingco,2465.3,10,158,76,12,10,1,1,10,6,No,202
+2025-01-30,108,Garden Hose,Paint,Nippon,4829.98,2,279,40,11,0,0,0,1,3,No,51
+2025-07-16,107,Cement Bag,Building Materials,Stanley,440.03,1,161,77,5,15,0,0,7,2,No,0
+2025-03-28,109,Safety Gloves,Fasteners,Ingco,2092.29,16,21,33,6,0,0,0,3,4,Yes,159
+2025-04-03,109,Safety Gloves,Tools,3M,3945.37,19,147,37,8,10,0,0,4,3,No,93
+2025-01-07,105,PVC Pipe,Electrical,Ingco,2947.86,3,186,24,7,0,0,0,1,1,No,24
+2025-12-19,108,Garden Hose,Fasteners,Dulux,3342.99,6,205,25,11,0,0,0,12,4,No,125
+2025-09-04,110,Nails Pack,Paint,Dulux,3454.67,3,14,63,6,10,0,0,9,3,Yes,166
+2025-08-27,110,Nails Pack,Electrical,Nippon,4628.85,18,260,64,10,10,1,0,8,2,No,40
+2025-12-09,104,Paint Bucket 5L,Safety Equipment,Ingco,4481.9,4,205,34,11,5,0,0,12,1,No,125
+2025-08-02,106,LED Bulb,Building Materials,Hilti,4466.88,14,189,42,10,5,0,1,8,5,No,111
+2025-03-02,108,Garden Hose,Building Materials,Dulux,4094.85,8,94,41,15,15,0,1,3,6,No,356
+2025-09-05,101,Hammer,Safety Equipment,Stanley,3364.71,1,95,30,9,10,0,0,9,4,No,175
+2025-10-23,101,Hammer,Building Materials,Stanley,4165.64,8,19,65,5,5,0,0,10,3,Yes,131
+2025-01-23,106,LED Bulb,Building Materials,Bosch,2372.69,13,128,36,8,0,0,0,1,3,No,112
+2025-08-03,102,Screwdriver Set,Fasteners,Stanley,2496.28,1,111,70,14,15,0,1,8,6,No,309
+2025-10-19,103,Electric Drill,Tools,Hilti,1886.89,2,203,39,12,10,0,1,10,6,No,157
+2025-05-19,110,Nails Pack,Plumbing,Bosch,3533.0,20,172,62,10,0,0,0,5,0,No,128
+2025-02-16,102,Screwdriver Set,Gardening,Nippon,1014.54,16,42,38,9,15,0,1,2,6,No,228
+2025-03-15,101,Hammer,Plumbing,Hilti,1207.56,11,114,45,10,0,1,1,3,5,No,186
+2025-03-22,106,LED Bulb,Electrical,Stanley,1560.57,1,210,67,8,15,0,1,3,5,No,30
+2025-11-21,105,PVC Pipe,Plumbing,Ingco,616.87,14,266,45,11,0,0,0,11,4,No,64
+2025-02-19,107,Cement Bag,Safety Equipment,Bosch,1548.76,19,274,25,16,10,0,0,2,2,No,206
+2025-11-10,110,Nails Pack,Building Materials,Stanley,1336.33,11,64,54,8,5,0,0,11,0,No,176
+2025-08-30,109,Safety Gloves,Gardening,3M,4068.63,2,262,30,11,15,0,1,8,5,No,68
+2025-07-25,102,Screwdriver Set,Tools,3M,4547.9,10,50,72,13,0,0,0,7,4,Yes,340
+2025-02-25,108,Garden Hose,Electrical,Stanley,2695.6,11,214,64,12,10,0,0,2,1,No,146
+2025-07-19,102,Screwdriver Set,Paint,Makita,690.19,11,163,33,9,5,0,1,7,5,No,107
+2025-02-03,101,Hammer,Plumbing,3M,893.42,19,92,64,9,15,0,0,2,0,No,178
+2025-12-19,109,Safety Gloves,Plumbing,Hilti,664.22,16,105,78,14,15,0,0,12,4,No,315
+2025-01-13,102,Screwdriver Set,Safety Equipment,Makita,3332.48,15,86,44,9,10,0,0,1,0,No,184
+2025-08-21,108,Garden Hose,Plumbing,Stanley,4708.47,6,229,46,6,5,0,0,8,3,No,0
+2025-12-11,107,Cement Bag,Electrical,Nippon,1756.61,6,3,36,6,0,0,0,12,3,Yes,177
+2025-04-30,101,Hammer,Electrical,Stanley,3137.85,8,70,49,12,5,0,0,4,2,No,290
+2025-03-14,105,PVC Pipe,Plumbing,Ingco,1881.86,11,291,69,5,5,0,0,3,4,No,0
+2025-05-13,101,Hammer,Gardening,Nippon,2696.85,3,145,47,12,5,0,0,5,1,No,215
+2025-02-02,103,Electric Drill,Plumbing,Nippon,1552.0,1,186,50,6,10,0,1,2,6,No,0
+2025-12-08,109,Safety Gloves,Paint,Bosch,3018.83,15,131,49,13,5,0,0,12,0,No,259
+2025-04-16,103,Electric Drill,Tools,Hilti,492.92,15,221,55,10,10,0,0,4,2,No,79
+2025-03-30,110,Nails Pack,Paint,Stanley,3939.0,10,86,45,6,0,0,1,3,6,No,94
+2025-03-05,107,Cement Bag,Gardening,Makita,968.05,19,85,38,12,15,0,0,3,2,No,275
+2025-03-09,108,Garden Hose,Tools,Makita,2629.79,17,228,31,12,15,0,1,3,6,No,132
+2025-02-15,109,Safety Gloves,Safety Equipment,Makita,4757.61,19,160,62,5,10,1,1,2,5,No,0
+2025-08-11,101,Hammer,Paint,Dulux,747.68,11,171,73,9,0,0,0,8,0,No,99
+2025-06-24,107,Cement Bag,Safety Equipment,Bosch,722.77,3,185,52,7,0,0,0,6,1,No,25
+2025-06-03,110,Nails Pack,Building Materials,Ingco,4193.33,7,209,23,7,15,0,0,6,1,No,1
+2025-06-11,103,Electric Drill,Tools,Makita,1830.2,7,171,25,13,0,0,0,6,2,No,219
+2025-12-23,104,Paint Bucket 5L,Tools,Bosch,2383.97,11,250,35,9,15,0,0,12,1,No,20
+2025-07-06,106,LED Bulb,Tools,Bosch,4344.83,3,178,74,6,0,0,1,7,6,No,2
+2025-06-02,104,Paint Bucket 5L,Gardening,Nippon,2443.84,4,250,58,8,0,0,0,6,0,No,0
+2025-05-23,106,LED Bulb,Safety Equipment,Hilti,1931.66,11,265,47,11,0,0,0,5,4,No,65
+2025-03-18,105,PVC Pipe,Paint,Stanley,1296.39,4,293,32,11,10,0,0,3,1,No,37
+2025-06-25,101,Hammer,Gardening,Dulux,4766.83,8,121,39,14,5,0,0,6,2,No,299
+2025-12-26,107,Cement Bag,Plumbing,Makita,2424.73,9,194,67,10,10,0,0,12,4,No,106
+2025-09-26,101,Hammer,Paint,3M,1089.02,15,14,26,7,10,0,0,9,4,Yes,196
+2025-07-27,105,PVC Pipe,Safety Equipment,Makita,315.92,11,0,29,7,10,0,1,7,6,Yes,210
+2025-05-07,110,Nails Pack,Gardening,Bosch,4735.26,1,11,44,14,5,0,0,5,2,Yes,409
+2025-09-20,104,Paint Bucket 5L,Electrical,Hilti,722.03,17,278,62,6,0,0,1,9,5,No,0
+2025-10-24,104,Paint Bucket 5L,Paint,Nippon,3484.56,18,189,32,12,10,0,0,10,4,No,171
+2025-12-31,108,Garden Hose,Building Materials,Nippon,546.59,16,91,70,8,15,0,0,12,2,No,149
+2025-02-18,105,PVC Pipe,Fasteners,Ingco,1722.62,4,219,52,13,10,0,0,2,1,No,171
+2025-09-02,108,Garden Hose,Paint,Bosch,208.87,11,268,24,18,15,0,0,9,1,No,272
+2025-08-24,105,PVC Pipe,Plumbing,Hilti,575.13,4,174,31,12,0,0,1,8,6,No,186
+2025-08-09,110,Nails Pack,Electrical,3M,456.4,3,202,38,8,0,0,1,8,5,No,38
+2025-01-25,109,Safety Gloves,Electrical,Dulux,4963.32,16,232,20,14,0,0,1,1,5,No,188
+2025-02-11,104,Paint Bucket 5L,Paint,Bosch,2107.4,14,274,37,21,10,0,0,2,1,No,356
+2025-10-10,106,LED Bulb,Tools,Makita,4071.29,4,288,38,8,10,0,0,10,4,No,0
+2025-03-02,107,Cement Bag,Paint,Stanley,2657.23,19,36,45,4,0,0,1,3,6,Yes,84
+2025-07-16,108,Garden Hose,Tools,Makita,4461.68,20,293,32,11,10,0,0,7,2,No,37
+2025-03-30,110,Nails Pack,Fasteners,Ingco,3131.19,5,27,67,11,0,0,1,3,6,Yes,303
+2025-06-10,103,Electric Drill,Paint,Hilti,3867.71,15,281,59,12,0,0,0,6,1,No,79
+2025-05-14,105,PVC Pipe,Electrical,Hilti,725.09,19,114,42,9,10,0,0,5,2,No,156
+2025-09-23,101,Hammer,Tools,Hilti,2470.63,7,145,42,9,0,0,0,9,1,No,125
+2025-10-11,104,Paint Bucket 5L,Safety Equipment,3M,1294.63,14,87,70,11,0,1,1,10,5,No,243
+2025-08-16,101,Hammer,Safety Equipment,3M,4154.74,7,133,46,7,15,0,1,8,5,No,77
+2025-07-22,108,Garden Hose,Electrical,Nippon,3505.27,5,89,59,11,5,0,0,7,1,No,241
+2025-02-22,105,PVC Pipe,Paint,Bosch,3089.53,1,100,73,10,15,0,1,2,5,No,200
+2025-12-19,101,Hammer,Fasteners,Makita,2153.59,1,24,77,11,10,0,0,12,4,Yes,306
+2025-04-17,104,Paint Bucket 5L,Paint,Hilti,131.68,11,37,25,10,15,0,0,4,3,No,263
+2025-10-31,106,LED Bulb,Plumbing,Ingco,217.34,13,151,38,6,15,0,0,10,4,No,29
+2025-10-29,103,Electric Drill,Building Materials,Hilti,3165.84,19,236,54,10,5,0,0,10,2,No,64
+2025-12-25,103,Electric Drill,Tools,Nippon,4493.22,13,125,62,7,10,0,0,12,3,No,85
+2025-02-14,109,Safety Gloves,Safety Equipment,3M,2981.66,7,210,44,8,0,0,0,2,4,No,30
+2025-02-25,107,Cement Bag,Plumbing,Hilti,3774.31,4,235,59,15,15,0,0,2,1,No,215
+2025-11-17,108,Garden Hose,Electrical,Nippon,1309.6,10,133,40,8,5,0,0,11,0,No,107
+2025-06-29,107,Cement Bag,Fasteners,Dulux,2189.85,14,38,50,11,15,0,1,6,6,Yes,292
+2025-03-21,105,PVC Pipe,Tools,Hilti,941.96,13,87,71,10,15,0,0,3,4,No,213
+2025-02-02,104,Paint Bucket 5L,Fasteners,Nippon,1865.84,4,167,28,11,0,0,1,2,6,No,163
+2025-11-06,110,Nails Pack,Paint,Ingco,1613.13,14,142,54,8,10,1,0,11,3,No,98
+2025-12-24,110,Nails Pack,Building Materials,3M,2831.28,7,78,37,12,10,0,0,12,2,No,282
+2025-02-01,105,PVC Pipe,Building Materials,Ingco,4440.98,16,108,29,13,5,0,1,2,5,No,282
+2025-03-16,110,Nails Pack,Safety Equipment,Ingco,1121.16,16,190,65,6,10,0,1,3,6,No,0
+2025-06-22,106,LED Bulb,Gardening,Makita,379.87,11,297,32,6,5,0,1,6,6,No,0
+2025-07-10,102,Screwdriver Set,Plumbing,Dulux,1126.33,19,72,71,9,15,0,0,7,3,No,198
+2025-07-03,102,Screwdriver Set,Fasteners,Nippon,2609.85,19,150,48,11,0,0,0,7,3,No,180
+2025-01-22,102,Screwdriver Set,Paint,3M,1586.59,17,129,44,9,10,0,0,1,2,No,141
+2025-02-03,109,Safety Gloves,Tools,Makita,3673.62,2,69,22,11,0,0,0,2,0,No,261
+2025-11-04,105,PVC Pipe,Gardening,Ingco,1629.73,18,191,24,9,15,0,0,11,1,No,79
+2025-05-15,102,Screwdriver Set,Paint,Bosch,1237.9,20,143,43,9,15,0,0,5,3,No,127
+2025-06-04,105,PVC Pipe,Tools,Bosch,4143.54,19,34,74,13,5,0,0,6,2,Yes,356
+2025-09-05,108,Garden Hose,Electrical,Makita,801.49,2,29,38,11,10,0,0,9,4,Yes,301
+2025-09-09,103,Electric Drill,Gardening,Nippon,3961.05,2,178,27,15,0,0,0,9,1,No,272
+2025-06-07,101,Hammer,Building Materials,3M,503.79,1,272,64,11,0,0,1,6,5,No,58
+2025-09-10,108,Garden Hose,Safety Equipment,3M,4307.62,18,214,25,6,10,0,0,9,2,No,0
+2025-09-14,110,Nails Pack,Tools,Dulux,3444.45,15,151,30,8,15,0,1,9,6,No,89
+2025-07-12,104,Paint Bucket 5L,Tools,Hilti,2601.8,20,74,57,6,10,0,1,7,5,No,106
+2025-02-19,102,Screwdriver Set,Paint,Stanley,125.18,9,53,75,9,10,0,0,2,2,Yes,217
+2025-11-20,101,Hammer,Safety Equipment,Makita,1254.55,18,111,51,16,15,0,0,11,3,No,369
+2025-04-09,105,PVC Pipe,Fasteners,Hilti,3937.76,5,195,54,11,0,0,0,4,2,No,135
+2025-11-16,103,Electric Drill,Paint,Dulux,4377.91,12,282,20,6,0,0,1,11,6,No,0
+2025-08-28,101,Hammer,Paint,Dulux,2429.83,4,40,78,14,15,0,0,8,3,Yes,380
+2025-02-07,103,Electric Drill,Plumbing,Stanley,4198.57,17,164,60,10,5,0,0,2,4,No,136
+2025-11-17,103,Electric Drill,Gardening,Bosch,1608.58,5,47,51,10,0,0,0,11,0,Yes,253
+2025-08-05,106,LED Bulb,Gardening,Stanley,4669.2,9,269,67,16,10,0,0,8,1,No,211
+2025-06-09,106,LED Bulb,Plumbing,Dulux,3515.42,20,23,71,9,10,0,0,6,0,Yes,247
+2025-09-12,108,Garden Hose,Electrical,Nippon,651.69,5,78,25,9,0,0,0,9,4,No,192
+2025-06-09,109,Safety Gloves,Paint,Stanley,1814.0,2,78,22,14,5,0,0,6,0,No,342
+2025-04-10,107,Cement Bag,Building Materials,Bosch,3185.18,11,188,51,14,5,0,0,4,3,No,232
+2025-09-18,105,PVC Pipe,Paint,Bosch,4977.82,11,33,34,15,5,0,0,9,3,Yes,417
+2025-01-23,104,Paint Bucket 5L,Plumbing,Ingco,1850.24,9,191,44,8,10,0,0,1,3,No,49
+2025-10-13,110,Nails Pack,Plumbing,Makita,778.02,8,84,72,11,15,0,0,10,0,No,246
+2025-03-12,102,Screwdriver Set,Fasteners,Nippon,4106.35,3,129,23,12,15,0,0,3,2,No,231
+2025-05-14,109,Safety Gloves,Safety Equipment,Bosch,2613.09,1,68,39,8,5,0,0,5,2,No,172
+2025-10-04,109,Safety Gloves,Tools,Ingco,108.05,4,200,24,9,5,0,1,10,5,No,70
+2025-09-28,106,LED Bulb,Tools,Hilti,4324.17,18,213,41,5,5,0,1,9,6,No,0
+2025-01-29,105,PVC Pipe,Plumbing,Bosch,4128.92,20,96,20,14,15,0,0,1,2,No,324
+2025-12-25,103,Electric Drill,Building Materials,Nippon,683.79,16,170,78,10,15,0,0,12,3,No,130
+2025-04-12,106,LED Bulb,Gardening,Stanley,3144.52,14,227,79,12,5,0,1,4,5,No,133
+2025-08-26,109,Safety Gloves,Tools,Stanley,4972.22,18,55,68,7,5,0,0,8,1,Yes,155
+2025-11-13,101,Hammer,Safety Equipment,Ingco,2019.87,18,228,62,13,15,0,0,11,3,No,162
+2025-12-07,110,Nails Pack,Paint,Makita,3410.38,14,181,70,10,15,0,1,12,6,No,119
+2025-12-30,105,PVC Pipe,Plumbing,3M,255.44,16,70,75,10,15,0,0,12,1,Yes,230
+2025-05-01,110,Nails Pack,Plumbing,Hilti,1671.55,12,192,23,11,0,0,0,5,3,No,138
+2025-06-20,102,Screwdriver Set,Safety Equipment,Nippon,4961.46,17,8,78,14,5,0,0,6,4,Yes,412
+2025-04-18,107,Cement Bag,Gardening,Ingco,1696.82,10,197,39,17,5,0,0,4,4,No,313
+2025-12-04,104,Paint Bucket 5L,Plumbing,Makita,4154.87,12,82,41,7,0,0,0,12,3,No,128
+2025-02-08,103,Electric Drill,Plumbing,Makita,2822.19,15,285,48,8,10,0,1,2,5,No,0
+2025-12-17,107,Cement Bag,Gardening,Hilti,4391.93,14,41,53,15,5,0,0,12,2,Yes,409
+2025-06-03,107,Cement Bag,Safety Equipment,Nippon,4215.99,8,121,36,8,0,0,0,6,1,No,119
+2025-07-21,101,Hammer,Tools,3M,1641.68,5,56,63,15,5,0,0,7,0,Yes,394
+2025-06-02,109,Safety Gloves,Tools,Makita,201.71,6,197,56,13,5,0,0,6,0,No,193
+2025-11-07,101,Hammer,Tools,3M,942.19,2,15,63,10,0,0,0,11,4,Yes,285
+2025-06-26,110,Nails Pack,Building Materials,Stanley,2256.35,12,64,55,10,0,0,0,6,3,No,236
+2025-09-09,110,Nails Pack,Tools,Stanley,4680.5,1,107,34,15,10,0,0,9,1,No,343
+2025-04-25,104,Paint Bucket 5L,Plumbing,Bosch,4404.24,10,15,26,17,10,0,0,4,4,Yes,495
+2025-08-27,107,Cement Bag,Plumbing,Makita,3001.88,8,80,56,12,0,0,0,8,2,No,280
+2025-11-15,102,Screwdriver Set,Fasteners,Ingco,4166.12,9,128,73,11,0,0,1,11,5,No,202
+2025-03-25,110,Nails Pack,Gardening,3M,679.29,7,44,52,9,0,0,0,3,1,Yes,226
+2025-11-05,103,Electric Drill,Electrical,Stanley,295.08,20,35,64,17,5,0,0,11,2,Yes,475
+2025-10-15,101,Hammer,Fasteners,Stanley,4279.34,4,86,57,10,0,0,0,10,2,No,214
+2025-06-10,101,Hammer,Tools,Hilti,1969.92,8,78,22,13,5,0,0,6,1,No,312
+2025-03-19,104,Paint Bucket 5L,Electrical,Ingco,1040.88,8,104,20,11,0,0,0,3,2,No,226
+2025-04-10,110,Nails Pack,Tools,Nippon,2853.13,8,157,55,11,10,0,0,4,3,No,173
+2025-01-16,103,Electric Drill,Gardening,3M,2804.49,5,114,66,7,0,0,0,1,3,No,96
+2025-12-08,107,Cement Bag,Building Materials,Bosch,1569.5,8,40,51,11,0,0,0,12,0,Yes,290
+2025-07-31,104,Paint Bucket 5L,Safety Equipment,3M,1876.26,6,186,69,13,5,0,0,7,3,No,204
+2025-10-03,101,Hammer,Fasteners,Ingco,2415.33,1,12,34,9,15,0,0,10,4,Yes,258
+2025-04-14,110,Nails Pack,Plumbing,Makita,1076.79,14,202,29,9,15,0,0,4,0,No,68
+2025-03-15,104,Paint Bucket 5L,Fasteners,Hilti,3653.91,16,40,64,9,10,0,1,3,5,Yes,230
+2025-05-07,106,LED Bulb,Plumbing,Bosch,2772.9,19,215,56,7,10,0,0,5,2,No,0
+2025-01-31,109,Safety Gloves,Paint,3M,4259.73,2,136,23,9,5,0,0,1,4,No,134
+2025-05-05,101,Hammer,Fasteners,Bosch,4637.69,17,148,37,7,5,0,0,5,0,No,62
+2025-10-11,107,Cement Bag,Building Materials,3M,4433.95,9,273,61,10,0,0,1,10,5,No,27
+2025-11-16,110,Nails Pack,Tools,Dulux,914.52,2,72,33,15,0,0,1,11,6,No,378
+2025-03-03,107,Cement Bag,Safety Equipment,Stanley,3823.14,9,106,63,12,10,0,0,3,0,No,254
+2025-12-25,107,Cement Bag,Safety Equipment,Nippon,343.07,16,246,38,7,5,0,0,12,3,No,0
+2025-06-28,103,Electric Drill,Building Materials,Ingco,526.84,1,173,47,10,10,0,1,6,5,No,127
+2025-11-19,106,LED Bulb,Tools,Stanley,3158.78,7,297,38,14,0,1,0,11,2,No,123
+2025-12-28,101,Hammer,Fasteners,Stanley,2887.88,14,54,45,8,10,0,1,12,6,No,186
+2025-08-31,107,Cement Bag,Tools,Dulux,1879.95,11,188,73,11,10,0,1,8,6,No,142
+2025-11-19,104,Paint Bucket 5L,Gardening,Stanley,2035.76,17,143,77,3,15,0,0,11,2,No,0
+2025-05-05,108,Garden Hose,Fasteners,Ingco,2958.77,6,147,35,10,15,0,0,5,0,No,153
+2025-07-03,102,Screwdriver Set,Tools,Makita,3342.35,14,198,52,7,5,0,0,7,3,No,12
+2025-01-25,110,Nails Pack,Plumbing,Ingco,3768.18,9,67,45,10,15,0,1,1,5,No,233
+2025-09-28,110,Nails Pack,Fasteners,Bosch,4789.96,8,139,45,9,15,0,1,9,6,No,131
+2025-09-08,109,Safety Gloves,Gardening,Bosch,2672.74,19,97,63,12,15,0,0,9,0,No,263
+2025-01-04,104,Paint Bucket 5L,Gardening,Ingco,704.9,15,65,61,7,15,0,1,1,5,No,145
+2025-11-14,107,Cement Bag,Plumbing,3M,4888.69,8,253,67,7,15,0,0,11,4,No,0
+2025-08-18,105,PVC Pipe,Fasteners,Stanley,2798.24,2,182,31,6,5,0,0,8,0,No,0
+2025-12-21,104,Paint Bucket 5L,Safety Equipment,Dulux,3534.24,13,161,63,14,0,0,1,12,6,No,259
+2025-03-19,102,Screwdriver Set,Paint,Ingco,3277.48,5,122,73,5,10,0,0,3,2,No,28
+2025-05-23,106,LED Bulb,Plumbing,Nippon,3026.83,11,47,38,9,5,0,0,5,4,No,223
+2025-11-27,102,Screwdriver Set,Fasteners,Hilti,1766.02,19,134,78,14,5,0,0,11,3,No,286
+2025-08-25,102,Screwdriver Set,Building Materials,Stanley,3433.88,12,68,42,8,0,0,0,8,0,No,172
+2025-08-25,104,Paint Bucket 5L,Safety Equipment,Bosch,3966.21,7,16,45,5,5,0,0,8,0,Yes,134
+2025-07-29,109,Safety Gloves,Safety Equipment,Makita,303.34,16,105,43,8,15,1,0,7,1,No,135
+2025-07-05,102,Screwdriver Set,Gardening,Stanley,3719.84,7,265,31,8,5,0,1,7,5,No,0
+2025-01-18,110,Nails Pack,Safety Equipment,Bosch,1045.07,7,9,77,5,5,0,1,1,5,Yes,141
+2025-11-29,103,Electric Drill,Building Materials,3M,596.76,9,105,40,10,0,0,1,11,5,No,195
+2025-11-08,103,Electric Drill,Fasteners,3M,3124.25,4,261,27,15,15,0,1,11,5,No,189
+2025-12-24,106,LED Bulb,Gardening,Dulux,1709.09,14,139,28,10,15,0,0,12,2,No,161
+2025-11-27,104,Paint Bucket 5L,Paint,Dulux,2098.66,9,227,29,8,5,0,0,11,3,No,13
+2025-12-03,102,Screwdriver Set,Gardening,Ingco,4084.42,13,239,73,9,10,0,0,12,2,No,31
+2025-04-04,103,Electric Drill,Tools,Stanley,3774.77,11,166,39,13,5,0,0,4,4,No,224
+2025-12-25,104,Paint Bucket 5L,Building Materials,Stanley,4620.96,17,293,73,10,15,0,0,12,3,No,7
+2025-03-28,110,Nails Pack,Tools,Makita,4326.2,9,144,70,8,10,0,0,3,4,No,96
+2025-03-09,107,Cement Bag,Safety Equipment,Bosch,3729.25,14,199,40,10,0,0,1,3,6,No,101
+2025-12-10,105,PVC Pipe,Building Materials,Nippon,2638.25,9,288,78,11,0,0,0,12,2,No,42
+2025-01-04,102,Screwdriver Set,Fasteners,Makita,3936.7,16,297,46,12,15,0,1,1,5,No,63
+2025-03-31,107,Cement Bag,Plumbing,Nippon,1351.23,17,233,45,13,15,0,0,3,0,No,157
+2025-06-13,101,Hammer,Fasteners,Hilti,2384.64,5,231,42,13,10,0,0,6,4,No,159
+2025-03-25,110,Nails Pack,Paint,3M,678.07,13,212,21,3,5,0,0,3,1,No,0
+2025-06-26,109,Safety Gloves,Building Materials,Ingco,1385.8,20,290,70,9,0,0,0,6,3,No,0
+2025-02-27,101,Hammer,Tools,Makita,2930.3,2,87,27,11,0,0,0,2,3,No,243
+2025-04-02,108,Garden Hose,Electrical,Ingco,622.46,19,176,30,9,10,0,0,4,2,No,94
+2025-10-30,104,Paint Bucket 5L,Paint,3M,4355.93,7,12,59,11,15,0,0,10,3,Yes,318
+2025-06-11,103,Electric Drill,Plumbing,Bosch,2634.33,13,250,73,8,15,0,0,6,2,No,0
+2025-10-04,108,Garden Hose,Gardening,Nippon,931.82,17,17,76,5,5,0,1,10,5,Yes,133
+2025-01-30,107,Cement Bag,Paint,Bosch,2781.89,9,284,22,6,5,0,0,1,3,No,0
+2025-10-12,103,Electric Drill,Plumbing,Stanley,4275.04,19,75,21,11,15,0,1,10,6,No,255
+2025-08-06,104,Paint Bucket 5L,Building Materials,Hilti,178.54,10,257,56,18,0,0,0,8,2,No,283
+2025-01-15,101,Hammer,Building Materials,3M,2031.04,10,150,59,14,0,0,0,1,2,No,270
+2025-07-29,101,Hammer,Safety Equipment,Bosch,3756.28,1,4,30,13,15,0,0,7,1,Yes,386
+2025-12-04,106,LED Bulb,Gardening,Hilti,4506.32,20,177,34,11,5,0,0,12,3,No,153
+2025-10-24,108,Garden Hose,Fasteners,Nippon,1088.8,11,239,55,12,10,0,0,10,4,No,121
+2025-07-26,106,LED Bulb,Plumbing,Ingco,3806.61,11,25,56,10,5,0,1,7,5,Yes,275
+2025-10-12,101,Hammer,Building Materials,Hilti,4978.0,13,218,58,9,10,0,1,10,6,No,52
+2025-11-02,102,Screwdriver Set,Paint,Stanley,1124.58,1,188,23,6,15,0,1,11,6,No,0
+2025-01-18,108,Garden Hose,Gardening,Stanley,4209.18,19,299,31,13,0,0,1,1,5,No,91
+2025-06-23,104,Paint Bucket 5L,Safety Equipment,Bosch,1972.45,9,8,31,8,10,0,0,6,0,Yes,232
+2025-04-17,110,Nails Pack,Building Materials,Dulux,2074.85,14,98,24,11,15,0,0,4,3,No,232
+2025-11-28,107,Cement Bag,Safety Equipment,Nippon,4887.13,16,57,33,7,0,0,0,11,4,No,153
+2025-03-19,105,PVC Pipe,Tools,Dulux,586.23,3,70,75,9,5,0,0,3,2,Yes,200
+2025-02-26,110,Nails Pack,Fasteners,Hilti,3174.59,11,181,70,8,5,0,0,2,2,No,59
+2025-03-20,108,Garden Hose,Paint,Ingco,1097.09,20,214,31,3,5,0,0,3,3,No,0
+2025-03-03,109,Safety Gloves,Paint,Ingco,1271.17,16,145,62,11,15,0,0,3,0,No,185
+2025-08-09,105,PVC Pipe,Safety Equipment,Nippon,4743.66,6,104,33,7,15,0,1,8,5,No,106
+2025-08-05,109,Safety Gloves,Fasteners,Nippon,2029.4,17,206,47,11,5,0,0,8,1,No,124
+2025-11-29,110,Nails Pack,Building Materials,Hilti,1218.82,10,233,20,4,10,0,1,11,5,No,0
+2025-01-23,102,Screwdriver Set,Fasteners,Dulux,923.3,13,173,61,8,10,0,0,1,3,No,67
+2025-01-24,106,LED Bulb,Building Materials,Dulux,3402.79,16,58,28,13,5,0,0,1,4,No,332
+2025-03-16,110,Nails Pack,Tools,Makita,2967.95,6,238,50,6,0,0,1,3,6,No,0
+2025-03-15,107,Cement Bag,Gardening,Bosch,3776.62,19,215,68,8,10,0,1,3,5,No,25
+2025-12-12,107,Cement Bag,Paint,3M,3614.58,16,26,23,11,10,0,0,12,4,No,304
+2025-10-04,107,Cement Bag,Tools,Makita,4700.5,10,194,41,8,5,0,1,10,5,No,46
+2025-11-26,102,Screwdriver Set,Fasteners,Dulux,3476.69,20,195,50,9,15,0,0,11,2,No,75
+2025-02-07,106,LED Bulb,Paint,Stanley,4382.67,20,83,34,7,15,0,0,2,4,No,127
+2025-07-14,106,LED Bulb,Gardening,Bosch,4131.24,8,144,69,8,5,0,0,7,0,No,96
+2025-10-14,104,Paint Bucket 5L,Electrical,Hilti,4213.32,11,205,55,11,5,0,0,10,1,No,125
+2025-02-06,101,Hammer,Electrical,Stanley,1559.51,14,6,76,13,5,0,0,2,3,Yes,384
+2025-07-08,103,Electric Drill,Plumbing,Hilti,914.31,2,9,57,10,10,0,0,7,1,Yes,291
+2025-08-12,102,Screwdriver Set,Building Materials,Makita,1824.24,7,192,47,12,0,0,0,8,1,No,168
+2025-03-19,107,Cement Bag,Building Materials,Ingco,4810.93,11,48,28,11,15,0,0,3,2,No,282
+2025-05-28,108,Garden Hose,Electrical,Hilti,330.59,3,160,32,10,10,0,0,5,2,No,140
+2025-11-02,102,Screwdriver Set,Gardening,Hilti,3833.26,6,291,77,15,5,0,1,11,6,No,159
+2025-12-11,108,Garden Hose,Gardening,Ingco,1329.28,2,91,35,13,5,0,0,12,3,No,299
+2025-04-15,106,LED Bulb,Plumbing,Dulux,4814.09,12,181,44,10,5,0,0,4,1,No,119
+2025-09-11,104,Paint Bucket 5L,Fasteners,3M,4798.47,17,197,76,6,5,0,0,9,3,No,0
+2025-06-13,107,Cement Bag,Gardening,Ingco,1467.14,13,126,64,5,0,0,0,6,4,No,24
+2025-03-11,110,Nails Pack,Safety Equipment,3M,2601.25,11,108,53,7,10,0,0,3,1,No,102
+2025-01-06,101,Hammer,Building Materials,Makita,1585.78,17,86,28,8,10,0,0,1,0,No,154
+2025-03-22,101,Hammer,Electrical,Stanley,130.3,15,41,78,5,0,0,1,3,5,Yes,109
+2025-04-14,106,LED Bulb,Plumbing,3M,2733.95,15,16,24,9,0,0,0,4,0,Yes,254
+2025-11-23,109,Safety Gloves,Fasteners,3M,4977.57,3,80,58,8,5,1,1,11,6,No,160
+2025-03-26,105,PVC Pipe,Gardening,Ingco,2087.66,7,215,48,14,10,0,0,3,2,No,205
+2025-05-17,103,Electric Drill,Paint,Hilti,1213.58,2,145,61,10,5,0,1,5,5,No,155
+2025-01-19,108,Garden Hose,Electrical,Makita,4952.4,8,202,54,11,10,0,1,1,6,No,128
+2025-02-22,109,Safety Gloves,Plumbing,Bosch,166.94,10,264,34,15,0,0,1,2,5,No,186
+2025-01-20,108,Garden Hose,Safety Equipment,Hilti,258.71,8,282,38,8,5,0,0,1,0,No,0
+2025-12-01,102,Screwdriver Set,Tools,3M,1756.11,10,108,20,12,0,1,0,12,0,No,252
+2025-01-04,102,Screwdriver Set,Tools,Hilti,1256.38,11,102,79,6,10,0,1,1,5,No,78
+2025-07-05,107,Cement Bag,Plumbing,Nippon,2613.03,14,219,37,14,5,0,1,7,5,No,201
+2025-05-16,105,PVC Pipe,Building Materials,Dulux,3306.3,4,71,73,14,15,0,0,5,4,Yes,349
+2025-06-13,107,Cement Bag,Electrical,3M,4636.55,13,37,78,12,10,0,0,6,4,Yes,323
+2025-11-18,101,Hammer,Safety Equipment,Ingco,2032.95,20,254,70,14,0,0,0,11,1,No,166
+2025-09-23,103,Electric Drill,Electrical,Bosch,4794.88,16,3,58,7,5,0,0,9,1,Yes,207
+2025-06-22,109,Safety Gloves,Fasteners,3M,4836.45,20,234,33,9,15,0,1,6,6,No,36
+2025-04-23,105,PVC Pipe,Safety Equipment,Stanley,3470.07,7,165,74,8,10,0,0,4,2,No,75
+2025-04-06,106,LED Bulb,Electrical,Nippon,341.54,15,184,50,9,5,0,1,4,6,No,86
+2025-06-27,104,Paint Bucket 5L,Tools,Hilti,2506.0,14,145,21,8,10,0,0,6,4,No,95
+2025-10-22,101,Hammer,Paint,Nippon,2279.09,3,251,78,7,15,0,0,10,2,No,0
+2025-07-02,104,Paint Bucket 5L,Safety Equipment,Dulux,534.03,15,44,77,12,0,0,0,7,2,Yes,316
+2025-11-20,104,Paint Bucket 5L,Fasteners,3M,1463.51,20,177,56,9,0,0,0,11,3,No,93
+2025-02-11,108,Garden Hose,Building Materials,Makita,2355.61,17,73,70,7,15,0,0,2,1,No,137
+2025-08-28,102,Screwdriver Set,Electrical,Stanley,456.06,3,6,32,7,10,0,0,8,3,Yes,204
+2025-12-22,107,Cement Bag,Gardening,Bosch,2769.53,3,16,71,6,5,0,0,12,0,Yes,164
+2025-02-10,101,Hammer,Paint,Dulux,1146.36,7,218,32,9,15,0,0,2,0,No,52
+2025-11-17,102,Screwdriver Set,Tools,Bosch,1896.73,4,167,67,17,0,0,0,11,0,No,343
+2025-05-18,107,Cement Bag,Electrical,Ingco,1652.83,4,295,32,8,5,0,1,5,6,No,0
+2025-06-27,101,Hammer,Paint,Stanley,4305.78,7,272,55,14,5,1,0,6,4,No,148
+2025-07-22,103,Electric Drill,Tools,Makita,1632.89,20,248,32,4,10,0,0,7,1,No,0
+2025-02-25,102,Screwdriver Set,Building Materials,Ingco,2104.99,8,21,66,8,0,0,0,2,1,Yes,219
+2025-03-15,109,Safety Gloves,Building Materials,Nippon,771.56,8,180,64,14,0,0,1,3,5,No,240
+2025-11-19,106,LED Bulb,Gardening,3M,3087.44,16,39,73,15,0,0,0,11,2,Yes,411
+2025-02-28,106,LED Bulb,Tools,Stanley,2884.52,20,4,45,8,10,0,0,2,4,Yes,236
+2025-08-27,103,Electric Drill,Fasteners,Nippon,2938.64,6,115,53,15,10,0,0,8,2,No,335
+2025-03-31,110,Nails Pack,Gardening,Nippon,2278.68,12,225,69,6,10,0,0,3,0,No,0
+2025-05-03,109,Safety Gloves,Paint,Hilti,2286.24,6,44,30,10,15,0,1,5,5,No,256
+2025-01-11,110,Nails Pack,Electrical,Nippon,901.41,7,165,21,8,5,0,1,1,5,No,75
+2025-10-25,103,Electric Drill,Plumbing,Nippon,4508.74,1,71,56,11,0,0,1,10,5,No,259
+2025-02-28,105,PVC Pipe,Gardening,Stanley,3847.4,1,132,58,8,0,0,0,2,4,No,108
+2025-12-10,102,Screwdriver Set,Gardening,Makita,4136.36,11,242,50,5,5,0,0,12,2,No,0
+2025-03-08,104,Paint Bucket 5L,Safety Equipment,Ingco,1553.03,16,299,37,8,10,0,1,3,5,No,0
+2025-09-30,106,LED Bulb,Building Materials,Ingco,1179.6,7,97,47,5,15,0,0,9,1,No,53
+2025-07-10,107,Cement Bag,Tools,Hilti,2668.56,2,91,72,12,5,0,0,7,3,No,269
+2025-09-27,109,Safety Gloves,Tools,Hilti,732.52,1,127,26,12,10,0,1,9,5,No,233
+2025-07-03,109,Safety Gloves,Tools,Bosch,764.74,3,225,72,7,15,1,0,7,3,No,0
+2025-03-06,105,PVC Pipe,Safety Equipment,Nippon,4191.37,13,63,48,12,15,0,0,3,3,No,297
+2025-02-04,101,Hammer,Safety Equipment,Ingco,4305.21,14,2,75,6,10,0,0,2,1,Yes,178
+2025-11-22,105,PVC Pipe,Gardening,Makita,1467.74,20,202,46,16,15,0,1,11,5,No,278
+2025-11-23,107,Cement Bag,Tools,Dulux,1192.75,16,65,46,9,5,0,1,11,6,No,205
+2025-09-23,102,Screwdriver Set,Plumbing,3M,549.71,13,102,20,10,10,0,0,9,1,No,198
+2025-03-01,108,Garden Hose,Electrical,Dulux,4567.91,17,50,21,9,15,0,1,3,5,No,220
+2025-05-04,105,PVC Pipe,Safety Equipment,Ingco,4149.31,3,68,28,12,10,0,1,5,6,No,292
+2025-11-03,107,Cement Bag,Fasteners,Hilti,2191.78,10,84,68,11,0,0,0,11,0,No,246
+2025-06-08,106,LED Bulb,Fasteners,Nippon,1757.33,2,254,63,12,10,0,1,6,6,No,106
+2025-12-22,101,Hammer,Electrical,Nippon,379.76,13,143,20,8,15,0,0,12,0,No,97
+2025-05-03,101,Hammer,Fasteners,Stanley,158.4,10,12,75,6,15,0,1,5,5,Yes,168
+2025-11-11,106,LED Bulb,Plumbing,3M,4917.02,8,154,57,10,5,0,0,11,1,No,146
+2025-10-30,108,Garden Hose,Safety Equipment,Bosch,2555.1,9,216,30,11,5,0,0,10,3,No,114
+2025-03-15,110,Nails Pack,Plumbing,3M,1824.46,15,20,27,9,15,0,1,3,5,Yes,250
+2025-12-14,108,Garden Hose,Gardening,3M,4564.49,4,275,27,13,15,0,1,12,6,No,115
+2025-10-22,110,Nails Pack,Gardening,Makita,4234.27,8,264,34,9,15,0,0,10,2,No,6
+2025-12-14,110,Nails Pack,Tools,Hilti,3450.56,3,36,41,14,15,0,1,12,6,Yes,384
+2025-11-16,105,PVC Pipe,Electrical,Dulux,4744.2,15,101,47,9,15,0,1,11,6,No,169
+2025-03-27,101,Hammer,Paint,3M,636.51,1,90,43,10,0,0,0,3,3,No,210
+2025-05-18,105,PVC Pipe,Safety Equipment,Makita,4836.14,14,219,27,9,15,0,1,5,6,No,51
+2025-04-10,101,Hammer,Paint,Nippon,3734.25,12,163,60,12,5,0,0,4,3,No,197
+2025-02-22,110,Nails Pack,Fasteners,Ingco,717.94,9,128,42,6,15,0,1,2,5,No,52
+2025-01-07,109,Safety Gloves,Electrical,3M,3178.9,12,66,25,7,10,0,0,1,1,No,144
+2025-03-23,103,Electric Drill,Fasteners,Ingco,2935.91,4,81,42,11,10,0,1,3,6,No,249
+2025-02-27,109,Safety Gloves,Tools,3M,4065.05,7,23,67,12,15,0,0,2,3,Yes,337
+2025-11-18,104,Paint Bucket 5L,Fasteners,3M,1569.7,8,215,41,7,0,0,0,11,1,No,0
+2025-10-31,103,Electric Drill,Paint,Ingco,3144.01,10,242,73,7,15,0,0,10,4,No,0
+2025-05-10,107,Cement Bag,Electrical,Stanley,4485.88,5,192,34,11,15,0,1,5,5,No,138
+2025-07-19,108,Garden Hose,Gardening,Nippon,2517.69,8,102,60,6,5,0,1,7,5,No,78
+2025-07-25,107,Cement Bag,Building Materials,3M,1837.29,1,258,31,11,5,0,0,7,4,No,72
+2025-10-08,110,Nails Pack,Safety Equipment,Dulux,1401.86,17,78,21,15,5,0,0,10,2,No,372
+2025-07-24,109,Safety Gloves,Electrical,Hilti,4544.23,19,55,54,12,0,0,0,7,3,No,305
+2025-10-10,106,LED Bulb,Plumbing,Dulux,1588.3,1,216,35,5,10,0,0,10,4,No,0
+2025-02-28,102,Screwdriver Set,Fasteners,Hilti,2172.42,19,21,43,13,15,1,0,2,4,Yes,369
+2025-11-06,105,PVC Pipe,Fasteners,Ingco,3252.8,4,163,23,7,5,0,0,11,3,No,47
+2025-10-18,109,Safety Gloves,Plumbing,3M,4626.28,9,168,37,13,10,0,1,10,5,No,222
+2025-03-13,105,PVC Pipe,Fasteners,Makita,2732.65,13,102,66,12,10,0,0,3,3,No,258
+2025-09-29,104,Paint Bucket 5L,Plumbing,Ingco,1403.9,20,72,50,15,15,0,0,9,0,No,378
+2025-08-12,101,Hammer,Electrical,3M,4958.96,15,237,33,6,5,1,0,8,1,No,0
+2025-03-03,105,PVC Pipe,Building Materials,Bosch,4901.78,3,139,48,15,0,0,0,3,0,No,311
+2025-09-05,105,PVC Pipe,Tools,Bosch,2207.7,10,105,51,9,5,0,0,9,4,No,165
+2025-04-02,101,Hammer,Building Materials,Ingco,4709.68,5,99,37,12,10,0,0,4,2,No,261
+2025-09-09,108,Garden Hose,Plumbing,Nippon,1413.19,9,142,25,15,5,0,0,9,1,No,308
+2025-11-30,103,Electric Drill,Electrical,Dulux,3625.0,10,171,58,11,15,0,1,11,6,No,159
+2025-08-21,104,Paint Bucket 5L,Safety Equipment,Nippon,1251.65,7,61,61,11,15,0,0,8,3,No,269
+2025-02-08,104,Paint Bucket 5L,Building Materials,Stanley,626.51,19,195,74,8,15,0,1,2,5,No,45
+2025-08-20,103,Electric Drill,Paint,Stanley,3348.01,17,68,50,10,10,1,0,8,2,No,232
+2025-12-23,105,PVC Pipe,Tools,Dulux,1787.11,18,66,49,4,0,0,0,12,1,No,54
+2025-10-14,106,LED Bulb,Paint,Hilti,1144.7,6,252,49,13,5,1,0,10,1,No,138
+2025-01-16,107,Cement Bag,Tools,3M,553.39,15,67,44,9,15,0,0,1,3,No,203
+2025-03-15,106,LED Bulb,Tools,Stanley,3573.92,6,129,73,15,10,0,1,3,5,No,321
+2025-07-30,109,Safety Gloves,Gardening,3M,377.47,9,129,51,6,5,0,0,7,2,No,51
+2025-03-25,107,Cement Bag,Fasteners,Stanley,2534.04,20,299,29,14,10,0,0,3,1,No,121
+2025-04-05,105,PVC Pipe,Safety Equipment,Ingco,3686.18,13,285,26,6,0,0,1,4,5,No,0
+2025-03-19,109,Safety Gloves,Plumbing,Ingco,726.28,5,2,45,11,0,0,0,3,2,Yes,328
+2025-05-26,108,Garden Hose,Fasteners,Makita,3211.16,14,187,77,14,5,0,0,5,0,No,233
+2025-01-14,107,Cement Bag,Plumbing,Stanley,4466.01,16,10,58,13,10,0,0,1,1,Yes,380
+2025-11-13,107,Cement Bag,Electrical,Dulux,4560.06,3,45,63,6,5,0,0,11,3,Yes,135
+2025-12-17,109,Safety Gloves,Fasteners,Nippon,4380.32,3,254,79,7,10,0,0,12,2,No,0
+2025-11-07,102,Screwdriver Set,Electrical,Makita,3147.71,10,274,24,7,10,0,0,11,4,No,0
+2025-10-12,109,Safety Gloves,Fasteners,Dulux,1782.55,19,169,48,9,5,0,1,10,6,No,101
+2025-05-21,102,Screwdriver Set,Tools,Hilti,2171.16,5,96,66,12,10,0,0,5,2,No,264
+2025-01-21,103,Electric Drill,Tools,Makita,4913.05,20,71,24,9,5,0,0,1,1,No,199
+2025-09-27,106,LED Bulb,Tools,3M,2256.88,12,132,41,4,0,0,1,9,5,No,0
+2025-05-05,105,PVC Pipe,Gardening,3M,3720.76,8,175,20,12,0,0,0,5,0,No,185
+2025-11-10,101,Hammer,Tools,Makita,740.3,20,49,57,8,0,0,0,11,0,Yes,191
+2025-02-13,103,Electric Drill,Tools,Ingco,103.66,17,272,74,11,0,0,0,2,3,No,58
+2025-12-28,106,LED Bulb,Fasteners,Ingco,1166.85,11,139,54,10,0,0,1,12,6,No,161
+2025-04-09,101,Hammer,Tools,Nippon,3221.72,14,103,69,15,10,0,0,4,2,No,347
+2025-01-18,103,Electric Drill,Gardening,Ingco,4656.68,16,182,78,10,10,0,1,1,5,No,118
+2025-06-10,110,Nails Pack,Gardening,Stanley,348.93,4,225,70,10,5,0,0,6,1,No,75
+2025-09-07,104,Paint Bucket 5L,Gardening,Dulux,4669.75,2,119,78,6,0,0,1,9,6,No,61
+2025-01-20,109,Safety Gloves,Fasteners,Bosch,3365.4,9,209,58,8,10,0,0,1,0,No,31
+2025-07-23,109,Safety Gloves,Building Materials,Dulux,1601.57,6,128,46,8,5,0,0,7,2,No,112
+2025-03-08,105,PVC Pipe,Fasteners,Nippon,123.86,8,296,21,9,15,0,1,3,5,No,0
+2025-05-20,106,LED Bulb,Tools,Bosch,220.88,6,138,74,9,15,0,0,5,1,No,132
+2025-10-24,103,Electric Drill,Gardening,Bosch,4022.63,9,191,51,16,15,0,0,10,4,No,289
+2025-01-03,109,Safety Gloves,Safety Equipment,Hilti,1773.69,7,165,50,8,5,0,0,1,4,No,75
+2025-10-25,104,Paint Bucket 5L,Electrical,Dulux,4144.66,2,255,44,6,5,0,1,10,5,No,0
+2025-02-25,108,Garden Hose,Fasteners,Dulux,254.41,11,293,42,6,0,0,0,2,1,No,0
+2025-01-22,103,Electric Drill,Paint,Stanley,756.72,17,43,55,6,10,1,0,1,2,Yes,137
+2025-04-10,101,Hammer,Electrical,3M,495.28,12,243,22,12,10,0,0,4,3,No,117
+2025-02-16,102,Screwdriver Set,Plumbing,Stanley,4145.12,12,213,42,13,0,0,1,2,6,No,177
+2025-12-13,109,Safety Gloves,Tools,Nippon,4265.65,15,215,50,3,0,0,1,12,5,No,0
+2025-04-25,109,Safety Gloves,Electrical,Ingco,2921.38,8,219,79,11,10,0,0,4,4,No,111
+2025-04-08,105,PVC Pipe,Gardening,Makita,318.48,14,104,46,6,5,1,0,4,1,No,76
+2025-09-20,107,Cement Bag,Plumbing,Bosch,4668.11,19,37,39,10,10,0,1,9,5,Yes,263
+2025-02-05,103,Electric Drill,Gardening,Dulux,3453.73,8,168,76,10,10,0,0,2,2,No,132
+2025-03-17,102,Screwdriver Set,Plumbing,Bosch,4114.25,1,47,44,10,0,0,0,3,0,No,253
+2025-12-11,101,Hammer,Plumbing,Hilti,510.58,19,277,58,11,0,0,0,12,3,No,53
+2025-08-14,105,PVC Pipe,Paint,3M,1340.67,19,199,43,9,5,0,0,8,3,No,71
+2025-07-12,107,Cement Bag,Safety Equipment,Ingco,2779.89,2,204,64,10,5,0,1,7,5,No,96
+2025-06-05,101,Hammer,Fasteners,Nippon,103.07,8,171,28,13,10,0,0,6,3,No,219
+2025-11-25,110,Nails Pack,Plumbing,Ingco,599.27,12,213,35,12,0,0,0,11,1,No,147
+2025-08-18,105,PVC Pipe,Electrical,Makita,3596.94,6,262,23,14,15,0,0,8,0,No,158
+2025-07-28,105,PVC Pipe,Gardening,Nippon,3008.52,4,28,42,6,0,0,0,7,0,Yes,152
+2025-06-12,101,Hammer,Safety Equipment,Makita,4280.56,7,276,36,11,10,0,0,6,3,No,54
+2025-02-01,104,Paint Bucket 5L,Gardening,Nippon,2425.27,16,92,39,9,5,0,1,2,5,No,178
+2025-11-13,108,Garden Hose,Fasteners,Stanley,2963.54,8,150,65,13,15,0,0,11,3,No,240
+2025-04-25,105,PVC Pipe,Fasteners,Hilti,371.62,12,188,73,10,10,0,0,4,4,No,112
+2025-12-30,102,Screwdriver Set,Electrical,3M,2906.59,8,100,53,7,5,0,0,12,1,No,110
+2025-10-26,106,LED Bulb,Safety Equipment,Hilti,1736.82,20,10,46,5,15,0,1,10,6,Yes,140
+2025-09-23,106,LED Bulb,Building Materials,Bosch,3914.3,17,79,26,6,15,0,0,9,1,No,101
+2025-06-08,107,Cement Bag,Gardening,Nippon,1683.41,5,11,54,10,5,0,1,6,6,Yes,289
+2025-11-05,102,Screwdriver Set,Safety Equipment,3M,2291.78,19,272,51,18,5,0,0,11,2,No,268
+2025-02-08,106,LED Bulb,Building Materials,Bosch,1292.99,9,65,28,10,5,0,1,2,5,No,235
+2025-07-14,110,Nails Pack,Electrical,Bosch,3575.55,14,256,56,13,0,0,0,7,0,No,134
+2025-06-22,103,Electric Drill,Building Materials,Makita,1104.4,2,25,76,12,10,0,1,6,6,Yes,335
+2025-03-07,105,PVC Pipe,Safety Equipment,Hilti,1071.16,11,121,50,14,10,0,0,3,4,No,299
+2025-01-09,109,Safety Gloves,Paint,Ingco,1664.2,16,272,33,15,10,0,0,1,3,No,178
+2025-07-10,105,PVC Pipe,Gardening,Nippon,2515.85,6,108,73,5,10,0,0,7,3,No,42
+2025-03-08,106,LED Bulb,Fasteners,Nippon,3700.32,16,36,45,8,0,0,1,3,5,Yes,204
+2025-01-16,109,Safety Gloves,Fasteners,3M,2518.36,6,181,61,9,10,0,0,1,3,No,89
+2025-09-22,109,Safety Gloves,Gardening,Bosch,2687.53,1,234,30,7,5,0,0,9,0,No,0
+2025-01-12,102,Screwdriver Set,Building Materials,Ingco,4031.14,14,86,38,13,15,0,1,1,6,No,304
+2025-03-23,107,Cement Bag,Paint,3M,841.19,2,28,69,8,15,0,1,3,6,Yes,212
+2025-08-09,101,Hammer,Paint,3M,1055.48,3,243,23,8,15,0,1,8,5,No,0
+2025-09-11,107,Cement Bag,Tools,Bosch,3526.99,15,193,78,10,5,0,0,9,3,No,107
+2025-08-14,102,Screwdriver Set,Safety Equipment,Makita,3727.85,8,201,54,5,10,0,0,8,3,No,0
+2025-10-10,109,Safety Gloves,Plumbing,Makita,4968.53,15,180,58,6,5,0,0,10,4,No,0
+2025-07-25,103,Electric Drill,Gardening,3M,408.25,19,20,29,7,10,0,0,7,4,Yes,190
+2025-12-07,104,Paint Bucket 5L,Safety Equipment,Stanley,3644.32,10,187,71,6,0,0,1,12,6,No,0
+2025-11-04,103,Electric Drill,Tools,Ingco,1575.76,8,259,47,7,0,0,0,11,1,No,0
+2025-05-22,105,PVC Pipe,Plumbing,Bosch,2495.86,10,242,68,3,10,0,0,5,3,No,0
+2025-07-28,106,LED Bulb,Plumbing,3M,367.1,10,213,33,14,10,0,0,7,0,No,207
+2025-10-17,106,LED Bulb,Plumbing,Makita,2851.81,16,257,34,6,5,0,0,10,4,No,0
+2025-12-19,107,Cement Bag,Gardening,Ingco,3008.13,7,155,33,7,10,0,0,12,4,No,55
+2025-03-24,104,Paint Bucket 5L,Building Materials,Bosch,207.71,2,228,75,8,0,0,0,3,0,No,12
+2025-02-19,105,PVC Pipe,Fasteners,Hilti,3249.75,4,273,63,12,0,0,0,2,2,No,87
+2025-10-05,101,Hammer,Electrical,Makita,558.8,2,198,42,17,0,0,1,10,6,No,312
+2025-09-26,101,Hammer,Electrical,Dulux,4480.64,8,115,48,10,15,0,0,9,4,No,185
+2025-05-31,103,Electric Drill,Building Materials,Dulux,4640.66,9,219,43,10,0,1,1,5,5,No,81
+2025-05-02,105,PVC Pipe,Plumbing,Ingco,3440.75,4,102,66,5,15,0,0,5,4,No,48
+2025-05-25,107,Cement Bag,Paint,3M,175.02,11,91,58,13,5,0,1,5,6,No,299
+2025-03-22,110,Nails Pack,Safety Equipment,Bosch,1896.94,11,241,57,5,0,0,1,3,5,No,0
+2025-03-06,107,Cement Bag,Tools,Hilti,4931.08,4,6,57,13,15,0,0,3,3,Yes,384
+2025-10-08,107,Cement Bag,Electrical,Bosch,4565.57,16,249,39,10,0,0,0,10,2,No,51
+2025-05-15,105,PVC Pipe,Safety Equipment,3M,879.88,20,262,42,8,10,0,0,5,3,No,0
+2025-03-28,106,LED Bulb,Tools,Stanley,4606.98,15,57,28,5,15,0,0,3,4,No,93
+2025-11-23,104,Paint Bucket 5L,Safety Equipment,Nippon,3808.94,10,233,44,11,5,0,1,11,6,No,97
+2025-11-05,110,Nails Pack,Plumbing,3M,3628.55,5,118,34,5,15,1,0,11,2,No,32
+2025-05-16,107,Cement Bag,Safety Equipment,Makita,1753.64,6,212,78,10,5,1,0,5,4,No,88
+2025-09-28,103,Electric Drill,Paint,Dulux,4197.83,6,285,41,7,10,0,1,9,6,No,0
+2025-11-14,103,Electric Drill,Paint,Stanley,867.4,20,220,78,5,0,0,0,11,4,No,0
+2025-05-31,108,Garden Hose,Safety Equipment,Hilti,1815.03,4,224,29,16,10,0,1,5,5,No,256
+2025-09-06,107,Cement Bag,Plumbing,Hilti,2995.24,2,110,25,11,10,0,1,9,5,No,220
+2025-02-04,108,Garden Hose,Safety Equipment,Nippon,1055.22,5,154,20,13,5,0,0,2,1,No,236
+2025-11-04,107,Cement Bag,Electrical,Bosch,3596.68,14,196,36,7,10,0,0,11,1,No,14
+2025-10-06,104,Paint Bucket 5L,Paint,Nippon,2217.37,20,198,34,6,5,0,0,10,0,No,0
+2025-11-04,103,Electric Drill,Building Materials,Dulux,1666.63,4,151,53,8,0,0,0,11,1,No,89
+2025-06-01,109,Safety Gloves,Paint,Makita,1626.41,9,234,54,13,10,0,1,6,6,No,156
+2025-07-14,110,Nails Pack,Fasteners,Ingco,3911.76,16,218,47,9,15,0,0,7,0,No,52
+2025-03-30,109,Safety Gloves,Gardening,Ingco,1899.97,5,272,52,10,15,0,1,3,6,No,28
+2025-02-16,108,Garden Hose,Safety Equipment,Makita,2668.85,10,8,52,12,0,0,1,2,6,Yes,352
+2025-02-14,104,Paint Bucket 5L,Electrical,Stanley,4673.72,14,196,29,12,15,0,0,2,4,No,164
+2025-05-18,106,LED Bulb,Paint,3M,3456.53,11,275,76,12,15,0,1,5,6,No,85
+2025-09-30,109,Safety Gloves,Electrical,3M,2188.86,9,232,22,9,15,0,0,9,1,No,38
+2025-09-18,105,PVC Pipe,Paint,Stanley,3444.74,16,216,30,14,0,0,0,9,3,No,204
+2025-01-20,109,Safety Gloves,Electrical,3M,1993.2,16,205,58,8,15,0,0,1,0,No,35
+2025-02-24,109,Safety Gloves,Paint,3M,715.96,3,252,49,9,15,0,0,2,0,No,18
+2025-11-19,105,PVC Pipe,Tools,Stanley,3357.61,3,234,42,5,0,0,0,11,2,No,0
+2025-11-24,108,Garden Hose,Paint,Makita,2146.77,19,224,77,4,10,0,0,11,0,No,0
+2025-03-28,101,Hammer,Paint,Makita,3577.71,18,291,44,10,5,0,0,3,4,No,9
+2025-08-08,107,Cement Bag,Fasteners,Nippon,2382.06,6,92,69,7,15,0,0,8,4,No,118
+2025-05-18,103,Electric Drill,Plumbing,Stanley,2952.51,20,32,39,9,0,0,1,5,6,Yes,238
+2025-06-12,107,Cement Bag,Fasteners,Makita,4588.08,18,223,67,11,5,0,0,6,3,No,107
+2025-08-01,101,Hammer,Plumbing,3M,3419.57,11,108,50,10,10,0,0,8,4,No,192
+2025-10-30,110,Nails Pack,Building Materials,Stanley,4744.07,20,140,47,3,10,0,0,10,3,No,0
+2025-10-14,102,Screwdriver Set,Gardening,Nippon,3481.84,13,61,64,12,15,0,0,10,1,Yes,299
+2025-04-02,109,Safety Gloves,Safety Equipment,Nippon,1403.93,7,51,46,14,0,0,0,4,2,No,369
+2025-02-15,108,Garden Hose,Paint,Stanley,3205.4,9,237,46,6,10,0,1,2,5,No,0
+2025-11-05,107,Cement Bag,Tools,Nippon,1714.7,12,63,78,9,0,0,0,11,2,Yes,207
+2025-08-04,104,Paint Bucket 5L,Building Materials,Makita,4001.8,16,165,57,12,5,0,0,8,0,No,195
+2025-09-14,106,LED Bulb,Gardening,3M,2609.23,14,299,79,16,0,0,1,9,6,No,181
+2025-03-03,101,Hammer,Fasteners,Bosch,4297.2,13,175,31,9,5,0,0,3,0,No,95
+2025-12-18,106,LED Bulb,Plumbing,Dulux,3897.15,7,5,77,12,5,0,0,12,3,Yes,355
+2025-06-15,107,Cement Bag,Paint,Dulux,4448.46,2,181,76,6,10,0,1,6,6,No,0
+2025-09-01,109,Safety Gloves,Plumbing,Bosch,868.82,10,85,50,8,10,1,0,9,0,No,155
+2025-01-10,103,Electric Drill,Plumbing,Dulux,4712.27,12,91,25,14,5,0,0,1,4,No,329
+2025-07-14,108,Garden Hose,Paint,Hilti,2854.51,16,186,48,10,5,0,0,7,0,No,114
+2025-03-19,108,Garden Hose,Safety Equipment,Stanley,2694.71,10,275,70,8,15,0,0,3,2,No,0
+2025-11-18,110,Nails Pack,Building Materials,Bosch,1071.21,3,122,73,11,10,0,0,11,1,No,208
+2025-09-07,107,Cement Bag,Safety Equipment,Nippon,3059.21,2,22,65,3,10,0,1,9,6,Yes,68
+2025-09-26,108,Garden Hose,Gardening,Makita,3042.97,11,112,63,7,10,0,0,9,4,No,98
+2025-06-25,107,Cement Bag,Plumbing,Bosch,3486.42,18,44,63,10,10,0,0,6,2,Yes,256
+2025-05-16,107,Cement Bag,Safety Equipment,Dulux,1847.38,14,190,42,8,10,0,0,5,4,No,50
+2025-11-23,106,LED Bulb,Gardening,Makita,1176.44,4,189,66,9,10,0,1,11,6,No,81
+2025-01-02,109,Safety Gloves,Electrical,Hilti,4630.83,17,203,40,10,15,0,0,1,3,No,97
+2025-09-02,108,Garden Hose,Fasteners,Bosch,3665.06,6,82,66,11,5,0,0,9,1,No,248
+2025-02-19,106,LED Bulb,Electrical,Makita,1054.72,10,176,68,9,0,0,0,2,2,No,94
+2025-12-31,103,Electric Drill,Tools,Stanley,3058.58,19,128,68,8,15,0,0,12,2,No,112
+2025-06-06,105,PVC Pipe,Plumbing,Ingco,4833.51,6,24,26,6,10,0,0,6,4,Yes,156
+2025-12-22,110,Nails Pack,Building Materials,Stanley,1186.72,11,224,26,13,10,0,0,12,0,No,166
+2025-01-28,108,Garden Hose,Electrical,Dulux,2424.82,19,79,52,12,5,0,0,1,1,No,281
+2025-03-22,110,Nails Pack,Paint,3M,4243.0,13,127,32,13,0,0,1,3,5,No,263
+2025-09-25,102,Screwdriver Set,Paint,Nippon,3761.46,16,33,58,7,5,0,0,9,3,Yes,177
+2025-04-28,105,PVC Pipe,Gardening,Bosch,3173.84,12,101,27,12,15,0,0,4,0,No,259
+2025-12-03,101,Hammer,Gardening,Ingco,4223.92,12,60,45,10,15,0,0,12,2,No,240
+2025-06-04,105,PVC Pipe,Electrical,Ingco,469.52,1,156,62,7,5,0,0,6,2,No,54
+2025-03-25,102,Screwdriver Set,Paint,Bosch,2353.72,18,112,76,11,5,0,0,3,1,No,218
+2025-02-07,101,Hammer,Gardening,Makita,4839.91,4,152,52,8,10,1,0,2,4,No,88
+2025-02-01,106,LED Bulb,Plumbing,Hilti,2839.77,4,91,30,10,5,0,1,2,5,No,209
+2025-12-04,101,Hammer,Fasteners,Makita,1737.11,6,51,22,10,10,0,0,12,3,No,249
+2025-09-15,101,Hammer,Fasteners,Makita,3828.93,17,92,55,12,5,0,0,9,0,No,268
+2025-03-17,110,Nails Pack,Tools,Stanley,4780.36,7,152,21,7,0,0,0,3,0,No,58
+2025-10-03,105,PVC Pipe,Gardening,Ingco,2926.99,12,148,32,6,5,0,0,10,4,No,32
+2025-07-20,103,Electric Drill,Gardening,3M,3314.41,5,166,39,8,15,0,1,7,6,No,74
+2025-10-28,101,Hammer,Safety Equipment,Makita,2316.53,8,45,35,6,0,0,0,10,1,No,135
+2025-12-27,105,PVC Pipe,Gardening,Nippon,4145.46,20,7,43,4,5,0,1,12,5,Yes,113
+2025-03-26,101,Hammer,Safety Equipment,Ingco,2564.91,15,149,65,14,10,0,0,3,2,No,271
+2025-05-29,106,LED Bulb,Paint,Hilti,1764.49,13,76,46,12,15,0,0,5,3,No,284
+2025-10-30,107,Cement Bag,Paint,3M,1845.62,16,47,33,11,0,0,0,10,3,No,283
+2025-05-28,107,Cement Bag,Safety Equipment,Hilti,242.71,17,202,76,9,5,0,0,5,2,No,68
+2025-07-21,109,Safety Gloves,Paint,Stanley,2664.1,6,215,31,5,0,1,0,7,0,No,0
+2025-11-19,104,Paint Bucket 5L,Tools,Makita,1610.93,15,21,60,7,5,0,0,11,2,Yes,189
+2025-09-01,109,Safety Gloves,Gardening,3M,1078.38,15,50,43,9,5,0,0,9,0,No,220
+2025-10-08,108,Garden Hose,Plumbing,Makita,654.83,11,105,20,9,15,0,0,10,2,No,165
+2025-10-13,107,Cement Bag,Plumbing,3M,4109.97,9,38,26,12,0,0,0,10,0,No,322
+2025-12-19,101,Hammer,Tools,Hilti,2118.89,16,145,60,6,15,0,0,12,4,No,35
+2025-08-17,106,LED Bulb,Paint,3M,3232.94,9,187,21,11,0,0,1,8,6,No,143
+2025-12-28,101,Hammer,Building Materials,Nippon,3806.14,14,55,30,13,15,0,1,12,6,No,335
+2025-10-23,109,Safety Gloves,Gardening,Bosch,2111.93,7,83,53,8,10,0,0,10,3,No,157
+2025-07-10,106,LED Bulb,Plumbing,Hilti,2653.75,13,132,30,6,10,0,0,7,3,No,48
+2025-03-13,106,LED Bulb,Plumbing,Nippon,2842.62,1,212,39,9,0,0,0,3,3,No,58
+2025-02-07,107,Cement Bag,Building Materials,Bosch,4000.23,3,277,39,8,5,0,0,2,4,No,0
+2025-06-14,103,Electric Drill,Building Materials,Nippon,844.7,1,269,55,6,5,0,1,6,5,No,0
+2025-02-28,105,PVC Pipe,Paint,3M,1307.11,9,207,43,4,0,0,0,2,4,No,0
+2025-11-18,103,Electric Drill,Tools,Dulux,2663.47,17,237,20,14,15,0,0,11,1,No,183
+2025-12-25,105,PVC Pipe,Electrical,Hilti,1242.62,20,164,36,14,15,0,0,12,3,No,256
+2025-11-10,109,Safety Gloves,Electrical,3M,179.01,6,137,78,9,10,0,0,11,0,No,133
+2025-03-12,108,Garden Hose,Paint,Ingco,4034.88,2,287,61,9,10,0,0,3,2,No,0
+2025-11-24,108,Garden Hose,Tools,Hilti,3730.33,15,121,61,12,0,0,0,11,0,No,239
+2025-07-26,107,Cement Bag,Gardening,Dulux,1544.04,8,90,28,11,0,0,1,7,5,No,240
+2025-12-17,110,Nails Pack,Building Materials,Ingco,2091.39,19,167,64,8,5,0,0,12,2,No,73
+2025-11-23,109,Safety Gloves,Gardening,Bosch,582.88,15,203,61,7,10,0,1,11,6,No,7
+2025-03-07,105,PVC Pipe,Tools,Makita,4299.44,18,125,66,9,15,0,0,3,4,No,145
+2025-04-29,106,LED Bulb,Gardening,Hilti,1230.6,15,36,58,8,5,0,0,4,1,Yes,204
+2025-11-03,102,Screwdriver Set,Electrical,Nippon,4155.15,16,217,41,9,10,1,0,11,0,No,53
+2025-04-10,101,Hammer,Tools,Ingco,1753.06,13,81,62,13,10,0,0,4,3,No,309
+2025-10-12,105,PVC Pipe,Plumbing,Bosch,4673.93,9,131,32,8,5,0,1,10,6,No,109
+2025-03-24,101,Hammer,Fasteners,Makita,4724.49,16,200,47,16,15,0,0,3,0,No,280
+2025-12-09,105,PVC Pipe,Building Materials,Nippon,3232.55,10,110,34,14,15,0,0,12,1,No,310
+2025-11-26,102,Screwdriver Set,Paint,Stanley,4998.78,15,40,42,12,5,0,0,11,2,Yes,320
+2025-12-30,103,Electric Drill,Tools,Nippon,523.64,20,190,28,14,15,0,0,12,1,No,230
+2025-01-23,106,LED Bulb,Paint,Dulux,1505.55,5,69,56,8,15,0,0,1,3,No,171
+2025-04-08,102,Screwdriver Set,Paint,Ingco,1497.41,2,7,45,20,5,0,0,4,1,Yes,593
+2025-04-13,110,Nails Pack,Paint,Nippon,1507.48,9,207,41,10,0,0,1,4,6,No,93
+2025-03-09,101,Hammer,Safety Equipment,Dulux,3056.68,5,100,48,13,10,0,1,3,6,No,290
+2025-05-31,109,Safety Gloves,Gardening,Makita,1632.3,17,256,58,11,15,0,1,5,5,No,74
+2025-02-15,109,Safety Gloves,Building Materials,Makita,2806.38,5,137,42,11,5,0,1,2,5,No,193
+2025-12-25,109,Safety Gloves,Safety Equipment,Dulux,4699.72,11,181,39,10,0,0,0,12,3,No,119
+2025-12-31,103,Electric Drill,Building Materials,Makita,2052.55,13,240,47,8,0,0,0,12,2,No,0
+2025-10-13,105,PVC Pipe,Gardening,3M,4811.9,7,138,47,8,10,1,0,10,0,No,102
+2025-02-02,108,Garden Hose,Safety Equipment,Dulux,1175.01,20,286,36,10,10,0,1,2,6,No,14
+2025-08-06,104,Paint Bucket 5L,Plumbing,Makita,3723.43,3,196,25,9,10,0,0,8,2,No,74
+2025-01-02,104,Paint Bucket 5L,Tools,Ingco,355.15,10,131,55,10,10,0,0,1,3,No,169
+2025-03-05,105,PVC Pipe,Fasteners,Nippon,4669.27,19,42,29,10,0,0,0,3,2,No,258
+2025-05-22,110,Nails Pack,Paint,Hilti,4832.28,12,193,51,7,0,0,0,5,3,No,17
+2025-06-21,102,Screwdriver Set,Safety Equipment,Stanley,1146.33,11,14,72,12,15,0,1,6,5,Yes,346
+2025-07-27,109,Safety Gloves,Electrical,Dulux,1683.65,20,146,66,16,10,0,1,7,6,No,334
+2025-04-01,102,Screwdriver Set,Electrical,Dulux,619.85,5,276,37,12,10,0,0,4,1,No,84
+2025-04-23,102,Screwdriver Set,Safety Equipment,Bosch,918.06,12,200,65,6,0,0,0,4,2,No,0
+2025-10-08,101,Hammer,Building Materials,Hilti,1048.76,3,195,45,9,5,0,0,10,2,No,75
+2025-09-09,106,LED Bulb,Electrical,3M,2216.4,12,178,68,9,10,0,0,9,1,No,92
+2025-03-07,106,LED Bulb,Safety Equipment,Hilti,625.51,4,152,59,10,0,0,0,3,4,No,148
+2025-11-08,110,Nails Pack,Paint,3M,3182.82,10,18,50,9,15,0,1,11,5,Yes,252
+2025-06-23,109,Safety Gloves,Building Materials,Bosch,480.79,12,12,44,10,0,0,0,6,0,Yes,288
+2025-05-11,102,Screwdriver Set,Safety Equipment,3M,980.29,6,84,51,10,0,0,1,5,6,No,216
+2025-02-10,107,Cement Bag,Gardening,Dulux,1767.09,5,229,51,14,5,0,0,2,0,No,191
+2025-03-15,102,Screwdriver Set,Plumbing,Nippon,2479.59,17,192,60,12,10,0,1,3,5,No,168
+2025-01-04,108,Garden Hose,Tools,3M,468.1,1,269,57,10,15,0,1,1,5,No,31
+2025-05-25,109,Safety Gloves,Electrical,Ingco,620.76,20,252,60,14,10,0,1,5,6,No,168
+2025-12-26,106,LED Bulb,Tools,Nippon,4513.72,7,30,77,16,10,0,0,12,4,Yes,450
+2025-04-20,103,Electric Drill,Safety Equipment,Hilti,665.47,10,280,38,13,0,0,1,4,6,No,110
+2025-10-16,105,PVC Pipe,Electrical,Ingco,4308.32,19,235,41,11,10,0,0,10,3,No,95
+2025-09-22,101,Hammer,Plumbing,Nippon,1231.8,7,164,51,10,5,0,0,9,0,No,136
+2025-02-08,105,PVC Pipe,Plumbing,Makita,1082.77,20,202,71,7,10,0,1,2,5,No,8
+2025-10-06,104,Paint Bucket 5L,Fasteners,Dulux,1958.89,15,46,49,15,0,0,0,10,0,Yes,404
+2025-01-20,110,Nails Pack,Electrical,Ingco,4678.61,16,138,32,3,10,0,0,1,0,No,0
+2025-06-15,108,Garden Hose,Plumbing,Nippon,3315.28,2,255,45,9,15,0,1,6,6,No,15
+2025-03-16,104,Paint Bucket 5L,Building Materials,Bosch,1670.76,19,274,43,5,10,0,1,3,6,No,0
+2025-02-19,104,Paint Bucket 5L,Fasteners,Nippon,4743.36,9,244,21,10,15,0,0,2,2,No,56
+2025-11-30,101,Hammer,Fasteners,Hilti,2539.95,7,224,33,8,5,0,1,11,6,No,16
+2025-10-30,104,Paint Bucket 5L,Tools,3M,3397.74,15,140,78,13,5,0,0,10,3,No,250
+2025-09-01,107,Cement Bag,Building Materials,Bosch,4869.5,11,42,27,13,0,0,0,9,0,No,348
+2025-08-17,109,Safety Gloves,Tools,Stanley,556.23,13,58,72,10,0,0,1,8,6,Yes,242
+2025-08-30,110,Nails Pack,Gardening,Hilti,1534.78,2,245,52,9,5,1,1,8,5,No,25
+2025-04-11,107,Cement Bag,Plumbing,Nippon,4847.94,6,93,52,9,0,0,0,4,4,No,177
+2025-07-09,109,Safety Gloves,Building Materials,Ingco,4267.1,8,233,65,9,0,0,0,7,2,No,37
+2025-12-02,105,PVC Pipe,Gardening,Bosch,2927.61,17,74,48,11,10,0,0,12,1,No,256
+2025-01-21,106,LED Bulb,Tools,Bosch,3768.49,7,65,41,13,10,0,0,1,1,No,325
+2025-08-17,104,Paint Bucket 5L,Safety Equipment,Stanley,2729.38,6,54,44,14,0,0,1,8,6,No,366
+2025-05-21,108,Garden Hose,Gardening,Hilti,4043.68,20,270,20,9,10,0,0,5,2,No,0
+2025-09-16,106,LED Bulb,Tools,Nippon,1275.75,18,66,29,11,0,0,0,9,1,No,264
+2025-11-23,107,Cement Bag,Electrical,Makita,1793.54,12,282,30,11,15,0,1,11,6,No,48
+2025-08-25,103,Electric Drill,Plumbing,Hilti,4173.1,13,270,54,13,0,0,0,8,0,No,120
+2025-10-26,106,LED Bulb,Building Materials,Bosch,4195.85,7,130,28,5,0,0,1,10,6,No,20
+2025-05-18,104,Paint Bucket 5L,Gardening,Bosch,4048.94,19,278,78,8,10,0,1,5,6,No,0
+2025-11-16,109,Safety Gloves,Building Materials,Ingco,4341.66,13,51,36,7,15,0,1,11,6,No,159
+2025-05-22,105,PVC Pipe,Building Materials,Hilti,2798.38,12,108,34,13,10,1,0,5,3,No,282
+2025-07-25,103,Electric Drill,Building Materials,Hilti,296.34,9,9,55,6,5,0,0,7,4,Yes,171
+2025-10-12,110,Nails Pack,Plumbing,Ingco,2970.31,10,139,37,11,5,0,1,10,6,No,191
+2025-07-29,105,PVC Pipe,Fasteners,Nippon,4984.36,3,10,28,8,15,0,0,7,1,Yes,230
+2025-02-06,106,LED Bulb,Gardening,Ingco,837.99,9,115,51,16,5,0,0,2,3,No,365
+2025-10-09,102,Screwdriver Set,Paint,Makita,199.67,12,104,54,7,5,1,0,10,3,No,106
+2025-05-16,103,Electric Drill,Paint,Dulux,2391.97,11,143,52,8,10,0,0,5,4,No,97
+2025-05-02,108,Garden Hose,Plumbing,Hilti,2330.11,16,206,45,10,15,0,0,5,4,No,94
+2025-04-30,106,LED Bulb,Building Materials,3M,1490.35,13,110,74,9,10,0,0,4,2,No,160
+2025-08-14,105,PVC Pipe,Building Materials,Bosch,1755.3,5,73,54,9,10,0,0,8,3,No,197
+2025-07-09,105,PVC Pipe,Building Materials,Ingco,2656.54,3,92,20,20,10,0,0,7,2,No,508
+2025-12-21,105,PVC Pipe,Safety Equipment,3M,385.55,18,102,42,15,10,0,1,12,6,No,348
+2025-05-14,110,Nails Pack,Safety Equipment,Bosch,1363.27,6,193,79,9,0,0,0,5,2,No,77
+2025-02-11,110,Nails Pack,Building Materials,Hilti,261.44,9,213,34,11,5,0,0,2,1,No,117
+2025-12-08,105,PVC Pipe,Plumbing,Makita,286.08,5,137,56,13,0,0,0,12,0,No,253
+2025-02-09,102,Screwdriver Set,Tools,Nippon,4194.3,10,52,33,15,10,0,1,2,6,No,398
+2025-05-21,106,LED Bulb,Safety Equipment,3M,4799.22,15,30,26,11,0,0,0,5,2,No,300
+2025-02-15,102,Screwdriver Set,Plumbing,Hilti,238.14,19,118,22,9,5,0,1,2,5,No,152
+2025-01-29,105,PVC Pipe,Electrical,Stanley,2099.4,9,55,31,7,0,0,0,1,2,No,155
+2025-10-27,110,Nails Pack,Tools,Bosch,4041.43,13,217,49,6,5,0,0,10,0,No,0
+2025-02-09,101,Hammer,Paint,Makita,3851.7,1,241,45,4,15,0,1,2,6,No,0
+2025-09-01,102,Screwdriver Set,Plumbing,Hilti,2815.22,9,85,61,10,0,0,0,9,0,No,215
+2025-06-18,104,Paint Bucket 5L,Gardening,Bosch,4597.02,4,290,52,12,0,0,0,6,2,No,70
+2025-09-28,104,Paint Bucket 5L,Electrical,Hilti,2411.15,2,162,34,11,10,0,1,9,6,No,168
+2025-01-22,104,Paint Bucket 5L,Electrical,3M,3793.69,18,287,71,7,0,0,0,1,2,No,0
+2025-01-25,103,Electric Drill,Safety Equipment,3M,3312.58,4,191,34,7,10,0,1,1,5,No,19
+2025-04-29,109,Safety Gloves,Fasteners,Hilti,4131.53,1,243,28,10,15,0,0,4,1,No,57
+2025-11-10,102,Screwdriver Set,Safety Equipment,Nippon,2946.75,7,91,74,12,15,0,0,11,0,No,269
+2025-11-11,102,Screwdriver Set,Safety Equipment,Stanley,2248.69,2,186,25,11,5,0,0,11,1,No,144
+2025-04-10,101,Hammer,Gardening,Nippon,3805.54,12,298,31,8,10,0,0,4,3,No,0
+2025-06-11,105,PVC Pipe,Fasteners,Stanley,1796.7,9,279,45,13,10,0,0,6,2,No,111
+2025-09-17,105,PVC Pipe,Plumbing,Makita,4813.25,20,272,23,11,5,1,0,9,2,No,58
+2025-02-26,110,Nails Pack,Paint,Makita,2106.85,6,197,45,11,0,0,0,2,2,No,133
+2025-10-28,109,Safety Gloves,Tools,Nippon,4581.18,1,164,70,14,10,0,0,10,1,No,256
+2025-11-12,104,Paint Bucket 5L,Tools,Bosch,2380.98,6,137,57,8,15,0,0,11,2,No,103
+2025-04-29,105,PVC Pipe,Plumbing,Bosch,651.79,15,222,26,16,5,0,0,4,1,No,258
+2025-12-30,102,Screwdriver Set,Safety Equipment,Makita,3825.53,17,272,71,13,0,0,0,12,1,No,118
+2025-07-27,104,Paint Bucket 5L,Plumbing,3M,155.53,18,89,41,9,10,0,1,7,6,No,181
+2025-01-05,108,Garden Hose,Electrical,Dulux,1350.39,15,112,65,14,15,0,1,1,6,No,308
+2025-10-04,105,PVC Pipe,Safety Equipment,Makita,1781.55,7,102,79,11,5,0,1,10,5,No,228
+2025-04-18,109,Safety Gloves,Tools,Ingco,1494.97,10,248,22,15,5,0,0,4,4,No,202
+2025-01-25,104,Paint Bucket 5L,Plumbing,Dulux,3509.82,2,3,48,10,5,0,1,1,5,Yes,297
+2025-06-22,109,Safety Gloves,Safety Equipment,3M,2257.09,11,163,75,11,15,0,1,6,6,No,167
+2025-06-23,108,Garden Hose,Safety Equipment,Makita,315.02,4,138,30,12,5,0,0,6,0,No,222
+2025-07-25,108,Garden Hose,Safety Equipment,Stanley,1033.03,7,55,50,12,10,0,0,7,4,No,305
+2025-01-10,106,LED Bulb,Safety Equipment,Bosch,488.32,2,127,66,7,15,0,0,1,4,No,83
+2025-02-16,102,Screwdriver Set,Gardening,Dulux,4488.66,19,63,26,6,10,1,1,2,6,No,117
+2025-03-01,109,Safety Gloves,Tools,Bosch,245.71,16,64,66,9,5,0,1,3,5,Yes,206
+2025-08-07,105,PVC Pipe,Electrical,Hilti,3329.27,5,296,49,3,15,0,0,8,3,No,0
+2025-08-11,109,Safety Gloves,Plumbing,Dulux,4297.4,7,215,25,10,10,0,0,8,0,No,85
+2025-03-10,108,Garden Hose,Fasteners,Hilti,620.04,19,233,22,10,10,0,0,3,0,No,67
+2025-04-09,106,LED Bulb,Fasteners,Dulux,876.75,13,1,28,10,0,0,0,4,2,Yes,299
+2025-09-06,107,Cement Bag,Plumbing,Makita,732.28,16,272,68,9,5,0,1,9,5,No,0
+2025-11-08,107,Cement Bag,Tools,3M,298.87,18,177,56,8,10,0,1,11,5,No,63
+2025-11-27,109,Safety Gloves,Gardening,Stanley,4837.64,7,246,39,10,0,0,0,11,3,No,54
+2025-05-05,108,Garden Hose,Building Materials,Bosch,425.39,18,87,28,11,5,0,0,5,0,No,243
+2025-04-15,104,Paint Bucket 5L,Safety Equipment,Stanley,1305.4,7,60,34,10,0,0,0,4,1,No,240
+2025-05-24,106,LED Bulb,Building Materials,Hilti,433.25,7,185,50,7,15,0,1,5,5,No,25
+2025-06-18,107,Cement Bag,Electrical,Nippon,1026.78,9,236,54,11,5,0,0,6,2,No,94
+2025-04-05,101,Hammer,Gardening,Stanley,2640.62,5,134,23,8,10,0,1,4,5,No,106
+2025-12-28,108,Garden Hose,Plumbing,Dulux,1415.65,13,111,39,11,0,0,1,12,6,No,219
+2025-03-30,108,Garden Hose,Fasteners,Stanley,2041.76,13,226,60,12,0,0,1,3,6,No,134
+2025-04-22,105,PVC Pipe,Building Materials,Hilti,3135.88,3,34,23,10,5,0,0,4,1,No,266
+2025-04-17,105,PVC Pipe,Electrical,Ingco,894.64,6,153,41,12,10,0,0,4,3,No,207
+2025-09-12,105,PVC Pipe,Plumbing,Dulux,3559.35,19,167,57,7,0,0,0,9,4,No,43
+2025-06-17,102,Screwdriver Set,Fasteners,Nippon,855.32,17,1,61,14,5,0,0,6,1,Yes,419
+2025-02-06,107,Cement Bag,Fasteners,Dulux,3203.02,7,194,49,5,15,0,0,2,3,No,0
+2025-03-21,105,PVC Pipe,Safety Equipment,Bosch,2073.65,6,53,59,11,5,0,0,3,4,Yes,277
+2025-05-09,108,Garden Hose,Gardening,Bosch,3911.93,15,241,30,14,5,0,0,5,4,No,179
+2025-06-23,107,Cement Bag,Paint,Hilti,1486.14,7,253,26,15,15,0,0,6,0,No,197
+2025-02-07,103,Electric Drill,Electrical,Dulux,3284.33,11,106,35,10,5,0,0,2,4,No,194
+2025-07-26,108,Garden Hose,Fasteners,Ingco,896.24,14,94,31,7,0,0,1,7,5,No,116
+2025-08-24,108,Garden Hose,Electrical,3M,2904.8,13,58,55,9,15,0,1,8,6,No,212
+2025-03-14,107,Cement Bag,Fasteners,Nippon,2528.88,18,89,23,8,10,0,0,3,4,No,151
+2025-06-27,102,Screwdriver Set,Gardening,Ingco,2288.77,4,66,68,10,0,0,0,6,4,Yes,234
+2025-10-24,102,Screwdriver Set,Fasteners,Bosch,520.96,14,67,77,12,15,0,0,10,4,Yes,293
+2025-09-20,107,Cement Bag,Plumbing,Hilti,3300.37,18,78,36,6,15,0,1,9,5,No,102
+2025-04-01,109,Safety Gloves,Building Materials,Hilti,3697.72,3,185,50,12,0,0,0,4,1,No,175
+2025-01-12,105,PVC Pipe,Building Materials,Ingco,4106.07,2,284,44,14,0,0,1,1,6,No,136
+2025-04-22,102,Screwdriver Set,Tools,Dulux,1470.05,2,240,33,6,10,0,0,4,1,No,0
+2025-08-04,109,Safety Gloves,Electrical,Hilti,3792.69,3,232,42,17,0,0,0,8,0,No,278
+2025-12-13,104,Paint Bucket 5L,Safety Equipment,Hilti,924.23,9,281,60,14,15,0,1,12,5,No,139
+2025-10-28,105,PVC Pipe,Building Materials,Dulux,2347.38,3,28,66,12,0,0,0,10,1,Yes,332
+2025-05-08,102,Screwdriver Set,Gardening,Nippon,1524.54,16,141,63,14,10,0,0,5,3,No,279
+2025-07-13,101,Hammer,Gardening,Bosch,1929.88,9,54,70,9,0,1,1,7,6,Yes,216
+2025-12-25,104,Paint Bucket 5L,Tools,Dulux,3109.43,7,197,50,8,10,0,0,12,3,No,43
+2025-09-10,110,Nails Pack,Gardening,Ingco,4366.91,17,204,71,10,5,0,0,9,2,No,96
+2025-03-21,108,Garden Hose,Plumbing,Stanley,3370.34,16,86,64,9,10,0,0,3,4,No,184
+2025-10-14,110,Nails Pack,Fasteners,Hilti,2077.87,16,68,75,12,0,0,0,10,1,Yes,292
+2025-05-06,106,LED Bulb,Electrical,Ingco,3036.46,11,188,42,13,5,0,0,5,1,No,202
+2025-10-27,109,Safety Gloves,Fasteners,Nippon,2890.46,17,262,52,14,10,0,0,10,0,No,158
+2025-03-23,101,Hammer,Tools,Stanley,4266.56,6,131,53,7,10,0,1,3,6,No,79
+2025-09-11,106,LED Bulb,Tools,Hilti,4860.43,19,121,45,8,10,0,0,9,3,No,119
+2025-02-19,108,Garden Hose,Gardening,Makita,3439.15,9,15,40,11,5,0,0,2,2,Yes,315
+2025-03-26,109,Safety Gloves,Plumbing,Ingco,2519.86,15,41,31,10,10,1,0,3,2,No,259
+2025-11-01,110,Nails Pack,Electrical,3M,3766.97,1,217,28,13,15,0,1,11,5,No,173
+2025-04-25,109,Safety Gloves,Paint,Stanley,3323.17,17,198,67,8,15,0,0,4,4,No,42
+2025-05-28,102,Screwdriver Set,Paint,Hilti,514.78,3,202,52,5,15,0,0,5,2,No,0
+2025-01-05,108,Garden Hose,Electrical,Makita,4218.17,5,8,44,8,10,0,1,1,6,Yes,232
+2025-04-12,102,Screwdriver Set,Plumbing,Hilti,1040.18,7,232,61,4,5,0,1,4,5,No,0
+2025-02-13,105,PVC Pipe,Paint,Hilti,4810.54,9,195,49,10,5,0,0,2,3,No,105
+2025-03-08,104,Paint Bucket 5L,Paint,Stanley,3058.35,17,227,27,5,0,0,1,3,5,No,0
+2025-10-30,110,Nails Pack,Safety Equipment,Makita,2700.41,2,172,23,7,0,0,0,10,3,No,38
+2025-11-05,102,Screwdriver Set,Building Materials,Dulux,2690.06,7,36,51,13,15,0,0,11,2,Yes,354
+2025-03-01,102,Screwdriver Set,Electrical,Dulux,1812.97,6,10,43,8,5,0,1,3,5,Yes,230
+2025-03-31,102,Screwdriver Set,Building Materials,3M,4177.97,17,18,71,8,10,0,0,3,0,Yes,222
+2025-02-27,104,Paint Bucket 5L,Safety Equipment,3M,2757.27,17,191,23,6,15,0,0,2,3,No,0
+2025-11-12,108,Garden Hose,Paint,Bosch,2945.9,17,148,41,12,5,0,0,11,2,No,212
+2025-08-25,101,Hammer,Tools,Stanley,106.29,18,7,35,6,5,0,0,8,0,Yes,173
+2025-12-07,102,Screwdriver Set,Gardening,Dulux,3680.33,2,5,60,10,0,0,1,12,6,Yes,295
+2025-03-16,105,PVC Pipe,Electrical,Makita,4215.99,19,24,77,7,15,0,1,3,6,Yes,186
+2025-03-10,110,Nails Pack,Fasteners,3M,1477.26,3,94,52,12,10,0,0,3,0,No,266
+2025-01-16,104,Paint Bucket 5L,Gardening,Hilti,4580.76,14,159,57,13,5,0,0,1,3,No,231
+2025-02-18,110,Nails Pack,Paint,Bosch,2417.11,1,183,24,18,15,0,0,2,1,No,357
+2025-01-26,109,Safety Gloves,Electrical,Dulux,552.12,9,213,69,12,0,0,1,1,6,No,147
+2025-07-30,106,LED Bulb,Plumbing,Nippon,1927.09,17,28,58,6,0,0,0,7,2,Yes,152
+2025-10-12,105,PVC Pipe,Tools,Bosch,2926.73,9,22,58,14,15,0,1,10,6,Yes,398
+2025-04-20,102,Screwdriver Set,Paint,3M,1700.45,14,53,29,11,0,0,1,4,6,No,277
+2025-08-30,110,Nails Pack,Fasteners,Stanley,2305.12,20,127,56,8,0,0,1,8,5,No,113
+2025-09-09,102,Screwdriver Set,Electrical,Bosch,907.12,11,99,68,12,15,0,0,9,1,No,261
+2025-03-18,107,Cement Bag,Gardening,Nippon,1665.99,10,244,78,11,0,0,0,3,1,No,86
+2025-08-07,101,Hammer,Safety Equipment,Makita,458.9,12,253,26,12,10,0,0,8,3,No,107
+2025-10-09,101,Hammer,Building Materials,Makita,3658.33,9,29,28,14,10,0,0,10,3,No,391
+2025-08-31,108,Garden Hose,Safety Equipment,Ingco,3388.99,4,76,51,14,10,0,1,8,6,No,344
+2025-08-08,110,Nails Pack,Plumbing,3M,2850.64,1,153,29,14,10,0,0,8,4,No,267
+2025-02-20,102,Screwdriver Set,Paint,Makita,3771.65,13,130,22,18,5,1,0,2,3,No,410
+2025-03-11,108,Garden Hose,Electrical,Stanley,2696.39,11,29,58,11,15,0,0,3,1,Yes,301
+2025-02-28,110,Nails Pack,Paint,Dulux,1434.2,13,295,20,6,10,0,0,2,4,No,0
+2025-07-20,105,PVC Pipe,Paint,Dulux,2890.65,1,258,55,12,10,1,1,7,6,No,102
+2025-10-23,104,Paint Bucket 5L,Gardening,Hilti,2953.74,19,89,35,6,10,0,0,10,3,No,91
+2025-04-09,102,Screwdriver Set,Tools,Stanley,1785.5,7,269,59,12,5,0,0,4,2,No,91
+2025-05-06,106,LED Bulb,Plumbing,Bosch,340.89,6,222,28,13,0,0,0,5,1,No,168
+2025-08-10,102,Screwdriver Set,Paint,Nippon,263.79,16,111,50,9,10,1,1,8,6,No,159
+2025-07-12,109,Safety Gloves,Tools,Bosch,4775.25,4,47,74,15,10,0,1,7,5,Yes,403
+2025-09-21,110,Nails Pack,Safety Equipment,3M,2180.41,6,263,41,16,0,0,1,9,6,No,217
+2025-08-15,103,Electric Drill,Paint,Bosch,791.52,16,89,78,5,15,0,0,8,4,No,61
+2025-08-28,105,PVC Pipe,Paint,Nippon,3662.19,2,299,56,11,0,0,0,8,3,No,31
+2025-02-26,108,Garden Hose,Building Materials,Makita,754.0,7,188,21,9,5,0,0,2,2,No,82
+2025-09-29,102,Screwdriver Set,Fasteners,Ingco,4614.95,6,163,60,6,5,0,0,9,0,No,17
+2025-12-17,102,Screwdriver Set,Gardening,Dulux,4457.66,13,173,41,10,10,0,0,12,2,No,127
+2025-12-18,107,Cement Bag,Paint,Hilti,4810.77,12,79,34,11,0,0,0,12,3,No,251
+2025-09-01,106,LED Bulb,Fasteners,Nippon,496.65,11,268,66,10,5,0,0,9,0,No,32
+2025-12-25,107,Cement Bag,Tools,3M,1759.87,2,284,67,10,0,0,0,12,3,No,16
+2025-01-06,101,Hammer,Fasteners,Stanley,4626.34,4,100,26,7,15,0,0,1,0,No,110
+2025-12-13,102,Screwdriver Set,Gardening,Dulux,3773.04,13,171,79,11,5,0,1,12,5,No,159
+2025-01-27,103,Electric Drill,Paint,3M,1505.4,20,85,32,8,0,1,0,1,0,No,155
+2025-02-08,104,Paint Bucket 5L,Fasteners,Makita,219.52,8,32,23,11,0,0,1,2,5,No,298
+2025-01-11,107,Cement Bag,Electrical,Dulux,3057.55,2,283,25,16,0,0,1,1,5,No,197
+2025-04-09,106,LED Bulb,Safety Equipment,Nippon,4293.53,1,143,43,12,5,0,0,4,2,No,217
+2025-07-09,101,Hammer,Tools,Bosch,2323.96,16,158,47,12,5,0,0,7,2,No,202
+2025-01-08,104,Paint Bucket 5L,Paint,Ingco,1313.32,13,230,68,10,10,0,0,1,2,No,70
+2025-04-29,110,Nails Pack,Building Materials,Stanley,3113.95,18,30,56,10,15,0,0,4,1,Yes,270
+2025-07-04,102,Screwdriver Set,Electrical,Nippon,2974.57,4,234,62,11,0,0,0,7,4,No,96
+2025-05-24,106,LED Bulb,Building Materials,Dulux,3192.07,18,70,61,17,5,0,1,5,5,No,440
+2025-09-01,107,Cement Bag,Tools,Makita,2827.99,9,24,67,7,15,0,0,9,0,Yes,186
+2025-05-11,110,Nails Pack,Paint,Dulux,1082.3,7,165,72,9,0,0,1,5,6,No,105
+2025-07-31,109,Safety Gloves,Electrical,Bosch,875.6,5,61,36,10,0,0,0,7,3,No,239
+2025-08-10,109,Safety Gloves,Plumbing,3M,2408.31,6,12,54,9,0,0,1,8,6,Yes,258
+2025-07-16,109,Safety Gloves,Gardening,3M,745.54,8,233,67,10,5,0,0,7,2,No,67
+2025-06-22,109,Safety Gloves,Electrical,Hilti,2098.62,16,233,75,9,15,0,1,6,6,No,37
+2025-10-17,107,Cement Bag,Tools,Ingco,3173.57,10,126,28,7,0,0,0,10,4,No,84
+2025-05-30,107,Cement Bag,Paint,Dulux,141.41,3,40,59,14,10,0,0,5,4,Yes,380
+2025-06-27,105,PVC Pipe,Tools,Nippon,4471.16,12,3,76,10,10,0,0,6,4,Yes,297
+2025-09-07,107,Cement Bag,Electrical,Stanley,319.37,16,30,32,10,0,0,1,9,6,Yes,270
+2025-09-12,103,Electric Drill,Tools,Bosch,4130.97,11,100,67,7,10,0,0,9,4,No,110
+2025-12-29,110,Nails Pack,Tools,Makita,2898.95,4,162,71,13,15,0,0,12,0,No,228
+2025-04-17,107,Cement Bag,Electrical,Stanley,3568.14,17,20,71,10,0,0,0,4,3,Yes,280
+2025-01-19,104,Paint Bucket 5L,Gardening,Makita,2099.02,5,126,63,8,10,0,1,1,6,No,114
+2025-11-03,102,Screwdriver Set,Fasteners,3M,318.84,12,214,47,8,15,0,0,11,0,No,26
+2025-01-15,102,Screwdriver Set,Fasteners,3M,2511.86,16,194,34,14,10,0,0,1,2,No,226
+2025-12-16,106,LED Bulb,Paint,Stanley,341.57,10,234,48,12,5,0,0,12,1,No,126
+2025-05-09,109,Safety Gloves,Tools,Stanley,2113.71,17,50,36,11,15,1,0,5,4,No,280
+2025-11-05,109,Safety Gloves,Electrical,Makita,1377.27,17,141,55,13,10,0,0,11,2,No,249
+2025-05-26,105,PVC Pipe,Paint,Bosch,3869.33,9,160,74,11,15,0,0,5,0,No,170
+2025-04-24,105,PVC Pipe,Paint,Hilti,654.37,7,239,29,15,0,0,0,4,3,No,211
+2025-11-09,109,Safety Gloves,Safety Equipment,Bosch,3274.33,13,235,64,7,5,0,1,11,6,No,0
+2025-08-07,108,Garden Hose,Gardening,3M,3162.22,1,37,22,4,0,0,0,8,3,No,83
+2025-03-06,108,Garden Hose,Tools,Dulux,4149.62,13,23,71,13,5,0,0,3,3,Yes,367
+2025-08-13,107,Cement Bag,Tools,Bosch,4911.34,14,54,48,15,5,0,0,8,2,No,396
+2025-11-06,104,Paint Bucket 5L,Electrical,Ingco,3472.82,6,157,22,7,0,0,0,11,3,No,53
+2025-06-14,103,Electric Drill,Electrical,Nippon,4538.66,18,296,61,10,0,0,1,6,5,No,4
+2025-06-23,101,Hammer,Electrical,Dulux,1425.56,17,90,46,13,5,0,0,6,0,No,300
+2025-08-27,105,PVC Pipe,Tools,Hilti,1176.64,8,190,48,9,5,1,0,8,2,No,80
+2025-08-13,103,Electric Drill,Plumbing,Hilti,2320.98,3,203,30,11,15,0,0,8,2,No,127
+2025-02-18,110,Nails Pack,Fasteners,Dulux,1642.72,18,195,42,5,15,0,0,2,1,No,0
+2025-08-17,101,Hammer,Safety Equipment,Makita,4551.34,10,153,75,12,0,0,1,8,6,No,207
+2025-03-31,101,Hammer,Building Materials,Nippon,2885.51,6,1,43,9,15,0,0,3,0,Yes,269
+2025-05-26,106,LED Bulb,Building Materials,Dulux,3402.64,6,235,73,14,0,0,0,5,0,No,185
+2025-09-18,101,Hammer,Paint,3M,2067.55,16,137,63,8,0,0,0,9,3,No,103
+2025-01-16,106,LED Bulb,Plumbing,Nippon,4481.05,5,147,29,10,10,0,0,1,3,No,153
+2025-06-05,106,LED Bulb,Plumbing,Makita,2111.47,6,60,27,7,5,0,0,6,3,No,150
+2025-12-20,108,Garden Hose,Electrical,Makita,4126.08,19,242,61,4,0,0,1,12,5,No,0
+2025-08-08,103,Electric Drill,Tools,Dulux,3990.09,1,9,46,13,15,0,0,8,4,Yes,381
+2025-02-23,102,Screwdriver Set,Safety Equipment,3M,4867.92,1,94,54,9,10,0,1,2,6,No,176
+2025-08-09,101,Hammer,Plumbing,Hilti,2410.88,17,82,44,12,5,0,1,8,5,No,278
+2025-05-26,110,Nails Pack,Safety Equipment,Bosch,3558.82,10,91,20,15,0,0,0,5,0,No,359
+2025-09-28,103,Electric Drill,Gardening,3M,1855.98,4,85,47,7,5,0,1,9,6,No,125
+2025-03-25,109,Safety Gloves,Electrical,Nippon,4314.36,9,174,78,6,15,0,0,3,1,No,6
+2025-03-13,101,Hammer,Tools,Ingco,4696.46,15,262,68,6,15,1,0,3,3,No,0
+2025-06-06,107,Cement Bag,Plumbing,Makita,4119.36,7,74,53,7,15,0,0,6,4,No,136
+2025-11-02,109,Safety Gloves,Tools,Nippon,3605.64,16,40,41,4,5,0,1,11,6,Yes,80
+2025-08-09,109,Safety Gloves,Safety Equipment,Dulux,2820.28,17,41,48,12,15,0,1,8,5,Yes,319
+2025-11-07,102,Screwdriver Set,Building Materials,3M,4762.07,12,113,55,9,5,1,0,11,4,No,157
+2025-04-09,104,Paint Bucket 5L,Fasteners,Hilti,4475.53,12,94,25,9,5,0,0,4,2,No,176
+2025-12-14,106,LED Bulb,Plumbing,Nippon,355.02,15,261,45,9,5,0,1,12,6,No,9
+2025-06-18,109,Safety Gloves,Gardening,Dulux,2708.29,3,124,79,15,0,0,0,6,2,No,326
+2025-09-13,109,Safety Gloves,Building Materials,Bosch,2259.7,14,249,31,11,0,1,1,9,5,No,81
+2025-02-17,101,Hammer,Tools,Dulux,2005.37,18,227,21,11,15,0,0,2,0,No,103
+2025-12-13,106,LED Bulb,Paint,Ingco,3170.63,1,41,36,12,5,0,1,12,5,No,319
+2025-06-21,103,Electric Drill,Safety Equipment,Dulux,2465.37,1,72,79,8,5,0,1,6,5,Yes,168
+2025-09-30,107,Cement Bag,Plumbing,Nippon,4151.35,14,84,30,11,10,0,0,9,1,No,246
+2025-07-20,109,Safety Gloves,Plumbing,Dulux,4926.26,8,60,55,5,15,1,1,7,6,No,90
+2025-05-29,101,Hammer,Fasteners,Makita,1244.68,8,4,24,13,15,0,0,5,3,Yes,386
+2025-02-16,106,LED Bulb,Plumbing,Bosch,3973.95,2,252,28,6,10,0,1,2,6,No,0
+2025-07-22,110,Nails Pack,Plumbing,Bosch,3485.66,9,124,61,9,5,0,0,7,1,No,146
+2025-09-25,109,Safety Gloves,Tools,Nippon,2073.6,2,186,66,12,10,0,0,9,3,No,174
+2025-07-27,104,Paint Bucket 5L,Safety Equipment,Dulux,1336.04,7,122,67,10,15,0,1,7,6,No,178
+2025-12-17,106,LED Bulb,Paint,Makita,617.43,7,33,55,12,5,0,0,12,2,Yes,327
+2025-06-28,108,Garden Hose,Safety Equipment,Bosch,718.36,20,18,53,12,5,0,1,6,5,Yes,342
+2025-01-13,110,Nails Pack,Tools,3M,2507.9,2,67,47,5,5,0,0,1,0,No,83
+2025-02-19,105,PVC Pipe,Paint,Makita,4032.55,14,133,20,10,5,0,0,2,2,No,167
+2025-06-16,106,LED Bulb,Fasteners,Dulux,1256.44,19,280,66,12,10,0,0,6,0,No,80
+2025-09-13,102,Screwdriver Set,Fasteners,Ingco,133.26,9,267,52,6,15,0,1,9,5,No,0
+2025-08-13,105,PVC Pipe,Paint,Ingco,2665.35,19,9,50,7,0,0,0,8,2,Yes,201
+2025-05-06,109,Safety Gloves,Safety Equipment,Nippon,4379.62,13,217,68,9,10,0,0,5,1,No,53
+2025-03-25,101,Hammer,Electrical,Dulux,1818.61,2,215,35,13,15,0,0,3,1,No,175
+2025-08-21,101,Hammer,Paint,Nippon,422.87,11,17,56,7,10,1,0,8,3,Yes,193
+2025-06-26,109,Safety Gloves,Fasteners,3M,1948.53,17,0,44,12,10,0,0,6,3,Yes,360
+2025-03-16,110,Nails Pack,Building Materials,Bosch,1596.53,16,79,56,6,0,0,1,3,6,No,101
+2025-06-08,106,LED Bulb,Building Materials,Bosch,4500.81,20,281,67,12,5,0,1,6,6,No,79
+2025-11-06,104,Paint Bucket 5L,Tools,Bosch,3474.36,10,270,20,6,0,0,0,11,3,No,0
+2025-06-07,108,Garden Hose,Tools,Stanley,924.48,15,179,34,13,15,0,1,6,5,No,211
+2025-10-02,104,Paint Bucket 5L,Electrical,3M,1635.05,20,255,51,10,5,1,0,10,3,No,45
+2025-07-15,108,Garden Hose,Tools,3M,2785.31,1,80,69,11,10,0,0,7,1,No,250
+2025-08-08,108,Garden Hose,Safety Equipment,Stanley,3418.98,15,292,56,8,5,0,0,8,4,No,0
+2025-08-29,106,LED Bulb,Safety Equipment,Nippon,2995.27,19,221,37,15,5,0,0,8,4,No,229
+2025-11-13,104,Paint Bucket 5L,Building Materials,3M,1100.77,12,134,76,5,10,0,0,11,3,No,16
+2025-12-15,104,Paint Bucket 5L,Tools,Dulux,1705.51,4,58,77,7,5,0,0,12,0,Yes,152
+2025-12-02,109,Safety Gloves,Tools,Nippon,4517.38,8,232,26,11,5,0,0,12,1,No,98
+2025-09-04,106,LED Bulb,Plumbing,Hilti,407.34,20,28,29,13,0,0,0,9,3,Yes,362
+2025-02-26,106,LED Bulb,Safety Equipment,3M,4439.94,7,183,50,11,10,0,0,2,2,No,147
+2025-07-21,106,LED Bulb,Fasteners,Stanley,791.44,6,264,26,11,10,0,0,7,0,No,66
+2025-05-03,108,Garden Hose,Building Materials,Ingco,4380.42,5,138,31,8,10,0,1,5,5,No,102
+2025-02-10,101,Hammer,Fasteners,Dulux,4526.18,4,163,47,9,0,0,0,2,0,No,107
+2025-04-30,110,Nails Pack,Tools,Ingco,557.16,15,167,73,10,15,0,0,4,2,No,133
+2025-12-19,104,Paint Bucket 5L,Electrical,Nippon,238.85,10,136,41,13,10,0,0,12,4,No,254
+2025-11-05,104,Paint Bucket 5L,Electrical,Stanley,1152.79,9,114,22,6,0,0,0,11,2,No,66
+2025-01-09,103,Electric Drill,Paint,Ingco,3120.66,20,88,46,16,10,0,0,1,3,No,392
+2025-04-04,107,Cement Bag,Plumbing,Dulux,942.18,2,279,27,4,5,0,0,4,4,No,0
+2025-02-16,101,Hammer,Paint,Bosch,2763.34,1,151,63,12,5,0,1,2,6,No,209
+2025-02-01,102,Screwdriver Set,Plumbing,Stanley,2837.25,11,253,25,15,15,0,1,2,5,No,197
+2025-12-23,103,Electric Drill,Electrical,Bosch,2200.46,7,188,23,6,10,0,0,12,1,No,0
+2025-03-01,107,Cement Bag,Building Materials,Ingco,4710.73,18,56,45,10,5,0,1,3,5,No,244
+2025-06-24,106,LED Bulb,Paint,Dulux,4125.73,4,246,45,10,15,0,0,6,1,No,54
+2025-01-04,110,Nails Pack,Paint,Bosch,4843.56,1,170,71,11,0,0,1,1,5,No,160
+2025-11-28,110,Nails Pack,Plumbing,Ingco,4276.95,15,234,60,10,10,0,0,11,4,No,66
+2025-03-26,103,Electric Drill,Safety Equipment,Makita,2701.21,17,191,43,3,0,0,0,3,2,No,0
+2025-11-30,101,Hammer,Gardening,Makita,749.76,6,212,23,7,5,0,1,11,6,No,0
+2025-10-23,106,LED Bulb,Plumbing,Makita,3841.69,7,70,41,9,10,0,0,10,3,No,200
+2025-03-15,102,Screwdriver Set,Paint,Stanley,408.0,11,184,34,10,5,0,1,3,5,No,116
+2025-02-12,102,Screwdriver Set,Paint,Ingco,2736.87,16,138,46,10,0,0,0,2,2,No,162
+2025-10-28,106,LED Bulb,Building Materials,Dulux,2551.13,9,76,64,6,10,0,0,10,1,No,104
+2025-04-13,108,Garden Hose,Electrical,Makita,2976.95,14,91,32,11,10,0,1,4,6,No,239
+2025-11-26,103,Electric Drill,Paint,Stanley,3015.73,9,279,38,5,0,0,0,11,2,No,0
+2025-12-01,108,Garden Hose,Tools,3M,3756.65,8,163,57,6,15,0,0,12,0,No,17
+2025-10-05,107,Cement Bag,Electrical,Hilti,1853.29,13,169,74,8,5,0,1,10,6,No,71
+2025-04-17,103,Electric Drill,Gardening,Stanley,2958.33,16,133,26,10,10,0,0,4,3,No,167
+2025-11-14,106,LED Bulb,Safety Equipment,3M,2177.26,11,186,20,4,15,0,0,11,4,No,0
+2025-06-22,110,Nails Pack,Safety Equipment,Bosch,1785.97,9,207,60,15,15,1,1,6,6,No,243
+2025-09-01,103,Electric Drill,Paint,3M,834.33,8,95,45,11,10,0,0,9,0,No,235
+2025-04-13,109,Safety Gloves,Fasteners,Nippon,156.48,5,50,78,6,0,0,1,4,6,Yes,130
+2025-10-16,109,Safety Gloves,Tools,Hilti,4930.71,19,254,73,8,5,0,0,10,3,No,0
+2025-10-27,103,Electric Drill,Gardening,Ingco,2979.75,12,227,46,18,5,0,0,10,0,No,313
+2025-08-28,107,Cement Bag,Building Materials,Dulux,3379.36,9,224,65,7,0,0,0,8,3,No,0
+2025-12-28,110,Nails Pack,Gardening,Ingco,4926.29,5,81,26,8,15,0,1,12,6,No,159
+2025-03-14,104,Paint Bucket 5L,Building Materials,3M,4492.72,5,140,28,11,5,0,0,3,4,No,190
+2025-06-03,108,Garden Hose,Building Materials,Ingco,4568.18,2,87,52,12,5,0,0,6,1,No,273
+2025-02-21,102,Screwdriver Set,Safety Equipment,Hilti,1098.5,16,39,68,12,5,0,0,2,4,Yes,321
+2025-03-09,102,Screwdriver Set,Safety Equipment,Nippon,2710.16,16,174,35,5,15,0,1,3,6,No,0
+2025-09-28,110,Nails Pack,Fasteners,Stanley,4823.87,13,271,31,5,10,0,1,9,6,No,0
+2025-08-04,106,LED Bulb,Gardening,Ingco,356.79,14,217,41,15,15,0,0,8,0,No,233
+2025-09-04,101,Hammer,Gardening,Nippon,3285.45,14,199,56,12,5,0,0,9,3,No,161
+2025-08-10,107,Cement Bag,Paint,3M,188.39,1,60,59,16,15,0,1,8,6,No,420
+2025-06-13,107,Cement Bag,Plumbing,Bosch,4503.22,15,256,71,16,0,0,0,6,4,No,224
+2025-03-31,106,LED Bulb,Gardening,Nippon,1732.13,14,258,63,9,15,0,0,3,0,No,12
+2025-03-31,103,Electric Drill,Building Materials,Ingco,2815.23,18,261,48,12,5,0,0,3,0,No,99
+2025-03-07,106,LED Bulb,Fasteners,Dulux,670.11,8,138,75,15,15,0,0,3,4,No,312
+2025-12-02,107,Cement Bag,Safety Equipment,Hilti,4300.25,5,56,40,3,0,0,0,12,1,No,34
+2025-03-16,104,Paint Bucket 5L,Fasteners,Bosch,4624.17,9,178,31,10,5,0,1,3,6,No,122
+2025-01-31,103,Electric Drill,Fasteners,Nippon,2179.51,15,25,61,6,15,0,0,1,4,Yes,155
+2025-10-13,107,Cement Bag,Plumbing,Dulux,210.27,17,148,59,9,5,0,0,10,0,No,122
+2025-10-17,101,Hammer,Building Materials,Bosch,4846.33,11,42,60,5,0,0,0,10,4,Yes,108
+2025-10-30,108,Garden Hose,Paint,Hilti,2927.14,5,52,39,6,5,0,0,10,3,No,128
+2025-10-26,102,Screwdriver Set,Tools,Ingco,3697.13,12,231,26,6,10,0,1,10,6,No,0
+2025-08-17,103,Electric Drill,Gardening,Bosch,1743.11,9,239,34,14,15,0,1,8,6,No,181
+2025-02-02,105,PVC Pipe,Fasteners,Nippon,4802.17,18,270,33,9,0,0,1,2,6,No,0
+2025-12-05,104,Paint Bucket 5L,Electrical,Makita,4964.87,20,195,46,11,0,0,0,12,4,No,135
+2025-12-06,101,Hammer,Plumbing,Makita,1359.26,20,180,76,12,10,0,1,12,5,No,180
+2025-08-26,102,Screwdriver Set,Fasteners,Dulux,4421.09,16,259,24,10,15,0,0,8,1,No,41
+2025-09-11,104,Paint Bucket 5L,Fasteners,Nippon,1641.45,8,254,21,9,0,0,0,9,3,No,16
+2025-08-06,101,Hammer,Fasteners,Dulux,1475.48,16,211,47,8,10,0,0,8,2,No,29
+2025-10-13,106,LED Bulb,Tools,Hilti,1422.87,13,62,74,7,10,0,0,10,0,Yes,148
+2025-11-21,101,Hammer,Tools,Nippon,4380.52,9,174,22,13,15,0,0,11,4,No,216
+2025-09-21,106,LED Bulb,Safety Equipment,Bosch,4252.04,4,8,36,10,0,0,1,9,6,Yes,292
+2025-03-08,108,Garden Hose,Electrical,Nippon,2650.55,15,281,42,11,10,0,1,3,5,No,49
+2025-04-07,110,Nails Pack,Tools,Stanley,4134.02,2,104,75,14,0,0,0,4,0,No,316
+2025-11-30,108,Garden Hose,Electrical,Stanley,3237.23,20,128,21,14,0,0,1,11,6,No,292
+2025-10-25,107,Cement Bag,Tools,Bosch,619.85,5,270,65,18,10,0,1,10,5,No,270
+2025-08-28,105,PVC Pipe,Electrical,Bosch,889.39,19,51,79,10,5,0,0,8,3,Yes,249
+2025-03-13,103,Electric Drill,Tools,3M,3062.0,11,230,27,8,5,0,0,3,3,No,10
+2025-01-09,110,Nails Pack,Building Materials,Makita,3465.1,10,165,64,12,5,0,0,1,3,No,195
+2025-04-08,104,Paint Bucket 5L,Tools,Nippon,1517.05,17,110,45,10,5,0,0,4,1,No,190
+2025-06-25,102,Screwdriver Set,Electrical,Stanley,4153.07,15,12,28,9,5,0,0,6,2,Yes,258
+2025-05-01,103,Electric Drill,Gardening,Bosch,2727.34,15,198,20,9,15,0,0,5,3,No,72
+2025-05-02,103,Electric Drill,Plumbing,Stanley,3621.16,4,185,63,7,0,0,0,5,4,No,25
+2025-06-24,101,Hammer,Paint,Dulux,2547.79,5,131,71,5,5,0,0,6,1,No,19
+2025-12-06,102,Screwdriver Set,Electrical,Makita,1097.32,9,186,72,9,0,0,1,12,5,No,84
+2025-04-07,102,Screwdriver Set,Building Materials,Stanley,2540.08,19,165,48,10,15,0,0,4,0,No,135
+2025-03-16,106,LED Bulb,Safety Equipment,Nippon,969.66,4,3,74,17,0,0,1,3,6,Yes,507
+2025-03-09,110,Nails Pack,Safety Equipment,Ingco,1149.46,11,73,38,4,0,0,1,3,6,No,47
+2025-12-12,102,Screwdriver Set,Plumbing,3M,3578.67,8,19,32,10,5,0,0,12,4,Yes,281
+2025-10-26,105,PVC Pipe,Building Materials,Stanley,4059.97,20,27,38,6,5,0,1,10,6,Yes,153
+2025-11-09,108,Garden Hose,Gardening,Dulux,1646.7,19,289,52,5,0,0,1,11,6,No,0
+2025-07-01,108,Garden Hose,Paint,3M,2197.29,15,155,29,11,5,0,0,7,1,No,175
+2025-11-21,103,Electric Drill,Safety Equipment,Ingco,129.03,13,199,39,9,10,0,0,11,4,No,71
+2025-04-06,108,Garden Hose,Building Materials,Hilti,2136.83,8,85,57,10,5,0,1,4,6,No,215
+2025-07-22,109,Safety Gloves,Plumbing,3M,1262.55,15,90,34,8,0,0,0,7,1,No,150
+2025-07-19,109,Safety Gloves,Plumbing,Bosch,3402.89,1,59,53,7,15,0,1,7,5,No,151
+2025-09-06,103,Electric Drill,Paint,Nippon,3354.22,1,32,63,9,10,0,1,9,5,Yes,238
+2025-02-27,106,LED Bulb,Tools,Stanley,3488.38,17,286,63,14,15,0,0,2,3,No,134
+2025-09-06,105,PVC Pipe,Electrical,Nippon,2003.8,16,151,77,9,15,0,1,9,5,No,119
+2025-09-10,108,Garden Hose,Electrical,Makita,1492.11,8,70,33,7,15,1,0,9,2,No,140
+2025-08-06,102,Screwdriver Set,Electrical,Hilti,2016.35,16,212,66,4,0,0,0,8,2,No,0
+2025-04-18,110,Nails Pack,Plumbing,3M,3036.88,14,129,70,9,0,0,0,4,4,No,141
+2025-09-05,104,Paint Bucket 5L,Paint,Nippon,250.8,5,66,76,11,10,0,0,9,4,Yes,264
+2025-05-17,102,Screwdriver Set,Tools,Stanley,595.04,20,283,46,11,10,0,1,5,5,No,47
+2025-02-25,109,Safety Gloves,Paint,3M,1870.21,10,190,44,7,5,0,0,2,1,No,20
+2025-03-29,109,Safety Gloves,Gardening,Dulux,2146.43,12,157,47,12,0,0,1,3,5,No,203
+2025-12-25,105,PVC Pipe,Fasteners,Nippon,1340.72,6,256,56,7,0,0,0,12,3,No,0
+2025-06-22,108,Garden Hose,Electrical,Ingco,723.19,19,212,50,9,15,0,1,6,6,No,58
+2025-10-17,110,Nails Pack,Fasteners,Bosch,1389.91,5,5,72,10,5,0,0,10,4,Yes,295
+2025-01-12,102,Screwdriver Set,Tools,Dulux,1761.91,14,269,63,5,0,0,1,1,6,No,0
+2025-04-22,107,Cement Bag,Safety Equipment,3M,1821.09,13,52,64,13,15,0,0,4,1,Yes,338
+2025-02-10,101,Hammer,Fasteners,3M,2235.66,14,105,54,9,5,0,0,2,0,No,165
+2025-12-25,105,PVC Pipe,Tools,Stanley,1006.14,17,15,36,5,10,1,0,12,3,Yes,135
+2025-03-19,109,Safety Gloves,Fasteners,Stanley,2595.19,5,19,67,11,15,0,0,3,2,Yes,311
+2025-01-08,110,Nails Pack,Gardening,Dulux,213.42,9,57,48,10,10,0,0,1,2,No,243
+2025-03-14,109,Safety Gloves,Building Materials,Makita,3845.19,15,102,69,10,0,0,0,3,4,No,198
+2025-11-23,104,Paint Bucket 5L,Plumbing,Ingco,2805.59,4,13,24,13,10,0,1,11,6,Yes,377
+2025-09-02,110,Nails Pack,Tools,Dulux,2657.48,17,198,35,6,10,0,0,9,1,No,0
+2025-04-24,102,Screwdriver Set,Gardening,Stanley,526.7,17,6,51,8,5,0,0,4,3,Yes,234
+2025-08-11,107,Cement Bag,Building Materials,Stanley,2352.04,12,69,67,7,10,0,0,8,0,No,141
+2025-07-05,103,Electric Drill,Fasteners,Ingco,4843.3,18,202,51,12,15,0,1,7,5,No,158
+2025-08-24,103,Electric Drill,Plumbing,Makita,1712.13,5,183,46,9,0,1,1,8,6,No,87
+2025-10-25,103,Electric Drill,Gardening,Dulux,140.5,9,103,49,13,0,0,1,10,5,No,287
+2025-08-23,102,Screwdriver Set,Safety Equipment,Bosch,3938.35,8,124,44,8,5,0,1,8,5,No,116
+2025-02-12,101,Hammer,Paint,3M,505.07,9,169,37,6,10,0,0,2,2,No,11
+2025-02-13,106,LED Bulb,Tools,Stanley,4961.99,19,176,41,11,5,0,0,2,3,No,154
+2025-05-04,104,Paint Bucket 5L,Plumbing,Stanley,2533.56,6,232,49,9,10,0,1,5,6,No,38
+2025-03-11,104,Paint Bucket 5L,Fasteners,Dulux,2578.14,18,13,40,11,15,0,0,3,1,Yes,317
+2025-03-08,107,Cement Bag,Building Materials,Ingco,2148.2,16,174,69,11,15,0,1,3,5,No,156
+2025-08-31,107,Cement Bag,Gardening,Bosch,121.36,4,238,61,16,5,0,1,8,6,No,242
+2025-06-27,107,Cement Bag,Tools,Hilti,4583.16,10,43,77,15,0,0,0,6,4,Yes,407
+2025-10-12,103,Electric Drill,Safety Equipment,Bosch,135.64,10,259,75,4,0,0,1,10,6,No,0
+2025-02-25,101,Hammer,Safety Equipment,Ingco,1005.1,20,55,51,9,5,0,0,2,1,No,215
+2025-05-08,105,PVC Pipe,Plumbing,Ingco,1561.15,3,199,33,11,5,0,0,5,3,No,131
+2025-03-24,106,LED Bulb,Fasteners,Dulux,4716.95,5,140,78,10,0,0,0,3,0,No,160
+2025-08-10,103,Electric Drill,Tools,Nippon,200.51,19,77,49,9,10,0,1,8,6,No,193
+2025-10-11,109,Safety Gloves,Fasteners,Bosch,3468.13,11,49,21,5,10,0,1,10,5,No,101
+2025-06-22,104,Paint Bucket 5L,Plumbing,Makita,1058.97,5,239,44,11,15,0,1,6,6,No,91
+2025-04-07,105,PVC Pipe,Safety Equipment,Hilti,287.19,15,165,62,11,15,0,0,4,0,No,165
+2025-05-15,103,Electric Drill,Gardening,Stanley,3012.23,3,278,79,11,5,0,0,5,3,No,52
+2025-08-19,110,Nails Pack,Building Materials,Makita,630.62,20,62,57,9,5,1,0,8,1,No,208
+2025-08-26,106,LED Bulb,Fasteners,Nippon,3086.28,13,188,27,11,5,0,0,8,1,No,142
+2025-05-28,108,Garden Hose,Tools,Nippon,2007.41,11,187,76,8,0,0,0,5,2,No,53
+2025-09-06,105,PVC Pipe,Safety Equipment,3M,4331.53,13,178,41,16,10,0,1,9,5,No,302
+2025-09-21,102,Screwdriver Set,Building Materials,Ingco,4144.35,12,279,53,8,5,0,1,9,6,No,0
+2025-10-14,105,PVC Pipe,Fasteners,Bosch,2867.61,4,169,41,8,10,1,0,10,1,No,71
+2025-10-20,104,Paint Bucket 5L,Paint,Ingco,4272.27,7,251,34,11,0,0,0,10,0,No,79
+2025-08-08,108,Garden Hose,Fasteners,Makita,2645.56,15,88,68,9,10,0,0,8,4,No,182
+2025-12-23,104,Paint Bucket 5L,Paint,Bosch,3000.38,10,67,48,12,0,0,0,12,1,No,293
+2025-07-28,110,Nails Pack,Plumbing,Hilti,3077.77,5,288,60,9,10,0,0,7,0,No,0
+2025-05-20,104,Paint Bucket 5L,Gardening,Ingco,3499.84,13,172,62,11,5,0,0,5,1,No,158
+2025-08-19,109,Safety Gloves,Fasteners,Nippon,3822.63,3,286,31,13,15,0,0,8,1,No,104
+2025-05-23,106,LED Bulb,Plumbing,Ingco,3512.89,15,272,54,9,15,0,0,5,4,No,0
+2025-09-12,105,PVC Pipe,Building Materials,3M,1335.69,1,271,31,7,5,0,0,9,4,No,0
+2025-03-13,101,Hammer,Safety Equipment,Makita,4763.65,8,179,77,13,0,0,0,3,3,No,211
+2025-09-11,107,Cement Bag,Gardening,Makita,331.89,8,19,28,11,15,0,0,9,3,Yes,311
+2025-11-02,103,Electric Drill,Fasteners,Ingco,2540.84,11,205,36,11,0,0,1,11,6,No,125
+2025-12-12,109,Safety Gloves,Gardening,3M,511.1,16,186,25,3,10,0,0,12,4,No,0
+2025-12-24,104,Paint Bucket 5L,Building Materials,Ingco,4083.35,5,86,23,8,10,0,0,12,2,No,154
+2025-12-12,104,Paint Bucket 5L,Fasteners,Makita,1597.32,2,195,75,10,0,0,0,12,4,No,105
+2025-01-02,110,Nails Pack,Safety Equipment,Bosch,661.21,20,245,38,8,10,0,0,1,3,No,0
+2025-10-30,102,Screwdriver Set,Electrical,Nippon,4183.04,12,245,36,9,0,0,0,10,3,No,25
+2025-04-04,108,Garden Hose,Fasteners,Nippon,3541.85,9,273,21,6,5,0,0,4,4,No,0
+2025-08-11,102,Screwdriver Set,Paint,3M,2143.56,6,25,53,12,15,0,0,8,0,Yes,335
+2025-07-15,104,Paint Bucket 5L,Plumbing,Stanley,4645.05,8,53,33,8,15,0,0,7,1,No,187
+2025-06-20,109,Safety Gloves,Building Materials,Nippon,4986.13,12,61,65,8,0,0,0,6,4,Yes,179
+2025-04-21,103,Electric Drill,Safety Equipment,Bosch,1085.75,16,191,47,15,10,0,0,4,0,No,259
+2025-05-16,107,Cement Bag,Tools,Ingco,3711.28,13,264,53,8,10,0,0,5,4,No,0
+2025-11-30,106,LED Bulb,Paint,3M,1404.54,16,151,26,10,0,0,1,11,6,No,149
+2025-01-30,107,Cement Bag,Safety Equipment,3M,3620.39,2,140,42,10,10,0,0,1,3,No,160
+2025-03-07,103,Electric Drill,Electrical,Ingco,3754.73,9,117,24,9,5,0,0,3,4,No,153
+2025-04-17,103,Electric Drill,Building Materials,Dulux,4032.05,19,56,78,6,5,0,0,4,3,Yes,124
+2025-12-17,103,Electric Drill,Fasteners,Bosch,4090.07,17,69,47,10,0,0,0,12,2,No,231
+2025-12-07,101,Hammer,Paint,Ingco,874.65,9,1,43,6,5,0,1,12,6,Yes,179
+2025-11-14,108,Garden Hose,Tools,Hilti,809.08,4,108,79,13,5,0,0,11,4,No,282
+2025-11-02,102,Screwdriver Set,Fasteners,Makita,4722.16,3,111,20,10,5,0,1,11,6,No,189
+2025-10-17,110,Nails Pack,Safety Equipment,Hilti,3157.06,5,135,74,11,0,0,0,10,4,No,195
+2025-06-02,110,Nails Pack,Electrical,Bosch,4324.55,6,166,64,15,0,0,0,6,0,No,284
+2025-08-05,110,Nails Pack,Plumbing,Nippon,4808.43,16,54,39,11,15,1,0,8,1,No,276
+2025-07-08,107,Cement Bag,Building Materials,Ingco,1324.99,19,137,65,10,10,0,0,7,1,No,163
+2025-03-08,103,Electric Drill,Gardening,Makita,2974.98,12,284,46,13,15,0,1,3,5,No,106
+2025-06-12,103,Electric Drill,Paint,Dulux,3125.04,12,68,29,9,10,0,0,6,3,No,202
+2025-12-02,107,Cement Bag,Building Materials,Stanley,2606.19,13,94,60,12,15,0,0,12,1,No,266
+2025-08-14,110,Nails Pack,Electrical,Hilti,408.56,6,275,52,7,15,0,0,8,3,No,0
+2025-02-09,103,Electric Drill,Safety Equipment,Stanley,3240.19,12,46,24,8,0,0,1,2,6,No,194
+2025-02-08,103,Electric Drill,Safety Equipment,Bosch,1659.45,18,274,33,7,5,0,1,2,5,No,0
+2025-03-09,101,Hammer,Gardening,Stanley,1905.96,6,64,64,14,15,0,1,3,6,No,356
+2025-03-07,106,LED Bulb,Plumbing,Bosch,1499.57,12,27,62,8,15,0,0,3,4,Yes,213
+2025-07-30,107,Cement Bag,Paint,Hilti,3146.94,3,135,32,11,5,0,0,7,2,No,195
+2025-08-04,102,Screwdriver Set,Building Materials,Bosch,128.28,1,117,45,9,15,0,0,8,0,No,153
+2025-05-19,102,Screwdriver Set,Plumbing,Nippon,3413.09,3,114,32,12,0,0,0,5,0,No,246
+2025-04-15,101,Hammer,Building Materials,Bosch,100.26,7,46,23,17,15,0,0,4,1,No,464
+2025-11-18,109,Safety Gloves,Plumbing,Dulux,176.65,3,139,71,14,5,0,0,11,1,No,281
+2025-05-13,106,LED Bulb,Plumbing,Hilti,849.91,15,142,26,10,10,0,0,5,1,No,158
+2025-03-27,102,Screwdriver Set,Fasteners,Nippon,717.67,6,109,69,14,0,0,0,3,3,No,311
+2025-01-31,107,Cement Bag,Tools,Bosch,3534.01,13,9,60,16,5,0,0,1,4,Yes,471
+2025-06-03,101,Hammer,Paint,Bosch,4001.31,15,290,38,11,0,0,0,6,1,No,40
+2025-01-26,107,Cement Bag,Gardening,Dulux,1310.12,12,195,52,13,15,0,1,1,6,No,195
+2025-06-01,101,Hammer,Paint,Dulux,1527.78,13,267,30,13,10,0,1,6,6,No,123
+2025-10-31,107,Cement Bag,Safety Equipment,Hilti,4462.48,14,258,22,9,5,0,0,10,4,No,12
+2025-04-19,102,Screwdriver Set,Plumbing,Makita,3811.57,17,106,59,7,0,0,1,4,5,No,104
+2025-12-26,107,Cement Bag,Safety Equipment,Hilti,192.52,9,276,63,5,15,0,0,12,4,No,0
+2025-04-25,104,Paint Bucket 5L,Tools,Dulux,1740.2,12,213,47,12,15,0,0,4,4,No,147
+2025-04-17,106,LED Bulb,Paint,3M,2513.36,16,109,56,15,15,0,0,4,3,No,341
+2025-04-16,103,Electric Drill,Electrical,Nippon,1076.97,16,123,42,8,0,0,0,4,2,No,117
+2025-05-26,106,LED Bulb,Gardening,Dulux,1317.83,13,114,45,8,15,0,0,5,0,No,126
+2025-10-28,109,Safety Gloves,Tools,Bosch,1286.76,13,14,78,6,0,0,0,10,1,Yes,166
+2025-12-31,103,Electric Drill,Plumbing,Stanley,3468.21,20,127,38,11,15,0,0,12,2,No,203
+2025-10-10,101,Hammer,Plumbing,Ingco,1552.56,6,13,69,8,5,0,0,10,4,Yes,227
+2025-09-26,101,Hammer,Paint,Hilti,1617.85,10,55,60,10,0,0,0,9,4,Yes,245
+2025-08-06,102,Screwdriver Set,Safety Equipment,3M,4884.86,2,37,56,11,5,0,0,8,2,Yes,293
+2025-03-17,105,PVC Pipe,Safety Equipment,Makita,3635.41,4,35,48,5,10,0,0,3,0,Yes,115
+2025-04-17,109,Safety Gloves,Paint,Bosch,3093.64,3,227,69,13,0,0,0,4,3,No,163
+2025-07-12,106,LED Bulb,Safety Equipment,3M,2608.91,17,276,35,10,0,0,1,7,5,No,24
+2025-02-09,105,PVC Pipe,Building Materials,Hilti,4748.65,1,158,40,5,10,0,1,2,6,No,0
+2025-04-18,110,Nails Pack,Paint,3M,4248.02,5,95,45,10,5,1,0,4,4,No,205
+2025-12-09,109,Safety Gloves,Electrical,Bosch,2518.3,12,67,56,14,5,0,0,12,1,No,353
+2025-01-19,106,LED Bulb,Safety Equipment,Nippon,1814.32,17,179,43,12,15,0,1,1,6,No,181
+2025-02-16,108,Garden Hose,Safety Equipment,Makita,589.67,2,26,71,13,0,0,1,2,6,Yes,364
+2025-09-24,104,Paint Bucket 5L,Tools,Stanley,1127.34,7,81,22,14,5,0,0,9,2,No,339
+2025-02-08,106,LED Bulb,Paint,Hilti,993.44,12,262,69,16,10,0,1,2,5,No,218
+2025-07-04,101,Hammer,Fasteners,Bosch,1754.78,13,111,52,13,15,0,0,7,4,No,279
+2025-09-15,102,Screwdriver Set,Tools,Hilti,2261.89,9,220,51,12,10,0,0,9,0,No,140
+2025-09-15,103,Electric Drill,Gardening,Bosch,953.5,7,131,75,11,15,0,0,9,0,No,199
+2025-03-29,101,Hammer,Paint,Hilti,2753.38,3,217,59,11,15,0,1,3,5,No,113
+2025-05-05,105,PVC Pipe,Tools,Hilti,4394.46,1,186,63,7,15,0,0,5,0,No,24
+2025-09-13,108,Garden Hose,Tools,Nippon,980.08,11,210,44,12,0,0,1,9,5,No,150
+2025-09-23,106,LED Bulb,Paint,Hilti,2154.32,16,65,33,7,0,0,0,9,1,No,145
+2025-10-19,101,Hammer,Gardening,Nippon,1301.99,4,38,59,11,0,0,1,10,6,Yes,292
+2025-09-24,102,Screwdriver Set,Paint,Makita,4328.11,10,109,46,10,15,0,0,9,2,No,191
+2025-05-25,101,Hammer,Paint,Bosch,4393.94,18,154,28,8,15,0,1,5,6,No,86
+2025-07-10,108,Garden Hose,Tools,Ingco,2932.57,19,6,27,9,15,0,0,7,3,Yes,264
+2025-04-28,107,Cement Bag,Plumbing,3M,4082.51,13,212,72,12,15,0,0,4,0,No,148
+2025-11-02,110,Nails Pack,Fasteners,Makita,2942.19,20,247,41,12,5,0,1,11,6,No,113
+2025-01-16,102,Screwdriver Set,Plumbing,Makita,1503.19,12,3,43,13,15,0,0,1,3,Yes,387
+2025-03-13,104,Paint Bucket 5L,Gardening,Makita,2679.95,20,258,47,9,15,0,0,3,3,No,12
+2025-12-25,103,Electric Drill,Paint,Bosch,154.04,12,125,68,8,5,0,0,12,3,No,115
+2025-09-28,102,Screwdriver Set,Tools,Bosch,2720.52,11,19,68,7,10,1,1,9,6,Yes,191
+2025-03-17,107,Cement Bag,Safety Equipment,Dulux,390.61,10,268,22,8,10,0,0,3,0,No,0
+2025-11-08,105,PVC Pipe,Tools,Ingco,3873.64,5,268,49,11,15,0,1,11,5,No,62
+2025-05-16,109,Safety Gloves,Fasteners,Makita,248.66,20,209,79,10,10,0,0,5,4,No,91
+2025-03-31,101,Hammer,Safety Equipment,Makita,1025.46,19,208,67,12,0,0,0,3,0,No,152
+2025-05-01,104,Paint Bucket 5L,Safety Equipment,Nippon,1552.11,5,111,65,12,0,0,0,5,3,No,249
+2025-12-18,110,Nails Pack,Safety Equipment,Ingco,1990.48,2,12,66,12,10,0,0,12,3,Yes,348
+2025-04-07,109,Safety Gloves,Electrical,Makita,3046.45,6,13,71,11,5,0,0,4,0,Yes,317
+2025-12-23,110,Nails Pack,Paint,Ingco,3984.12,10,15,46,15,10,0,0,12,1,Yes,435
+2025-05-28,108,Garden Hose,Building Materials,Ingco,1839.48,12,288,50,13,5,0,0,5,2,No,102
+2025-01-27,103,Electric Drill,Tools,Nippon,471.67,9,131,23,12,0,0,0,1,0,No,229
+2025-04-21,109,Safety Gloves,Tools,Hilti,2342.46,12,3,24,7,15,0,0,4,0,Yes,207
+2025-04-13,104,Paint Bucket 5L,Plumbing,Bosch,2609.63,15,71,67,9,15,0,1,4,6,No,199
+2025-11-17,101,Hammer,Safety Equipment,Ingco,4431.59,8,174,22,14,5,0,0,11,0,No,246
+2025-08-15,103,Electric Drill,Tools,3M,1526.99,3,162,73,11,0,0,0,8,4,No,168
+2025-03-05,102,Screwdriver Set,Plumbing,Makita,3156.39,11,275,43,5,10,0,0,3,2,No,0
+2025-01-24,109,Safety Gloves,Safety Equipment,Ingco,3581.08,10,106,58,11,10,0,0,1,4,No,224
+2025-05-13,110,Nails Pack,Gardening,Hilti,2377.15,9,53,67,11,15,0,0,5,1,Yes,277
+2025-04-13,103,Electric Drill,Safety Equipment,Nippon,4904.03,4,64,57,6,15,0,1,4,6,No,116
+2025-02-01,110,Nails Pack,Building Materials,Makita,2978.81,12,208,36,6,15,0,1,2,5,No,0
+2025-12-19,108,Garden Hose,Paint,Nippon,1171.83,18,115,61,7,5,0,0,12,4,No,95
+2025-09-29,104,Paint Bucket 5L,Gardening,Dulux,2504.17,3,76,31,8,15,1,0,9,0,No,164
+2025-12-17,107,Cement Bag,Fasteners,3M,4896.76,12,289,42,6,15,0,0,12,2,No,0
+2025-07-30,103,Electric Drill,Fasteners,Hilti,4823.32,14,74,67,6,0,0,0,7,2,No,106
+2025-05-06,106,LED Bulb,Tools,Hilti,202.57,18,264,58,11,0,0,0,5,1,No,66
+2025-08-27,109,Safety Gloves,Gardening,3M,449.48,1,219,63,4,0,0,0,8,2,No,0
+2025-01-31,105,PVC Pipe,Safety Equipment,Stanley,881.01,2,295,38,9,15,0,0,1,4,No,0
+2025-10-07,110,Nails Pack,Safety Equipment,Bosch,666.81,3,92,52,11,0,0,0,10,1,No,238
+2025-04-14,106,LED Bulb,Gardening,Stanley,623.91,1,78,39,10,15,1,0,4,0,No,222
+2025-08-16,101,Hammer,Building Materials,Nippon,454.13,5,90,63,12,0,0,1,8,5,No,270
+2025-07-09,108,Garden Hose,Fasteners,3M,152.39,19,192,78,9,5,0,0,7,2,No,78
+2025-12-25,107,Cement Bag,Paint,Stanley,1625.74,8,64,50,14,15,1,0,12,3,No,356
+2025-10-05,106,LED Bulb,Plumbing,Hilti,3468.12,6,208,49,8,15,0,1,10,6,No,32
+2025-12-15,109,Safety Gloves,Building Materials,Makita,349.18,20,133,22,7,0,0,0,12,0,No,77
+2025-01-21,105,PVC Pipe,Building Materials,Dulux,808.12,2,67,41,13,0,0,0,1,1,No,323
+2025-01-31,103,Electric Drill,Safety Equipment,Nippon,3859.12,6,261,67,12,5,0,0,1,4,No,99
+2025-12-02,105,PVC Pipe,Safety Equipment,Dulux,3661.63,13,285,77,12,15,1,0,12,1,No,75
+2025-03-10,102,Screwdriver Set,Building Materials,Hilti,415.59,19,75,28,3,10,1,0,3,0,No,15
+2025-11-01,109,Safety Gloves,Gardening,Ingco,2647.99,15,60,60,13,15,0,1,11,5,No,330
+2025-11-05,102,Screwdriver Set,Safety Equipment,Makita,3892.29,1,121,58,13,10,0,0,11,2,No,269
+2025-03-10,110,Nails Pack,Building Materials,Stanley,3712.42,3,283,74,12,10,0,0,3,0,No,77
+2025-02-03,109,Safety Gloves,Tools,Nippon,611.42,13,276,49,12,5,0,0,2,0,No,84
+2025-05-18,108,Garden Hose,Fasteners,Stanley,450.36,6,162,38,9,15,0,1,5,6,No,108
+2025-12-23,106,LED Bulb,Safety Equipment,3M,3017.24,9,172,59,14,15,0,0,12,1,No,248
+2025-01-05,110,Nails Pack,Electrical,Makita,875.38,18,44,42,12,15,0,1,1,6,No,316
+2025-03-20,108,Garden Hose,Electrical,Nippon,1450.23,17,279,43,11,5,0,0,3,3,No,51
+2025-08-31,107,Cement Bag,Electrical,Nippon,2555.13,2,261,21,8,0,0,1,8,6,No,0
+2025-07-11,105,PVC Pipe,Safety Equipment,Dulux,3394.09,2,262,48,13,15,0,0,7,4,No,128
+2025-04-06,104,Paint Bucket 5L,Plumbing,Makita,1083.02,17,175,29,8,5,0,1,4,6,No,65
+2025-06-02,105,PVC Pipe,Electrical,Makita,3525.62,11,251,58,15,5,0,0,6,0,No,199
+2025-03-20,102,Screwdriver Set,Fasteners,Nippon,3244.21,5,35,78,13,0,0,0,3,3,Yes,355
+2025-04-12,106,LED Bulb,Safety Equipment,3M,1859.89,16,43,46,11,10,0,1,4,5,Yes,287
+2025-07-07,102,Screwdriver Set,Building Materials,Nippon,2936.69,16,82,32,9,0,0,0,7,0,No,188
+2025-09-12,106,LED Bulb,Safety Equipment,3M,3282.71,15,129,66,9,5,0,0,9,4,No,141
+2025-05-08,104,Paint Bucket 5L,Electrical,3M,2614.87,2,94,42,11,15,0,0,5,3,No,236
+2025-05-08,101,Hammer,Safety Equipment,Ingco,3636.08,6,174,22,10,5,0,0,5,3,No,126
+2025-02-27,110,Nails Pack,Plumbing,3M,149.35,12,194,32,8,5,0,0,2,3,No,46
+2025-12-13,103,Electric Drill,Gardening,3M,1663.47,19,178,59,13,15,0,1,12,5,No,212
+2025-03-01,110,Nails Pack,Paint,3M,2662.61,3,115,71,5,5,0,1,3,5,No,35
+2025-12-29,103,Electric Drill,Safety Equipment,Hilti,3392.27,2,45,31,15,10,0,0,12,0,No,405
+2025-01-23,110,Nails Pack,Gardening,Ingco,2309.43,3,17,41,8,0,0,0,1,3,Yes,223
+2025-04-27,107,Cement Bag,Plumbing,Dulux,4312.36,14,177,56,7,10,0,1,4,6,No,33
+2025-06-12,103,Electric Drill,Building Materials,Nippon,185.41,14,280,30,12,10,0,0,6,3,No,80
+2025-02-26,109,Safety Gloves,Paint,Nippon,3985.75,6,260,27,6,5,0,0,2,2,No,0
+2025-05-15,106,LED Bulb,Paint,Nippon,777.55,10,59,55,7,15,0,0,5,3,No,151
+2025-01-25,105,PVC Pipe,Building Materials,Hilti,778.05,16,228,25,12,0,0,1,1,5,No,132
+2025-10-23,103,Electric Drill,Plumbing,Hilti,2199.97,7,254,22,12,10,0,0,10,3,No,106
+2025-09-17,106,LED Bulb,Gardening,Hilti,3225.33,5,181,33,8,15,0,0,9,2,No,59
+2025-12-12,107,Cement Bag,Tools,Makita,1603.29,10,226,77,8,0,0,0,12,4,No,14
+2025-12-04,102,Screwdriver Set,Building Materials,Makita,3865.49,3,256,36,7,5,0,0,12,3,No,0
+2025-11-28,109,Safety Gloves,Gardening,Dulux,1067.28,13,133,72,7,5,0,0,11,4,No,77
+2025-10-15,105,PVC Pipe,Plumbing,Ingco,4931.54,13,119,38,8,5,0,0,10,2,No,121
+2025-04-07,108,Garden Hose,Fasteners,Bosch,2713.63,5,123,72,10,10,1,0,4,0,No,177
+2025-11-12,101,Hammer,Plumbing,Bosch,2110.32,9,104,55,3,5,0,0,11,2,No,0
+2025-06-23,102,Screwdriver Set,Building Materials,Makita,3270.85,7,136,39,1,10,0,0,6,0,No,0
+2025-06-10,109,Safety Gloves,Tools,Bosch,2635.27,4,0,79,10,10,0,0,6,1,Yes,300
+2025-03-04,104,Paint Bucket 5L,Paint,3M,3262.19,4,131,69,13,10,0,0,3,1,No,259
+2025-03-12,101,Hammer,Gardening,3M,3411.48,2,134,61,11,15,0,0,3,2,No,196
+2025-10-12,105,PVC Pipe,Building Materials,Stanley,3009.38,7,223,46,12,15,0,1,10,6,No,137
+2025-10-31,101,Hammer,Gardening,Stanley,1537.64,2,152,22,14,15,0,0,10,4,No,268
+2025-07-22,106,LED Bulb,Electrical,Dulux,2558.39,6,245,35,8,15,0,0,7,1,No,0
+2025-10-13,105,PVC Pipe,Fasteners,Hilti,4972.81,17,239,21,11,10,0,0,10,0,No,91
+2025-12-06,105,PVC Pipe,Gardening,3M,2105.79,15,105,41,15,0,0,1,12,5,No,345
+2025-12-21,108,Garden Hose,Safety Equipment,Hilti,682.38,11,31,35,7,10,0,1,12,6,Yes,179
+2025-11-28,110,Nails Pack,Gardening,3M,4309.03,20,80,60,12,0,0,0,11,4,No,280
+2025-11-29,101,Hammer,Tools,Ingco,1901.52,10,70,28,11,5,0,1,11,5,No,260
+2025-04-12,105,PVC Pipe,Electrical,Hilti,4867.18,8,129,27,14,10,0,1,4,5,No,291
+2025-06-09,104,Paint Bucket 5L,Safety Equipment,Makita,1746.25,18,261,71,6,15,0,0,6,0,No,0
+2025-11-16,102,Screwdriver Set,Plumbing,Dulux,4893.79,19,36,27,12,0,0,1,11,6,No,324
+2025-02-22,104,Paint Bucket 5L,Fasteners,Makita,269.07,15,17,76,8,10,0,1,2,5,Yes,223
+2025-11-13,102,Screwdriver Set,Paint,Bosch,1390.48,15,214,44,7,15,0,0,11,3,No,0
+2025-02-18,103,Electric Drill,Paint,Stanley,2150.04,7,101,41,11,0,0,0,2,1,No,229
+2025-08-27,102,Screwdriver Set,Safety Equipment,3M,4687.12,3,60,31,7,15,0,0,8,2,No,150
+2025-11-06,109,Safety Gloves,Fasteners,Nippon,512.93,16,79,71,13,5,0,0,11,3,No,311
+2025-03-18,104,Paint Bucket 5L,Fasteners,Bosch,591.18,6,27,60,12,0,0,0,3,1,Yes,333
+2025-09-20,103,Electric Drill,Gardening,Hilti,303.82,13,184,51,6,15,0,1,9,5,No,0
+2025-10-25,109,Safety Gloves,Plumbing,Nippon,2018.25,5,143,39,14,10,0,1,10,5,No,277
+2025-08-15,103,Electric Drill,Plumbing,Makita,1913.44,10,185,53,13,0,0,0,8,4,No,205
+2025-09-16,103,Electric Drill,Electrical,Ingco,1393.41,2,14,69,17,0,0,0,9,1,Yes,496
+2025-03-31,106,LED Bulb,Gardening,3M,1592.72,16,252,76,10,10,0,0,3,0,No,48
+2025-05-22,104,Paint Bucket 5L,Safety Equipment,Hilti,2706.36,15,110,20,5,0,0,0,5,3,No,40
+2025-11-23,105,PVC Pipe,Gardening,Makita,4192.62,17,150,79,5,10,0,1,11,6,No,0
+2025-08-30,101,Hammer,Tools,Stanley,1587.2,5,44,35,5,15,0,1,8,5,No,106
+2025-08-17,102,Screwdriver Set,Paint,Makita,4385.08,3,115,32,3,10,0,1,8,6,No,0
+2025-03-29,108,Garden Hose,Electrical,Bosch,1517.83,12,181,53,7,15,0,1,3,5,No,29
+2025-12-10,104,Paint Bucket 5L,Paint,Nippon,2606.04,6,178,66,9,0,1,0,12,2,No,92
+2025-07-27,107,Cement Bag,Gardening,Nippon,1832.6,3,74,77,13,5,0,1,7,6,Yes,316
+2025-03-26,101,Hammer,Fasteners,Bosch,3643.82,19,113,30,12,5,1,0,3,2,No,247
+2025-07-18,110,Nails Pack,Building Materials,Makita,2882.36,8,286,42,10,5,0,0,7,4,No,14
+2025-12-14,104,Paint Bucket 5L,Gardening,Stanley,708.76,18,181,58,11,5,0,1,12,6,No,149
+2025-04-15,105,PVC Pipe,Safety Equipment,Ingco,4770.52,7,174,65,11,10,0,0,4,1,No,156
+2025-11-30,106,LED Bulb,Fasteners,Nippon,3409.48,7,144,61,8,10,0,1,11,6,No,96
+2025-11-01,105,PVC Pipe,Tools,Stanley,2476.85,13,188,59,6,0,0,1,11,5,No,0
+2025-07-12,101,Hammer,Electrical,Ingco,3466.0,7,13,46,12,5,0,1,7,5,Yes,347
+2025-11-14,101,Hammer,Paint,Ingco,2435.46,9,82,63,14,5,0,0,11,4,No,338
+2025-10-24,110,Nails Pack,Plumbing,Ingco,364.45,19,266,50,11,0,0,0,10,4,No,64
+2025-11-09,106,LED Bulb,Safety Equipment,Dulux,168.99,9,135,58,5,10,0,1,11,6,No,15
+2025-04-08,101,Hammer,Electrical,3M,4555.59,14,240,46,12,5,0,0,4,1,No,120
+2025-02-04,106,LED Bulb,Gardening,Makita,4401.38,8,7,57,8,5,0,0,2,1,Yes,233
+2025-12-17,107,Cement Bag,Building Materials,Nippon,4617.58,15,42,78,6,15,0,0,12,2,Yes,138
+2025-05-05,110,Nails Pack,Tools,Dulux,671.35,13,3,76,9,15,0,0,5,0,Yes,267
+2025-10-09,106,LED Bulb,Building Materials,Hilti,4068.57,11,228,39,10,10,0,0,10,3,No,72
+2025-03-03,110,Nails Pack,Tools,Makita,2672.18,5,239,73,10,5,0,0,3,0,No,61
+2025-03-10,106,LED Bulb,Electrical,Nippon,2681.17,10,251,74,8,5,0,0,3,0,No,0
+2025-07-15,104,Paint Bucket 5L,Safety Equipment,Stanley,2957.66,3,140,35,7,10,0,0,7,1,No,70
+2025-07-03,106,LED Bulb,Plumbing,Makita,3437.93,2,146,64,13,5,0,0,7,3,No,244
+2025-04-25,102,Screwdriver Set,Fasteners,Stanley,4056.12,16,242,74,11,10,0,0,4,4,No,88
+2025-12-24,108,Garden Hose,Plumbing,Hilti,2663.34,13,224,21,11,15,0,0,12,2,No,106
+2025-08-04,110,Nails Pack,Fasteners,Stanley,2983.32,15,270,50,10,10,0,0,8,0,No,30
+2025-05-26,106,LED Bulb,Safety Equipment,Stanley,257.11,15,273,39,11,0,0,0,5,0,No,57
+2025-10-14,110,Nails Pack,Tools,3M,3810.75,7,287,79,7,10,1,0,10,1,No,0
+2025-07-25,103,Electric Drill,Paint,Bosch,2485.35,6,48,55,9,5,0,0,7,4,Yes,222
+2025-11-04,106,LED Bulb,Safety Equipment,Hilti,923.89,4,22,60,12,15,0,0,11,1,Yes,338
+2025-02-05,107,Cement Bag,Safety Equipment,Makita,3408.43,4,146,49,11,15,0,0,2,2,No,184

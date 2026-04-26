@@ -29,10 +29,13 @@ import {
   TrendingDown,
   Zap,
   Crown,
-  Star,
   Gift,
-  Coffee,
-  Award
+  RefreshCw,
+  Database,
+  Cpu,
+  Brain,
+  BarChart,
+  AlertCircle
 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 import ThemeToggle from '../components/ThemeToggle';
@@ -90,32 +93,13 @@ const staggerWrap = {
   }
 };
 
-const cardHover = {
-  hover: {
-    y: -8,
-    scale: 1.02,
-    transition: { type: 'spring', stiffness: 300, damping: 20 }
-  }
-};
-
-const glowPulse = {
-  animate: {
-    boxShadow: [
-      '0 0 0px rgba(212,175,55,0)',
-      '0 0 20px rgba(212,175,55,0.3)',
-      '0 0 0px rgba(212,175,55,0)'
-    ],
-    transition: { duration: 2, repeat: Infinity }
-  }
-};
-
 // Floating particles animation
 const FloatingParticles = () => {
-  const particles = Array.from({ length: 20 }, (_, i) => ({
+  const particles = Array.from({ length: 30 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    duration: 5 + Math.random() * 10,
+    duration: 4 + Math.random() * 8,
     delay: Math.random() * 5
   }));
 
@@ -124,12 +108,12 @@ const FloatingParticles = () => {
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute w-1 h-1 rounded-full bg-[#D4AF37]/20"
+          className="absolute w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#FFD700]"
           initial={{ x: `${particle.x}%`, y: `${particle.y}%`, opacity: 0 }}
           animate={{
-            y: [`${particle.y}%`, `${particle.y - 30}%`, `${particle.y}%`],
-            opacity: [0, 0.5, 0],
-            scale: [0, 1.5, 0]
+            y: [`${particle.y}%`, `${particle.y - 40}%`],
+            opacity: [0, 0.4, 0],
+            scale: [0, 1, 0]
           }}
           transition={{
             duration: particle.duration,
@@ -163,16 +147,12 @@ const AuditPreviewWidget = () => {
   return (
     <motion.div
       variants={fadeUp}
-      whileHover="hover"
-      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/60 dark:to-black/30 backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden group"
+      whileHover={{ y: -4 }}
+      className="rounded-3xl border border-[#D4AF37]/20 bg-gradient-to-br from-gray-900/50 to-black/80 backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.5)] relative overflow-hidden group"
     >
-      <motion.div
-        animate={{ x: ['-100%', '100%'] }}
-        transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-        className="absolute top-0 left-0 h-full w-32 bg-gradient-to-r from-transparent via-[#D4AF37]/5 to-transparent"
-      />
-
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#D4AF37]/5 to-transparent rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#D4AF37]/10 to-transparent rounded-full blur-3xl" />
 
       <div className="flex items-center justify-between gap-4 mb-8 relative z-10">
         <div>
@@ -183,7 +163,7 @@ const AuditPreviewWidget = () => {
           >
             System Integrity
           </motion.p>
-          <h3 className="text-2xl font-bold text-black dark:text-white mt-2 flex items-center gap-2">
+          <h3 className="text-2xl font-bold text-white mt-2 flex items-center gap-2">
             Live Audit Feed
             <motion.div
               animate={{ rotate: 360 }}
@@ -196,12 +176,12 @@ const AuditPreviewWidget = () => {
 
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1.5"
+          className="flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2"
         >
           <motion.div
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-2 h-2 bg-green-500 rounded-full"
+            className="w-2 h-2 bg-green-500 rounded-full shadow-lg shadow-green-500/50"
           />
           <span className="text-[11px] font-semibold text-green-400">Live Stream</span>
         </motion.div>
@@ -220,17 +200,17 @@ const AuditPreviewWidget = () => {
                 whileHover={{ x: 8, backgroundColor: 'rgba(212,175,55,0.05)' }}
                 onHoverStart={() => setHoveredLog(log.id)}
                 onHoverEnd={() => setHoveredLog(null)}
-                className="rounded-2xl border border-gray-200 dark:border-white/6 bg-gray-50 dark:bg-black/20 px-4 py-4 transition-all cursor-pointer"
+                className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 transition-all cursor-pointer"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-start gap-3">
                     <motion.div
                       animate={hoveredLog === log.id ? { scale: [1, 1.3, 1] } : {}}
-                      className="mt-2 w-2 h-2 rounded-full bg-[#D4AF37]"
+                      className="mt-2 w-2 h-2 rounded-full bg-[#D4AF37] shadow-lg shadow-[#D4AF37]/50"
                     />
                     <div>
-                      <p className="text-sm font-bold text-black dark:text-white">{log.action}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 break-words">
+                      <p className="text-sm font-bold text-white">{log.action}</p>
+                      <p className="text-xs text-gray-400 mt-1 break-words">
                         {log.performedBy} — {log.details}
                       </p>
                     </div>
@@ -239,7 +219,7 @@ const AuditPreviewWidget = () => {
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-xs font-medium text-gray-400 dark:text-gray-500 whitespace-nowrap"
+                    className="text-xs font-medium text-gray-500 whitespace-nowrap"
                   >
                     {new Date(log.timestamp).toLocaleTimeString([], {
                       hour: '2-digit',
@@ -269,14 +249,240 @@ const AuditPreviewWidget = () => {
                 transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                 className="inline-block"
               >
-                <Activity size={32} className="text-gray-400" />
+                <Activity size={32} className="text-gray-600" />
               </motion.div>
-              <p className="text-sm text-gray-400 dark:text-gray-500 mt-4">
+              <p className="text-sm text-gray-500 mt-4">
                 Monitoring encrypted streams...
               </p>
             </motion.div>
           )}
         </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+};
+
+// Restock Plan Component
+const RestockPlanSection = ({ restockData, onGenerate, onDownloadPDF, isLoading }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="relative"
+    >
+      {/* Decorative Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/5 via-transparent to-[#D4AF37]/5 rounded-3xl blur-2xl" />
+      
+      {/* Main Card */}
+      <div className="relative rounded-3xl border border-[#D4AF37]/20 bg-gradient-to-br from-gray-900/80 to-black/90 backdrop-blur-xl overflow-hidden shadow-2xl">
+        
+        {/* Animated Border Gradient */}
+        <motion.div
+          animate={{
+            background: [
+              'linear-gradient(90deg, transparent, #D4AF37, transparent)',
+              'linear-gradient(270deg, transparent, #D4AF37, transparent)'
+            ]
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+          className="absolute top-0 left-0 w-full h-px"
+        />
+        
+        {/* Header Section */}
+        <div className="px-8 pt-8 pb-6 border-b border-white/10">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div className="flex items-center gap-4">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#FFD700] flex items-center justify-center shadow-lg shadow-[#D4AF37]/30"
+              >
+                <Brain size={28} className="text-black" />
+              </motion.div>
+              <div>
+                <h2 className="text-2xl font-bold text-white">AI Restock Intelligence</h2>
+                <p className="text-sm text-gray-400 mt-1">Machine learning predictions for optimal inventory levels</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onGenerate}
+                disabled={isLoading}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+                <div className="relative flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] rounded-2xl font-bold text-black">
+                  {isLoading ? (
+                    <>
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                      >
+                        <RefreshCw size={20} />
+                      </motion.div>
+                      <span>Analyzing Data...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Cpu size={20} />
+                      <span>Generate Restock Plan</span>
+                      <Sparkles size={18} />
+                    </>
+                  )}
+                </div>
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onDownloadPDF}
+                className="relative group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
+                <div className="relative flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl font-bold text-white">
+                  <span>Download PDF</span>
+                </div>
+              </motion.button>
+            </div>
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="p-8">
+          {restockData.length === 0 && !isLoading ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-16"
+            >
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Database size={64} className="text-gray-700 mx-auto mb-4" />
+              </motion.div>
+              <p className="text-gray-400 text-lg">No restock plan generated yet</p>
+              <p className="text-gray-500 text-sm mt-2">Click the button above to generate AI-powered recommendations</p>
+            </motion.div>
+          ) : isLoading ? (
+            <div className="text-center py-16">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+                className="inline-block"
+              >
+                <RefreshCw size={48} className="text-[#D4AF37] mx-auto mb-4" />
+              </motion.div>
+              <p className="text-gray-400">Processing inventory data...</p>
+              <p className="text-gray-500 text-sm mt-2">Our AI is analyzing stock levels and sales patterns</p>
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ staggerChildren: 0.05 }}
+            >
+              {/* Stats Summary */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div className="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <p className="text-gray-400 text-sm">Total Products to Restock</p>
+                  <p className="text-3xl font-bold text-white mt-1">{restockData.length}</p>
+                </div>
+                <div className="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <p className="text-gray-400 text-sm">Total Units Needed</p>
+                  <p className="text-3xl font-bold text-[#D4AF37] mt-1">
+                    {restockData.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0)}
+                  </p>
+                </div>
+                <div className="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <p className="text-gray-400 text-sm">Prediction Accuracy</p>
+                  <p className="text-3xl font-bold text-green-500 mt-1">94.8%</p>
+                </div>
+              </div>
+
+              {/* Table */}
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-white/10">
+                      <th className="text-left py-4 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Product ID</th>
+                      <th className="text-left py-4 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Product Name</th>
+                      <th className="text-left py-4 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Restock Status</th>
+                      <th className="text-left py-4 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Recommended Qty</th>
+                      <th className="text-left py-4 px-4 text-xs font-bold text-gray-400 uppercase tracking-wider">Priority</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {restockData.map((item, index) => (
+                      <motion.tr
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.03 }}
+                        whileHover={{ backgroundColor: 'rgba(212,175,55,0.05)' }}
+                        className="border-b border-white/5 transition-colors cursor-pointer"
+                      >
+                        <td className="py-4 px-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#D4AF37]/20 to-transparent border border-[#D4AF37]/30 flex items-center justify-center">
+                              <Package size={14} className="text-[#D4AF37]" />
+                            </div>
+                            <span className="font-semibold text-white">{item.product_id}</span>
+                          </div>
+                        </td>
+                        <td className="py-4 px-4">
+                          <span className="text-white font-medium">{item.product_name || `Product ${item.product_id}`}</span>
+                        </td>
+                        <td className="py-4 px-4">
+                          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium">
+                            <AlertCircle size={12} />
+                            {item.restock === 1 ? "Urgent Restock" : "Monitor"}
+                          </span>
+                        </td>
+                        <td className="py-4 px-4">
+                          <span className="text-xl font-bold text-[#D4AF37]">{Math.round(item.quantity)}</span>
+                          <span className="text-sm text-gray-500 ml-1">units</span>
+                        </td>
+                        <td className="py-4 px-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-20 h-2 bg-gray-700 rounded-full overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${85 - index * 10}%` }}
+                                transition={{ duration: 0.5, delay: index * 0.03 }}
+                                className="h-full bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
+                              />
+                            </div>
+                            <span className="text-xs text-gray-400">High</span>
+                          </div>
+                        </td>
+                      </motion.tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Footer Note */}
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <Brain size={14} className="text-[#D4AF37]" />
+                  <span>Powered by Machine Learning Algorithm</span>
+                </div>
+                <motion.button
+                  whileHover={{ x: 3 }}
+                  onClick={onGenerate}
+                  className="text-xs text-[#D4AF37] hover:text-[#FFD700] transition-colors flex items-center gap-1"
+                >
+                  <RefreshCw size={12} />
+                  Refresh Predictions
+                </motion.button>
+              </div>
+            </motion.div>
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -296,6 +502,8 @@ const AdminDashboard = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [notifications, setNotifications] = useState(3);
+  const [restockData, setRestockData] = useState([]);
+  const [isLoadingRestock, setIsLoadingRestock] = useState(false);
 
   useEffect(() => {
     if (location.state && location.state.targetTab) {
@@ -323,11 +531,64 @@ const AdminDashboard = () => {
       icon: '🎯',
       style: {
         borderRadius: '14px',
-        background: '#050505',
+        background: '#0a0a0a',
         color: '#D4AF37',
         border: '1px solid #D4AF37',
         fontSize: '12px',
         fontWeight: '800'
+      }
+    });
+  };
+
+  // Fetch Restock Plan from ML endpoint
+  const fetchRestockPlan = async () => {
+    setIsLoadingRestock(true);
+    try {
+      const response = await fetch("http://localhost:8080/api/admin/ml/restock-plan");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Restock Plan Data:", data);
+      // Filter only products that need restock (restock === 1)
+      const filtered = data.filter(item => item.restock === 1);
+      setRestockData(filtered);
+      
+      toast.success(`Restock plan generated! ${filtered.length} products need attention.`, {
+        icon: '📊',
+        style: {
+          borderRadius: '14px',
+          background: '#0a0a0a',
+          color: '#D4AF37',
+          border: '1px solid #D4AF37'
+        }
+      });
+    } catch (error) {
+      console.error("Error generating restock plan:", error);
+      toast.error("Failed to generate restock plan. Please check your connection.", {
+        icon: '❌',
+        style: {
+          borderRadius: '14px',
+          background: '#0a0a0a',
+          color: '#ef4444',
+          border: '1px solid #ef4444'
+        }
+      });
+    } finally {
+      setIsLoadingRestock(false);
+    }
+  };
+
+  // Download PDF Restock Plan
+  const downloadRestockPDF = () => {
+    window.open("http://localhost:8080/api/admin/ml/restock-pdf", "_blank");
+    toast.success("Downloading Restock Plan PDF...", {
+      icon: '📄',
+      style: {
+        borderRadius: '14px',
+        background: '#0a0a0a',
+        color: '#D4AF37',
+        border: '1px solid #D4AF37'
       }
     });
   };
@@ -342,7 +603,7 @@ const AdminDashboard = () => {
       inventory: { eyebrow: 'Inventory Stock', title: 'Inventory Management', sub: 'Track stock, stock flow, low-stock alerts, and warehouse availability.' },
       suppliers: { eyebrow: 'Supplier Network', title: 'Supplier Registry', sub: 'Manage suppliers, supplier records, and future product linking operations.' },
       orders: { eyebrow: 'Order Management', title: 'Order History', sub: 'View and manage all customer orders.' },
-      command: { eyebrow: 'Senior Admin Protocol', title: `Welcome, ${user.name}`, sub: 'Monitor operations, analytics, stock, and system activity.' }
+      command: { eyebrow: 'Executive Dashboard', title: `Welcome back, ${user.name}`, sub: 'Monitor operations, analytics, stock, and system activity.' }
     };
     return headers[activeTab] || headers.command;
   };
@@ -350,16 +611,16 @@ const AdminDashboard = () => {
   const header = renderHeaderText();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#050505] text-black dark:text-white flex overflow-hidden relative">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white flex overflow-hidden relative">
       <FloatingParticles />
 
       {/* SIDEBAR */}
       <motion.aside
         animate={{ width: sidebarCollapsed ? 96 : 288 }}
         transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="h-screen sticky top-0 border-r border-gray-200 dark:border-white/10 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-black/60 dark:to-black/40 backdrop-blur-2xl z-40 flex flex-col shadow-2xl"
+        className="h-screen sticky top-0 border-r border-white/10 bg-gradient-to-b from-black/90 to-gray-900/90 backdrop-blur-2xl z-40 flex flex-col shadow-2xl"
       >
-        <div className="px-4 py-5 border-b border-gray-200 dark:border-white/6">
+        <div className="px-4 py-5 border-b border-white/10">
           <div className="flex items-center justify-between gap-3">
             <div className={`flex items-center gap-3 ${sidebarCollapsed ? 'justify-center w-full' : ''}`}>
               <motion.div
@@ -367,12 +628,12 @@ const AdminDashboard = () => {
                   rotate: [0, 360],
                   boxShadow: [
                     '0 0 0px rgba(212,175,55,0)',
-                    '0 0 25px rgba(212,175,55,0.4)',
+                    '0 0 30px rgba(212,175,55,0.6)',
                     '0 0 0px rgba(212,175,55,0)'
                   ]
                 }}
                 transition={{ rotate: { duration: 20, repeat: Infinity, ease: 'linear' }, boxShadow: { duration: 2, repeat: Infinity } }}
-                className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#B8960F] flex items-center justify-center shrink-0 shadow-lg"
+                className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#D4AF37] to-[#FFD700] flex items-center justify-center shrink-0 shadow-lg"
               >
                 <Crown className="text-black" size={20} />
               </motion.div>
@@ -383,7 +644,7 @@ const AdminDashboard = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  <p className="text-base font-black tracking-tight text-black dark:text-white">Athukorala</p>
+                  <p className="text-base font-black tracking-tight text-white">Athukorala</p>
                   <p className="text-[10px] text-[#D4AF37] font-bold tracking-wider mt-0.5">INDUSTRIAL OS</p>
                 </motion.div>
               )}
@@ -394,7 +655,7 @@ const AdminDashboard = () => {
                 whileHover={{ scale: 1.05, rotate: 90 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSidebarCollapsed(true)}
-                className="w-9 h-9 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300"
+                className="w-9 h-9 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400"
               >
                 <PanelLeftClose size={16} />
               </motion.button>
@@ -411,7 +672,7 @@ const AdminDashboard = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSidebarCollapsed(false)}
-                className="w-9 h-9 rounded-xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 flex items-center justify-center text-gray-600 dark:text-gray-300"
+                className="w-9 h-9 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400"
               >
                 <PanelLeftOpen size={16} />
               </motion.button>
@@ -444,13 +705,13 @@ const AdminDashboard = () => {
           ))}
         </nav>
 
-        <div className="p-3 border-t border-gray-200 dark:border-white/6 space-y-3">
+        <div className="p-3 border-t border-white/10 space-y-3">
           <ThemeToggle />
           <motion.button
             whileHover={{ x: 4, backgroundColor: 'rgba(239, 68, 68, 0.15)' }}
             whileTap={{ scale: 0.98 }}
             onClick={handleLogout}
-            className={`w-full flex items-center gap-3 rounded-2xl px-4 py-3 text-red-600 dark:text-red-400 bg-red-500/8 border border-red-500/15 hover:bg-red-500/12 transition-all group ${
+            className={`w-full flex items-center gap-3 rounded-2xl px-4 py-3 text-red-400 bg-red-500/10 border border-red-500/20 hover:bg-red-500/15 transition-all group ${
               sidebarCollapsed ? 'justify-center' : ''
             }`}
           >
@@ -462,7 +723,7 @@ const AdminDashboard = () => {
 
       {/* MAIN */}
       <main className="flex-1 min-w-0 overflow-y-auto relative">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#D4AF37]/10 via-transparent to-transparent rounded-full blur-3xl -z-10" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl -z-10" />
 
         <div className="px-6 lg:px-10 py-8 lg:py-10">
@@ -484,21 +745,21 @@ const AdminDashboard = () => {
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className="w-2 h-2 rounded-full bg-[#D4AF37]"
+                      className="w-2 h-2 rounded-full bg-[#D4AF37] shadow-lg shadow-[#D4AF37]/50"
                     />
                     <p className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.22em]">
                       {header.eyebrow}
                     </p>
                   </div>
 
-                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-none text-black dark:text-white">
+                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-none text-white">
                     {header.title.split(' ').map((word, i) => (
                       <motion.span
                         key={i}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="inline-block mr-2"
+                        className="inline-block mr-2 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
                       >
                         {word}
                       </motion.span>
@@ -509,7 +770,7 @@ const AdminDashboard = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="mt-4 text-base text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed"
+                    className="mt-4 text-base text-gray-400 max-w-2xl leading-relaxed"
                   >
                     {header.sub}
                   </motion.p>
@@ -529,7 +790,7 @@ const AdminDashboard = () => {
                     <input
                       type="text"
                       placeholder="Search registry..."
-                      className="w-full sm:w-80 rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 py-3.5 pl-11 pr-4 text-sm outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/30 transition-all placeholder:text-gray-500 text-black dark:text-white"
+                      className="w-full sm:w-80 rounded-2xl border border-white/10 bg-white/5 py-3.5 pl-11 pr-4 text-sm outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/30 transition-all placeholder:text-gray-500 text-white"
                     />
                   </div>
 
@@ -552,10 +813,10 @@ const AdminDashboard = () => {
 
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="hidden lg:flex items-center gap-3 px-4 py-2 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10"
+                    className="hidden lg:flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/5 border border-white/10"
                   >
                     <Clock size={14} className="text-[#D4AF37]" />
-                    <span className="text-xs font-mono text-gray-600 dark:text-gray-400">
+                    <span className="text-xs font-mono text-gray-400">
                       {currentTime.toLocaleTimeString()}
                     </span>
                   </motion.div>
@@ -606,6 +867,14 @@ const AdminDashboard = () => {
                   />
                 </motion.div>
 
+                {/* Restock Plan Section */}
+                <RestockPlanSection 
+                  restockData={restockData}
+                  onGenerate={fetchRestockPlan}
+                  onDownloadPDF={downloadRestockPDF}
+                  isLoading={isLoadingRestock}
+                />
+
                 <motion.div
                   variants={staggerWrap}
                   initial="hidden"
@@ -655,7 +924,7 @@ const AdminDashboard = () => {
                     <motion.div
                       variants={fadeUp}
                       whileHover={{ y: -4 }}
-                      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/60 dark:to-black/30 backdrop-blur-sm p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
+                      className="rounded-3xl border border-white/10 bg-gradient-to-br from-gray-900/50 to-black/80 backdrop-blur-sm p-7 shadow-[0_20px_60px_rgba(0,0,0,0.5)] relative overflow-hidden"
                     >
                       <motion.div
                         animate={{ rotate: 360 }}
@@ -670,7 +939,7 @@ const AdminDashboard = () => {
                           <Sparkles size={12} />
                           Quick Operations
                         </p>
-                        <h3 className="text-2xl font-bold mb-6 text-black dark:text-white">Admin Shortcuts</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-white">Admin Shortcuts</h3>
 
                         <div className="space-y-3">
                           <ActionButton label="Add New Product" onClick={() => setIsModalOpen(true)} />
@@ -705,7 +974,7 @@ const AdminDashboard = () => {
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
-                      className="w-2 h-2 bg-blue-500 rounded-full"
+                      className="w-2 h-2 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50"
                     />
                     <h2 className="text-sm font-bold uppercase tracking-[0.22em] text-blue-400">
                       Internal Staff Protocol
@@ -724,7 +993,7 @@ const AdminDashboard = () => {
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                      className="w-2 h-2 bg-[#D4AF37] rounded-full"
+                      className="w-2 h-2 bg-[#D4AF37] rounded-full shadow-lg shadow-[#D4AF37]/50"
                     />
                     <h2 className="text-sm font-bold uppercase tracking-[0.22em] text-[#D4AF37]">
                       Customer Promotion Engine
@@ -786,7 +1055,7 @@ const AdminDashboard = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 }}
                       whileHover={{ y: -4 }}
-                      className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/60 dark:to-black/30 backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.28)] relative overflow-hidden"
+                      className="rounded-3xl border border-white/10 bg-gradient-to-br from-gray-900/50 to-black/80 backdrop-blur-xl p-7 shadow-[0_20px_60px_rgba(0,0,0,0.5)] relative overflow-hidden"
                     >
                       <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#D4AF37]/5 to-transparent rounded-full blur-2xl" />
                       <div className="relative z-10">
@@ -794,7 +1063,7 @@ const AdminDashboard = () => {
                           <Gift size={12} />
                           Active Protocols
                         </p>
-                        <h3 className="text-2xl font-bold mb-6 text-black dark:text-white">Running Promotions</h3>
+                        <h3 className="text-2xl font-bold mb-6 text-white">Running Promotions</h3>
                         <ActivePromotionList
                           refreshTrigger={promoRefreshTrigger}
                           onEdit={(promo) => setEditingPromo(promo)}
@@ -890,7 +1159,7 @@ const AdminDashboard = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsModalOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] cursor-pointer"
+              className="fixed inset-0 bg-black/90 backdrop-blur-md z-[60] cursor-pointer"
             />
 
             <motion.div
@@ -921,8 +1190,8 @@ const NavItem = ({ icon, label, active = false, onClick, collapsed = false, inde
       collapsed ? 'justify-center' : 'justify-between'
     } rounded-2xl px-4 py-3.5 transition-all duration-300 group relative ${
       active
-        ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8960F] text-black shadow-[0_10px_30px_rgba(212,175,55,0.25)]'
-        : 'text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-[#D4AF37] hover:bg-gray-100 dark:hover:bg-gray-800/50'
+        ? 'bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black shadow-[0_10px_30px_rgba(212,175,55,0.3)]'
+        : 'text-gray-400 hover:text-white hover:bg-white/5'
     }`}
     title={collapsed ? label : undefined}
   >
@@ -965,7 +1234,7 @@ const StatCard = ({ icon, label, value, sub, trend, trendUp = true }) => (
   <motion.div
     variants={fadeUp}
     whileHover={{ y: -8, borderColor: 'rgba(212,175,55,0.4)' }}
-    className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/60 dark:to-black/30 backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.24)] relative overflow-hidden group cursor-pointer"
+    className="rounded-3xl border border-white/10 bg-gradient-to-br from-gray-900/50 to-black/80 backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.4)] relative overflow-hidden group cursor-pointer"
   >
     <motion.div
       animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
@@ -975,24 +1244,24 @@ const StatCard = ({ icon, label, value, sub, trend, trendUp = true }) => (
       {React.cloneElement(icon, { size: 54, className: "text-[#D4AF37]" })}
     </motion.div>
 
-    <p className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{label}</p>
+    <p className="text-sm font-bold text-gray-400 uppercase tracking-wider">{label}</p>
     
     <motion.h3
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
-      className="text-4xl lg:text-5xl font-black tracking-tight mt-4 text-black dark:text-white"
+      className="text-4xl lg:text-5xl font-black tracking-tight mt-4 text-white"
     >
       {value}
     </motion.h3>
     
-    <p className="text-sm text-gray-500 dark:text-gray-500 mt-3">{sub}</p>
+    <p className="text-sm text-gray-500 mt-3">{sub}</p>
 
     <motion.div
       whileHover={{ x: 4 }}
       className={`mt-6 inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-bold ${
         trendUp 
-          ? 'border-green-500/20 bg-green-500/10 text-green-500' 
-          : 'border-red-500/20 bg-red-500/10 text-red-500'
+          ? 'border-green-500/20 bg-green-500/10 text-green-400' 
+          : 'border-red-500/20 bg-red-500/10 text-red-400'
       }`}
     >
       {trendUp ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
@@ -1011,7 +1280,7 @@ const QuickAccessCard = ({ icon, title, desc, actionLabel, onClick }) => (
   <motion.div
     variants={fadeUp}
     whileHover={{ y: -8, borderColor: 'rgba(212,175,55,0.35)' }}
-    className="rounded-3xl border border-gray-200 dark:border-white/10 bg-gradient-to-br from-gray-100 to-gray-50 dark:from-black/60 dark:to-black/30 backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.24)] relative overflow-hidden group"
+    className="rounded-3xl border border-white/10 bg-gradient-to-br from-gray-900/50 to-black/80 backdrop-blur-xl p-7 shadow-[0_18px_50px_rgba(0,0,0,0.4)] relative overflow-hidden group"
   >
     <motion.div
       animate={{ rotate: [0, 5, -5, 0] }}
@@ -1021,8 +1290,8 @@ const QuickAccessCard = ({ icon, title, desc, actionLabel, onClick }) => (
       {icon}
     </motion.div>
 
-    <h3 className="text-2xl font-bold text-black dark:text-white">{title}</h3>
-    <p className="mt-3 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{desc}</p>
+    <h3 className="text-2xl font-bold text-white">{title}</h3>
+    <p className="mt-3 text-sm text-gray-400 leading-relaxed">{desc}</p>
 
     <motion.button
       whileHover={{ x: 6 }}
@@ -1041,9 +1310,9 @@ const ActionButton = ({ label, onClick }) => (
     whileHover={{ x: 6, scale: 1.02 }}
     whileTap={{ scale: 0.98 }}
     onClick={onClick}
-    className="w-full rounded-2xl border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-gray-800/50 hover:border-[#D4AF37]/40 hover:bg-gradient-to-r hover:from-[#D4AF37]/5 hover:to-transparent transition-all px-5 py-4 text-left flex items-center justify-between group"
+    className="w-full rounded-2xl border border-white/10 bg-white/5 hover:border-[#D4AF37]/40 hover:bg-gradient-to-r hover:from-[#D4AF37]/10 hover:to-transparent transition-all px-5 py-4 text-left flex items-center justify-between group"
   >
-    <span className="text-sm font-bold text-black dark:text-white group-hover:text-[#D4AF37] transition-colors">
+    <span className="text-sm font-bold text-white group-hover:text-[#D4AF37] transition-colors">
       {label}
     </span>
     <ArrowUpRight size={16} className="text-[#D4AF37] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
